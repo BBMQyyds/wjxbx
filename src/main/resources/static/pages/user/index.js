@@ -34,7 +34,7 @@ const fetchUserList = () => {
               <button type="button" class="btn btn-link">重置密码</button>
               <button type="button" class="btn btn-link" onclick="handleEdit('${item.id}')">编辑</button>
               <button type="button" class="btn btn-link btn-red">关闭</button>
-              <button type="button" class="btn btn-link btn-red" onclick="deleteUser('${item.id}')">删除</button>
+              <button type="button" class="btn  btn-link btn-red" onclick="deleteUser('${item.id}')">删除</button>
             </td>
           </tr>
         `)

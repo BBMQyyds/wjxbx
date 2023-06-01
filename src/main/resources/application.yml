@@ -11,4 +11,5 @@ spring:
 
 
 mybatis:
-  type-aliases-package: com.jdsbbmq.wjxbx.bean
+  type-aliases-package: com.jdsbbmq.wjxbx.
+  mapper-locations: classpath:mybatis/mapper/*.xml
