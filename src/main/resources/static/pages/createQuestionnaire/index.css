@@ -1,0 +1,79 @@
+.item {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.item > .text {
+  margin-top: 5px;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.item > .value {
+  width: 400px;
+}
+
+.template {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.template-item {
+  border-radius: 10px;
+  width: 30%;
+  box-shadow: 0 0 10px 2px rgba(43, 43, 43, 0.2);
+}
+
+.item-t {
+  border-bottom: 2px solid #ECECEC;
+  display: flex;
+  padding: 25px;
+}
+
+.img {
+  width: 70px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.title {
+  font-size: 17px;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
+.item-b {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.btn-default {
+  color: #008eec !important;
+  border: 2px solid #0097F9 !important;
+  width: 80px;
+}
+
+.divider {
+  color: #888888;
+  font-size: 20px;
+  margin-bottom: 40px;
+  display: none;
+  align-items: center;
+}
+
+.divider > div:first-child,
+.divider > div:last-child {
+  border-bottom: 1px solid #CCCCCC;
+  flex: 1;
+}
+
+.template-b {
+  width: 90%;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.template-b > .template-item:not(last-child) {
+  margin-left: 30px;
+}

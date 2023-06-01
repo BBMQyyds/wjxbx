@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建问卷</title>
+  <link rel="stylesheet" href="./modules/createTemplateModal/index.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="../common/header/index.css">
+  <link rel="stylesheet" href="../../static/bootstrap-3.4.1/css/bootstrap.min.css">
+  <script src="../../static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <script src="../../static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="../../my-config.js"></script>
+</head>
+<body>
+  <div id="headerPage"></div>
+  
+  <div class="container">
+    <div class="item">
+      <div class="text">所属项目：</div>
+      <div class="value">
+        <select id="selectLeo" class="form-control form-control-placeholder">
+          <option value="0" disabled selected hidden>请选择</option>
+          <option value="1">项目一</option>
+          <option value="2">项目二</option>
+          <option value="3">项目三</option>
+          <option value="4">项目四</option>
+          <option value="5">项目五</option>
+        </select>
+      </div>
+    </div>
+    <div class="item">
+      <div class="text">调查类型：</div>
+      <div class="value">
+        <select id="selectLeo" class="form-control form-control-placeholder">
+          <option value="0" disabled selected hidden>请选择</option>
+          <option value="1">类型一</option>
+          <option value="2">类型二</option>
+          <option value="3">类型三</option>
+          <option value="4">类型四</option>
+          <option value="5">类型五</option>
+        </select>
+      </div>
+    </div>
+    <div class="item">
+      <div class="text">选择模板：</div>
+      <div class="template">
+        <div class="template-item">
+          <div class="item-t">
+            <img class="img" src="../../static/images/blank_template.png">
+            <div>
+              <div class="title">空白模板</div>
+              <div>丰富题型，强大逻辑，问卷密码，红包抽奖</div>
+            </div>
+          </div>
+          <div class="item-b">
+            <button type="button" class="btn btn-default" onclick="onCreateTemplate()">创 建</button>
+          </div>
+        </div>
+        <div class="template-item">
+          <div class="item-t">
+            <img class="img" src="../../static/images/blank_template.png">
+            <div>
+              <div class="title">导入历史问卷</div>
+              <div>题库抽题，限时作答，成绩查询，自动阅卷</div>
+            </div>
+          </div>
+          <div class="item-b">
+            <button type="button" class="btn btn-default" onclick="importHistoryQuestionnaire()">导 入</button>
+          </div>
+        </div>
+        <div class="template-item">
+          <div class="item-t">
+            <img class="img" src="../../static/images/blank_template.png">
+            <div>
+              <div class="title">调查类型模板</div>
+              <div>丰富题型，强大逻辑</div>
+            </div>
+          </div>
+          <div class="item-b">
+            <button type="button" class="btn btn-default" onclick="surveyTypeTemplate()">导 入</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider" id="divider">
+      <div></div>
+      <div>选择模板</div>
+      <div></div>
+    </div>
+    <div class="template-b" id="templateB">
+      
+    </div>
+
+    <!-- 创建模板弹窗 -->
+    <div id="createTemplate"></div>
+  </div>
+
+  <script type="module" src="../../utils/index.js"></script>
+  <script src="../common/header/index.js"></script>
+  <script src="./modules/createTemplateModal/index.js"></script>
+  <script src="./index.js"></script>
+  <script>
+    $("#headerPage").load("../common/header/index.html")
+    $("#createTemplate").load("./modules/createTemplateModal/index.html")
+  </script>
+</body>
+</html>

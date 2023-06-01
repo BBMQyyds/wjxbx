@@ -1,0 +1,36 @@
+.top {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.top > .btn {
+  margin-right: 10px;
+}
+
+.input-group-search {
+  width: 280px;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+.table .btn {
+  padding: 0;
+}
+
+.btn-red {
+  color: red !important;
+}
+
+.nav {
+  text-align: right;
+}
+
+.pagination {
+  width: 100%;
+  text-align: right;
+  margin: 0 !important;
+  margin-bottom: 20px !important;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问卷设计</title>
+  <link rel="stylesheet" href="./modules/modifyTitleModal/index.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="../../static/bootstrap-3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/iconfont/iconfont.css">
+  <script src="../../static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <script src="../../static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="header">
+    <button type="button" class="btn btn-success btn-finish" onclick="handleEditFinish()">完成编辑</button>
+    <img class="img" src="../../static/images/preview.png">
+    <span class="preview" onclick="location.href = '/pages/answerSheet/index.html'">预览</span>
+  </div>
+
+  <div class="container">
+    <div class="top">
+      <div class="top-content">
+        <div class="question-type" onclick="onAddQuestion(1)">
+          <i class="iconfont icon-danxuan"></i>
+          <span>单选</span>
+        </div>
+        <div class="question-type" onclick="onAddQuestion(2)">
+          <i class="iconfont icon-icon-"></i>
+          <span>多选</span>
+        </div>
+        <div class="question-type" onclick="onAddQuestion(3)">
+          <i class="iconfont icon-duoxuanxuanzhong_o"></i>
+          <span>填空</span>
+        </div>
+        <div class="question-type" onclick="onAddQuestion(4)">
+          <i class="iconfont icon-shitujuzhen_o"></i>
+          <span>矩阵</span>
+        </div>
+        <div class="question-type" onclick="onAddQuestion(5)">
+          <i class="iconfont icon-liangbiao"></i>
+          <span>量表</span>
+        </div>
+      </div>
+    </div>
+    <div class="questionnaire-title">
+      <span onclick="handleModifyTitle()" style="cursor: pointer;">
+        问卷标题
+      </span>
+    </div>  
+    <div class="questionnaire-description">
+      <span onclick="handleModifyTitle()" style="cursor: pointer;">
+        问卷说明
+      </span>
+    </div>
+    <div class="problem" id="problem"></div>
+  </div>
+  
+  <!-- 修改标题弹窗 -->
+  <div id="modifyTitle"></div>
+
+  <script type="module" src="../../utils/index.js"></script>
+  <script src="./modules/modifyTitleModal/index.js"></script>
+  <script src="./index.js"></script>
+  <script>
+    $("#modifyTitle").load("./modules/modifyTitleModal/index.html")
+  </script>
+</body>
+</html>

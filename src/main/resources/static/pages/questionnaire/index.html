@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>问卷列表</title>
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="../common/header/index.css">
+  <link rel="stylesheet" href="../../static/bootstrap-3.4.1/css/bootstrap.min.css">
+  <script src="../../static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <script src="../../static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="../../my-config.js"></script>
+</head>
+<body>
+  <div id="headerPage"></div>
+  
+  <div class="container">
+    <div class="list-top">
+      <div>
+        <button type="button" class="btn btn-primary btn-create-project" onclick="onCreatePrject()">创建项目</button>
+        <div class="input-group">
+          <input type="text" class="form-control" id="projectName" placeholder="请输入项目名称">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="fetchProjectList()">搜索</button>
+          </span>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary">历史问卷</button>
+      </div>
+    </div>
+    <div id="content"></div>
+  </div>
+
+  <script type="module" src="../../utils/index.js"></script>
+  <script src="../common/header/index.js"></script>
+  <script src="./index.js"></script>
+  <script>
+    $("#headerPage").load("../common/header/index.html")
+  </script>
+</body>
+</html>

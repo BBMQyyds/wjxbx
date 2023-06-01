@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户管理</title>
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="../common/header/index.css">
+  <link rel="stylesheet" href="../../static/bootstrap-3.4.1/css/bootstrap.min.css">
+  <script src="../../static/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+  <script src="../../static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="../../my-config.js"></script>
+</head>
+<body>
+  <div id="headerPage"></div>
+  
+  <div class="container">
+    <div class="top">
+      <button type="button" class="btn btn-primary" onclick="handleCreateUser()">创建用户</button>
+      <button type="button" class="btn btn-primary">批量导入</button>
+      <button type="button" class="btn btn-primary">导出Excel</button>
+      <div class="input-group input-group-search">
+        <input type="text" class="form-control" id="username" placeholder="请输入用户名" />
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" onclick="fetchUserList()">搜索</button>
+        </span>
+      </div>
+    </div>
+    <div>
+      <table class="table table-bordered table-striped" id="table">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>用户账号</th>
+            <th>用户密码</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <!-- <tr>
+            <td>1</td>
+            <td>admin</td>
+            <td>1</td>
+            <td>2018-12-04T21:40:05</td>
+            <td>2021-09-27T21:40:00</td>
+            <td>
+              <button type="button" class="btn btn-link">重置密码</button>
+              <button type="button" class="btn btn-link">编辑</button>
+              <button type="button" class="btn btn-link btn-red">关闭</button>
+              <button type="button" class="btn btn-link btn-red">删除</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+      <div class="pagination">
+        <a id="prePage" onclick="handleTableChange(1)" style="cursor: pointer;">上一页</a>
+        <span>
+          <span>当前页：</span>
+          <span id="currentPage">1</span>
+        </span>
+        <a id="nextPage" onclick="handleTableChange(2)" style="cursor: pointer;">下一页</a>
+        <span>
+          <span>共</span>
+          <span id="totalPage">0</span>
+          <span>页</span>
+        </span>
+        <span>
+          <span>跳转到：</span>
+          <input type="text" id="goNum" style="width: 50px;border-radius:6px" maxlength="5" oninput="value=value.replace(/[^\d]/g,'')" />
+          <a id="goHref" onclick="handleTableChange(3)" style="cursor: pointer;">GO</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../../utils/index.js"></script>
+  <script src="../common/header/index.js"></script>
+  <script src="./index.js"></script>
+  <script>
+    $("#headerPage").load("../common/header/index.html")
+  </script>
+</body>
+</html>

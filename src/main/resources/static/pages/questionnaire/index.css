@@ -1,0 +1,38 @@
+.list-top {
+  border-bottom: 1px solid #e3e3e6;
+  padding-bottom: 35px;
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-top > div:first-child {
+  display: flex;
+}
+
+.btn-create-project {
+  margin-right: 20px;
+}
+
+.list {
+  border: 1px solid #E7E7E7;
+  margin-bottom: 30px;
+}
+
+.list-header {
+  background-color: #F5F5F5;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-link {
+  padding: 0 !important
+}
+
+.list-footer > div {
+  color: red;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}

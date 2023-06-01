@@ -1,0 +1,24 @@
+body {
+  background-color: #EBF0F4 !important;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 40px !important;
+}
+
+.info {
+  color: #30A5F5;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.info > span {
+  color: #000000;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}

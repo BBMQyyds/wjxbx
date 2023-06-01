@@ -57,5 +57,3 @@ CREATE TABLE `user_info` (
   `last_update_date` datetime DEFAULT NULL COMMENT '最后修改时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
--

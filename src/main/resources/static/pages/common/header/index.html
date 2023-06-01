@@ -1,0 +1,26 @@
+<div class="header">
+  <div class="div_t">
+    <div class="header_t_l">
+      <div id="handerFallback" onclick="history.back()" style="cursor: pointer;">
+        <img class="header_img" src="../../../static//images/fallback.png">
+        <span style="margin-left: 10px;">返回</span>
+      </div>
+    </div>
+    <div class="header_t_r">
+      <div onclick="onMyProject()">
+        <img class="header_img" src="../../../static/images/my.png">
+        <span style="margin-left: 3px;">我的项目</span>
+      </div>
+      <div>
+        <img class="header_img" src="../../../static/images/avatar.png">
+        <span class="username" id="headerUsername"></span>
+        <span onclick="onToUser()" style="cursor: pointer;">用户管理</span>
+      </div>
+      <div onclick="onSignOut()" style="cursor: pointer;">
+        <img class="header_img" src="../../../static/images/sign_out.png">
+        <span>退出</span>
+      </div>
+    </div>
+  </div>
+  <div class="div_b" id="headerDivB"></div>
+</div>

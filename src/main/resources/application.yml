@@ -10,4 +10,5 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
-debug: true
+mybatis:
+  type-aliases-package: com.jdsbbmq.wjxbx.bean
