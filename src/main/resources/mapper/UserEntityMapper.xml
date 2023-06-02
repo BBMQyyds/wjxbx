@@ -1,24 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jdsbbmq.wjxbx.dao.UserEntityMapper">
-    <insert id="insertUser" parameterType="com.jdsbbmq.wjxbx.dao.entity.UserEntity">
-        INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date)
-        VALUES (#{id}, #{username}, #{password}, #{startTime}, #{stopTime}, #{status}, #{createdBy}, #{creationDate}, #{lastUpdatedBy}, #{lastUpdateDate})
-    </insert>
-    <update id="updateUser">
-        update user set username = #{username}, password = #{password}, start_time = #{startTime}, stop_time = #{stopTime}, status = #{status}, last_updated_by = #{lastUpdatedBy}, last_update_date = #{lastUpdateDate} where id = #{id}
-    </update>
-    <delete id="deleteUser">
-        delete from user where id = #{id}
-    </delete>
+
+    <!--
+        功能实现
+    -->
+
+    <!--查询-->
+
     <!--登录-->
     <select id="login" resultType="UserEntity">
-        select * from user where username = #{username} and password = #{password}
+        select *
+        from user
+        where username = #{username}
+          and password = #{password}
     </select>
-    <select id="selectAll" resultType="com.jdsbbmq.wjxbx.dao.entity.UserEntity">
-        select * from user
+    <!--根据id查询-->
+    <select id="selectUserById" resultType="UserEntity">
+        select *
+        from user
+        where username = #{id}
     </select>
-    <select id="selectUser" resultType="com.jdsbbmq.wjxbx.dao.entity.UserEntity">
-        select * from user where username = #{username}
+    <!--查询所有用户-->
+    <select id="selectAll" resultType="UserEntity">
+        select *
+        from user
     </select>
+
+    <!--增删改-->
+
+    <!--插入用户-->
+    <insert id="insertUser" parameterType="UserEntity">
+        INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date,
+                          last_updated_by, last_update_date)
+        VALUES (#{id}, #{username}, #{password}, #{startTime}, #{stopTime}, #{status}, #{createdBy}, #{creationDate},
+                #{lastUpdatedBy}, #{lastUpdateDate})
+    </insert>
+
+    <!--更新用户-->
+    <update id="updateUser">
+        update user
+        set username         = #{username},
+            password         = #{password},
+            start_time       = #{startTime},
+            stop_time        = #{stopTime},
+            status           = #{status},
+            last_updated_by  = #{lastUpdatedBy},
+            last_update_date = #{lastUpdateDate}
+        where id = #{id}
+    </update>
+
+    <!--根据id删除用户-->
+    <delete id="deleteUserById">
+        delete
+        from user
+        where username = #{id}
+    </delete>
+
+
+    <!--
+        辅助功能
+    -->
+
+    <!--根据用户名查询用户id-->
+    <select id="selectIdByUsername" resultType="String">
+        select id
+        from user
+        where username = #{username}
+    </select>
+
 </mapper>
