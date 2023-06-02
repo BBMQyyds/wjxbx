@@ -1,0 +1,276 @@
+2023-06-02 14:38:35.599 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 16552 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:38:35.601 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:38:35.602 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:38:36.220 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-02 14:38:36.227 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-02 14:38:36.227 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-02 14:38:36.238 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-02 14:38:36.298 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-02 14:38:36.298 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 668 ms
+2023-06-02 14:38:36.671 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-02 14:38:36.686 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-02 14:38:36.692 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.365 seconds (process running for 1.877)
+2023-06-02 14:41:23.944 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:41:24.025 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:41:24.382 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 39188 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:41:24.382 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:41:24.383 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:41:25.779 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.578 seconds (process running for 2.542)
+2023-06-02 14:41:27.193 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:41:27.211 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:41:27.262 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:41:37.951 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:41:37.952 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:41:37.988 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:41:38.346 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where username = ?
+2023-06-02 14:41:38.346 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:41:38.420 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:41:38.855 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:41:38.856 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:41:38.936 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 1
+2023-06-02 14:41:39.340 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:41:39.340 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:41:39.378 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 14
+2023-06-02 14:41:39.730 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:41:39.731 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 233a1de9-e254-4573-99da-176b33ecb2f8(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:41:39.810 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:41:40.215 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:41:40.216 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:41:40.252 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:42:47.371 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:42:47.456 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:42:47.837 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 50548 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:42:47.838 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:42:47.838 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:42:49.137 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.49 seconds (process running for 2.487)
+2023-06-02 14:42:50.442 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:42:50.460 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:42:50.517 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:42:50.901 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:42:50.902 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:42:50.939 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:42:51.384 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:42:51.384 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:42:51.464 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 1
+2023-06-02 14:42:51.908 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:42:51.910 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:42:51.978 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 1
+2023-06-02 14:42:52.359 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:42:52.360 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:42:52.404 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 14
+2023-06-02 14:42:52.824 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:42:52.826 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: e5268e76-e076-4410-ade3-f140814e1a91(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:42:52.906 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:42:53.283 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:42:53.283 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:42:53.321 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:44:29.380 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:44:29.462 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:44:29.827 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 32780 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:44:29.827 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:44:29.828 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:44:31.203 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.559 seconds (process running for 2.507)
+2023-06-02 14:44:32.639 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:44:32.659 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:44:32.728 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:44:33.072 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:44:33.073 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:44:33.104 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:44:33.560 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:44:33.560 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:44:33.652 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:44:34.027 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:44:34.029 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:44:34.087 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-02 14:44:34.476 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:44:34.477 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:44:34.512 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-02 14:44:34.908 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:44:34.909 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 4e74ada9-5a02-40b6-873f-97787e88961d(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:44:34.984 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:44:35.433 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:44:35.433 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:44:35.471 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:44:51.762 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:44:51.846 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:44:52.202 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 14804 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:44:52.202 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:44:52.203 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:44:53.559 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.547 seconds (process running for 2.489)
+2023-06-02 14:44:54.994 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:44:55.012 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:44:55.068 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:44:55.513 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:44:55.513 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:44:55.556 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:44:55.892 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:44:55.892 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:44:55.952 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:44:56.350 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:44:56.352 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:44:56.431 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-02 14:44:56.796 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:44:56.796 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:44:56.829 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 3
+2023-06-02 14:44:57.147 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:44:57.148 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 228441cb-fa33-4217-a28e-c2a31a4dc0f2(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:44:57.207 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:44:57.558 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:44:57.558 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:44:57.593 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:45:10.957 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:45:11.038 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:45:11.401 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 38424 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:45:11.402 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:45:11.402 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:45:12.719 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.51 seconds (process running for 2.458)
+2023-06-02 14:45:14.188 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:45:14.205 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:45:14.252 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:45:14.632 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:45:14.633 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:45:14.669 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:45:14.997 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:45:14.997 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:45:15.062 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:45:15.462 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:45:15.463 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:45:15.546 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-02 14:45:15.936 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:45:15.937 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:45:15.973 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 4
+2023-06-02 14:45:16.347 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:45:16.348 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: d9c32d7e-60cb-4c1f-b100-6008bdff00b4(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:45:16.421 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:45:16.831 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:45:16.832 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:45:16.872 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:45:27.561 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:45:27.641 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:45:28.006 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 7600 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:45:28.006 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:45:28.007 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:45:29.341 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.534 seconds (process running for 2.466)
+2023-06-02 14:45:30.728 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:45:30.747 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:45:30.798 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:45:31.191 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:45:31.191 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:45:31.227 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:45:31.571 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:45:31.571 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:45:31.631 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:45:32.019 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:45:32.020 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:45:32.099 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-02 14:45:32.472 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:45:32.473 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:45:32.503 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 5
+2023-06-02 14:45:32.831 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:45:32.832 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: b89078fe-1016-4cfc-98bc-ba26da034836(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:45:32.899 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:45:33.255 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:45:33.256 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:45:33.297 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:47:15.220 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:47:15.307 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:47:15.686 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 4708 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:47:15.686 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:47:15.687 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:47:17.205 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.719 seconds (process running for 2.735)
+2023-06-02 14:47:18.517 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:47:18.533 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:47:18.579 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:47:18.962 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:47:18.962 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:47:19.002 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:47:19.339 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:47:19.340 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:47:19.404 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:47:19.789 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:47:19.791 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:47:19.864 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-02 14:47:20.259 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:47:20.260 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:47:20.311 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 6
+2023-06-02 14:47:20.675 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:47:20.676 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 864d8d9d-311b-490e-b3ab-23809c20f500(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:47:20.744 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:47:21.149 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:47:21.150 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:47:21.191 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:47:45.712 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:47:45.793 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:47:46.162 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 3964 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:47:46.162 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:47:46.163 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:47:47.442 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.476 seconds (process running for 2.45)
+2023-06-02 14:47:48.761 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:47:48.778 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 90f186b9-c1c4-454c-bd88-586a8886c42d(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:47:48.849 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:48:22.434 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:48:22.518 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:48:22.890 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 23404 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:48:22.891 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:48:22.891 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:48:24.470 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.764 seconds (process running for 2.783)
+2023-06-02 14:48:26.065 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:48:26.084 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 929c6364-a28b-4ccb-ade7-84db9f3f5afb(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:48:26.148 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:48:38.348 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:48:38.433 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:48:38.810 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 44848 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:48:38.811 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:48:38.812 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:48:40.229 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.615 seconds (process running for 2.581)
+2023-06-02 14:48:41.685 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:48:41.704 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 9204f5a8-2e68-4b69-95ad-7389bd1adffd(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:48:41.770 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:51:02.767 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:51:02.855 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:51:03.225 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 23268 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:51:03.226 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:51:03.226 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:51:04.577 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.539 seconds (process running for 2.539)
+2023-06-02 14:51:05.950 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:51:05.969 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 59f0081f-92ec-4f6f-895c-b2bc1283ec4c(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:51:06.043 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:51:20.100 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-02 14:51:20.180 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-02 14:51:20.556 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 47796 (started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:51:20.557 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:51:20.558 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:51:21.972 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 1.613 seconds (process running for 2.645)
+2023-06-02 14:51:23.394 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-02 14:51:23.412 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-02 14:51:23.473 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-02 14:51:23.865 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-02 14:51:23.866 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-02 14:51:23.896 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-02 14:51:24.318 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-02 14:51:24.318 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-02 14:51:24.397 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-02 14:51:24.790 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-02 14:51:24.792 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-02 14:51:24.866 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-02 14:51:25.330 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-02 14:51:25.331 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-02 14:51:25.429 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-02 14:51:25.841 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-02 14:51:25.842 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: ef33d33a-b72c-4e7f-aa3b-af92f04a545e(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-02 14:51:25.910 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-02 14:51:26.290 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-02 14:51:26.290 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-02 14:51:26.348 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-02 14:51:50.315 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 44936 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-02 14:51:50.317 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 14:51:50.318 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 14:51:50.955 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-02 14:51:50.962 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-02 14:51:50.963 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-02 14:51:50.963 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-02 14:51:51.024 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-02 14:51:51.025 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 679 ms
+2023-06-02 14:51:51.398 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-02 14:51:51.413 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-02 14:51:51.419 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.381 seconds (process running for 1.899)

@@ -9,20 +9,20 @@
     <!--查询-->
 
     <!--登录-->
-    <select id="login" resultType="UserEntity">
+    <select id="login" resultMap="userEntityMap">
         select *
         from user
         where username = #{username}
           and password = #{password}
     </select>
     <!--根据id查询-->
-    <select id="selectUserById" resultType="UserEntity">
+    <select id="selectUserById" resultMap="userEntityMap">
         select *
         from user
-        where username = #{id}
+        where id = #{id}
     </select>
     <!--查询所有用户-->
-    <select id="selectAll" resultType="UserEntity">
+    <select id="selectAll" resultMap="userEntityMap">
         select *
         from user
     </select>
@@ -54,7 +54,7 @@
     <delete id="deleteUserById">
         delete
         from user
-        where username = #{id}
+        where id = #{id}
     </delete>
 
 
@@ -68,5 +68,24 @@
         from user
         where username = #{username}
     </select>
+
+
+    <!--
+        resultMap
+    -->
+
+    <resultMap id="userEntityMap" type="UserEntity">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="startTime" column="start_time"/>
+        <result property="stopTime" column="stop_time"/>
+        <result property="status" column="status"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="creationDate" column="creation_date"/>
+        <result property="lastUpdatedBy" column="last_updated_by"/>
+        <result property="lastUpdateDate" column="last_update_date"/>
+    </resultMap>
+
 
 </mapper>

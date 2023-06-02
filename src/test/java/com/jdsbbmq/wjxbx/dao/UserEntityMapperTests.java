@@ -44,6 +44,7 @@ public class UserEntityMapperTests {
             // 记录info级别的信息
             log.info(">>login登录测试成功");
         }
+        sqlSession.close();
     }
 
     @Test
@@ -66,6 +67,7 @@ public class UserEntityMapperTests {
             // 记录info级别的信息
             log.info(">>selectAll所有用户查询测试成功");
         }
+        sqlSession.close();
     }
 
     @Test
@@ -88,6 +90,7 @@ public class UserEntityMapperTests {
             // 记录info级别的信息
             log.info(">>selectUser用户查询测试成功");
         }
+        sqlSession.close();
     }
 
     @Test
@@ -115,6 +118,35 @@ public class UserEntityMapperTests {
             // 记录info级别的信息
             log.info(">>insertUser用户插入测试成功");
         }
+        sqlSession.close();
+    }
+
+    @Test
+    // 更新用户
+    public void updateUserByIdTest() throws Exception {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        //创建UserMapper对象，mybatis自动生成mapper代理对象
+        UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
+        //调用userMapper的方法
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId("216c6b4f-12e2-4012-a029-37b15c965547");
+        userEntity.setStatus(1);
+        userEntity.setUsername("LS");
+        userEntity.setPassword("123");
+        int i = userEntityMapper.updateUser(userEntity);
+        if (i == 0) {
+            System.out.println("更新失败");
+            // 记录error级别的信息
+            log.error(">>updateUser用户更新测试失败");
+        } else {
+            System.out.println(i);
+            // 记录info级别的信息
+            log.info(">>updateUser用户更新测试成功");
+        }
+        sqlSession.close();
     }
 
     @Test
@@ -127,7 +159,7 @@ public class UserEntityMapperTests {
         //创建UserMapper对象，mybatis自动生成mapper代理对象
         UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
         //调用userMapper的方法
-        int i = userEntityMapper.deleteUserById(UUID.randomUUID().toString());
+        int i = userEntityMapper.deleteUserById("4f48ba43-e933-4cef-ac7d-094e1e70c555");
         if (i == 0) {
             System.out.println("删除失败");
             // 记录error级别的信息
@@ -137,6 +169,7 @@ public class UserEntityMapperTests {
             // 记录info级别的信息
             log.info(">>deleteUser用户删除测试成功");
         }
+        sqlSession.close();
     }
 
     @Test
@@ -159,6 +192,7 @@ public class UserEntityMapperTests {
             // 记录info级别的信息
             log.info(">>selectUserIdByUsername用户查询测试成功");
         }
+        sqlSession.close();
     }
 
 }
