@@ -102,7 +102,7 @@ public class UserEntityMapperTests {
         //调用userMapper的方法
         UserEntity userEntity = new UserEntity();
         userEntity.setId(UUID.randomUUID().toString());
-        userEntity.setStatus("1");
+        userEntity.setStatus(1);
         userEntity.setUsername("LS");
         userEntity.setPassword("123");
         int i = userEntityMapper.insertUser(userEntity);

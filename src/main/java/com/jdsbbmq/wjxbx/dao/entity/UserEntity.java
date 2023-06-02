@@ -15,7 +15,7 @@ public class UserEntity {
     private String password;
     private Date startTime;
     private Date stopTime;
-    private String status;
+    private int status;
     private String createdBy;
     private Date creationDate;
     private String lastUpdatedBy;
