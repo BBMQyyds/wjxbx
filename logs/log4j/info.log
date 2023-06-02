@@ -5,3 +5,33 @@
 2023-06-02 14:42:52[ INFO ]>>selectAll所有用户查询测试成功
 2023-06-02 14:42:52[ INFO ]>>insertUser用户插入测试成功
 2023-06-02 14:42:53[ INFO ]>>selectUser用户查询测试成功
+2023-06-02 16:35:04[ ERROR ]>>deleteUser用户删除测试失败
+2023-06-02 16:52:49[ ERROR ]>>deleteUser用户删除测试失败
+2023-06-02 17:00:52[ DEBUG ]{conn-10001, stmt-20000} created
+2023-06-02 17:00:52[ DEBUG ]{conn-10001, stmt-20000, rs-50000} query executed. 324.0622 millis. SELECT 1 FROM DUAL
+2023-06-02 17:00:52[ DEBUG ]{conn-10001, stmt-20000} closed
+2023-06-02 17:00:53[ DEBUG ]{conn-10002, stmt-20001} created
+2023-06-02 17:00:53[ DEBUG ]{conn-10002, stmt-20001, rs-50001} query executed. 19.2342 millis. SELECT 1 FROM DUAL
+2023-06-02 17:00:53[ DEBUG ]{conn-10002, stmt-20001} closed
+2023-06-02 17:00:53[ DEBUG ]{conn-10003, stmt-20002} created
+2023-06-02 17:00:53[ DEBUG ]{conn-10003, stmt-20002, rs-50002} query executed. 17.0937 millis. SELECT 1 FROM DUAL
+2023-06-02 17:00:53[ DEBUG ]{conn-10003, stmt-20002} closed
+2023-06-02 17:00:53[ DEBUG ]{conn-10004, stmt-20003} created
+2023-06-02 17:00:53[ DEBUG ]{conn-10004, stmt-20003, rs-50003} query executed. 17.3714 millis. SELECT 1 FROM DUAL
+2023-06-02 17:00:53[ DEBUG ]{conn-10004, stmt-20003} closed
+2023-06-02 17:00:53[ DEBUG ]{conn-10005, stmt-20004} created
+2023-06-02 17:00:53[ DEBUG ]{conn-10005, stmt-20004, rs-50004} query executed. 20.3853 millis. SELECT 1 FROM DUAL
+2023-06-02 17:00:53[ DEBUG ]{conn-10005, stmt-20004} closed
+2023-06-02 17:00:54[ DEBUG ]{conn-10005, pstmt-20005} created. select id
+        from user
+        where username = ?
+2023-06-02 17:00:54[ DEBUG ]{conn-10005, pstmt-20005} Parameters : [{
+	"username": "卜部美琴"
+}]
+2023-06-02 17:00:54[ DEBUG ]{conn-10005, pstmt-20005} Types : [VARCHAR]
+2023-06-02 17:00:54[ DEBUG ]{conn-10005, pstmt-20005} executed. 426.1769 millis. select id
+        from user
+        where username = ?
+2023-06-02 17:00:54[ DEBUG ]{conn-10005, pstmt-20005} clearParameters. 
+2023-06-02 17:00:54[ DEBUG ]{conn-10005, stmt-20005} clearBatch. 
+2023-06-02 17:09:57[ DEBUG ]{conn-10005, pstmt-20005} closed
