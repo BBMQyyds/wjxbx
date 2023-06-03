@@ -289,3 +289,556 @@
 2023-06-02 14:53:15.029 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-06-02 14:53:15.030 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-06-02 14:53:15.031 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-06-02 16:15:51.465 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 17880 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-02 16:15:51.466 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 16:15:51.467 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 16:15:52.288 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-02 16:15:52.297 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-02 16:15:52.298 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-02 16:15:52.298 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-02 16:15:52.378 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-02 16:15:52.378 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 880 ms
+2023-06-02 16:15:52.850 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-02 16:15:52.871 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-02 16:15:52.879 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.741 seconds (process running for 2.352)
+2023-06-02 16:15:51.465 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 17880 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-02 16:15:51.466 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 16:15:51.467 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 16:15:52.288 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-02 16:15:52.297 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-02 16:15:52.298 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-02 16:15:52.298 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-02 16:15:52.378 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-02 16:15:52.378 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 880 ms
+2023-06-02 16:15:52.850 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-02 16:15:52.871 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-02 16:15:52.879 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.741 seconds (process running for 2.352)
+2023-06-02 17:27:00.194 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 38976 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-02 17:27:00.196 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-02 17:27:00.197 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-02 17:27:01.074 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-02 17:27:01.086 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-02 17:27:01.087 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-02 17:27:01.087 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-02 17:27:01.185 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-02 17:27:01.186 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 952 ms
+2023-06-02 17:27:01.696 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-02 17:27:01.872 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-02 17:27:01.893 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-02 17:27:01.902 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.073 seconds (process running for 2.851)
+2023-06-02 17:27:14.143 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-02 17:27:14.143 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-02 17:27:14.144 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-03 00:45:57.458 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 10:06:19.223 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 55140 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 10:06:19.226 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 10:06:19.227 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 10:06:20.147 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 10:06:20.156 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:06:20.156 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 10:06:20.157 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 10:06:20.231 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 10:06:20.232 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 960 ms
+2023-06-03 10:06:20.763 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 10:06:20.953 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:06:20.971 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-03 10:06:20.981 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.188 seconds (process running for 2.996)
+2023-06-03 10:06:23.471 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-03 10:06:23.471 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-03 10:06:23.472 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-03 10:12:33.325 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 10:12:39.842 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 59380 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 10:12:39.844 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 10:12:39.845 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 10:12:40.687 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 10:12:40.694 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:12:40.695 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 10:12:40.695 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 10:12:40.813 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 10:12:40.813 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 932 ms
+2023-06-03 10:12:41.232 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 10:12:41.385 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:12:41.403 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-03 10:12:41.410 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.898 seconds (process running for 2.544)
+2023-06-03 10:12:53.451 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-03 10:12:53.452 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-03 10:12:53.452 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-06-03 10:24:10.814 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 10:24:16.219 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 16140 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 10:24:16.221 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 10:24:16.222 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 10:24:16.961 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 10:24:16.968 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:24:16.968 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 10:24:16.968 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 10:24:17.037 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 10:24:17.037 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 782 ms
+2023-06-03 10:24:17.461 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 10:24:17.585 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:24:17.602 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-03 10:24:17.610 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.698 seconds (process running for 2.334)
+2023-06-03 10:24:20.974 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-03 10:24:20.974 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-03 10:24:20.976 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-06-03 10:52:50.966 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 10:52:57.148 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 15876 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 10:52:57.150 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 10:52:57.151 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 10:52:57.994 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 10:52:58.001 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:52:58.001 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 10:52:58.001 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 10:52:58.072 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 10:52:58.072 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 880 ms
+2023-06-03 10:52:58.452 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 10:52:58.631 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-03 10:52:58.652 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-03 10:52:58.662 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.903 seconds (process running for 2.726)
+2023-06-03 10:53:12.933 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 11:07:52.960 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-03 11:07:53.064 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-03 11:07:53.654 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 55112 (started by 33698 in C:\externship\wjxbx)
+2023-06-03 11:07:53.654 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 11:07:53.655 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 11:07:54.939 [main] WARN  o.s.w.c.s.GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'userEntity': Could not bind properties to 'UserEntity' : prefix=user, ignoreInvalidFields=false, ignoreUnknownFields=true
+2023-06-03 11:07:54.940 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 11:07:54.957 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-03 11:07:55.033 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'user.creation-date' to java.util.Date:
+
+    Property: user.creation-date
+    Value: "now()"
+    Origin: class path resource [application.yml] - 44:18
+    Reason: failed to convert java.lang.String to java.util.Date (caused by java.lang.IllegalArgumentException)
+
+Action:
+
+Update your application's configuration
+
+2023-06-03 11:07:55.041 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests@18dd5ed3]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@61ff6a49 testClass = com.jdsbbmq.wjxbx.dao.UserEntityMapperTests, locations = [], classes = [com.jdsbbmq.wjxbx.WjxbxApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@8576fa0, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@3daf7722, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1458ed9c, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@64bce832, org.springframework.boot.test.context.SpringBootTestAnnotation@a5dfa876], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:142)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:241)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$10(ClassBasedTestDescriptor.java:377)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:382)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:377)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:376)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$6(ClassBasedTestDescriptor.java:289)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:288)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:278)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:277)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:105)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:104)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:90)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'userEntity': Could not bind properties to 'UserEntity' : prefix=user, ignoreInvalidFields=false, ignoreUnknownFields=true
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.bind(ConfigurationPropertiesBindingPostProcessor.java:99)
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:79)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1762)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:733)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:435)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1405)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:545)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:184)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:118)
+	... 72 common frames omitted
+Caused by: org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'user.creation-date' to java.util.Date
+	at org.springframework.boot.context.properties.bind.Binder.handleBindError(Binder.java:387)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:347)
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindDataObject$4(Binder.java:472)
+	at org.springframework.boot.context.properties.bind.JavaBeanBinder.bind(JavaBeanBinder.java:98)
+	at org.springframework.boot.context.properties.bind.JavaBeanBinder.bind(JavaBeanBinder.java:86)
+	at org.springframework.boot.context.properties.bind.JavaBeanBinder.bind(JavaBeanBinder.java:62)
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindDataObject$5(Binder.java:476)
+	at org.springframework.boot.context.properties.bind.Binder$Context.withIncreasedDepth(Binder.java:590)
+	at org.springframework.boot.context.properties.bind.Binder$Context.withDataObject(Binder.java:576)
+	at org.springframework.boot.context.properties.bind.Binder.bindDataObject(Binder.java:474)
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:414)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:343)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:332)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:262)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:249)
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBinder.bind(ConfigurationPropertiesBinder.java:93)
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.bind(ConfigurationPropertiesBindingPostProcessor.java:96)
+	... 96 common frames omitted
+Caused by: org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [java.util.Date] for value [now()]
+	at org.springframework.core.convert.support.ObjectToObjectConverter.convert(ObjectToObjectConverter.java:117)
+	at org.springframework.core.convert.support.ConversionUtils.invokeConverter(ConversionUtils.java:41)
+	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:192)
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:109)
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:100)
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:92)
+	at org.springframework.boot.context.properties.bind.Binder.bindProperty(Binder.java:459)
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:403)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:343)
+	... 111 common frames omitted
+Caused by: java.lang.IllegalArgumentException: null
+	at java.base/java.util.Date.parse(Date.java:617)
+	at java.base/java.util.Date.<init>(Date.java:275)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.springframework.core.convert.support.ObjectToObjectConverter.convert(ObjectToObjectConverter.java:113)
+	... 119 common frames omitted
+2023-06-03 11:08:47.385 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-03 11:08:47.505 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-03 11:08:47.982 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 3852 (started by 33698 in C:\externship\wjxbx)
+2023-06-03 11:08:47.983 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 11:08:47.984 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 11:08:49.292 [main] WARN  o.s.w.c.s.GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'userEntity': Could not bind properties to 'UserEntity' : prefix=user, ignoreInvalidFields=false, ignoreUnknownFields=true
+2023-06-03 11:08:49.293 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 11:08:49.309 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-03 11:08:49.353 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'user.creation-date' to java.util.Date:
+
+    Property: user.creation-date
+    Value: "now()"
+    Origin: class path resource [application.yml] - 44:18
+    Reason: failed to convert java.lang.String to java.util.Date (caused by java.lang.IllegalArgumentException)
+
+Action:
+
+Update your application's configuration
+
+2023-06-03 11:08:49.364 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests@4130a648]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@52454457 testClass = com.jdsbbmq.wjxbx.dao.UserEntityMapperTests, locations = [], classes = [com.jdsbbmq.wjxbx.WjxbxApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5f354bcf, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@4716be8b, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5ddf0d24, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5a755cc1, org.springframework.boot.test.context.SpringBootTestAnnotation@a3b14b17], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:142)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:191)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:130)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:241)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$10(ClassBasedTestDescriptor.java:377)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:382)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:377)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:310)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:376)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$6(ClassBasedTestDescriptor.java:289)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:288)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:278)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:277)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:105)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:104)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:123)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:90)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:147)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:127)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:90)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:55)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:102)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'userEntity': Could not bind properties to 'UserEntity' : prefix=user, ignoreInvalidFields=false, ignoreUnknownFields=true
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.bind(ConfigurationPropertiesBindingPostProcessor.java:99)
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:79)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1762)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:941)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:733)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:435)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:137)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1405)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:545)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:137)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:108)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:184)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:118)
+	... 72 common frames omitted
+Caused by: org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'user.creation-date' to java.util.Date
+	at org.springframework.boot.context.properties.bind.Binder.handleBindError(Binder.java:387)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:347)
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindDataObject$4(Binder.java:472)
+	at org.springframework.boot.context.properties.bind.JavaBeanBinder.bind(JavaBeanBinder.java:98)
+	at org.springframework.boot.context.properties.bind.JavaBeanBinder.bind(JavaBeanBinder.java:86)
+	at org.springframework.boot.context.properties.bind.JavaBeanBinder.bind(JavaBeanBinder.java:62)
+	at org.springframework.boot.context.properties.bind.Binder.lambda$bindDataObject$5(Binder.java:476)
+	at org.springframework.boot.context.properties.bind.Binder$Context.withIncreasedDepth(Binder.java:590)
+	at org.springframework.boot.context.properties.bind.Binder$Context.withDataObject(Binder.java:576)
+	at org.springframework.boot.context.properties.bind.Binder.bindDataObject(Binder.java:474)
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:414)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:343)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:332)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:262)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:249)
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBinder.bind(ConfigurationPropertiesBinder.java:93)
+	at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.bind(ConfigurationPropertiesBindingPostProcessor.java:96)
+	... 96 common frames omitted
+Caused by: org.springframework.core.convert.ConversionFailedException: Failed to convert from type [java.lang.String] to type [java.util.Date] for value [now()]
+	at org.springframework.core.convert.support.ObjectToObjectConverter.convert(ObjectToObjectConverter.java:117)
+	at org.springframework.core.convert.support.ConversionUtils.invokeConverter(ConversionUtils.java:41)
+	at org.springframework.core.convert.support.GenericConversionService.convert(GenericConversionService.java:192)
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:109)
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:100)
+	at org.springframework.boot.context.properties.bind.BindConverter.convert(BindConverter.java:92)
+	at org.springframework.boot.context.properties.bind.Binder.bindProperty(Binder.java:459)
+	at org.springframework.boot.context.properties.bind.Binder.bindObject(Binder.java:403)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:343)
+	... 111 common frames omitted
+Caused by: java.lang.IllegalArgumentException: null
+	at java.base/java.util.Date.parse(Date.java:617)
+	at java.base/java.util.Date.<init>(Date.java:275)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.springframework.core.convert.support.ObjectToObjectConverter.convert(ObjectToObjectConverter.java:113)
+	... 119 common frames omitted
+2023-06-03 11:13:10.620 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-03 11:13:10.737 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-03 11:13:11.171 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 58088 (started by 33698 in C:\externship\wjxbx)
+2023-06-03 11:13:11.172 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 11:13:11.172 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 11:13:12.900 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 11:13:13.171 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 2.223 seconds (process running for 3.485)
+2023-06-03 11:13:14.692 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-03 11:13:14.714 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-03 11:13:14.753 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-03 11:13:14.807 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 12:03:33.703 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-03 12:03:33.752 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 37108 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 12:03:33.752 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 12:03:33.753 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 12:03:34.577 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 12:03:34.584 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 12:03:34.585 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 12:03:34.585 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 12:03:34.658 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 12:03:34.658 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 872 ms
+2023-06-03 12:03:34.895 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userController': Injection of resource dependencies failed
+2023-06-03 12:03:34.896 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 12:03:34.898 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2023-06-03 12:03:34.919 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-03 12:03:34.937 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.jdsbbmq.wjxbx.service.UserService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.jdsbbmq.wjxbx.service.UserService' in your configuration.
+
+2023-06-03 12:05:13.621 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-03 12:05:13.658 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 45236 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 12:05:13.658 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 12:05:13.659 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 12:05:14.457 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 12:05:14.465 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 12:05:14.466 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 12:05:14.466 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 12:05:14.550 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 12:05:14.550 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 852 ms
+2023-06-03 12:05:14.984 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 12:05:15.121 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-03 12:05:15.139 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-03 12:05:15.147 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.819 seconds (process running for 2.511)
+2023-06-03 12:06:13.316 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 12:06:33.365 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-03 12:06:33.407 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 42228 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-03 12:06:33.407 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 12:06:33.408 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 12:06:34.258 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-03 12:06:34.266 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-03 12:06:34.267 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-03 12:06:34.267 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-03 12:06:34.384 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-03 12:06:34.384 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 939 ms
+2023-06-03 12:06:34.823 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 12:06:34.949 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-03 12:06:34.969 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-03 12:06:34.976 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.912 seconds (process running for 2.558)
+2023-06-03 12:06:36.193 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-03 12:06:36.193 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-03 12:06:36.194 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-03 12:07:01.117 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-03 12:07:01.235 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-03 12:07:01.708 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-03 12:07:01.742 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Starting UserEntityMapperTests using Java 17.0.7 with PID 26684 (started by 33698 in C:\externship\wjxbx)
+2023-06-03 12:07:01.742 [main] DEBUG c.j.wjxbx.dao.UserEntityMapperTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-03 12:07:01.743 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-03 12:07:03.461 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-03 12:07:03.735 [main] INFO  c.j.wjxbx.dao.UserEntityMapperTests - Started UserEntityMapperTests in 2.297 seconds (process running for 3.604)
+2023-06-03 12:07:05.274 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-03 12:07:05.295 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-03 12:07:05.334 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-03 12:07:05.547 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-03 12:07:05.548 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-03 12:07:05.571 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-03 12:07:12.774 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-03 12:07:12.774 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-03 12:07:12.808 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-03 12:07:20.006 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-03 12:07:20.008 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-03 12:07:20.041 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-03 12:07:20.231 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-03 12:07:20.231 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-03 12:07:20.249 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-03 12:07:20.424 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-03 12:07:20.425 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 4c35cffc-082f-4a67-8f0e-36724a618830(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-03 12:07:20.456 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-03 12:07:20.658 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-03 12:07:20.659 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-03 12:07:20.676 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-03 12:07:20.701 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-03 12:07:41.607 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...

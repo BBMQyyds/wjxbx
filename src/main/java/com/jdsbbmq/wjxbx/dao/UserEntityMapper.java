@@ -27,7 +27,7 @@ public interface UserEntityMapper {
 
     //增删改
 
-    // 插入用户
+    // 插入用户（注册）
     int insertUser(UserEntity userEntity);
 
     // 更新用户

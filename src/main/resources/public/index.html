@@ -1,60 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime World</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>wjxbx - 高校满意度调查问卷系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
-<header>
-  <h1>Welcome to Anime World</h1>
-</header>
+<h1>wjxbx - 高校满意度调查问卷系统</h1>
+<h2>项目介绍</h2>
+<p>“问卷星不星”高校满意度调查问卷系统是一个基于SpringBoot+Vue的高校满意度调查问卷系统</p>
+<p>前后端分离，前端使用Vue框架，后端使用SpringBoot框架，数据库使用MySQL</p>
+<p>前端页面使用ElementUI组件库，后端使用MyBatis框架进行持久化操作</p>
+<p>项目使用Maven进行构建，使用Junit进行单元测试，使用SonarQube进行代码质量检测</p>
+<p>使用Jmeter进行性能测试，使用JaCoCo进行测试覆盖率检测</p>
 
-<nav>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Anime List</a></li>
-    <li><a href="#">Characters</a></li>
-    <li><a href="#">About Us</a></li>
-  </ul>
-</nav>
+<h2>项目内容</h2>
+<p>本次实践的应用系统是《高校满意度调查问卷》系统，本系统的业务背景说明如下：</p>
+<p>
+    常规调查问卷方法在各行各业的统计分析中发挥越来越重要的作用，许多数据的收集都是通过大量使用到问卷调查与访谈方法。为便于进一步了解被调查对象存在深层次的需求与情况，深度做好统计分析与调查工作，更加客观准确地反映调查人员的状况，所以需要进行问卷调查系统的设计与实践。调查问卷系统建立在互联网的基础上，构建一个依托网络的问卷设计、发布、统计和内容归集的系统。</p>
+<p>
+    传统纸质问卷存在设计与印制问卷成本高，且后期纸质问卷作为档案资料保存较麻烦。问卷的发放、回收、统计流程复杂，容易产生漏卷废卷统计错误等问题，问卷可控性差。统计与分析内容难度较大，整体效果不好。</p>
+<p>
+    依托于互联网中的调查问卷系统能够高效地执行大批量的问卷调查并且增强调查结果的客观性，能够使被调查对象不受影响回答问卷，便于调查工作信息化保存，相比商业网站上做调查问卷，本系统也可以在内网中进行部署，提高数据保密性。</p>
+<p>本系统的设计是基于 B/S 架构下实现的 Web 项目，用户可以通过 PC
+    端的主流浏览器使用本系统。本系统采用主流的开发框架构建系统服务端以及客户端，采用主流数据库实现数据持久化。</p>
 
-<main>
-  <section class="banner">
-    <h2>Discover the Magical World of Anime</h2>
-    <p>Immerse yourself in captivating stories, breathtaking visuals, and unforgettable characters.</p>
-    <a href="#" class="btn">Get Started</a>
-  </section>
+<h2>项目要求</h2>
+<ol>
+    <li>要求采用 JDK1.8 以上版本，Tomcat8 以上版本，Mysql5.7 及以上完成开发。</li>
+    <li>要求使用 Spring Boot 开源应用框架，基于注解的配置方式，完成 B/S 架构应用系统框架的搭建及相应功能的开发。</li>
+    <li>使用 Maven 的构建项目。</li>
+    <li>使用流行的 Web 框架技术，如 VUE 等 MVC 框架，MyBatis 等数据库持久化框架。</li>
+    <li>要求采用过滤器完成系统的字符编码功能，使系统正常处理非英文字符。</li>
+    <li>使用 Junit 完成系统的功能测试。</li>
+    <li>使用 SonarQube 完成代码质量度量，并为代码生成质量度量报告；</li>
+    <li>使用 JaCoCo 完成测试用例覆盖率的度量，并为测试用例生成覆盖率报告；</li>
+    <li>【可选】采用合适的数据库连接池，可以是 Tomcat 自带的连接池功能，也可以是第三方连接池工具，如 dbcp 或者 c3p0，注意防止
+        SQL 注入。
+    </li>
+    <li>【可选】为了保证用户体验，页面初始加载完成以后，后续页面操作采用 Ajax 技术实现异步提交和局部刷新，Ajax 交互的数据格式采用
+        Json 格式，使用合适的第三方工具完成对象和 Json 字符串的互转，如 gson，fastjson，Jackson 等。
+    </li>
+    <li>【可选】使用 Jmeter 项目性能测试，并迭代优化性能、形成性能测试报告。</li>
+</ol>
 
-  <section class="featured-anime">
-    <h2>Featured Anime</h2>
-    <div class="anime-card">
-      <img src="/static/images/lanlan.jpg" alt="Anime 1">
-      <h3>Anime 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <a href="#">Read More</a>
-    </div>
-    <div class="anime-card">
-      <img src="/static/images/lanlan.jpg" alt="Anime 2">
-      <h3>Anime 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <a href="#">Read More</a>
-    </div>
-    <div class="anime-card">
-      <img src="/static/images/lanlan.jpg" alt="Anime 3">
-      <h3>Anime 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <a href="#">Read More</a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>&copy; 2023 Anime World. All rights reserved.</p>
-</footer>
+<h2>项目合作人</h2>
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>班级</th>
+        <th>学号</th>
+        <th>目标</th>
+    </tr>
+    <tr>
+        <td>贾丰哲</td>
+        <td>软件2108</td>
+        <td>20216641</td>
+        <td>征服星辰大海</td>
+    </tr>
+    <tr>
+        <td>梁朝阳</td>
+        <td>软件2108</td>
+        <td>20217033</td>
+        <td>征服星辰大海</td>
+    </tr>
+</table>
 </body>
-
 </html>

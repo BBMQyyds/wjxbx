@@ -19,18 +19,18 @@ public class DruidConfig {
         return new DruidDataSource();
     }
 
-//    后台监控
+    //后台监控
     @Bean
-    public ServletRegistrationBean statViewServlet(){
-        ServletRegistrationBean<StatViewServlet> bean=new ServletRegistrationBean<>(new StatViewServlet(),"/druid/*");
-//        后台需要有人登录，账号密码配置
-        HashMap<String,String> initParameters=new HashMap<>();
-//        增加配置
-        initParameters.put("loginUsername","admin");
-        initParameters.put("loginPassword","123456");
-//        允许谁可以访问
-        initParameters.put("allow","");
-//        禁止谁能访问
+    public ServletRegistrationBean statViewServlet() {
+        ServletRegistrationBean<StatViewServlet> bean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
+        //后台需要有人登录，账号密码配置
+        HashMap<String, String> initParameters = new HashMap<>();
+        //增加配置
+        initParameters.put("loginUsername", "admin");
+        initParameters.put("loginPassword", "123456");
+        //允许谁可以访问
+        initParameters.put("allow", "");
+        //禁止谁能访问
         bean.setInitParameters(initParameters);
         return bean;
     }

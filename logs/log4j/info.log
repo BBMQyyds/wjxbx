@@ -35,3 +35,11 @@
 2023-06-02 17:00:54[ DEBUG ]{conn-10005, pstmt-20005} clearParameters. 
 2023-06-02 17:00:54[ DEBUG ]{conn-10005, stmt-20005} clearBatch. 
 2023-06-02 17:09:57[ DEBUG ]{conn-10005, pstmt-20005} closed
+2023-06-03 11:13:14[ INFO ]>>login登录测试成功
+2023-06-03 12:07:05[ INFO ]>>login登录测试成功
+2023-06-03 12:07:05[ INFO ]>>selectUserIdByUsername用户查询测试成功
+2023-06-03 12:07:12[ ERROR ]>>deleteUser用户删除测试失败
+2023-06-03 12:07:20[ ERROR ]>>updateUser用户更新测试失败
+2023-06-03 12:07:20[ INFO ]>>selectAll所有用户查询测试成功
+2023-06-03 12:07:20[ INFO ]>>insertUser用户插入测试成功
+2023-06-03 12:07:20[ INFO ]>>selectUser用户查询测试成功
