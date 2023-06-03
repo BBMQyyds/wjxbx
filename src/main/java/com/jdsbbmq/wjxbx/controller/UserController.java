@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,20 +24,27 @@ public class UserController {
 
     // 登录
     @RequestMapping("/login")
-    UserEntity login(@RequestBody String username, @RequestBody String password) {
-        return userService.login(username, password);
+    public User login(@RequestBody String username, @RequestBody String password) {
+        UserEntity userEntity = userService.login(username, password);
+        return userEntity.toUser();
     }
 
     // 根据id查询用户
     @RequestMapping("/selectUserById")
-    UserEntity selectUserById(@RequestBody String id) {
-        return userService.selectUserById(id);
+    public User selectUserById(@RequestBody String id) {
+        UserEntity userEntity = userService.selectUserById(id);
+        return userEntity.toUser();
     }
 
     // 查询所有用户
     @RequestMapping("/selectAll")
-    List<UserEntity> selectAll() {
-        return userService.selectAll();
+    public List<User> selectAll() {
+        List<UserEntity> userEntityList = userService.selectAll();
+        List<User> userList = new ArrayList<>();
+        for (UserEntity userEntity : userEntityList) {
+            userList.add(userEntity.toUser());
+        }
+        return userList;
     }
 
     /*
@@ -45,19 +53,19 @@ public class UserController {
 
     // 插入用户（注册）
     @RequestMapping("/insertUser")
-    int insertUser(@RequestBody @Valid User user) {
+    public int insertUser(@RequestBody @Valid User user) {
         return userService.insertUser(user.toUserEntity());
     }
 
     // 更新用户
     @RequestMapping("/updateUser")
-    int updateUser(@RequestBody @Valid User user) {
+    public int updateUser(@RequestBody @Valid User user) {
         return userService.updateUser(user.toUserEntity());
     }
 
     // 根据id删除用户
     @RequestMapping("/deleteUserById")
-    int deleteUserById(@RequestBody String id) {
+    public int deleteUserById(@RequestBody String id) {
         return userService.deleteUserById(id);
     }
 }

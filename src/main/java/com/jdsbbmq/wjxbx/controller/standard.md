@@ -10,6 +10,8 @@
 
 ### 使用@RestController注解，返回json数据
 
+### 返回类型不为Entity，而是根据业务逻辑返回相应的数据类型
+
 ### 使用JSR303 @Valid注解，校验参数
 
 ### 使用@RequestBody注解，接收前端传递的json数据

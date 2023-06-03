@@ -17,12 +17,12 @@ import java.util.UUID;
 @SpringBootTest
 public class UserEntityMapperTests {
 
+    Logger log = Logger.getLogger(UserEntityMapperTests.class);
+
     @Test
     void contextLoads() {
 
     }
-
-    Logger log = Logger.getLogger(UserEntityMapperTests.class);
 
     @Test
     // 登录
@@ -38,11 +38,11 @@ public class UserEntityMapperTests {
         if (userEntity == null) {
             System.out.println("登录失败");
             // 记录error级别的信息
-            log.error(">>login登录测试失败");
+            log.error("UserEntityMapper: >>login登录测试失败");
         } else {
             System.out.println(userEntity);
             // 记录info级别的信息
-            log.info(">>login登录测试成功");
+            log.info("UserEntityMapper: >>login登录测试成功");
         }
         sqlSession.close();
     }
@@ -61,11 +61,11 @@ public class UserEntityMapperTests {
         if (CollectionUtils.isEmpty(list)) {
             System.out.println("查询失败");
             // 记录error级别的信息
-            log.error(">>selectAll所有用户查询测试失败");
+            log.error("UserEntityMapper: >>selectAll所有用户查询测试失败");
         } else {
             System.out.println(list);
             // 记录info级别的信息
-            log.info(">>selectAll所有用户查询测试成功");
+            log.info("UserEntityMapper: >>selectAll所有用户查询测试成功");
         }
         sqlSession.close();
     }
@@ -84,11 +84,11 @@ public class UserEntityMapperTests {
         if (userEntity == null) {
             System.out.println("查询失败");
             // 记录error级别的信息
-            log.error(">>selectUser用户查询测试失败");
+            log.error("UserEntityMapper: >>selectUser用户查询测试失败");
         } else {
             System.out.println(userEntity);
             // 记录info级别的信息
-            log.info(">>selectUser用户查询测试成功");
+            log.info("UserEntityMapper: >>selectUser用户查询测试成功");
         }
         sqlSession.close();
     }
@@ -112,11 +112,11 @@ public class UserEntityMapperTests {
         if (i == 0) {
             System.out.println("插入失败");
             // 记录error级别的信息
-            log.error(">>insertUser用户插入测试失败");
+            log.error("UserEntityMapper: >>insertUser用户插入测试失败");
         } else {
             System.out.println(i);
             // 记录info级别的信息
-            log.info(">>insertUser用户插入测试成功");
+            log.info("UserEntityMapper: >>insertUser用户插入测试成功");
         }
         sqlSession.close();
     }
@@ -140,11 +140,11 @@ public class UserEntityMapperTests {
         if (i == 0) {
             System.out.println("更新失败");
             // 记录error级别的信息
-            log.error(">>updateUser用户更新测试失败");
+            log.error("UserEntityMapper: >>updateUser用户更新测试失败");
         } else {
             System.out.println(i);
             // 记录info级别的信息
-            log.info(">>updateUser用户更新测试成功");
+            log.info("UserEntityMapper: >>updateUser用户更新测试成功");
         }
         sqlSession.close();
     }
@@ -163,11 +163,11 @@ public class UserEntityMapperTests {
         if (i == 0) {
             System.out.println("删除失败");
             // 记录error级别的信息
-            log.error(">>deleteUser用户删除测试失败");
+            log.error("UserEntityMapper: >>deleteUser用户删除测试失败");
         } else {
             System.out.println(i);
             // 记录info级别的信息
-            log.info(">>deleteUser用户删除测试成功");
+            log.info("UserEntityMapper: >>deleteUser用户删除测试成功");
         }
         sqlSession.close();
     }
@@ -186,11 +186,11 @@ public class UserEntityMapperTests {
         if (id == null) {
             System.out.println("查询失败");
             // 记录error级别的信息
-            log.error(">>selectUserIdByUsername用户查询测试失败");
+            log.error("UserEntityMapper: >>selectUserIdByUsername用户查询测试失败");
         } else {
             System.out.println(id);
             // 记录info级别的信息
-            log.info(">>selectUserIdByUsername用户查询测试成功");
+            log.info("UserEntityMapper: >>selectUserIdByUsername用户查询测试成功");
         }
         sqlSession.close();
     }

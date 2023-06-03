@@ -25,3 +25,5 @@
 #### 例如，被测试类方法为：login、register
 
 #### 则测试方法命名应该为：loginTest、registerTest，并按照login、register的顺序进行排列
+
+#### 测试结果输出应写出所测试的类，如：UserController: >>login登录测试成功
