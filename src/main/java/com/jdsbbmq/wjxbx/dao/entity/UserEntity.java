@@ -3,7 +3,6 @@ package com.jdsbbmq.wjxbx.dao.entity;
 import com.jdsbbmq.wjxbx.bean.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
