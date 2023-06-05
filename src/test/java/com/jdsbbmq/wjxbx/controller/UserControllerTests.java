@@ -5,6 +5,8 @@ import jakarta.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -72,6 +74,7 @@ public class UserControllerTests {
     }
 
     @Test
+    @Transactional
     // 插入用户
     public void insertUserTest() {
         //调用userMapper的方法
@@ -93,6 +96,7 @@ public class UserControllerTests {
     }
 
     @Test
+    @Transactional
     // 更新用户
     public void updateUserByIdTest() {
         //调用userMapper的方法
@@ -114,6 +118,7 @@ public class UserControllerTests {
     }
 
     @Test
+    @Transactional
     // 根据id删除用户
     public void deleteUserByIdTest() {
         //调用userMapper的方法

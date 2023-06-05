@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.io.InputStream;
@@ -94,6 +95,7 @@ public class UserEntityMapperTests {
     }
 
     @Test
+    @Transactional
     // 插入用户
     public void insertUserTest() throws Exception {
         String resource = "mybatis-config.xml";
@@ -122,6 +124,7 @@ public class UserEntityMapperTests {
     }
 
     @Test
+    @Transactional
     // 更新用户
     public void updateUserByIdTest() throws Exception {
         String resource = "mybatis-config.xml";
@@ -150,6 +153,7 @@ public class UserEntityMapperTests {
     }
 
     @Test
+    @Transactional
     // 根据id删除用户
     public void deleteUserByIdTest() throws Exception {
         String resource = "mybatis-config.xml";

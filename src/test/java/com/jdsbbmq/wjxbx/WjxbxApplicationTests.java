@@ -5,8 +5,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class WjxbxApplicationTests {
+
     @Test
     void contextLoads() {
+    }
+
+    @Test
+    public void testMain() {
+        WjxbxApplication.main(new String[]{}); // just for test coverage
     }
 
 }
