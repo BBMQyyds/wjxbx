@@ -63,4 +63,6 @@ public class User {
         userEntity.setLastUpdateDate(this.lastUpdateDate);
         return userEntity;
     }
+
+
 }

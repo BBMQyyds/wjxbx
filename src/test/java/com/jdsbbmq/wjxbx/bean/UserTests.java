@@ -31,48 +31,40 @@ public class UserTests {
     }
 
     @Test
-    //canEqual
-    public void canEqualTest() {
-        User user = new User();
-        if (user.canEqual(new User())) {
-            System.out.println("canEqual测试成功");
-            // 记录info级别的信息
-            log.info("User: >>canEqual测试成功");
-        } else {
-            System.out.println("canEqual测试失败");
-            // 记录error级别的信息
-            log.error("User: >>canEqual测试失败");
-        }
-    }
-
-    @Test
     //equals
     public void equalsTest() {
-        User user = new User();
-        if (user.equals(new User())) {
-            System.out.println("equals测试成功");
-            // 记录info级别的信息
-            log.info("User: >>equals测试成功");
-        } else {
-            System.out.println("equals测试失败");
-            // 记录error级别的信息
-            log.error("User: >>equals测试失败");
-        }
+        User user1 = new User();
+        User user2 = new User("1", "2", "3", new Date(), new Date(),
+                0, "4", new Date(), "5", new Date());
+        User user3 = new User("6", "7", "8", null, new Date(),
+                0, "9", null, "10", new Date());
+        User user4 = null;
+        String user5 = "11";
+
+        // 对象与自身比较
+        System.out.println(user1.equals(user1));
+
+        // 对象与相等对象比较
+        System.out.println(user1.equals(user2));
+
+        // 对象与不相等对象比较
+        System.out.println(user1.equals(user3));
+
+        // 对象与null比较
+        System.out.println(user1.equals(user4));
+
+        // 对象与其他类型的对象比较
+        System.out.println(user1.equals(user5));
     }
 
     @Test
     //hashcode
     public void hashcodeTest() {
         User user = new User();
-        if (user.hashCode() == new User().hashCode()) {
-            System.out.println("hashcode测试成功");
-            // 记录info级别的信息
-            log.info("User: >>hashcode测试成功");
-        } else {
-            System.out.println("hashcode测试失败");
-            // 记录error级别的信息
-            log.error("User: >>hashcode测试失败");
-        }
+        User user1 = new User("1", "2", "3", new Date(), new Date(),
+                0, "4", new Date(), "5", new Date());
+        System.out.println(user.hashCode());
+        System.out.println(user1.hashCode());
     }
 
 }

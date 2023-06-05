@@ -48,30 +48,37 @@ public class UserEntityTests {
     @Test
     //equals
     public void equalsTest() {
-        UserEntity userEntity = new UserEntity();
-        if (userEntity.equals(new UserEntity())) {
-            System.out.println("equals测试成功");
-            // 记录info级别的信息
-            log.info("UserEntity: >>equals测试成功");
-        } else {
-            System.out.println("equals测试失败");
-            // 记录error级别的信息
-            log.error("UserEntity: >>equals测试失败");
-        }
+        UserEntity userEntity1 = new UserEntity();
+        UserEntity userEntity2 = new UserEntity("1", "2", "3", new Date(), new Date(),
+                0, "4", new Date(), "5", new Date());
+        UserEntity userEntity3 = new UserEntity("6", "7", "8", null, new Date(),
+                0, "9", null, "10", new Date());
+        UserEntity userEntity4 = null;
+        String userEntity5 = "11";
+
+        // 对象与自身比较
+        System.out.println(userEntity1.equals(userEntity1));
+
+        // 对象与相等对象比较
+        System.out.println(userEntity1.equals(userEntity2));
+
+        // 对象与不相等对象比较
+        System.out.println(userEntity1.equals(userEntity3));
+
+        // 对象与null比较
+        System.out.println(userEntity1.equals(userEntity4));
+
+        // 对象与其他类型的对象比较
+        System.out.println(userEntity1.equals(userEntity5));
     }
 
     @Test
     //hashcode
     public void hashcodeTest() {
         UserEntity userEntity = new UserEntity();
-        if (userEntity.hashCode() == new UserEntity().hashCode()) {
-            System.out.println("hashcode测试成功");
-            // 记录info级别的信息
-            log.info("UserEntity: >>hashcode测试成功");
-        } else {
-            System.out.println("hashcode测试失败");
-            // 记录error级别的信息
-            log.error("UserEntity: >>hashcode测试失败");
-        }
+        UserEntity userEntity1 = new UserEntity("1", "2", "3", new Date(), new Date(),
+                0, "4", new Date(), "5", new Date());
+        System.out.println(userEntity.hashCode());
+        System.out.println(userEntity1.hashCode());
     }
 }
