@@ -19,7 +19,7 @@ public class TestControllerTests {
 
     @Test
     public void testTest() {
-        testController.test("卜部美琴");
+        testController.test();
         // 记录info级别的信息
         log.info("TestController: >>test测试成功");
     }

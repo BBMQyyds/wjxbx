@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
-    @Resource
-    UserEntityMapper userEntityMapper;
+
     @RequestMapping("/test")
-    public String test(@RequestBody String username) {
-        userEntityMapper.selectIdByUsername(username);
+    public String test() {
         return "test";
     }
 

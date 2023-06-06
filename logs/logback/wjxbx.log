@@ -2455,3 +2455,462 @@ Consider defining a bean of type 'com.jdsbbmq.wjxbx.service.UserService' in your
 2023-06-05 12:17:16.626 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2023-06-05 12:17:16.783 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
 2023-06-05 12:17:16.812 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-05 21:17:04.164 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:17:04.316 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-05 21:17:04.760 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-05 21:17:04.806 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 18.0.2.1 with PID 47696 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:17:04.806 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:17:04.807 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:17:06.520 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:17:06.699 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.2 seconds (process running for 3.896)
+2023-06-05 21:17:07.699 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-05 21:17:12.385 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:17:12.401 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:17:12.432 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:17:12.447 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:17:12.449 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-05 21:17:12.456 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:17:12.456 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:17:12.476 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:17:12.507 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:17:12.508 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:17:12.558 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:17:12.613 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:17:12.615 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:17:12.649 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:17:12.685 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:17:12.686 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:17:12.702 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:17:12.723 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:17:12.724 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: ebc68c2f-49e6-4d63-a7af-50b4d3c498a7(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:17:12.755 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:17:12.795 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:17:12.795 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:17:12.812 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:17:12.824 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:17:12.831 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-05 21:17:13.028 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:17:13.029 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:17:13.046 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:17:13.221 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:17:13.221 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:17:13.237 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:17:14.425 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:17:14.425 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:17:14.456 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:17:14.668 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:17:14.669 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:17:14.700 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:17:14.897 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:17:14.898 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:17:14.915 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:17:15.100 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:17:15.101 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: c41b9ef1-8653-4bfb-b896-98fee66b06a3(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:17:15.134 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:17:22.343 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:17:22.343 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:17:22.360 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:17:22.380 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:17:22.384 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-05 21:17:22.754 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:17:22.758 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-05 21:17:22.828 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 47696 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:17:22.829 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:17:22.829 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:17:23.526 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-05 21:17:23.552 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:17:23.554 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-05 21:17:23.555 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-05 21:17:23.724 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-05 21:17:23.727 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 893 ms
+2023-06-05 21:17:23.987 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:17:24.045 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:17:24.108 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-05 21:17:24.117 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.348 seconds (process running for 21.315)
+2023-06-05 21:17:24.143 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-05 21:17:24.287 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-05 21:17:24.306 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-05 21:25:18.129 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:25:18.295 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-05 21:25:18.795 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-05 21:25:18.866 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 18.0.2.1 with PID 40164 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:25:18.866 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:25:18.868 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:25:20.962 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:25:21.175 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.706 seconds (process running for 4.582)
+2023-06-05 21:25:22.274 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-05 21:25:23.820 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:25:23.838 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:25:23.870 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:25:23.886 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:25:23.889 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-05 21:25:23.896 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:25:23.896 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:25:23.916 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:25:23.949 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:25:23.949 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:25:23.981 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:25:24.035 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:25:24.038 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:25:24.071 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:25:24.107 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:25:24.107 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:25:24.125 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:25:24.146 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:25:24.148 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 4c4d64c0-954f-4230-a397-86da76955d56(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:25:24.179 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:25:24.221 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:25:24.221 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:25:24.239 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:25:24.259 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:25:24.270 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-05 21:25:25.505 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:25:25.505 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:25:25.522 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:25:26.701 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:25:26.702 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:25:26.718 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:25:26.895 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:25:26.895 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:25:26.927 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:25:30.153 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:25:30.154 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:25:30.186 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:25:30.381 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:25:30.381 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:25:30.397 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:25:30.577 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:25:30.578 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 135d85bb-93d6-42a4-8e0a-fcb76953ae07(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:25:30.610 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:25:33.832 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:25:33.832 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:25:33.849 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:25:33.868 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:25:33.874 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-05 21:25:34.316 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:25:34.323 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-05 21:25:34.443 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 40164 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:25:34.443 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:25:34.444 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:25:35.629 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-05 21:25:35.671 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:25:35.675 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-05 21:25:35.676 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-05 21:25:35.929 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-05 21:25:35.933 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1479 ms
+2023-06-05 21:25:36.396 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:25:36.507 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:25:36.547 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-05 21:25:36.557 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.217 seconds (process running for 19.963)
+2023-06-05 21:25:36.596 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-05 21:25:36.771 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-05 21:25:36.793 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-05 21:26:02.844 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:26:02.997 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-05 21:26:03.436 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-05 21:26:03.487 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 18.0.2.1 with PID 5960 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:26:03.487 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:26:03.488 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:26:05.150 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:26:05.336 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.167 seconds (process running for 3.793)
+2023-06-05 21:26:06.349 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-05 21:26:13.893 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:26:13.910 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:26:13.942 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:26:13.957 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:26:13.959 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-05 21:26:13.964 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:26:13.965 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:26:13.984 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:26:14.016 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:26:14.016 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:26:14.047 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:26:14.102 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:26:14.105 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:26:14.137 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:26:14.173 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:26:14.173 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:26:14.191 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:26:14.212 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:26:14.213 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: a0636522-9df7-435f-b1e2-afc822ad8e67(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:26:14.244 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:26:14.284 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:26:14.285 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:26:14.302 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:26:14.314 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:26:14.321 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-05 21:26:14.525 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:26:14.526 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:26:14.542 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:26:17.719 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:26:17.719 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:26:17.735 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:26:24.955 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:26:24.955 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:26:24.988 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:26:32.221 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:26:32.222 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:26:32.257 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:26:35.474 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:26:35.475 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:26:35.492 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:26:35.667 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:26:35.669 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: d486e4fb-da09-482d-8ec2-f498edc5ae28(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:26:35.699 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:26:36.909 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:26:36.910 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:26:36.927 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:26:36.951 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:26:36.955 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-05 21:26:37.316 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:26:37.320 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-05 21:26:37.392 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 5960 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:26:37.392 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:26:37.392 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:26:38.068 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-05 21:26:38.094 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:26:38.096 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-05 21:26:38.097 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-05 21:26:38.254 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-05 21:26:38.258 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 860 ms
+2023-06-05 21:26:38.528 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:26:38.587 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:26:38.634 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-05 21:26:38.643 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.313 seconds (process running for 37.1)
+2023-06-05 21:26:38.675 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-05 21:26:38.820 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-05 21:26:38.841 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-05 21:29:24.261 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:24.400 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-05 21:29:24.849 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-05 21:29:24.909 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 18.0.2.1 with PID 60548 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:29:24.910 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:29:24.911 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:29:26.693 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:29:26.891 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.328 seconds (process running for 4.107)
+2023-06-05 21:29:27.918 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-05 21:29:28.421 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:29:28.441 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:29:28.478 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:29:28.492 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:28.494 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-05 21:29:28.500 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:29:28.500 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:29:28.519 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:29:28.549 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:29:28.549 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:29:28.580 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:29:28.632 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:29:28.635 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:29:28.666 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:29:28.701 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:29:28.701 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:29:28.718 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:29:28.739 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:29:28.741 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: b23ca5f3-a37a-43fa-b9f8-8ca39b2cb8a8(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:29:28.771 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:29:28.812 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:29:28.812 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:29:28.829 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:29:28.840 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:28.847 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-05 21:29:29.040 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:29:29.041 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:29:29.059 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:29:29.228 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:29:29.228 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:29:29.244 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:29:29.421 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:29:29.421 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:29:29.451 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:29:29.660 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:29:29.661 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:29:29.690 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:29:29.886 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:29:29.886 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:29:29.902 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:29:30.077 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:29:30.078 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 211e8c1c-6560-4bd5-8141-9b9976c5945e(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:29:30.108 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:29:30.309 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:29:30.310 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:29:30.328 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:29:30.347 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:30.352 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-05 21:29:30.717 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:30.721 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-05 21:29:30.797 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 60548 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:29:30.797 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:29:30.797 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:29:31.576 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-05 21:29:31.605 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:29:31.607 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-05 21:29:31.608 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-05 21:29:31.767 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-05 21:29:31.770 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 967 ms
+2023-06-05 21:29:32.019 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:29:32.078 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:29:32.127 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-05 21:29:32.135 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.403 seconds (process running for 9.351)
+2023-06-05 21:29:32.158 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-05 21:29:32.301 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-05 21:29:32.320 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-05 21:29:49.269 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:49.410 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-05 21:29:49.842 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-05 21:29:49.889 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 18.0.2.1 with PID 2188 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:29:49.890 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:29:49.891 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:29:51.700 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:29:51.907 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.33 seconds (process running for 3.959)
+2023-06-05 21:29:52.910 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-05 21:29:53.428 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:29:53.444 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:29:53.474 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:29:53.488 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:53.490 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-05 21:29:53.495 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:29:53.495 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:29:53.518 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:29:53.547 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:29:53.547 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:29:53.578 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:29:53.630 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:29:53.633 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:29:53.664 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:29:53.698 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:29:53.699 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:29:53.715 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:29:53.736 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:29:53.737 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 0971e824-d493-451e-b461-ed8b1efd788d(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:29:53.768 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:29:53.810 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:29:53.810 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:29:53.827 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:29:53.838 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:29:53.844 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-05 21:29:54.037 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:29:54.037 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:29:54.055 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:30:09.244 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:30:09.245 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:30:09.260 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:30:09.441 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:30:09.442 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:30:09.472 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:30:09.687 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:30:09.688 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:30:09.724 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:30:12.941 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:30:12.942 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:30:12.959 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:30:13.130 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:30:13.131 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 47edc6fa-9975-4c6c-b36d-30781e6a872b(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:30:13.161 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:30:13.362 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:30:13.362 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:30:13.379 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:30:13.398 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:30:13.402 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-05 21:30:13.775 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:30:13.779 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-05 21:30:13.848 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 2188 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:30:13.848 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:30:13.848 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:30:14.486 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-05 21:30:14.512 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:30:14.514 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-05 21:30:14.515 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-05 21:30:14.661 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-05 21:30:14.663 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 810 ms
+2023-06-05 21:30:14.911 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:30:14.979 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:30:15.024 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-05 21:30:15.032 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.242 seconds (process running for 27.084)
+2023-06-05 21:30:15.063 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-05 21:30:15.208 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-05 21:30:15.228 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-05 21:40:27.935 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:40:28.073 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-05 21:40:28.498 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-05 21:40:28.549 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 18.0.2.1 with PID 48612 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:40:28.550 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:40:28.551 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:40:30.374 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:40:30.557 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.321 seconds (process running for 3.956)
+2023-06-05 21:40:31.592 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-05 21:40:32.130 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:40:32.145 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:40:32.175 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:40:32.190 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:40:32.192 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-05 21:40:32.198 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:40:32.199 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:40:32.218 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:40:32.249 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:40:32.249 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:40:32.281 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:40:32.336 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:40:32.339 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:40:32.372 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:40:32.411 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:40:32.411 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:40:32.429 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:40:32.450 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:40:32.451 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 26c5cd1d-4eb1-40cb-80f5-38548eb23bc2(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:40:32.483 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:40:32.526 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:40:32.526 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:40:32.543 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:40:32.556 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:40:32.563 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-05 21:40:32.759 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-05 21:40:32.760 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-05 21:40:32.777 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-05 21:40:32.940 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-05 21:40:32.940 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-05 21:40:32.956 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-05 21:40:33.137 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-05 21:40:33.138 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-05 21:40:33.169 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-05 21:40:33.385 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-05 21:40:33.386 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-05 21:40:33.417 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-05 21:40:33.613 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-05 21:40:33.614 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-05 21:40:33.630 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-05 21:40:33.809 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-05 21:40:33.810 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 47895eff-5bd1-42fe-8c44-499d3e67d7d2(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-05 21:40:33.841 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-05 21:40:34.046 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-05 21:40:34.046 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-05 21:40:34.063 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-05 21:40:34.082 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:40:34.087 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-05 21:40:34.454 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-05 21:40:34.457 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-05 21:40:34.531 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 48612 (started by 33698 in C:\externship\wjxbx)
+2023-06-05 21:40:34.532 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-05 21:40:34.532 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-05 21:40:35.206 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-05 21:40:35.242 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:40:35.243 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-05 21:40:35.244 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-05 21:40:35.396 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-05 21:40:35.400 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 862 ms
+2023-06-05 21:40:35.658 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-05 21:40:35.715 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-05 21:40:35.762 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-05 21:40:35.772 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.302 seconds (process running for 9.171)
+2023-06-05 21:40:35.802 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-05 21:40:35.945 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-05 21:40:35.963 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-06 09:08:24.322 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-06 09:08:24.452 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-06 09:08:24.947 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-06 09:08:24.971 [main] INFO  c.j.w.controller.TestControllerTests - Starting TestControllerTests using Java 17.0.7 with PID 9680 (started by 33698 in C:\externship\wjxbx)
+2023-06-06 09:08:24.971 [main] DEBUG c.j.w.controller.TestControllerTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-06 09:08:24.972 [main] INFO  c.j.w.controller.TestControllerTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-06 09:08:26.810 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-06 09:08:27.103 [main] INFO  c.j.w.controller.TestControllerTests - Started TestControllerTests in 2.392 seconds (process running for 3.782)
+2023-06-06 09:08:28.064 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
