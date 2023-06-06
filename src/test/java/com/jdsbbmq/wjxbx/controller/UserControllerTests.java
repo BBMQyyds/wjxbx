@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -15,10 +14,9 @@ import java.util.UUID;
 @SpringBootTest
 public class UserControllerTests {
 
+    Logger log = Logger.getLogger(UserControllerTests.class);
     @Resource
     private UserController userController;
-
-    Logger log = Logger.getLogger(UserControllerTests.class);
 
     @Test
     void contextLoads() {

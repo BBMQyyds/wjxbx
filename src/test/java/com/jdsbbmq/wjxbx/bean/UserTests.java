@@ -30,41 +30,4 @@ public class UserTests {
         }
     }
 
-    @Test
-    //equals
-    public void equalsTest() {
-        User user1 = new User();
-        User user2 = new User("1", "2", "3", new Date(), new Date(),
-                0, "4", new Date(), "5", new Date());
-        User user3 = new User("6", "7", "8", null, new Date(),
-                0, "9", null, "10", new Date());
-        User user4 = null;
-        String user5 = "11";
-
-        // 对象与自身比较
-        System.out.println(user1.equals(user1));
-
-        // 对象与相等对象比较
-        System.out.println(user1.equals(user2));
-
-        // 对象与不相等对象比较
-        System.out.println(user1.equals(user3));
-
-        // 对象与null比较
-        System.out.println(user1.equals(user4));
-
-        // 对象与其他类型的对象比较
-        System.out.println(user1.equals(user5));
-    }
-
-    @Test
-    //hashcode
-    public void hashcodeTest() {
-        User user = new User();
-        User user1 = new User("1", "2", "3", new Date(), new Date(),
-                0, "4", new Date(), "5", new Date());
-        System.out.println(user.hashCode());
-        System.out.println(user1.hashCode());
-    }
-
 }

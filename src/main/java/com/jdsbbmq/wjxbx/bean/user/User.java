@@ -1,9 +1,7 @@
 package com.jdsbbmq.wjxbx.bean.user;
 
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.DecimalMax;
@@ -11,7 +9,9 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 //用户

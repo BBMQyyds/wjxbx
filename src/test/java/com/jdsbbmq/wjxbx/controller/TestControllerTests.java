@@ -8,10 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TestControllerTests {
 
+    Logger log = Logger.getLogger(TestControllerTests.class);
     @Resource
     private TestController testController;
-
-    Logger log = Logger.getLogger(TestControllerTests.class);
 
     @Test
     void contextLoads() {
