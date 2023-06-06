@@ -981,3 +981,4 @@
 2023-06-06 11:47:37[ INFO ]UserEntityMapper: >>selectAll所有用户查询测试成功
 2023-06-06 11:47:38[ INFO ]UserEntityMapper: >>insertUser用户插入测试成功
 2023-06-06 11:47:38[ INFO ]UserEntityMapper: >>selectUser用户查询测试成功
+2023-06-06 12:24:29[ INFO ]UserEntity: >>allArgsConstructor全参构造测试成功
