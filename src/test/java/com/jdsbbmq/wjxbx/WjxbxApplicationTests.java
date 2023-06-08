@@ -11,7 +11,7 @@ class WjxbxApplicationTests {
     }
 
     @Test
-    public void testMain() {
+    public void MainTest() {
         WjxbxApplication.main(new String[]{}); // just for test coverage
     }
 
