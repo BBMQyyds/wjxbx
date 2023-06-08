@@ -1126,3 +1126,4 @@
 2023-06-07 22:29:23[ INFO ]UserEntityMapper: >>selectAll所有用户查询测试成功
 2023-06-07 22:29:23[ INFO ]UserEntityMapper: >>insertUser用户插入测试成功
 2023-06-07 22:29:23[ INFO ]UserEntityMapper: >>selectUser用户查询测试成功
+2023-06-08 13:33:17[ INFO ]UserEntityMapper: >>selectUser用户查询测试成功
