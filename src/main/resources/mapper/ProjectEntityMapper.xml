@@ -53,12 +53,11 @@
        resultMap
    -->
     <resultMap id="projectEntityMap" type="com.jdsbbmq.wjxbx.dao.entity.ProjectEntity">
-        <id column="id" property="id"/>
+        <id property="id" column="id"/>
         <result property="id"  column="id"/>
         <result property="userId"  column="user_id"/>
         <result property="projectName"  column="project_name"/>
         <result property="projectContent"  column="project_content"/>
-        <result property="startTime"  column="start_time"/>
         <result property="createdBy"  column="created_by"/>
         <result property="creationDate"  column="creation_date"/>
         <result property="lastUpdatedBy"  column="last_updated_by"/>

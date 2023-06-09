@@ -14,6 +14,8 @@ public interface ProjectEntityMapper {
         功能实现
      */
 
+    //查询
+
     // 查询所有项目
     List<ProjectEntity> selectAllProject(String userId);
 

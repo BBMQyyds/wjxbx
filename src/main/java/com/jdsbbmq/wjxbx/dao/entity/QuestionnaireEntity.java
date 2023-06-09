@@ -9,8 +9,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuestionnaireEntity {
+    private String id;
     private String projectId;
-    private String questionnaireId;
     private String questionnaireName;
     private String questionnaireDescription;
     private Date creationDate;

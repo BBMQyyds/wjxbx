@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper">
+    <!--
+     功能实现
+    -->
+
+    <!--查询-->
+    <!--查询项目下方的所有问卷-->
+    <select id="selectAllQuestionnaire" resultType="QuestionnaireEntity">
+        select *
+        from questionnaire
+        where user_id = #{userId}
+    </select>
+
+    <!--根据ID查询问卷-->
+    <select id="selectQuestionnaireById" resultType="com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity">
+        select *
+        from questionnaire
+        where id = #{id}
+    </select>
+
+
+    <!--增删改-->
+
+    <!--插入问卷-->
+    <insert id="insertQuestionnaire">
+        insert into questionnaire
+        (id, project_id, questionnaire_name, questionnaire_description, creation_date, start_time, end_time, status, count)
+        values
+        (#{id}, #{projectId}, #{questionnaireName}, #{questionnaireDescription}, #{creationDate}, #{startTime}, #{endTime}, #{status}, #{count})
+    </insert>
+
+    <!--更新问卷-->
+    <update id="updateQuestionnaire">
+        update questionnaire
+        <set>
+            <if test="projectId != null">project_id = #{projectId},</if>
+            <if test="questionnaireName != null">questionnaire_name = #{questionnaireName},</if>
+            <if test="questionnaireDescription != null">questionnaire_description = #{questionnaireDescription},</if>
+            <if test="creationDate != null">creation_date = #{creationDate},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="count != null">count = #{count},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--删除问卷-->
+    <delete id="deleteQuestionnaireById">
+        delete
+        from questionnaire
+        where id = #{id}
+    </delete>
+
+    <!--
+       resultMap
+   -->
+    <resultMap id="QuestionnaireEntityMap" type="QuestionnaireEntity">
+        <id property="id" column="id" />
+        <result property="projectId"  column="project_id"/>
+        <result property="questionnaireName"  column="questionnaire_name"/>
+        <result property="questionnaireDescription"  column="questionnaire_description"/>
+        <result property="creationDate"  column="creation_date"/>
+        <result property="startTime"  column="start_time"/>
+        <result property="endTime"  column="end_time"/>
+        <result property="status"  column="status"/>
+        <result property="count"  column="count"/>
+    </resultMap>
+</mapper>

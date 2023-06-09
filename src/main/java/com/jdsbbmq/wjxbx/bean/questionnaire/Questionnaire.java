@@ -19,7 +19,7 @@ public class Questionnaire {
     private String projectId;
     @Schema(description = "问卷id")
     @Size(min = 36, max = 36)
-    private String questionnaireId;
+    private String id;
     @Schema(description = "问卷名")
     @Size(min = 1, max = 12)
     private String questionnaireName;
