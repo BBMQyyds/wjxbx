@@ -18,7 +18,7 @@ public class ProjectEntityTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        ProjectEntity projectEntity = new ProjectEntity("1", "2", "3", "4", new Date(), "5", new Date(), "6", new Date());
+        ProjectEntity projectEntity = new ProjectEntity("1", "2", "3", "4", "5", new Date(), "6", new Date());
         if (projectEntity  == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息

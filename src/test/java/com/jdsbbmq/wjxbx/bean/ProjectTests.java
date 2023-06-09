@@ -5,6 +5,8 @@ import com.jdsbbmq.wjxbx.controller.TestControllerTests;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProjectTests {
@@ -16,8 +18,8 @@ public class ProjectTests {
 
     @Test
     //全参构造
-    public void allArgsConstructorTest() {
-        Project project = new Project("1", "2", "3", "4", new Date(), "5", new Date(), "6", new Date());
+    public void allArgsConstructorTest() throws ParseException {
+        Project project=new Project("1","2","3","4","5",new Date(),"6",new Date());
         if (project == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息

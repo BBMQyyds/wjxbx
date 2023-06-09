@@ -19,5 +19,6 @@
     </environments>
     <mappers>
         <mapper resource="mapper/UserEntityMapper.xml"/>
+        <mapper resource="mapper/ProjectEntityMapper.xml"/>
     </mappers>
 </configuration>

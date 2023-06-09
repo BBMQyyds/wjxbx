@@ -16,7 +16,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(description = "web用户类")
-//用户
 public class User {
     @Schema(description = "用户id")
     @Size(min = 36, max = 36)
