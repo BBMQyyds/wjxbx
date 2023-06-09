@@ -4571,3 +4571,642 @@ java.lang.NullPointerException: Cannot invoke "com.jdsbbmq.wjxbx.dao.entity.User
 2023-06-08 13:48:53.244 [http-nio-8080-exec-10] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
 2023-06-08 13:48:53.258 [http-nio-8080-exec-10] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: c92ec58b-f098-41f9-99f3-9d50a31270ce(String)
 2023-06-08 13:48:53.297 [http-nio-8080-exec-10] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-08 15:22:52.702 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-08 15:22:52.703 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-09 11:54:53.819 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.common.RedisTests]: RedisTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:54:54.115 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.common.RedisTests
+2023-06-09 11:54:55.235 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 11:54:55.285 [main] WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/study/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/study/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-06-09 11:54:55.348 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - Starting RedisTests using Java 18.0.2.1 with PID 24532 (started by 33698 in C:\externship\wjxbx)
+2023-06-09 11:54:55.349 [main] DEBUG com.jdsbbmq.wjxbx.common.RedisTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 11:54:55.350 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 11:55:01.429 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - Started RedisTests in 6.836 seconds (process running for 10.852)
+2023-06-09 11:55:05.634 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:55:05.653 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-09 11:55:05.694 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:55:05.698 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-09 11:55:06.016 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-09 11:55:11.265 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-09 11:55:11.307 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-09 11:55:11.569 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-09 11:55:11.717 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-09 11:55:11.718 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-09 11:55:11.865 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-09 11:55:12.193 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-09 11:55:12.198 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-09 11:55:12.311 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-09 11:55:12.477 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-09 11:55:12.478 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-09 11:55:12.590 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-09 11:55:12.669 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-09 11:55:12.673 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 36a11526-c438-4a3c-a9e4-dbb9a1670fe0(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-09 11:55:12.815 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-09 11:55:13.043 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-09 11:55:13.044 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-09 11:55:13.370 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-09 11:55:13.401 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:55:13.424 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-09 11:55:14.997 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-09 11:55:14.998 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: 卜部美琴(String), 123456(String)
+2023-06-09 11:55:15.203 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-09 11:55:16.662 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-09 11:55:16.663 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: 卜部美琴(String)
+2023-06-09 11:55:16.807 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-09 11:55:17.939 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-09 11:55:17.940 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-09 11:55:18.070 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-09 11:55:19.418 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-09 11:55:19.419 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-09 11:55:19.526 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-09 11:55:21.035 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-09 11:55:21.036 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-09 11:55:21.139 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-09 11:55:22.426 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-09 11:55:22.430 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: e532183e-e9aa-4870-83d0-ca15ddd8357f(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-09 11:55:23.086 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-09 11:55:25.428 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-09 11:55:25.429 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-09 11:55:25.600 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-09 11:55:25.688 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:55:25.701 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-09 11:55:26.664 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:55:26.674 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-09 11:55:26.851 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 18.0.2.1 with PID 24532 (started by 33698 in C:\externship\wjxbx)
+2023-06-09 11:55:26.852 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 11:55:26.853 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 11:55:28.436 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 11:55:28.496 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 11:55:28.499 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 11:55:28.501 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 11:55:28.839 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 11:55:28.841 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1974 ms
+2023-06-09 11:55:30.099 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 11:55:30.210 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 11:55:30.229 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 3.527 seconds (process running for 39.652)
+2023-06-09 11:55:30.287 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-09 11:55:30.667 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-09 11:55:30.709 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 11:57:58.744 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.common.RedisTests]: RedisTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:57:59.088 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.common.RedisTests
+2023-06-09 11:58:00.333 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 11:58:00.400 [main] WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/33698/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/33698/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-06-09 11:58:00.459 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - Starting RedisTests using Java 17.0.7 with PID 22640 (started by 33698 in C:\externship\wjxbx)
+2023-06-09 11:58:00.460 [main] DEBUG com.jdsbbmq.wjxbx.common.RedisTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 11:58:00.462 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 11:58:06.968 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - Started RedisTests in 7.357 seconds (process running for 11.719)
+2023-06-09 11:58:11.610 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.TestControllerTests]: TestControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:58:11.632 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.TestControllerTests
+2023-06-09 11:58:11.664 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:58:11.670 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.controller.UserControllerTests
+2023-06-09 11:58:11.980 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-09 11:58:13.600 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-09 11:58:13.643 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: ��������(String), 123456(String)
+2023-06-09 11:58:13.813 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-09 11:58:13.922 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-09 11:58:13.923 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-09 11:58:14.086 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-09 11:58:14.284 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-09 11:58:14.289 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-09 11:58:14.532 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-09 11:58:14.790 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-09 11:58:14.791 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-09 11:58:14.934 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-09 11:58:15.030 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-09 11:58:15.034 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 8bf80fb4-fc0b-42d6-928c-e46fe2c38a03(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-09 11:58:15.208 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-09 11:58:15.354 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-09 11:58:15.356 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-09 11:58:15.443 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-09 11:58:15.462 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.dao.UserEntityMapperTests]: UserEntityMapperTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:58:15.481 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.dao.UserEntityMapperTests
+2023-06-09 11:58:16.171 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==>  Preparing: select * from user where username = ? and password = ?
+2023-06-09 11:58:16.173 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - ==> Parameters: ��������(String), 123456(String)
+2023-06-09 11:58:16.239 [main] DEBUG c.j.wjxbx.dao.UserEntityMapper.login - <==      Total: 1
+2023-06-09 11:58:16.932 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==>  Preparing: select id from user where username = ?
+2023-06-09 11:58:16.934 [main] DEBUG c.j.w.d.U.selectIdByUsername - ==> Parameters: ��������(String)
+2023-06-09 11:58:17.000 [main] DEBUG c.j.w.d.U.selectIdByUsername - <==      Total: 1
+2023-06-09 11:58:17.833 [main] DEBUG c.j.w.d.U.deleteUserById - ==>  Preparing: delete from user where id = ?
+2023-06-09 11:58:17.834 [main] DEBUG c.j.w.d.U.deleteUserById - ==> Parameters: 4f48ba43-e933-4cef-ac7d-094e1e70c555(String)
+2023-06-09 11:58:17.925 [main] DEBUG c.j.w.d.U.deleteUserById - <==    Updates: 0
+2023-06-09 11:58:19.020 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==>  Preparing: update user set username = ?, password = ?, start_time = ?, stop_time = ?, status = ?, last_updated_by = ?, last_update_date = ? where id = ?
+2023-06-09 11:58:19.023 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - ==> Parameters: LS(String), 123(String), null, null, 1(Integer), null, null, 216c6b4f-12e2-4012-a029-37b15c965547(String)
+2023-06-09 11:58:19.164 [main] DEBUG c.j.w.d.UserEntityMapper.updateUser - <==    Updates: 0
+2023-06-09 11:58:19.849 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==>  Preparing: select * from user
+2023-06-09 11:58:19.851 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - ==> Parameters: 
+2023-06-09 11:58:19.901 [main] DEBUG c.j.w.dao.UserEntityMapper.selectAll - <==      Total: 2
+2023-06-09 11:58:20.752 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==>  Preparing: INSERT INTO user (id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2023-06-09 11:58:20.756 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - ==> Parameters: 7f2abb1f-1b2a-475b-bb21-976a837c355e(String), LS(String), 123(String), null, null, 1(Integer), null, null, null, null
+2023-06-09 11:58:20.882 [main] DEBUG c.j.w.d.UserEntityMapper.insertUser - <==    Updates: 1
+2023-06-09 11:58:21.681 [main] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-09 11:58:21.683 [main] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: 53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f(String)
+2023-06-09 11:58:21.726 [main] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-09 11:58:21.798 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.ServletInitializerTests]: ServletInitializerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:58:21.811 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.ServletInitializerTests
+2023-06-09 11:58:22.721 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.WjxbxApplicationTests]: WjxbxApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-09 11:58:22.731 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.WjxbxApplicationTests
+2023-06-09 11:58:22.904 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 22640 (started by 33698 in C:\externship\wjxbx)
+2023-06-09 11:58:22.905 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 11:58:22.906 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 11:58:24.575 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 11:58:24.638 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 11:58:24.641 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 11:58:24.642 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 11:58:25.020 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 11:58:25.022 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2106 ms
+2023-06-09 11:58:26.316 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 11:58:26.476 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 11:58:26.493 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 3.739 seconds (process running for 31.244)
+2023-06-09 11:58:26.593 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-09 11:58:27.003 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-09 11:58:27.065 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 12:20:54.763 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 12:20:54.874 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 17.0.7 with PID 23564 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 12:20:54.875 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 12:20:54.877 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 12:20:57.335 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 12:20:57.353 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:20:57.355 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 12:20:57.356 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 12:20:57.539 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 12:20:57.543 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2570 ms
+2023-06-09 12:21:00.254 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:21:00.325 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 12:21:00.370 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 6.269 seconds (process running for 7.64)
+2023-06-09 12:21:03.328 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 12:21:03.329 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 12:21:03.331 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 12:21:03.363 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 12:21:04.433 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 12:22:10.465 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 12:22:10.545 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 3508 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 12:22:10.546 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 12:22:10.547 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 12:22:12.254 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 12:22:12.267 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:22:12.268 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 12:22:12.269 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 12:22:12.428 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 12:22:12.429 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1820 ms
+2023-06-09 12:22:13.978 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:22:13.985 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2023-06-09 12:22:13.987 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 12:22:13.991 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:22:13.991 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2023-06-09 12:22:14.020 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:22:14.021 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:22:14.034 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-09 12:22:14.060 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-06-09 12:24:26.676 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 12:24:26.738 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 13632 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 12:24:26.739 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 12:24:26.740 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 12:24:28.407 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 12:24:28.420 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:24:28.421 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 12:24:28.422 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 12:24:28.584 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 12:24:28.584 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1785 ms
+2023-06-09 12:24:30.180 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 12:24:30.214 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 12:24:30.230 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 4.092 seconds (process running for 5.386)
+2023-06-09 12:24:32.091 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 12:24:32.092 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 12:24:32.093 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 12:24:32.113 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 12:26:13.291 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:11:42.147 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:11:42.185 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 23080 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:11:42.185 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:11:42.186 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:11:43.118 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:11:43.127 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:11:43.128 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:11:43.128 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:11:43.213 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:11:43.215 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 992 ms
+2023-06-09 13:11:43.952 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:11:43.968 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:11:43.975 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.143 seconds (process running for 3.004)
+2023-06-09 13:11:45.048 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:11:45.048 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:11:45.049 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-06-09 13:11:45.061 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:11:45.629 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:14:42.504 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:14:44.726 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:14:44.763 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 26044 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:14:44.763 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:14:44.764 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:14:45.521 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:14:45.529 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:14:45.529 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:14:45.530 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:14:45.602 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:14:45.603 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 811 ms
+2023-06-09 13:14:46.301 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:14:46.319 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:14:46.325 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.854 seconds (process running for 2.395)
+2023-06-09 13:14:47.764 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:14:47.764 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:14:47.765 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:14:47.775 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:15:25.830 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:15:29.316 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:15:29.349 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 13700 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:15:29.349 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:15:29.350 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:15:30.131 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:15:30.138 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:15:30.138 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:15:30.138 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:15:30.206 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:15:30.206 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 831 ms
+2023-06-09 13:15:30.597 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-09 13:15:31.005 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:15:31.021 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:15:31.028 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.965 seconds (process running for 2.528)
+2023-06-09 13:15:32.951 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:15:32.952 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:15:32.953 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:21:22.473 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:21:25.882 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:21:25.919 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 18484 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:21:25.920 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:21:25.920 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:21:26.695 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:21:26.702 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:21:26.703 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:21:26.703 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:21:26.785 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:21:26.785 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 837 ms
+2023-06-09 13:21:27.491 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:21:27.508 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:21:27.515 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.876 seconds (process running for 2.43)
+2023-06-09 13:23:36.626 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:23:36.626 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:23:36.627 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:23:36.635 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:23:36.736 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:23:37.276 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:23:37.346 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:23:37.589 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:23:37.660 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:23:37.922 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:23:37.990 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:24:43.404 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:24:46.633 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:24:46.672 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 25056 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:24:46.672 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:24:46.673 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:24:47.426 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:24:47.434 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:24:47.434 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:24:47.434 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:24:47.520 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:24:47.520 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 821 ms
+2023-06-09 13:24:48.203 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:24:48.220 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:24:48.227 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.836 seconds (process running for 2.368)
+2023-06-09 13:24:49.415 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:24:49.415 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:24:49.416 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:24:49.429 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:24:51.282 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:24:51.348 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:24:51.775 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:24:51.837 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:24:52.114 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:24:52.177 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:24:52.455 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:24:52.520 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:24:52.778 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:24:52.843 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:26:23.692 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:26:26.049 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:26:26.083 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 17172 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:26:26.083 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:26:26.083 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:26:26.902 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:26:26.909 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:26:26.909 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:26:26.909 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:26:26.976 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:26:26.976 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 866 ms
+2023-06-09 13:26:27.361 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-09 13:26:27.765 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:26:27.782 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:26:27.790 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.017 seconds (process running for 2.599)
+2023-06-09 13:26:37.941 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:26:37.942 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:26:37.943 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:28:19.666 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:28:19.720 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 18852 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:28:19.721 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:28:19.722 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:28:20.882 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:28:20.893 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:28:20.894 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:28:20.894 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:28:20.977 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:28:20.978 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1216 ms
+2023-06-09 13:28:22.062 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:28:22.070 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2023-06-09 13:28:22.072 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:28:22.076 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:28:22.077 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2023-06-09 13:28:22.166 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:28:22.167 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:28:22.174 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-09 13:28:22.188 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-06-09 13:28:26.409 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:29:11.585 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:29:11.638 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 25584 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:29:11.639 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:29:11.640 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:29:12.811 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:29:12.821 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:29:12.821 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:29:12.822 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:29:12.890 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:29:12.892 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1212 ms
+2023-06-09 13:29:14.038 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:29:14.078 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:29:14.097 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.773 seconds (process running for 3.309)
+2023-06-09 13:29:16.369 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:29:16.369 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:29:16.371 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-06-09 13:29:16.389 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:17.564 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:17.652 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:19.830 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:19.899 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:20.165 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:20.225 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:20.464 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:20.528 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:20.760 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:20.823 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:21.063 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:21.124 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:21.357 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:21.417 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:29:21.637 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:29:21.700 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:30:51.735 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:30:57.402 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:30:57.438 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 20640 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:30:57.438 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:30:57.438 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:30:58.218 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:30:58.225 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:30:58.226 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:30:58.226 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:30:58.293 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:30:58.294 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 827 ms
+2023-06-09 13:30:58.671 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-09 13:30:59.087 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:30:59.103 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:30:59.109 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.963 seconds (process running for 2.57)
+2023-06-09 13:31:00.856 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:31:00.856 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:31:00.858 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:35:19.798 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:35:35.866 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:35:35.918 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 20164 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:35:35.919 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:35:35.920 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:35:36.975 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:35:36.984 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:35:36.985 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:35:36.985 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:35:37.055 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:35:37.057 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1099 ms
+2023-06-09 13:35:38.108 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:35:38.132 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:35:38.147 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.543 seconds (process running for 3.038)
+2023-06-09 13:36:02.226 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:36:04.214 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:36:04.268 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 18028 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:36:04.268 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:36:04.269 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:36:05.336 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:36:05.347 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:36:05.348 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:36:05.348 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:36:05.421 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:36:05.423 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1116 ms
+2023-06-09 13:36:06.438 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:36:06.466 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:36:06.482 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.525 seconds (process running for 3.027)
+2023-06-09 13:36:09.981 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:36:09.981 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:36:09.982 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-06-09 13:36:09.992 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:36:10.093 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:37:53.750 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:39:04.082 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:39:04.122 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 21168 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:39:04.122 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:39:04.123 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:39:04.887 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:39:04.893 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:39:04.894 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:39:04.894 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:39:04.961 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:39:04.961 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 810 ms
+2023-06-09 13:39:05.623 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:39:05.640 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:39:05.647 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.813 seconds (process running for 2.39)
+2023-06-09 13:39:14.832 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:39:14.832 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:39:14.833 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:39:14.847 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:39:15.509 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:39:17.324 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:39:17.393 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:39:17.712 [http-nio-8080-exec-5] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:39:17.774 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:39:17.962 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:39:18.026 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:39:18.134 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:39:18.196 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:39:24.408 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:39:27.779 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:39:27.818 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 15056 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:39:27.818 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:39:27.819 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:39:28.605 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:39:28.612 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:39:28.613 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:39:28.613 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:39:28.683 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:39:28.684 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 836 ms
+2023-06-09 13:39:29.075 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-09 13:39:29.471 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:39:29.487 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:39:29.494 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.951 seconds (process running for 2.508)
+2023-06-09 13:39:31.230 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:39:31.231 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:39:31.232 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:39:40.962 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:40:18.978 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:40:19.032 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 18596 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:40:19.033 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:40:19.034 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:40:20.107 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:40:20.115 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:40:20.116 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:40:20.117 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:40:20.197 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:40:20.198 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1125 ms
+2023-06-09 13:40:21.188 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:40:21.212 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:40:21.229 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.508 seconds (process running for 3.015)
+2023-06-09 13:40:26.602 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:40:26.603 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:40:26.603 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2023-06-09 13:40:26.613 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:40:26.713 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:41:28.554 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:41:33.246 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:41:33.284 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 24180 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:41:33.284 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:41:33.285 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:41:34.100 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:41:34.107 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:41:34.107 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:41:34.107 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:41:34.173 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:41:34.173 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 861 ms
+2023-06-09 13:41:34.837 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:41:34.864 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:41:34.871 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.895 seconds (process running for 2.489)
+2023-06-09 13:41:36.342 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:41:36.342 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:41:36.343 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:41:36.355 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:41:48.170 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 194 ms
+2023-06-09 13:41:54.058 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:41:57.280 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:41:57.314 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 12764 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:41:57.315 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:41:57.315 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:41:58.078 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:41:58.085 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:41:58.085 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:41:58.085 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:41:58.157 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:41:58.158 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 817 ms
+2023-06-09 13:41:58.543 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-09 13:41:58.946 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:41:58.963 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:41:58.970 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 1.939 seconds (process running for 2.479)
+2023-06-09 13:42:00.772 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:42:00.772 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:42:00.773 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:42:04.848 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 189 ms
+2023-06-09 13:42:10.586 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:42:21.288 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:42:21.346 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication v0.0.1-SNAPSHOT using Java 18.0.2.1 with PID 2412 (C:\externship\wjxbx\target\wjxbx-0.0.1-SNAPSHOT.jar started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:42:21.347 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:42:21.348 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:42:22.444 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:42:22.454 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:42:22.455 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:42:22.456 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:42:22.531 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:42:22.532 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1145 ms
+2023-06-09 13:42:23.488 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:42:23.518 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-06-09 13:42:23.538 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.512 seconds (process running for 3.013)
+2023-06-09 13:42:26.198 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-09 13:42:26.198 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-09 13:42:26.199 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-09 13:42:26.208 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:42:26.312 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:42:45.067 [http-nio-8080-exec-5] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 187 ms
+2023-06-09 13:42:49.681 [http-nio-8080-exec-6] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2023-06-09 13:43:02.610 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:43:17.793 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /
+2023-06-09 13:43:17.864 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /favicon.ico
+2023-06-09 13:44:38.914 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-09 13:44:38.950 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 21416 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-09 13:44:38.950 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-09 13:44:38.951 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-09 13:44:39.713 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-06-09 13:44:39.721 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:44:39.721 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-09 13:44:39.721 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-09 13:44:39.799 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-09 13:44:39.799 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 821 ms
+2023-06-09 13:44:40.489 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:44:40.493 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2023-06-09 13:44:40.494 [main] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-09 13:44:40.495 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:44:40.496 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2023-06-09 13:44:40.510 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:44:40.511 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+2023-06-09 13:44:40.516 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-06-09 13:44:40.528 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-06-09 13:44:52.474 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...

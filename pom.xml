@@ -11,7 +11,8 @@
     <groupId>com.jdsbbmq</groupId>
     <artifactId>wjxbx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <!--    <packaging>war</packaging>-->
+    <packaging>jar</packaging>
     <name>wjxbx</name>
     <description>wjxbx</description>
     <properties>

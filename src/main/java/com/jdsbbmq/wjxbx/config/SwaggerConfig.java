@@ -24,4 +24,5 @@ public class SwaggerConfig {
                         .version("0.0.1"))
                 .paths(new Paths().addPathItem("/com/jdsbbmq/wjxbx/controller", new PathItem())); // 添加指定路径配置
     }
+
 }

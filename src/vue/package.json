@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@vue/cli-service": "^5.0.8",
     "cnpm": "^9.2.0",
     "install": "^0.13.0",
     "npm": "^9.6.7",
