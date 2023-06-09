@@ -19,3 +19,5 @@
 ### 使用lombok @AllArgsConstructor注解，自动生成全参构造方法
 
 ### 使用JSR-303 Bean Validation规范，对属性进行校验
+
+### 使用swagger3 @Schema注解，对属性进行说明

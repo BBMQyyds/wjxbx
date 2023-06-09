@@ -2750,7 +2750,7 @@ cmd-shim@^6.0.0:
 
 cnpm@^9.2.0:
   version "9.2.0"
-  resolved "https://registry.npmmirror.com/cnpm/-/cnpm-9.2.0.tgz"
+  resolved "https://registry.npmjs.org/cnpm/-/cnpm-9.2.0.tgz"
   integrity sha512-NvmCEMHxkXRgZq4yOyifbUXqLHWIJVm7ISfi1juskoEDnX26w2NOiTbtr3HHSvyJHxNSCm1eQvSuT0oKOUCESw==
   dependencies:
     auto-correct "^1.0.0"
