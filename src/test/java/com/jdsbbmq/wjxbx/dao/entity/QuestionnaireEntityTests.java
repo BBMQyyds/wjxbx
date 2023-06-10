@@ -3,9 +3,11 @@ package com.jdsbbmq.wjxbx.dao.entity;
 import com.jdsbbmq.wjxbx.controller.TestControllerTests;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
+@SpringBootTest
 public class QuestionnaireEntityTests {
     Logger log = Logger.getLogger(TestControllerTests.class);
 

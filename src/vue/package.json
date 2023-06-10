@@ -14,7 +14,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@ai-zen/event-bus": "^1.0.1",
     "@vue/cli-service": "^5.0.8",
+    "axios": "^1.4.0",
     "cnpm": "^9.2.0",
     "install": "^0.13.0",
     "npm": "^9.6.7",
