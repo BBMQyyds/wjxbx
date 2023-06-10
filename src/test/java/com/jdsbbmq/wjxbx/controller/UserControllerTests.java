@@ -59,7 +59,7 @@ public class UserControllerTests {
     // 根据id查询用户
     public void selectUserByIdTest() {
         //调用userMapper的方法
-        User user = userController.selectUserById("53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f");
+        User user = userController.selectUserById("\"53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f\"");
         if (user == null) {
             System.out.println("查询失败");
             // 记录error级别的信息

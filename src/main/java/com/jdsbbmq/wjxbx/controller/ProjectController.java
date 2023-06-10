@@ -1,10 +1,7 @@
 package com.jdsbbmq.wjxbx.controller;
 
-import com.google.gson.Gson;
 import com.jdsbbmq.wjxbx.bean.project.Project;
-import com.jdsbbmq.wjxbx.bean.user.User;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
-import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
