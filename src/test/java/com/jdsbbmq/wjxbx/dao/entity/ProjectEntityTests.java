@@ -5,9 +5,11 @@ import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.controller.TestControllerTests;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
+@SpringBootTest
 public class ProjectEntityTests {
     Logger log = Logger.getLogger(TestControllerTests.class);
 

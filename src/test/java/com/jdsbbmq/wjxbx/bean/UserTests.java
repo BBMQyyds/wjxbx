@@ -4,9 +4,11 @@ import com.jdsbbmq.wjxbx.bean.user.User;
 import com.jdsbbmq.wjxbx.controller.TestControllerTests;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
+@SpringBootTest
 public class UserTests {
 
     Logger log = Logger.getLogger(TestControllerTests.class);
