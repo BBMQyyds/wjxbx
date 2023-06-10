@@ -23,3 +23,10 @@
 #### -Dsonar.host.url=http://101.43.255.130:11000 \
 #### -Dsonar.language=html,js \
 #### -Dsonar.token=sqp_8492318e1bb911f8ac76098450baa012f44b4b73
+
+
+## 开放端口
+
+#### firewall-cmd --zone=public --add-port=xxxx/tcp --permanent
+#### firewall-cmd --reload
+#### firewall-cmd --list-ports
