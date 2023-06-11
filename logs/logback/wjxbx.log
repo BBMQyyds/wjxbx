@@ -7469,3 +7469,47 @@ You may wish to exclude one of them to ensure predictable runtime behavior
 2023-06-11 13:08:30.660 [http-nio-8088-exec-5] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
 2023-06-11 13:21:14.299 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2023-06-11 13:21:14.366 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-11 13:26:30.071 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-11 13:26:30.101 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 14208 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-11 13:26:30.102 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-11 13:26:30.102 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-11 13:26:31.034 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+2023-06-11 13:26:31.042 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+2023-06-11 13:26:31.043 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-11 13:26:31.043 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-11 13:26:31.122 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-11 13:26:31.123 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 992 ms
+2023-06-11 13:26:31.562 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-11 13:26:32.065 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+2023-06-11 13:26:32.084 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+2023-06-11 13:26:32.092 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.325 seconds (process running for 3.331)
+2023-06-11 13:26:43.620 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-11 13:26:43.620 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-11 13:26:43.621 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-11 13:26:43.701 [http-nio-8088-exec-1] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-11 13:26:44.676 [http-nio-8088-exec-1] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-11 13:26:44.689 [http-nio-8088-exec-1] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: c92ec58b-f098-41f9-99f3-9d50a31270ce(String)
+2023-06-11 13:26:44.767 [http-nio-8088-exec-1] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-11 13:26:51.358 [http-nio-8088-exec-2] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-11 13:26:51.358 [http-nio-8088-exec-2] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: c92ec58b-f098-41f9-99f3-9d50a31270ce(String)
+2023-06-11 13:26:51.442 [http-nio-8088-exec-2] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-11 13:35:46.567 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jdsbbmq.wjxbx.common.RedisTests]: RedisTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-06-11 13:35:46.657 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jdsbbmq.wjxbx.WjxbxApplication for test class com.jdsbbmq.wjxbx.common.RedisTests
+2023-06-11 13:35:47.010 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-11 13:35:47.022 [main] WARN  o.s.b.t.j.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer - 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/33698/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/33698/.m2/repository/org/json/json/20230227/json-20230227.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2023-06-11 13:35:47.037 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - Starting RedisTests using Java 17.0.7 with PID 14184 (started by 33698 in C:\externship\wjxbx)
+2023-06-11 13:35:47.038 [main] DEBUG com.jdsbbmq.wjxbx.common.RedisTests - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-11 13:35:47.038 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - No active profile set, falling back to 1 default profile: "default"
+2023-06-11 13:35:48.878 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-11 13:35:49.950 [main] INFO  com.jdsbbmq.wjxbx.common.RedisTests - Started RedisTests in 3.115 seconds (process running for 4.242)
+2023-06-11 13:35:52.640 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2023-06-11 13:38:46.547 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-11 13:38:47.087 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
