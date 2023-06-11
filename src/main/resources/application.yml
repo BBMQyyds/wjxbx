@@ -36,6 +36,16 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  # 配置actuator
+  boot:
+    admin:
+      client:
+        url: http://101.43.255.130:8089
+  security:
+    user:
+      name: admin
+      password: 20030321
+
 
 # mybatis 配置
 mybatis:
@@ -43,6 +53,21 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+
+#management
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+    health:
+      sensitive: false
+  endpoint:
+    health:
+      show-details: always
+
 
 
 
