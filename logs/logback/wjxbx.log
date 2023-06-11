@@ -7513,3 +7513,29 @@ You may wish to exclude one of them to ensure predictable runtime behavior
 2023-06-11 13:35:52.640 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-0} closing ...
 2023-06-11 13:38:46.547 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2023-06-11 13:38:47.087 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2023-06-11 13:39:34.434 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+2023-06-11 13:39:34.470 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Starting WjxbxApplication using Java 17.0.7 with PID 868 (C:\externship\wjxbx\target\classes started by 33698 in C:\externship\wjxbx)
+2023-06-11 13:39:34.470 [main] DEBUG com.jdsbbmq.wjxbx.WjxbxApplication - Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-06-11 13:39:34.471 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - No active profile set, falling back to 1 default profile: "default"
+2023-06-11 13:39:35.495 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8088 (http)
+2023-06-11 13:39:35.505 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8088"]
+2023-06-11 13:39:35.506 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-06-11 13:39:35.506 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-06-11 13:39:35.604 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-06-11 13:39:35.604 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1097 ms
+2023-06-11 13:39:36.079 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [public/index.html]
+2023-06-11 13:39:36.711 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8088"]
+2023-06-11 13:39:36.733 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8088 (http) with context path ''
+2023-06-11 13:39:36.743 [main] INFO  com.jdsbbmq.wjxbx.WjxbxApplication - Started WjxbxApplication in 2.603 seconds (process running for 3.292)
+2023-06-11 13:39:45.950 [http-nio-8088-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-06-11 13:39:45.950 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-06-11 13:39:45.951 [http-nio-8088-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-06-11 13:39:46.037 [http-nio-8088-exec-1] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2023-06-11 13:39:49.330 [http-nio-8088-exec-1] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-11 13:39:49.344 [http-nio-8088-exec-1] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: c92ec58b-f098-41f9-99f3-9d50a31270ce(String)
+2023-06-11 13:39:49.495 [http-nio-8088-exec-1] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-11 13:39:52.743 [http-nio-8088-exec-3] DEBUG c.j.w.d.U.selectUserById - ==>  Preparing: select * from user where id = ?
+2023-06-11 13:39:52.743 [http-nio-8088-exec-3] DEBUG c.j.w.d.U.selectUserById - ==> Parameters: c92ec58b-f098-41f9-99f3-9d50a31270ce(String)
+2023-06-11 13:39:53.257 [http-nio-8088-exec-3] DEBUG c.j.w.d.U.selectUserById - <==      Total: 1
+2023-06-11 13:49:51.453 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2023-06-11 13:49:51.536 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
