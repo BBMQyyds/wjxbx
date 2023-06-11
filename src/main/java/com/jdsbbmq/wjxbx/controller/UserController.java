@@ -8,7 +8,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +44,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "未找到对应的用户信息")
     })
     public User selectUserById(@RequestBody String id) {
-        UserEntity userEntity = userService.selectUserById(id);
+        UserEntity userEntity = userService.selectUserById(id.substring(1, id.length() - 1));
         return userEntity.toUser();
     }
 
@@ -61,7 +64,7 @@ public class UserController {
      */
 
     // 插入用户（注册）
-    @RequestMapping(value = "/insertUser" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
     public int insertUser(@RequestBody @Valid User user) {
         return userService.insertUser(user.toUserEntity());
     }
