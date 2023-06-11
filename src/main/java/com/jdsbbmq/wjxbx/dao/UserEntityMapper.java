@@ -2,12 +2,14 @@ package com.jdsbbmq.wjxbx.dao;
 
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
 @Repository
+@RepositoryRestResource(path = "user")
 public interface UserEntityMapper {
 
     /*

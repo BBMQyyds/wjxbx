@@ -1,6 +1,9 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.user.User;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Date;
@@ -10,7 +13,10 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "user")
 public class UserEntity {
+    @Id
+    @GeneratedValue(generator = "uuid")
     private String id;
     private String username;
     private String password;
