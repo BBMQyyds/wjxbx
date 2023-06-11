@@ -1,7 +1,9 @@
 <template>
+
   <el-container>
     <el-main>
       <el-card class="box-card login-card">
+          <Icon name="riqi" class="icon1" />
         <span class="login-title">在线申请和审批系统</span>
         <span class="login-tip">20217033 梁朝阳</span>
         <span class="login-tip2">初始密码：123456</span>

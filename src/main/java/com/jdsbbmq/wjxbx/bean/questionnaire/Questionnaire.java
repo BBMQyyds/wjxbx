@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.bean.questionnaire;
 
+import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -39,4 +40,15 @@ public class Questionnaire {
     private String status;
     @Schema(description = "问卷答卷数量")
     private int Count;
+    public Questionnaire(QuestionnaireEntity questionnaireEntity){
+        this.id = questionnaireEntity.getId();
+        this.projectId = questionnaireEntity.getProjectId();
+        this.questionnaireName = questionnaireEntity.getQuestionnaireName();
+        this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
+        this.creationDate = questionnaireEntity.getCreationDate();
+        this.startTime = questionnaireEntity.getStartTime();
+        this.endTime = questionnaireEntity.getEndTime();
+        this.status = questionnaireEntity.getStatus();
+        this.Count = questionnaireEntity.getCount();
+    }
 }

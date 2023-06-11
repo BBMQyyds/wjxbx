@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from '@/router'
 import ElementPlus from 'element-plus'
 import VueCookies from 'vue-cookies';
+import IconPlugin from '@/plugins/icon.js';
 import 'element-plus/dist/index.css'
 import '@/assets/style/common.css'
 
@@ -32,3 +33,4 @@ window.ResizeObserver = class ResizeObserver extends _ResizeObserver {
 // 全局安装路由组讲
 app.use(router).use(ElementPlus).mount('#app');
 app.use(VueCookies);
+app.use(IconPlugin);
