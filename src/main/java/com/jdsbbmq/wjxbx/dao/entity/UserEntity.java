@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.user.User;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -10,7 +11,10 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "user")
 public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String username;
     private String password;

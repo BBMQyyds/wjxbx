@@ -1,8 +1,8 @@
 ## 项目启动
 
 #### java -jar target/wjxbx-0.0.1-SNAPSHOT.jar 运行
-#### nohup Java -jar wjxbx-0.0.1-SNAPSHOT.jar & 后台运行
-#### ctrl + c 退出
+#### nohup java -jar wjxbx-0.0.1-SNAPSHOT.jar & 后台运行
+#### ctrl + c 退j出
 
 
 ## 分析wjxbx-manual并上传到sonarqube
@@ -30,3 +30,9 @@
 #### firewall-cmd --zone=public --add-port=xxxx/tcp --permanent
 #### firewall-cmd --reload
 #### firewall-cmd --list-ports
+
+
+## 杀死进程
+
+#### lsof -i:xxxx
+#### kill -9 xxxx
