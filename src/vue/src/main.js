@@ -4,6 +4,7 @@ import router from '@/router';
 import ElementPlus from 'element-plus';
 import VueCookies from 'vue-cookies';
 import 'element-plus/dist/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/style/common.css';
 
 
@@ -29,5 +30,4 @@ window.ResizeObserver = class ResizeObserver extends _ResizeObserver {
         super(callback);
     }
 };
-
 app.use(router).use(ElementPlus).use(VueCookies).mount('#app');

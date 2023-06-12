@@ -51,7 +51,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height:50px;
+        height:65px;
         background-color: #f7f9fc;
         color: #100000;
         /*吸顶效果*/
