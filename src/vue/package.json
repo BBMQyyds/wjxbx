@@ -24,6 +24,7 @@
     "vue-cookies": "^1.8.3",
     "vue-router": "4",
     "vuex": "^4.0.2",
+    "webpack": "^5.86.0",
     "xlsx": "^0.16.0"
   },
   "devDependencies": {

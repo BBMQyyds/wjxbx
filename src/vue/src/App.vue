@@ -1,11 +1,12 @@
 <template>
   <div id="app">
+      <NavigationBar></NavigationBar>
     <router-view v-if="isRouterAlive"/>
   </div>
 </template>
 
 <script>
-
+    import NavigationBar from './components/NavigationBar.vue';
 export default {
   name: 'App',
   provide() {
@@ -25,11 +26,12 @@ export default {
         this.isRouterAlive = true;
       });
     }
+  },
+  components:{
+    NavigationBar
   }
 }
-
 </script>
 
 <style scoped>
-
 </style>
