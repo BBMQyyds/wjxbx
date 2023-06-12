@@ -61,15 +61,10 @@ management:
     enabled-by-default: true
     web:
       exposure:
-        include: "*"
-    health:
-      sensitive: false
+        include: "*" #开启所有端点
   endpoint:
     health:
       show-details: always
-
-
-
 
 
 
