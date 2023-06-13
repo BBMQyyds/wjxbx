@@ -1,15 +1,10 @@
 <template>
   <div id="app">
-
-      <NavigationBar></NavigationBar>
-      <LeftList></LeftList>
     <router-view v-if="isRouterAlive"/>
   </div>
 </template>
 
 <script>
-    import NavigationBar from './components/NavigationBar.vue';
-    import LeftList from './components/LeftList.vue';
 export default {
   name: 'App',
   provide() {
@@ -30,10 +25,6 @@ export default {
       });
     }
   },
-  components:{
-      LeftList,
-    NavigationBar
-  }
 }
 </script>
 

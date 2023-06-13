@@ -2,6 +2,10 @@ package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.service.QuestionnaireService;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Date;
@@ -10,7 +14,10 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "questionnaire")
 public class QuestionnaireEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String projectId;
     private String questionnaireName;

@@ -1,6 +1,10 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.project.Project;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 import java.util.Date;
 @Getter
@@ -8,7 +12,10 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "project")
 public class ProjectEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String userId;
     private String projectName;
