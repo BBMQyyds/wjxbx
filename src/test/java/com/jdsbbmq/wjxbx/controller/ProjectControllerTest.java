@@ -42,6 +42,22 @@ public class ProjectControllerTest {
     }
 
     @Test
+    // 根据id查询项目
+    public void selectProjectByIdTest(){
+        String id="0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        Project project=projectController.selectProjectById(id);
+        if (project == null) {
+            System.out.println("查询失败");
+            // 记录error级别的信息
+            log.error("ProjectController: >>selectProjectById根据id查询项目测试失败");
+        } else {
+            System.out.println(project);
+            // 记录info级别的信息
+            log.info("ProjectController: >>selectProjectById根据id查询项目测试成功");
+        }
+    }
+
+    @Test
     @Transactional
     // 插入项目
     public void insertProjectTest() {

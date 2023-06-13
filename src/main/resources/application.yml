@@ -41,6 +41,8 @@ spring:
     admin:
       client:
         url: http://101.43.255.130:8089
+        instance:
+          service-base-url: http://localhost:${server.port}
   security:
     user:
       name: admin
@@ -66,5 +68,9 @@ management:
     health:
       show-details: always
 
+
+#整体默认配置：
+local:
+  datetime: ${spring.application.datetime-format:'yyyy-MM-dd HH:mm:ss'}
 
 

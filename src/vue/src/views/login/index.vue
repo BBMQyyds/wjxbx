@@ -83,7 +83,8 @@ export default {
   inject: ['reload'],
   created() {
     request.post("/selectUserById", JSON.stringify("c92ec58b-f098-41f9-99f3-9d50a31270ce")).then(res => {
-      console.log(res.data)
+      console.log(res)
+        console.log(res.data)
     })
   },
   data() {

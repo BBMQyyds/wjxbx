@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
 import jakarta.annotation.Resource;
 import org.apache.log4j.Logger;
@@ -26,8 +27,11 @@ public class UserControllerTests {
     @Test
     // 登录
     public void loginTest() {
+        LoginRequest loginRequest=new LoginRequest();
+        loginRequest.setUsername("卜部美琴");
+        loginRequest.setPassword("123456");
         //调用userMapper的方法
-        User user = userController.login("卜部美琴", "123456");
+        User user = userController.login(loginRequest);
         if (user == null) {
             System.out.println("登录失败");
             // 记录error级别的信息

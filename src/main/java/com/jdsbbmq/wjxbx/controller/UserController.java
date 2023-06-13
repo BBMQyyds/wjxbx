@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import com.jdsbbmq.wjxbx.service.UserService;
@@ -29,8 +30,8 @@ public class UserController {
     // 登录
     @Operation(summary = "登录接口", description = "输入username与password进行登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User login(@RequestBody String username, @RequestBody String password) {
-        UserEntity userEntity = userService.login(username, password);
+    public User login(@RequestBody LoginRequest loginRequest) {
+        UserEntity userEntity = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
         return userEntity.toUser();
     }
 
