@@ -20,13 +20,6 @@ request.interceptors.response.use(response => {
         // 处理403状态码的操作
         eventBus.emit('role');
     }
-    if (error.response.status === 404) {
-        // 处理404状态码的操作
-        this.$message({
-            message: '请求的资源不存在',
-            type: 'error'
-        });
-    }
     return Promise.reject(error);
 });
 
