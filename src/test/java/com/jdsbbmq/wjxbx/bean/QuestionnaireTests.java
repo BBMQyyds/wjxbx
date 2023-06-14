@@ -2,6 +2,7 @@ package com.jdsbbmq.wjxbx.bean;
 
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.controller.TestControllerTests;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +29,61 @@ public class QuestionnaireTests {
             System.out.println(questionnaire);
             // 记录info级别的信息
             log.info("Questionnaire: >>allArgsConstructor全参构造测试成功");
+        }
+    }
+
+    @Test
+    //测试复制时QuestionnaireEntity为null时的构造方法
+    public void copyConstructorTest1() {
+        Questionnaire questionnaire = new Questionnaire(null);
+        if (questionnaire == null) {
+            System.out.println("复制时QuestionnaireEntity为null时的构造方法失败");
+            // 记录error级别的信息
+            log.error("Questionnaire: >>copyConstructor复制时QuestionnaireEntity为null时的构造方法测试失败");
+        } else {
+            System.out.println(questionnaire);
+            // 记录info级别的信息
+            log.info("Questionnaire: >>copyConstructor复制时QuestionnaireEntity为null时的构造方法测试成功");
+        }
+    }
+
+    @Test
+    //   测试复制时QuestionnaireEntity不为null时的构造方法
+    public void copyConstructorTest2() {
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("1", "2", "3", "4", new Date(), new Date(), new Date(), "5", 0);
+        Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
+        if (questionnaire == null) {
+            System.out.println("复制时QuestionnaireEntity不为null时的构造方法失败");
+            // 记录error级别的信息
+            log.error("Questionnaire: >>copyConstructor复制时QuestionnaireEntity不为null时的构造方法测试失败");
+        } else {
+            System.out.println(questionnaire);
+            // 记录info级别的信息
+            log.info("Questionnaire: >>copyConstructor复制时QuestionnaireEntity不为null时的构造方法测试成功");
+        }
+    }
+
+    @Test
+    //测试复制时Questionnaire的Set方法
+    public void setTest1() {
+        Questionnaire questionnaire = new Questionnaire();
+        questionnaire.setId("1");
+        questionnaire.setQuestionnaireName("2");
+        questionnaire.setQuestionnaireDescription("3");
+        questionnaire.setProjectId("4");
+        questionnaire.setCreationDate(new Date());
+        questionnaire.setEndTime(new Date());
+        questionnaire.setCount(0);
+        questionnaire.setStatus("5");
+        questionnaire.setStartTime(new Date());
+        if (questionnaire == null) {
+            System.out.println("复制时Questionnaire的Set方法失败");
+            // 记录error级别的信息
+            log.error("Questionnaire: >>set复制时Questionnaire的Set方法测试失败");
+        } else {
+            System.out.println(questionnaire);
+            // 记录info级别的信息
+            log.info("Questionnaire: >>set复制时Questionnaire的Set方法测试成功");
         }
     }
 }

@@ -58,15 +58,10 @@ public class Project {
     }
 
     @PostConstruct
-    public void init() {
+    public void init() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
-        try {
-            this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
-            this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
-        } catch (ParseException e) {
-            // 处理日期格式化异常
-            e.printStackTrace();
-        }
+        this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
+        this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
     }
 }

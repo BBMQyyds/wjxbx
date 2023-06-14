@@ -29,7 +29,7 @@ public class UserControllerTests {
     public void loginTest() {
         LoginRequest loginRequest=new LoginRequest();
         loginRequest.setUsername("卜部美琴");
-        loginRequest.setPassword("123456");
+        loginRequest.setPassword("0e82d06faf930d8c28b77d85ee3ec93e");
         //调用userMapper的方法
         User user = userController.login(loginRequest);
         if (user == null) {

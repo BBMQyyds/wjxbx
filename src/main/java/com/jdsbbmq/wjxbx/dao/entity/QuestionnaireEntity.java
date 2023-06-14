@@ -23,14 +23,19 @@ public class QuestionnaireEntity {
 
     //复制
     public QuestionnaireEntity(Questionnaire questionnaire){
-        this.id = questionnaire.getId();
-        this.projectId = questionnaire.getProjectId();
-        this.questionnaireName = questionnaire.getQuestionnaireName();
-        this.questionnaireDescription = questionnaire.getQuestionnaireDescription();
-        this.creationDate = questionnaire.getCreationDate();
-        this.startTime = questionnaire.getStartTime();
-        this.endTime = questionnaire.getEndTime();
-        this.status = questionnaire.getStatus();
-        this.Count = questionnaire.getCount();
+        if(questionnaire == null){
+                //无参构造
+            return ;
+        }else{
+            this.id = questionnaire.getId();
+            this.projectId = questionnaire.getProjectId();
+            this.questionnaireName = questionnaire.getQuestionnaireName();
+            this.questionnaireDescription = questionnaire.getQuestionnaireDescription();
+            this.creationDate = questionnaire.getCreationDate();
+            this.startTime = questionnaire.getStartTime();
+            this.endTime = questionnaire.getEndTime();
+            this.status = questionnaire.getStatus();
+            this.Count = questionnaire.getCount();
+        }
     }
 }

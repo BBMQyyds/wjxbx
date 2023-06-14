@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Date;
 
 @SpringBootTest
@@ -32,4 +32,14 @@ public class ProjectTests {
             log.info("Project: >>allArgsConstructor全参构造测试成功");
         }
     }
+
+//    @Test
+////    测试Project的异常构造方法
+//    public void testInit() {
+//        Project project = new Project();
+//        ParseException exception = assertThrows(ParseException.class, project::init);
+//        // 在这里添加断言或其他逻辑进行测试验证
+//        // 例如，断言异常的消息或其他属性是否符合预期
+//        log.info("Project: >>testInit测试成功");
+//    }
 }

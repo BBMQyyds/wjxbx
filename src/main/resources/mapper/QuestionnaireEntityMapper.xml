@@ -10,7 +10,7 @@
     <select id="selectAllQuestionnaire" resultType="QuestionnaireEntity">
         select *
         from questionnaire
-        where user_id = #{userId}
+        where project_id = #{userId}
     </select>
 
     <!--根据ID查询问卷-->

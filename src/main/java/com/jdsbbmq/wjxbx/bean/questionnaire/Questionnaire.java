@@ -15,12 +15,12 @@ import java.util.Date;
 @NoArgsConstructor
 @Schema(description = "web问卷类")
 public class Questionnaire {
-    @Schema(description = "所属项目id")
-    @Size(min = 36, max = 36)
-    private String projectId;
     @Schema(description = "问卷id")
     @Size(min = 36, max = 36)
     private String id;
+    @Schema(description = "所属项目id")
+    @Size(min = 36, max = 36)
+    private String projectId;
     @Schema(description = "问卷名")
     @Size(min = 1, max = 12)
     private String questionnaireName;
@@ -41,14 +41,19 @@ public class Questionnaire {
     @Schema(description = "问卷答卷数量")
     private int Count;
     public Questionnaire(QuestionnaireEntity questionnaireEntity){
-        this.id = questionnaireEntity.getId();
-        this.projectId = questionnaireEntity.getProjectId();
-        this.questionnaireName = questionnaireEntity.getQuestionnaireName();
-        this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
-        this.creationDate = questionnaireEntity.getCreationDate();
-        this.startTime = questionnaireEntity.getStartTime();
-        this.endTime = questionnaireEntity.getEndTime();
-        this.status = questionnaireEntity.getStatus();
-        this.Count = questionnaireEntity.getCount();
+        if(questionnaireEntity==null){
+            return;
+        }else{
+            this.id = questionnaireEntity.getId();
+            this.projectId = questionnaireEntity.getProjectId();
+            this.questionnaireName = questionnaireEntity.getQuestionnaireName();
+            this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
+            this.creationDate = questionnaireEntity.getCreationDate();
+            this.startTime = questionnaireEntity.getStartTime();
+            this.endTime = questionnaireEntity.getEndTime();
+            this.status = questionnaireEntity.getStatus();
+            this.Count = questionnaireEntity.getCount();
+        }
+
     }
 }

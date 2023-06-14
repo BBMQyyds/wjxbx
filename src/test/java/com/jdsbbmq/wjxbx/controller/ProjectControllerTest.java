@@ -28,7 +28,7 @@ public class ProjectControllerTest {
     @Test
     // 查询所有项目
     public void selectAllProjectTest(){
-        String userId="53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        String userId="\"53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f\"";
         List<Project> projectList= projectController.selectAllProject(userId);
         if (CollectionUtils.isEmpty(projectList)) {
             System.out.println("查询失败");
@@ -60,7 +60,7 @@ public class ProjectControllerTest {
     @Test
     @Transactional
     // 插入项目
-    public void insertProjectTest() {
+    public void insertProjectTest() throws ParseException {
         Project project=new Project("1","2","3","4","5",new Date(),"6",new Date());
         int i=projectController.insertProject(project);
         // 记录info级别的信息

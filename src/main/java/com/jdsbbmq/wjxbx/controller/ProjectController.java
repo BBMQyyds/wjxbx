@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class ProjectController {
     // 插入项目
     @Operation(summary = "插入项目", description = "向数据库中插入该项目")
     @RequestMapping(value = "/insertProject", method = RequestMethod.POST)
-    public int insertProject(@RequestBody Project project) {
+    public int insertProject(@RequestBody Project project) throws ParseException {
         project.init();
         ProjectEntity projectEntity = project.toProjectEntity();
         return projectService.insertProject(projectEntity);
