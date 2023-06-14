@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,9 +27,9 @@ public class UserControllerTests {
     @Test
     // 登录
     public void loginTest() {
-        LoginRequest loginRequest=new LoginRequest();
+        LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername("卜部美琴");
-        loginRequest.setPassword("0e82d06faf930d8c28b77d85ee3ec93e");
+        loginRequest.setPassword("e10adc3949ba59abbe56e057f20f883e");
         //调用userMapper的方法
         User user = userController.login(loginRequest);
         if (user == null) {
@@ -79,7 +78,7 @@ public class UserControllerTests {
     @Test
     @Transactional
     // 插入用户
-    public void insertUserTest() throws ParseException {
+    public void insertUserTest() {
         //调用userMapper的方法
         User user = new User();
         user.setId(UUID.randomUUID().toString());
