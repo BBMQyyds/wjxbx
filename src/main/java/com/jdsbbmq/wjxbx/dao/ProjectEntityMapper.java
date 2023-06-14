@@ -22,7 +22,12 @@ public interface ProjectEntityMapper {
     // 根据id查询项目
     ProjectEntity selectProjectById(String id);
 
-    //增删改
+    //根据名称查询项目
+    List<ProjectEntity> selectProjectByName(String username);
+
+    /*
+        增删改
+     */
 
     // 插入项目
     int insertProject(ProjectEntity projectEntity);

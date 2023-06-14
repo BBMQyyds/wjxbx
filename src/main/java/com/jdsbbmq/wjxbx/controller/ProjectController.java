@@ -39,6 +39,19 @@ public class ProjectController {
         return projectEntity.toProject();
     }
 
+    //根据projectName查询项目
+    @Operation(summary = "根据名称查询项目", description = "能为用户查询他的项目")
+    @RequestMapping(value = "/selectProjectByName", method = RequestMethod.POST)
+    public List<Project> selectProjectByName(@RequestBody String projectName) {
+        List<ProjectEntity> projectEntityList = projectService.selectProjectByName(projectName.substring(1, projectName.length() - 1));
+        List<Project> projectList = new ArrayList<>();
+        for (ProjectEntity projectEntity : projectEntityList) {
+            projectList.add(projectEntity.toProject());
+        }
+        return projectList;
+    }
+
+
     /*
         增删改
      */

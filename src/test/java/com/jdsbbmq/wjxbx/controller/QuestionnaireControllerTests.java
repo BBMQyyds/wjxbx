@@ -58,7 +58,7 @@ public class QuestionnaireControllerTests {
     @Transactional
     // 新增问卷
     public void insertQuestionnaireTest(){
-        Questionnaire questionnaire = new Questionnaire("2", "4173bc9e-1a42-4747-97e2-775f3ac88714", "3", "4", new Date(),new Date(),new Date(),"5",0);
+        Questionnaire questionnaire = new Questionnaire("2", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(),new Date(),new Date(),"5",0);
         int result=questionnaireController.insertQuestionnaire(questionnaire);
         if (result == 0) {
             System.out.println("新增失败");
@@ -75,7 +75,7 @@ public class QuestionnaireControllerTests {
     @Transactional
     // 更新问卷
     public void updateQuestionnaireTest(){
-        Questionnaire questionnaire = new Questionnaire("1", "4173bc9e-1a42-4747-97e2-775f3ac88714", "3", "4", new Date(),new Date(),new Date(),"5",0);
+        Questionnaire questionnaire = new Questionnaire("1", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(),new Date(),new Date(),"5",0);
         int result=questionnaireController.updateQuestionnaire(questionnaire);
         if (result == 0) {
             System.out.println("更新失败");

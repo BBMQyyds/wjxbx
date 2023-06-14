@@ -79,7 +79,7 @@ public class QuestionnaireEntityMapperTests {
         //创建QuestionnaireEntityMapper
         QuestionnaireEntityMapper questionnaireEntityMapper = sqlSession.getMapper(QuestionnaireEntityMapper.class);
         //调用QuestionnaireEntityMapper的方法
-        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("2", "4173bc9e-1a42-4747-97e2-775f3ac88714", "3", "4", new Date(),new Date(),new Date(),"5",0);
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("2", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(),new Date(),new Date(),"5",0);
         int result = questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
         if (result == 0) {
             System.out.println("添加问卷失败");
@@ -104,7 +104,7 @@ public class QuestionnaireEntityMapperTests {
         //创建QuestionnaireEntityMapper
         QuestionnaireEntityMapper questionnaireEntityMapper = sqlSession.getMapper(QuestionnaireEntityMapper.class);
         //调用QuestionnaireEntityMapper的方法
-        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("2", "4173bc9e-1a42-4747-97e2-775f3ac88714", "3", "4", new Date(),new Date(),new Date(),"5",0);
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("2", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(),new Date(),new Date(),"5",0);
         int result = questionnaireEntityMapper.updateQuestionnaire(questionnaireEntity);
         if (result == 0) {
             System.out.println("更新问卷失败");

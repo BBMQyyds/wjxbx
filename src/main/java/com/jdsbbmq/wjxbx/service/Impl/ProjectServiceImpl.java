@@ -25,10 +25,16 @@ public class ProjectServiceImpl implements ProjectService {
         return projectEntityMapper.selectAllProject(userId);
     }
 
-    // 根据id查询项目
+    //根据id查询项目
     @Override
     public ProjectEntity selectProjectById(String id) {
         return projectEntityMapper.selectProjectById(id);
+    }
+
+    //根据projectName查询项目
+    @Override
+    public List<ProjectEntity> selectProjectByName(String projectName) {
+        return projectEntityMapper.selectProjectByName(projectName);
     }
 
 

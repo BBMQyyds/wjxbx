@@ -18,6 +18,11 @@
         from project
         where id = #{id}
     </select>
+    <select id="selectProjectByName" resultType="com.jdsbbmq.wjxbx.dao.entity.ProjectEntity">
+        select *
+        from project
+        where project_name = #{projectName}
+    </select>
 
     <!--增删改-->
 

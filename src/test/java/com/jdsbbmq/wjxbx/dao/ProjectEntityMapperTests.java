@@ -72,6 +72,29 @@ public class ProjectEntityMapperTests {
         sqlSession.close();
     }
 
+    @Test
+    //根据名称查询项目
+    public void selectProjectByNameTest() throws Exception{
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        //创建ProjectMapper对象，mybatis自动生成mapper代理对象
+        ProjectEntityMapper projectEntityMapper = sqlSession.getMapper(ProjectEntityMapper.class);
+        //调用projectMapper的方法
+        List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByName("风筝审批");
+        if (CollectionUtils.isEmpty(projectEntityList)) {
+            System.out.println("查询失败");
+            // 记录error级别的信息
+            log.error("ProjectEntityMapper: >>selectProjectByName根据名称查询项目测试失败");
+        } else {
+            System.out.println(projectEntityList);
+            // 记录info级别的信息
+            log.info("ProjectEntityMapper: >>selectProjectByName根据名称查询项目测试成功");
+        }
+        sqlSession.close();
+    }
+
     //增加项目
     @Test
     @Transactional

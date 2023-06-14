@@ -14,8 +14,11 @@ public interface ProjectService {
     //查询用户下方所有项目
     public List<ProjectEntity> selectAllProject(String userId);
 
-    // 根据id查询项目
+    //根据id查询项目
     public ProjectEntity selectProjectById(String id);
+
+    //根据projectName查询项目
+    public List<ProjectEntity> selectProjectByName(String projectName);
 
     /*
         增删改
