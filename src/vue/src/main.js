@@ -1,4 +1,4 @@
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import App from './App.vue';
 import router from '@/router';
 import ElementPlus from 'element-plus';
@@ -6,7 +6,6 @@ import VueCookies from 'vue-cookies';
 import 'element-plus/dist/index.css';
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/style/common.css';
-
 
 
 let app = createApp(App);

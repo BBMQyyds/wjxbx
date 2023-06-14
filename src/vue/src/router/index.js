@@ -14,6 +14,24 @@ const routes = [
         component: () => import('@/views/login'),
         meta: {keepAlive: false}
     },
+    {
+        name: 'home',
+        path: '/home',
+        component: () => import('@/views/home'),
+        meta: {keepAlive: false}
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: () => import('@/views/register'),
+        meta: {keepAlive: false}
+    },
+    {
+        name: 'index',
+        path: '/index',
+        component: () => import('@/views/index'),
+        meta: {keepAlive: false}
+    }
 ]
 
 // 创建路由实例并传递 `routes` 配置
