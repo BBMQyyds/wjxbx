@@ -1,15 +1,14 @@
 <template>
   <el-container>
-    <nav-bar></nav-bar>
+    <navBar></navBar>
   </el-container>
 </template>
 
 <script>
-
-import navBar from '../../components/navigationBar';
+import navBar from "../../components/navigationBar";
 
 export default {
-  name: "index",
+  name: "home",
   components: {
     navBar
   }

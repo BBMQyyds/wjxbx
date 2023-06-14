@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,8 +66,7 @@ public class UserController {
 
     // 插入用户（注册）
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
-    public int insertUser(@RequestBody @Valid User user) throws ParseException {
-        user.init();
+    public int insertUser(@RequestBody @Valid User user) {
         return userService.insertUser(user.toUserEntity());
     }
 

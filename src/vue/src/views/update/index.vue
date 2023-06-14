@@ -8,8 +8,8 @@
       <el-button id="index_btn" type="primary" @click="toIndex" disabled>返回首页</el-button>
       <el-button id="login_btn" type="primary" @click="toLogin">登录</el-button>
 
-      <el-card class="box-card register-card">
-        <span class="register-title">注册</span>
+      <el-card class="box-card update-card">
+        <span class="update-title">修改</span>
         <el-form
             ref="user"
             :model="user"
@@ -22,30 +22,30 @@
             </el-input>
           </el-form-item>
 
-          <el-form-item class="input" prop="password">
+          <el-form-item class="input" prop="originPassword">
             <el-input
-                v-model="user.password"
-                placeholder="设置密码（6-32位字母、数字或特殊符号）"
+                v-model="user.originPassword"
+                placeholder="请输入旧密码"
                 show-password
                 type="password">
             </el-input>
           </el-form-item>
 
-          <el-form-item class="input" prop="confirm">
+          <el-form-item class="input" prop="newPassword">
             <el-input
-                v-model="user.confirm"
-                placeholder="确认密码"
+                v-model="user.newPassword"
+                placeholder="请输入新密码"
                 show-password
                 type="password">
             </el-input>
           </el-form-item>
           <el-form-item class="item">
-            <el-button id="create" type="primary" @click="register">创建用户</el-button>
+            <el-button id="update" type="primary" @click="update">修改密码</el-button>
           </el-form-item>
           <el-form-item class="item">
             <a id="register">
-              <span id="a1">已有账号？</span>
-              <span id="a2" @click="toLogin">立即登录</span>
+              <span id="a1">没有账号？</span>
+              <span id="a2" @click="toRegister">立即注册</span>
             </a>
           </el-form-item>
         </el-form>
@@ -61,15 +61,15 @@ import router from "@/router";
 import CryptoJS from 'crypto-js'
 
 export default {
-  name: "register",
+  name: "update",
   inject: ['reload'],
   data() {
     return {
       name: '',
       user: {
         username: "",
-        password: "",
-        confirm: "",
+        originPassword: "",
+        newPassword: "",
       },
       auto: false,
       rules: {
@@ -77,11 +77,11 @@ export default {
           {required: true, message: '用户名不能为空', trigger: 'blur'},
           {min: 2, max: 16, message: '长度在 2 到 16 个字符', trigger: 'blur'}
         ],
-        password: [
+        originPassword: [
           {required: true, message: '密码不能为空', trigger: 'blur'},
           {min: 6, max: 32, message: '长度在 6 到 32 个字符', trigger: 'blur'}
         ],
-        confirm: [
+        newPassword: [
           {required: true, message: '密码不能为空', trigger: 'blur'},
           {min: 6, max: 32, message: '长度在 6 到 32 个字符', trigger: 'blur'}
         ],
@@ -89,7 +89,7 @@ export default {
     };
   },
   methods: {
-    register() {
+    update() {
       //进行表单验证
       this.$refs.user.validate(valid => {
         //表单验证成功
@@ -102,15 +102,15 @@ export default {
             this.reload();
             return;
           }
-          request.post('/register', JSON.stringify({
+          request.post('/updatePwd', JSON.stringify({
             username: this.user.username,
-            password: CryptoJS.MD5(this.user.password).toString(),
-            createdBy: this.user.username,
+            originPassword: CryptoJS.MD5(this.user.originPassword).toString(),
+            newPassword: CryptoJS.MD5(this.user.newPassword).toString(),
             lastUpdatedBy: this.user.username,
           })).then(res => {
             if (res.data === 1) {
               this.$message({
-                message: '创建成功！',
+                message: '修改成功！',
                 type: 'success',
                 offset: 50,
                 duration: 500
@@ -120,7 +120,7 @@ export default {
               })
             } else {
               this.$message({
-                message: '创建失败，请重新注册',
+                message: '用户名或密码错误，请重新输入',
                 type: 'error'
               });
               this.reload();
@@ -141,6 +141,12 @@ export default {
       console.log("toLogin");
       router.push({
         path: '/login',
+      })
+    },
+    toRegister() {
+      console.log("toRegister");
+      router.push({
+        path: '/register',
       })
     },
     toIndex() {
@@ -180,7 +186,7 @@ el-main {
   cursor: pointer;
 }
 
-.register-card {
+.update-card {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -193,7 +199,7 @@ el-main {
   padding: 10px;
 }
 
-.register-title {
+.update-title {
   font-size: 24px;
   font-weight: bold;
   color: #333333;
@@ -254,11 +260,11 @@ el-main {
   text-align: center;
 }
 
-#create {
+#update {
   margin: auto;
 }
 
-#create:hover {
+#update:hover {
   background-color: #FF8C00;
   border: #FF8C00;
 }

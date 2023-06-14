@@ -3,15 +3,13 @@
   <el-container>
     <img id="bg" alt="bg" src="../../assets/img/login_bg.jpg">
     <el-main>
+      <!--<img id="logo" alt="logo" src="../../assets/img/logo高清.png" @click="toIndex">-->
       <img id="logo" alt="logo" src="../../assets/img/logo高清.png">
-
-      <el-button id="register_btn" type="primary" @click="register">注册</el-button>
-      <el-button id="index_btn" type="primary" @click="toIndex">返回首页</el-button>
+      <el-button id="index_btn" type="primary" @click="toIndex" disabled>返回首页</el-button>
+      <el-button id="register_btn" type="primary" @click="toRegister">注册</el-button>
 
       <el-card class="box-card login-card">
-        <span class="login-title">在线申请和审批系统</span>
-        <span class="login-tip">20217033 梁朝阳</span>
-        <span class="login-tip2">初始密码：123456</span>
+        <span class="login-title">登录</span>
         <el-form
             ref="user"
             :model="user"
@@ -19,12 +17,12 @@
             label-width="auto">
           <el-form-item class="input" prop="username">
             <el-input
-                v-model="user.account"
-                placeholder="请输入账号">
+                v-model="user.username"
+                placeholder="用户名">
             </el-input>
           </el-form-item>
 
-          <el-form-item class="item" label="密码" prop="pwd">
+          <el-form-item class="input" prop="password">
             <el-input
                 v-model="user.password"
                 placeholder="请输入登录密码"
@@ -37,14 +35,14 @@
               <el-checkbox id="auto" v-model="auto">
                 下次自动登录
               </el-checkbox>
-              <a id="forget" @click="forget">忘记用户名/密码？</a>
+              <a id="update" @click="toUpdate">修改密码</a>
             </div>
           </el-form-item>
           <el-form-item class="item">
             <el-button id="login" type="primary" @click="login">登录</el-button>
           </el-form-item>
           <el-form-item class="item">
-            <a id="register" @click="register">立即注册</a>
+            <a id="register" @click="toRegister">立即注册</a>
           </el-form-item>
         </el-form>
       </el-card>
@@ -55,22 +53,38 @@
 <script>
 
 import request from "@/api";
+import router from "@/router";
+import CryptoJS from 'crypto-js'
 
 export default {
   name: "login",
   inject: ['reload'],
+  created() {
+    if (localStorage.getItem("username") !== null && localStorage.getItem("password") !== null) {
+      this.user.username = localStorage.getItem("username");
+      this.user.password = localStorage.getItem("password");
+      if (localStorage.getItem("auto") !== null) {
+        this.auto = true;
+      }
+    }
+  },
+  mounted() {
+    if (localStorage.getItem("auto") !== null) {
+      this.login();
+    }
+  },
   data() {
     return {
       name: '',
       user: {
-        account: "",
-        pwd: ""
+        username: "",
+        password: ""
       },
       auto: false,
       rules: {
         username: [
-          {required: true, message: '昵称不能为空', trigger: 'blur'},
-          {min: 2, max: 16, message: '长度在 2 到 23 个字符', trigger: 'blur'}
+          {required: true, message: '用户名不能为空', trigger: 'blur'},
+          {min: 2, max: 16, message: '长度在 2 到 16 个字符', trigger: 'blur'}
         ],
         password: [
           {required: true, message: '密码不能为空', trigger: 'blur'},
@@ -87,9 +101,9 @@ export default {
         if (valid) {
           request.post('/login', JSON.stringify({
             username: this.user.username,
-            password: this.user.password,
+            password: CryptoJS.MD5(this.user.password).toString(),
           })).then(res => {
-            if ('username' in res.data) {
+            if (res.data !== null && res.data !== "") {
               this.$message({
                 message: '登录成功！',
                 type: 'success',
@@ -103,15 +117,27 @@ export default {
                 localStorage.setItem("auto", "true");
               } else {
                 localStorage.removeItem("auto");
+                localStorage.removeItem("username");
+                localStorage.removeItem("password");
               }
 
               sessionStorage.setItem("username", this.user.username);
               sessionStorage.setItem("password", this.user.password);
+
+              router.push({
+                path: '/home',
+                query: {
+                  username: this.user.username
+                }
+              })
             } else {
               this.$message({
                 message: '用户名或密码不正确，请重新输入',
                 type: 'error'
               });
+              localStorage.removeItem("auto");
+              localStorage.removeItem("username");
+              localStorage.removeItem("password");
               this.reload();
             }
           }).catch(err => {
@@ -126,14 +152,23 @@ export default {
         }
       });
     },
-    register() {
+    toRegister() {
       console.log("register");
+      router.push({
+        path: '/register',
+      })
     },
-    forget() {
-      console.log("forget");
+    toUpdate() {
+      console.log("update");
+      router.push({
+        path: '/update',
+      })
     },
     toIndex() {
       console.log("toIndex");
+      router.push({
+        path: '/index',
+      })
     }
   },
 };
@@ -200,33 +235,37 @@ el-main {
   flex-basis: 90%;
 }
 
-
 #register_btn {
-  position: absolute;
-  top: 4%;
-  right: 12%;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  position: relative;
   z-index: 15;
+  color: #FFFFFF;
   background-color: transparent;
-  border: 1px solid #ffffff;
+  border: 1px solid #FFFFFF;
   border-radius: 50px;
 }
 
 #index_btn {
-  position: absolute;
-  top: 4%;
-  right: 4%;
+  float: right;
+  margin-right: 40px;
+  margin-top: 20px;
+  position: relative;
+  right: 0;
   z-index: 15;
+  color: #FFFFFF;
   background-color: transparent;
-  border: 1px solid #ffffff;
+  border: 1px solid #FFFFFF;
   border-radius: 50px;
 }
 
 #register_btn:hover {
-  border: 2px solid #ffffff;
+  border: 2px solid #FFFFFF;
 }
 
 #index_btn:hover {
-  border: 2px solid #ffffff;
+  border: 2px solid #FFFFFF;
 }
 
 .input {
@@ -247,18 +286,23 @@ el-main {
   color: #C0C0C0;
 }
 
-#forget {
-  margin-left: 160px;
+#update {
+  margin-left: 210px;
   font-size: 12px;
-  color: #000000;
 }
 
-#forget:hover {
+#update:hover {
+  cursor: pointer;
   color: #F39C12;
 }
 
 #login {
   margin: auto;
+}
+
+#login:hover {
+  background-color: #FF8C00;
+  border: #FF8C00;
 }
 
 #register {
@@ -268,7 +312,8 @@ el-main {
 }
 
 #register:hover {
-  color: #308DEE;
+  cursor: pointer;
+  color: #207EFF;
 }
 
 :deep(input) {
@@ -279,10 +324,6 @@ el-main {
 
 a {
   text-decoration: underline;
-}
-
-a:hover {
-  cursor: pointer;
 }
 
 </style>

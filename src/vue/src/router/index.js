@@ -9,6 +9,12 @@ const routes = [
         meta: {keepAlive: false}
     },
     {
+        name: 'index',
+        path: '/index',
+        component: () => import('@/views/index'),
+        meta: {keepAlive: false}
+    },
+    {
         name: 'login',
         path: '/login',
         component: () => import('@/views/login'),
@@ -27,9 +33,9 @@ const routes = [
         meta: {keepAlive: false}
     },
     {
-        name: 'index',
-        path: '/index',
-        component: () => import('@/views/index'),
+        name: 'update',
+        path: '/update',
+        component: () => import('@/views/update'),
         meta: {keepAlive: false}
     }
 ]
