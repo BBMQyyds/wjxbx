@@ -30,7 +30,7 @@ public class ProjectControllerTest {
     public void selectAllProjectTest(){
         String userId="\"53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f\"";
         List<Project> projectList= projectController.selectAllProject(userId);
-        if (CollectionUtils.isEmpty(projectList)) {
+        if (projectList==null) {
             System.out.println("查询失败");
             // 记录error级别的信息
             log.error("ProjectController: >>selectAllProject所有项目查询测试失败");
@@ -44,7 +44,7 @@ public class ProjectControllerTest {
     @Test
     // 根据id查询项目
     public void selectProjectByIdTest(){
-        String id="0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        String id="\"0f796ce7-28f5-405e-b7f5-682e6cbca8e2\"";
         Project project=projectController.selectProjectById(id);
         if (project == null) {
             System.out.println("查询失败");

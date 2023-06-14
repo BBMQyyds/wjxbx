@@ -33,13 +33,4 @@ public class ProjectTests {
         }
     }
 
-//    @Test
-////    测试Project的异常构造方法
-//    public void testInit() {
-//        Project project = new Project();
-//        ParseException exception = assertThrows(ParseException.class, project::init);
-//        // 在这里添加断言或其他逻辑进行测试验证
-//        // 例如，断言异常的消息或其他属性是否符合预期
-//        log.info("Project: >>testInit测试成功");
-//    }
 }
