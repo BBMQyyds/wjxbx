@@ -2,12 +2,15 @@ package com.jdsbbmq.wjxbx.bean.user;
 
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.PostConstruct;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Size;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
@@ -65,5 +68,13 @@ public class User {
         return userEntity;
     }
 
-
+    @PostConstruct
+    public void init() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
+        this.startTime= dateFormat.parse(dateFormat.format(new Date())); // 设置默认的开始时间
+        this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
+        this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
+        this.status=1; // 设置默认的状态
+    }
 }

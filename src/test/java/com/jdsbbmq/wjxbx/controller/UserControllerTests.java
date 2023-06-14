@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.UUID;
 
@@ -78,7 +79,7 @@ public class UserControllerTests {
     @Test
     @Transactional
     // 插入用户
-    public void insertUserTest() {
+    public void insertUserTest() throws ParseException {
         //调用userMapper的方法
         User user = new User();
         user.setId(UUID.randomUUID().toString());
