@@ -125,7 +125,7 @@ public class UserControllerTests {
     @Transactional
     //更新密码
     public void updatePasswordTest(){
-        ChangeRequest changeRequest = new ChangeRequest("风筝追风","123","123","风筝追风");
+        ChangeRequest changeRequest = new ChangeRequest("风筝追风","123456","123","风筝追风");
         //调用userMapper的方法
         int i = userController.updatePassword(changeRequest);
         if (i == 0||i==1) {
