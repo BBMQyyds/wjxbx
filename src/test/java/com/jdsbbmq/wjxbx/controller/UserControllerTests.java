@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
 import jakarta.annotation.Resource;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.UUID;
 
@@ -78,7 +80,7 @@ public class UserControllerTests {
     @Test
     @Transactional
     // 插入用户
-    public void insertUserTest() {
+    public void insertUserTest() throws ParseException {
         //调用userMapper的方法
         User user = new User();
         user.setId(UUID.randomUUID().toString());
@@ -116,6 +118,24 @@ public class UserControllerTests {
             System.out.println(i);
             // 记录info级别的信息
             log.info("UserController: >>updateUser用户更新测试成功");
+        }
+    }
+
+    @Test
+    @Transactional
+    //更新密码
+    public void updatePasswordTest(){
+        ChangeRequest changeRequest = new ChangeRequest("风筝追风","123","123","风筝追风");
+        //调用userMapper的方法
+        int i = userController.updatePassword(changeRequest);
+        if (i == 0||i==1) {
+            System.out.println(i);
+            // 记录info级别的信息
+            log.info("UserController: >>updatePassword用户更新密码测试成功");
+        } else {
+            System.out.println("更新失败");
+            // 记录error级别的信息
+            log.error("UserController: >>updatePassword用户更新密码测试失败");
         }
     }
 

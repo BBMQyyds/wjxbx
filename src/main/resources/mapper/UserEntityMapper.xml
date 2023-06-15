@@ -61,13 +61,18 @@
     <!--
         辅助功能
     -->
-
-    <!--根据用户名查询用户id-->
-    <select id="selectIdByUsername" resultType="String">
-        select id
+    <!--查询用户登录密码-->
+    <select id="selectPasswordByUsername" resultType="string">
+        select password
         from user
         where username = #{username}
     </select>
+    <!--修改用户密码-->
+    <update id="updatePassword">
+        update user
+        set password = #{password}
+        where username = #{username}
+    </update>
 
 
     <!--

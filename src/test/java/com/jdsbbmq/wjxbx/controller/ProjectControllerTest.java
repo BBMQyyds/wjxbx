@@ -59,7 +59,7 @@ public class ProjectControllerTest {
 
     @Test
     // 根据名称查询项目
-public void selectProjectByNameTest(){
+    public void selectProjectByNameTest(){
         String projectName="\"风筝审批\"";
         List<Project> projectList=projectController.selectProjectByName(projectName);
         if (CollectionUtils.isEmpty(projectList)) {

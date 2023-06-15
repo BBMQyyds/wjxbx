@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
+import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.dao.UserEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import com.jdsbbmq.wjxbx.service.UserService;
@@ -52,4 +53,13 @@ public class UserServiceImpl implements UserService {
         return userEntityMapper.deleteUserById(id);
     }
 
+    @Override
+    public int changePassword(ChangeRequest changeRequest) {
+        if(changeRequest.getOriginPassword().equals(userEntityMapper.selectPasswordByUsername(changeRequest.getUsername()))){
+            userEntityMapper.updatePassword(changeRequest.getUsername(),changeRequest.getNewPassword());
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }
