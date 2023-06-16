@@ -1,10 +1,10 @@
 <template>
 
   <el-container>
-    <img id="bg" alt="bg" src="../../assets/img/login_bg.jpg">
+    <img id="bg" alt="bg" src="../../assets/img/bg/login_bg.jpg">
     <el-main>
       <!--<img id="logo" alt="logo" src="../../assets/img/logo高清.png" @click="toIndex">-->
-      <img id="logo" alt="logo" src="../../assets/img/logo高清.png">
+      <img id="logo" alt="logo" src="../../assets/img/logo/logo高清.png">
       <el-button id="index_btn" type="primary" @click="toIndex" disabled>返回首页</el-button>
       <el-button id="register_btn" type="primary" @click="toRegister">注册</el-button>
 
@@ -60,6 +60,11 @@ export default {
   name: "login",
   inject: ['reload'],
   created() {
+    request.post("/selectUserById", "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f").then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    });
     if (localStorage.getItem("username") !== null && localStorage.getItem("password") !== null) {
       this.user.username = localStorage.getItem("username");
       this.user.password = localStorage.getItem("password");

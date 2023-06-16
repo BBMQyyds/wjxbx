@@ -1,10 +1,10 @@
 <template>
 
   <el-container>
-    <img id="bg" alt="bg" src="../../assets/img/login_bg.jpg">
+    <img id="bg" alt="bg" src="../../assets/img/bg/login_bg.jpg">
     <el-main>
       <!--<img id="logo" alt="logo" src="../../assets/img/logo高清.png" @click="toIndex">-->
-      <img id="logo" alt="logo" src="../../assets/img/logo高清.png">
+      <img id="logo" alt="logo" src="../../assets/img/logo/logo高清.png">
       <el-button id="index_btn" type="primary" @click="toIndex" disabled>返回首页</el-button>
       <el-button id="login_btn" type="primary" @click="toLogin">登录</el-button>
 
