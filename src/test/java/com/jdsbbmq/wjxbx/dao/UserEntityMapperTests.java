@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
@@ -177,8 +178,8 @@ public class UserEntityMapperTests {
     }
 
     @Test
-    // 根据用户名查询用户id
-    public void selectUserIdByUsernameTest() throws Exception {
+    // 根据用户名查询密码
+    public void selectPasswordByUsernameTest() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -186,17 +187,38 @@ public class UserEntityMapperTests {
         //创建UserMapper对象，mybatis自动生成mapper代理对象
         UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
         //调用userMapper的方法
-        String id = userEntityMapper.selectIdByUsername("卜部美琴");
-        if (id == null) {
+        String password = userEntityMapper.selectPasswordByUsername("风筝追风");
+        if(password!=null){
+            System.out.println("查询成功");
+            // 记录info级别的信息
+            log.info("UserEntityMapper: >>selectPasswordByUsername用户密码查询测试成功");
+        }else{
             System.out.println("查询失败");
             // 记录error级别的信息
-            log.error("UserEntityMapper: >>selectUserIdByUsername用户查询测试失败");
-        } else {
-            System.out.println(id);
-            // 记录info级别的信息
-            log.info("UserEntityMapper: >>selectUserIdByUsername用户查询测试成功");
+            log.error("UserEntityMapper: >>selectPasswordByUsername用户密码查询测试失败");
         }
-        sqlSession.close();
     }
 
+    @Test
+    @Transactional
+    //修改密码
+    public void updatePasswordTest() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        //创建UserMapper对象，mybatis自动生成mapper代理对象
+        UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
+        //调用userMapper的方法
+        int i = userEntityMapper.updatePassword("风筝追风","123456");
+        if(i!=0){
+            System.out.println("修改成功");
+            // 记录info级别的信息
+            log.info("UserEntityMapper: >>updatePasswordByUsername用户密码修改测试成功");
+        }else{
+            System.out.println("修改失败");
+            // 记录error级别的信息
+            log.error("UserEntityMapper: >>updatePasswordByUsername用户密码修改测试失败");
+        }
+    }
 }

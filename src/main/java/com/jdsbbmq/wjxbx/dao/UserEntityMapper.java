@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.dao;
 
+import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.CrudRepository;
@@ -43,7 +44,9 @@ public interface UserEntityMapper {
         辅助功能
      */
 
-    //根据用户名查询用户id
-    String selectIdByUsername(String username);
+    //获得登录密码
+    String selectPasswordByUsername(String username);
 
+    //修改登录密码
+    int updatePassword(String username,String password);
 }
