@@ -46,7 +46,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "未找到对应的用户信息")
     })
     public User selectUserById(@RequestBody String id) {
-        UserEntity userEntity = userService.selectUserById(id);
+        UserEntity userEntity = userService.selectUserById(id.substring(1, id.length() - 1));
         return userEntity.toUser();
     }
 

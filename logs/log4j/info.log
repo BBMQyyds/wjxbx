@@ -3582,3 +3582,4 @@
 2023-06-16 19:17:27[ INFO ]UserEntityMapper: >>selectPasswordByUsername用户密码查询测试成功
 2023-06-16 19:17:27[ INFO ]UserEntityMapper: >>insertUser用户插入测试成功
 2023-06-16 19:17:28[ INFO ]UserEntityMapper: >>selectUser用户查询测试成功
+2023-06-16 19:27:13[ INFO ]UserController: >>selectUserById根据id选取用户方法测试成功
