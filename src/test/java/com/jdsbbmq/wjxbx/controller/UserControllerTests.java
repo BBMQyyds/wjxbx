@@ -1,11 +1,9 @@
 package com.jdsbbmq.wjxbx.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
-import jakarta.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +14,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
-
-import java.text.ParseException;
-import java.util.List;
 import java.util.UUID;
 
 @AutoConfigureMockMvc
 @SpringBootTest
 public class UserControllerTests {
     Logger log = Logger.getLogger(UserControllerTests.class);
-    @Resource
-    private UserController userController;
     @Autowired
     private MockMvc mockMvc;
     @Test
@@ -80,11 +72,10 @@ public class UserControllerTests {
     // 根据id查询用户
     public void selectUserByIdTest() throws Exception {
         String id="53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
-        String jsonProject = new ObjectMapper().writeValueAsString(id);
         //调用userMapper的方法
         mockMvc.perform(MockMvcRequestBuilders.post("/selectUserById")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonProject))
+                        .content(id))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(result -> {
                     int status = result.getResponse().getStatus();

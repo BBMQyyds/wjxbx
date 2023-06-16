@@ -44,17 +44,19 @@ public class Project {
     @Schema(description = "项目最后更新时间",defaultValue = "2021-07-01 00:00:00")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdateDate;
-    public ProjectEntity toProjectEntity() {
-        ProjectEntity projectEntity = new ProjectEntity();
-        projectEntity.setId(this.id);
-        projectEntity.setUserId(this.userId);
-        projectEntity.setProjectName(this.projectName);
-        projectEntity.setProjectContent(this.projectContent);
-        projectEntity.setCreatedBy(this.createdBy);
-        projectEntity.setCreationDate(this.creationDate);
-        projectEntity.setLastUpdatedBy(this.lastUpdatedBy);
-        projectEntity.setLastUpdateDate(this.lastUpdateDate);
-        return projectEntity;
+    public Project(ProjectEntity projectEntity){
+        if(projectEntity==null){
+            return;
+        }else{
+            this.id = projectEntity.getId();
+            this.userId = projectEntity.getUserId();
+            this.projectName = projectEntity.getProjectName();
+            this.projectContent = projectEntity.getProjectContent();
+            this.createdBy = projectEntity.getCreatedBy();
+            this.creationDate = projectEntity.getCreationDate();
+            this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
+            this.lastUpdateDate = projectEntity.getLastUpdateDate();
+        }
     }
 
     @PostConstruct

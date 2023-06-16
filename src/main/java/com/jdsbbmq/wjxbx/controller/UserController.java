@@ -34,7 +34,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody LoginRequest loginRequest) {
         UserEntity userEntity = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
-        return userEntity.toUser();
+        return new User(userEntity);
     }
 
 
@@ -46,8 +46,8 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "未找到对应的用户信息")
     })
     public User selectUserById(@RequestBody String id) {
-        UserEntity userEntity = userService.selectUserById(id.substring(1, id.length() - 1));
-        return userEntity.toUser();
+        UserEntity userEntity = userService.selectUserById(id);
+        return new User(userEntity);
     }
 
     // 查询所有用户
@@ -57,7 +57,7 @@ public class UserController {
         List<UserEntity> userEntityList = userService.selectAll();
         List<User> userList = new ArrayList<>();
         for (UserEntity userEntity : userEntityList) {
-            userList.add(userEntity.toUser());
+            userList.add(new User(userEntity));
         }
         return userList;
     }
@@ -73,7 +73,7 @@ public class UserController {
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
     public int insertUser(@RequestBody @Valid User user) throws ParseException {
         user.init();
-        return userService.insertUser(user.toUserEntity());
+        return userService.insertUser(new UserEntity(user));
     }
 
     //更新(修改）
@@ -82,7 +82,7 @@ public class UserController {
     @Operation(summary = "更新用户", description = "更新某些用户的数据")
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     public int updateUser(@RequestBody @Valid User user) {
-        return userService.updateUser(user.toUserEntity());
+        return userService.updateUser(new UserEntity(user));
     }
 
     //更新密码

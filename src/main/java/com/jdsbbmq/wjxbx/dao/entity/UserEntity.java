@@ -26,18 +26,20 @@ public class UserEntity {
     private String lastUpdatedBy;
     private Date lastUpdateDate;
 
-    public User toUser() {
-        User user = new User();
-        user.setId(this.id);
-        user.setUsername(this.username);
-        user.setPassword(this.password);
-        user.setStartTime(this.startTime);
-        user.setStopTime(this.stopTime);
-        user.setStatus(this.status);
-        user.setCreatedBy(this.createdBy);
-        user.setCreationDate(this.creationDate);
-        user.setLastUpdatedBy(this.lastUpdatedBy);
-        user.setLastUpdateDate(this.lastUpdateDate);
-        return user;
+    public UserEntity(User user) {
+        if (user == null) {
+            return;
+        } else {
+            this.id = user.getId();
+            this.username = user.getUsername();
+            this.password = user.getPassword();
+            this.startTime = user.getStartTime();
+            this.stopTime = user.getStopTime();
+            this.status = user.getStatus();
+            this.createdBy = user.getCreatedBy();
+            this.creationDate = user.getCreationDate();
+            this.lastUpdatedBy = user.getLastUpdatedBy();
+            this.lastUpdateDate = user.getLastUpdateDate();
+        }
     }
 }

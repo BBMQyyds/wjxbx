@@ -24,16 +24,18 @@ public class ProjectEntity {
     private Date creationDate;
     private String lastUpdatedBy;
     private Date lastUpdateDate;
-    public Project toProject(){
-        Project project = new Project();
-        project.setId(this.id);
-        project.setUserId(this.userId);
-        project.setProjectName(this.projectName);
-        project.setProjectContent(this.projectContent);
-        project.setCreatedBy(this.createdBy);
-        project.setCreationDate(this.creationDate);
-        project.setLastUpdatedBy(this.lastUpdatedBy);
-        project.setLastUpdateDate(this.lastUpdateDate);
-        return project;
+    public ProjectEntity(Project project){
+        if(project==null){
+            return;
+        }else{
+            this.id = project.getId();
+            this.userId = project.getUserId();
+            this.projectName = project.getProjectName();
+            this.projectContent = project.getProjectContent();
+            this.createdBy = project.getCreatedBy();
+            this.creationDate = project.getCreationDate();
+            this.lastUpdatedBy = project.getLastUpdatedBy();
+            this.lastUpdateDate = project.getLastUpdateDate();
+        }
     }
 }

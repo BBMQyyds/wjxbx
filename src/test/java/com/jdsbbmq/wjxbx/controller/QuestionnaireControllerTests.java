@@ -2,7 +2,6 @@ package com.jdsbbmq.wjxbx.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
-import jakarta.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

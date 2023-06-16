@@ -31,4 +31,19 @@ public class ProjectEntityTests {
             log.info("Project: >>allArgsConstructor全参构造测试成功");
         }
     }
+
+    @Test
+    //测试复制时Project为null时的构造方法
+    public void copyConstructorTest1() {
+        ProjectEntity projectEntity = new ProjectEntity(null);
+        if (projectEntity  == null) {
+            System.out.println("复制时Project为null时的构造方法失败");
+            // 记录error级别的信息
+            log.error("Project: >>copyConstructor复制时Project为null时的构造方法测试失败");
+        } else {
+            System.out.println(projectEntity);
+            // 记录info级别的信息
+            log.info("Project: >>copyConstructor复制时Project为null时的构造方法测试成功");
+        }
+    }
 }

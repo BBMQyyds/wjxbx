@@ -53,19 +53,21 @@ public class User {
     private Date lastUpdateDate;
 
     //user->userEntity
-    public UserEntity toUserEntity() {
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(this.id);
-        userEntity.setUsername(this.username);
-        userEntity.setPassword(this.password);
-        userEntity.setStartTime(this.startTime);
-        userEntity.setStopTime(this.stopTime);
-        userEntity.setStatus(this.status);
-        userEntity.setCreatedBy(this.createdBy);
-        userEntity.setCreationDate(this.creationDate);
-        userEntity.setLastUpdatedBy(this.lastUpdatedBy);
-        userEntity.setLastUpdateDate(this.lastUpdateDate);
-        return userEntity;
+    public User(UserEntity userEntity) {
+        if (userEntity == null) {
+            return;
+        } else {
+            this.id = userEntity.getId();
+            this.username = userEntity.getUsername();
+            this.password = userEntity.getPassword();
+            this.startTime = userEntity.getStartTime();
+            this.stopTime = userEntity.getStopTime();
+            this.status = userEntity.getStatus();
+            this.createdBy = userEntity.getCreatedBy();
+            this.creationDate = userEntity.getCreationDate();
+            this.lastUpdatedBy = userEntity.getLastUpdatedBy();
+            this.lastUpdateDate = userEntity.getLastUpdateDate();
+        }
     }
 
     @PostConstruct

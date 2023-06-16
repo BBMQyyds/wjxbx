@@ -2,7 +2,6 @@ package com.jdsbbmq.wjxbx.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdsbbmq.wjxbx.bean.project.Project;
-import jakarta.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +27,10 @@ public class ProjectControllerTest {
     @Test
     // 查询所有项目
     public void selectAllProjectTest() throws Exception {
-        String userId = "\"53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f\"";
-        String jsonProject = new ObjectMapper().writeValueAsString(userId);
+        String userId = "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
         mockMvc.perform(MockMvcRequestBuilders.post("/selectAllProject")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonProject))
+                        .content(userId))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(result -> {
                     int status = result.getResponse().getStatus();
@@ -50,10 +48,9 @@ public class ProjectControllerTest {
     // 根据id查询项目
     public void selectProjectByIdTest() throws Exception {
         String id = "0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
-        String jsonProject = new ObjectMapper().writeValueAsString(id);
         mockMvc.perform(MockMvcRequestBuilders.post("/selectProjectById")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonProject))
+                        .content(id))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(result -> {
                     int status = result.getResponse().getStatus();
@@ -74,10 +71,9 @@ public class ProjectControllerTest {
     // 根据名称查询项目
     public void selectProjectByNameTest() throws Exception {
         String projectName = "风筝审批";
-        String jsonProject = new ObjectMapper().writeValueAsString(projectName);
         mockMvc.perform(MockMvcRequestBuilders.post("/selectProjectByName")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonProject))
+                        .content(projectName))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(result -> {
                     int status = result.getResponse().getStatus();

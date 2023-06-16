@@ -107,7 +107,7 @@ public class ProjectEntityMapperTests {
         ProjectEntityMapper projectEntityMapper = sqlSession.getMapper(ProjectEntityMapper.class);
         //调用projectMapper的方法
         Project project=new Project("1","2","3","4","5",new Date(),"6",new Date());
-        ProjectEntity projectEntity = project.toProjectEntity();
+        ProjectEntity projectEntity = new ProjectEntity(project);
         int result = projectEntityMapper.insertProject(projectEntity);
         if (result == 0) {
             System.out.println("增加失败");
@@ -157,7 +157,7 @@ public class ProjectEntityMapperTests {
         ProjectEntityMapper projectEntityMapper = sqlSession.getMapper(ProjectEntityMapper.class);
         //调用projectMapper的方法
         Project project=new Project("0f796ce7-28f5-405e-b7f5-682e6cbca8e2","2","3","4","5",new Date(),"6",new Date());
-        ProjectEntity projectEntity = project.toProjectEntity();
+        ProjectEntity projectEntity=new ProjectEntity(project);
         int result = projectEntityMapper.updateProject(projectEntity);
         if (result == 0) {
             System.out.println("修改失败");

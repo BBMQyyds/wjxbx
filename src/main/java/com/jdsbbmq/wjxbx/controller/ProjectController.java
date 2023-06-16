@@ -23,10 +23,10 @@ public class ProjectController {
     @Operation(summary = "用户所有项目接口", description = "能为用户列出他的所有项目")
     @RequestMapping(value = "/selectAllProject", method = RequestMethod.POST)
     public List<Project> selectAllProject(@RequestBody String userId) {
-        List<ProjectEntity> projectEntityList = projectService.selectAllProject(userId.substring(1, userId.length() - 1));
+        List<ProjectEntity> projectEntityList = projectService.selectAllProject(userId);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
-            projectList.add(projectEntity.toProject());
+            projectList.add(new Project(projectEntity));
         }
         return projectList;
     }
@@ -35,18 +35,18 @@ public class ProjectController {
     @Operation(summary = "根据id查询项目", description = "能为用户查询他的某个项目")
     @RequestMapping(value = "/selectProjectById", method = RequestMethod.POST)
     public Project selectProjectById(@RequestBody String id) {
-        ProjectEntity projectEntity = projectService.selectProjectById(id.substring(1, id.length() - 1));
-        return projectEntity.toProject();
+        ProjectEntity projectEntity = projectService.selectProjectById(id);
+        return new Project(projectEntity);
     }
 
     //根据projectName查询项目
     @Operation(summary = "根据名称查询项目", description = "能为用户查询他的项目")
     @RequestMapping(value = "/selectProjectByName", method = RequestMethod.POST)
     public List<Project> selectProjectByName(@RequestBody String projectName) {
-        List<ProjectEntity> projectEntityList = projectService.selectProjectByName(projectName.substring(1, projectName.length() - 1));
+        List<ProjectEntity> projectEntityList = projectService.selectProjectByName(projectName);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
-            projectList.add(projectEntity.toProject());
+            projectList.add(new Project(projectEntity));
         }
         return projectList;
     }
@@ -61,7 +61,7 @@ public class ProjectController {
     @RequestMapping(value = "/insertProject", method = RequestMethod.POST)
     public int insertProject(@RequestBody Project project) throws ParseException {
         project.init();
-        ProjectEntity projectEntity = project.toProjectEntity();
+        ProjectEntity projectEntity = new ProjectEntity(project);
         return projectService.insertProject(projectEntity);
     }
 
@@ -69,7 +69,7 @@ public class ProjectController {
     @Operation(summary = "更新项目", description = "向数据库中更新该项目")
     @RequestMapping(value = "/updateProject", method = RequestMethod.POST)
     public int updateProject(@RequestBody Project project) {
-        ProjectEntity projectEntity = project.toProjectEntity();
+        ProjectEntity projectEntity = new ProjectEntity(project);
         return projectService.updateProject(projectEntity);
     }
 

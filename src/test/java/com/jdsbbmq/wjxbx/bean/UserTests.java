@@ -32,4 +32,19 @@ public class UserTests {
         }
     }
 
+    @Test
+    //测试复制时UserEntity为null时的构造方法
+    public void copyConstructorTest1() {
+        User user = new User(null);
+        if (user == null) {
+            System.out.println("复制时UserEntity为null时的构造方法失败");
+            // 记录error级别的信息
+            log.error("User: >>copyConstructor复制时UserEntity为null时的构造方法测试失败");
+        } else {
+            System.out.println(user);
+            // 记录info级别的信息
+            log.info("User: >>copyConstructor复制时UserEntity为null时的构造方法测试成功");
+        }
+    }
+
 }
