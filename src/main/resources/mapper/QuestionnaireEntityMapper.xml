@@ -26,9 +26,10 @@
     <!--插入问卷-->
     <insert id="insertQuestionnaire">
         insert into questionnaire
-        (id, project_id, questionnaire_name, questionnaire_description, creation_date, start_time, end_time, status, count)
-        values
-        (#{id}, #{projectId}, #{questionnaireName}, #{questionnaireDescription}, #{creationDate}, #{startTime}, #{endTime}, #{status}, #{count})
+        (id, project_id, questionnaire_name, questionnaire_description, creation_date, start_time, end_time, status,
+         question_count, answer_count)
+        values (#{id}, #{projectId}, #{questionnaireName}, #{questionnaireDescription}, #{creationDate}, #{startTime},
+                #{endTime}, #{status}, #{questionCount}, #{answerCount})
     </insert>
 
     <!--更新问卷-->
@@ -42,7 +43,8 @@
             <if test="startTime != null">start_time = #{startTime},</if>
             <if test="endTime != null">end_time = #{endTime},</if>
             <if test="status != null">status = #{status},</if>
-            <if test="count != null">count = #{count},</if>
+            <if test="questionCount != null">question_count = #{questionCount},</if>
+            <if test="answerCount != null">answer_count = #{answerCount},</if>
         </set>
         where id = #{id}
     </update>
@@ -58,14 +60,14 @@
        resultMap
    -->
     <resultMap id="QuestionnaireEntityMap" type="QuestionnaireEntity">
-        <id property="id" column="id" />
-        <result property="projectId"  column="project_id"/>
-        <result property="questionnaireName"  column="questionnaire_name"/>
-        <result property="questionnaireDescription"  column="questionnaire_description"/>
-        <result property="creationDate"  column="creation_date"/>
-        <result property="startTime"  column="start_time"/>
-        <result property="endTime"  column="end_time"/>
-        <result property="status"  column="status"/>
-        <result property="count"  column="count"/>
+        <id property="id" column="id"/>
+        <result property="projectId" column="project_id"/>
+        <result property="questionnaireName" column="questionnaire_name"/>
+        <result property="questionnaireDescription" column="questionnaire_description"/>
+        <result property="creationDate" column="creation_date"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="status" column="status"/>
+        <result property="count" column="count"/>
     </resultMap>
 </mapper>

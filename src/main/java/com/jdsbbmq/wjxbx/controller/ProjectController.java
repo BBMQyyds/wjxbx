@@ -5,7 +5,6 @@ import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +18,7 @@ import java.util.List;
 public class ProjectController {
     @Resource
     private ProjectService projectService;
+
     //查询所有项目
     @Operation(summary = "用户所有项目接口", description = "能为用户列出他的所有项目")
     @RequestMapping(value = "/selectAllProject", method = RequestMethod.POST)

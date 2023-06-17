@@ -71,7 +71,7 @@ export default {
 .box {
   display: flex;
   align-items: center;
-  margin-left: 230px;
+  margin-left: 12%;
 }
 
 h1 {
@@ -92,7 +92,7 @@ img {
 nav {
   display: flex;
   align-items: center;
-  margin-right: 230px;
+  margin-right: 12%;
 }
 
 

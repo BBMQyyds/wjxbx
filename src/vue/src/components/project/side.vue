@@ -1,28 +1,26 @@
 <template>
-    <div class="vertical-navbar">
-      <el-menu :default-active="activeMenu" class="menu" @select="handleMenuSelect">
-        <el-button class="buildButton" @click="buildQuestionnaire">
-          <span id="plus">+</span>
-          创建项目
-        </el-button>
-        <el-menu-item :class="{'active-item': activeMenu === 'home'}" index="home">
-          <i class="el-icon-house"></i>
-          <span>全部项目</span>
-        </el-menu-item>
-        <el-menu-item :class="{'active-item': activeMenu === 'star'}" index="star">
-          <i class="el-icon-star-off"></i>
-          <span>星标项目</span>
-        </el-menu-item>
-        <el-menu-item :class="{'active-item': activeMenu === 'files'}" index="files">
-          <i class="el-icon-files"></i>
-          <span>文件夹</span>
-        </el-menu-item>
-        <el-menu-item :class="{'active-item': activeMenu === 'delete-solid'}" index="delete-solid">
-          <i class="el-icon-delete"></i>
-          <span>回收站</span>
-        </el-menu-item>
-      </el-menu>
-  </div>
+  <el-menu :default-active="activeMenu" class="menu" @select="handleMenuSelect">
+    <el-button class="buildButton" @click="buildQuestionnaire">
+      <span id="plus">+</span>
+      创建项目
+    </el-button>
+    <el-menu-item :class="{'active-item': activeMenu === 'home'}" index="home">
+      <i class="el-icon-house"></i>
+      <span>全部项目</span>
+    </el-menu-item>
+    <el-menu-item :class="{'active-item': activeMenu === 'star'}" index="star">
+      <i class="el-icon-star-off"></i>
+      <span>星标项目</span>
+    </el-menu-item>
+    <el-menu-item :class="{'active-item': activeMenu === 'files'}" index="files">
+      <i class="el-icon-files"></i>
+      <span>文件夹</span>
+    </el-menu-item>
+    <el-menu-item :class="{'active-item': activeMenu === 'delete-solid'}" index="delete-solid">
+      <i class="el-icon-delete"></i>
+      <span>回收站</span>
+    </el-menu-item>
+  </el-menu>
 </template>
 
 <script>
@@ -48,11 +46,6 @@ export default {
 
 <style scoped>
 
-.vertical-navbar {
-  width: 260px; /* 导航栏的宽度 */
-  height: 60px;
-}
-
 .buildButton {
   text-align: center;
   width: 260px;
@@ -77,11 +70,13 @@ export default {
 
 
 .menu {
+  width: 260px; /* 导航栏的宽度 */
   background-color: #eeeeee;
   border: none;
 }
 
 .el-menu-item {
+  width: 260px;
   font-size: 16px;
   height: 40px;
   border-bottom: #dddddd 1px solid;
