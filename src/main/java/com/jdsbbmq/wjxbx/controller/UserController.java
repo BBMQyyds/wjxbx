@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.collect.Collect;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
@@ -75,6 +76,14 @@ public class UserController {
         user.init();
         return userService.insertUser(new UserEntity(user));
     }
+
+    //插入收藏项目
+    @Operation(summary = "插入收藏项目", description = "往星标项目表中加入项目")
+    @RequestMapping(value = "/insertCollectProject", method = RequestMethod.POST)
+    public int insertCollectProject(@RequestBody Collect addCollectRequest) throws ParseException {
+        return userService.insertCollectProject(addCollectRequest);
+    }
+
 
     //更新(修改）
 

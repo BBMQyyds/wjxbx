@@ -44,6 +44,10 @@ public class Project {
     @Schema(description = "项目最后更新时间",defaultValue = "2021-07-01 00:00:00")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdateDate;
+    @Schema(description = "项目是否收藏",defaultValue = "0")
+    private String star;
+    @Schema(description = "项目的问卷数")
+    private int questionnaireNum;
     public Project(ProjectEntity projectEntity){
         if(projectEntity==null){
             return;
@@ -56,6 +60,8 @@ public class Project {
             this.creationDate = projectEntity.getCreationDate();
             this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
             this.lastUpdateDate = projectEntity.getLastUpdateDate();
+            this.star = projectEntity.getStar();
+            this.questionnaireNum = projectEntity.getQuestionnaireNum();
         }
     }
 
@@ -65,5 +71,7 @@ public class Project {
         this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
         this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
         this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
+        this.questionnaireNum = 0;
+        this.star = "0";
     }
 }

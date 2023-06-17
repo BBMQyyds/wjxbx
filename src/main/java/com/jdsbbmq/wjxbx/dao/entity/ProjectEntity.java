@@ -24,6 +24,8 @@ public class ProjectEntity {
     private Date creationDate;
     private String lastUpdatedBy;
     private Date lastUpdateDate;
+    private String star;
+    private int questionnaireNum;
     public ProjectEntity(Project project){
         if(project==null){
             return;
@@ -36,6 +38,8 @@ public class ProjectEntity {
             this.creationDate = project.getCreationDate();
             this.lastUpdatedBy = project.getLastUpdatedBy();
             this.lastUpdateDate = project.getLastUpdateDate();
+            this.star = project.getStar();
+            this.questionnaireNum = project.getQuestionnaireNum();
         }
     }
 }
