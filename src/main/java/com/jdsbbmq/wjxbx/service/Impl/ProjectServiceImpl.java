@@ -1,8 +1,9 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
-import com.jdsbbmq.wjxbx.bean.project.Project;
+import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,12 @@ public class ProjectServiceImpl implements ProjectService {
         return projectEntityMapper.selectProjectByName(projectName);
     }
 
+    @Override
+    public List<ProjectEntity> selectProjectByPage(QueryRequest queryRequest) {
+        QueryEntity queryEntity=queryRequest.ToQueryEntity();
+        return projectEntityMapper.selectProjectByPage(queryEntity);
+    }
+
 
     /*
         增删改
@@ -48,11 +55,24 @@ public class ProjectServiceImpl implements ProjectService {
         return projectEntityMapper.insertProject(projectEntity);
     }
 
+    //更新项目
     @Override
     public int updateProject(ProjectEntity projectEntity) {
         return projectEntityMapper.updateProject(projectEntity);
     }
 
+    //将项目的收藏更新为已收藏
+    @Override
+    public int updateStarOnProject(String id) {
+        return projectEntityMapper.updateStarOnProject(id);
+    }
+
+    @Override
+    public int updateStarOffProject(String id) {
+        return projectEntityMapper.updateStarOffProject(id);
+    }
+
+    //删除项目
     @Override
     public int deleteProjectById(String id) {
         return projectEntityMapper.deleteProjectById(id);

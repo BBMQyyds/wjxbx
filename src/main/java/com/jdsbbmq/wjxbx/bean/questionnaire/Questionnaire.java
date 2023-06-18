@@ -54,6 +54,5 @@ public class Questionnaire {
             this.status = questionnaireEntity.getStatus();
             this.Count = questionnaireEntity.getCount();
         }
-
     }
 }

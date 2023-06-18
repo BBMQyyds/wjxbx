@@ -1,7 +1,7 @@
 package com.jdsbbmq.wjxbx.service;
 
 
-import com.jdsbbmq.wjxbx.bean.collect.Collect;
+import com.jdsbbmq.wjxbx.bean.file.Attribution;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.springframework.stereotype.Service;
@@ -33,8 +33,6 @@ public interface UserService {
     // 插入用户（注册）
     int insertUser(UserEntity userEntity);
 
-    //插入收藏项目
-    int insertCollectProject(Collect addCollectRequest);
 
     //更新（修改）
     // 更新用户

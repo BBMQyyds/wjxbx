@@ -1,7 +1,8 @@
 package com.jdsbbmq.wjxbx.service;
 
-import com.jdsbbmq.wjxbx.bean.project.Project;
+import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public interface ProjectService {
     //根据projectName查询项目
     public List<ProjectEntity> selectProjectByName(String projectName);
 
+    //分页寻找项目
+    public List<ProjectEntity> selectProjectByPage(QueryRequest queryRequest);
     /*
         增删改
      */
@@ -29,6 +32,12 @@ public interface ProjectService {
 
     //更新项目
     public int updateProject(ProjectEntity projectEntity);
+
+    //将项目的收藏更新为已收藏
+    public int updateStarOnProject(String id);
+
+    //将项目的收藏更新为未收藏
+    public int updateStarOffProject(String id);
 
     // 删除项目
     public int deleteProjectById(String id);

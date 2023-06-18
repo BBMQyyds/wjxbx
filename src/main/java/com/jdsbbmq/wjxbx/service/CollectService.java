@@ -1,6 +1,6 @@
 package com.jdsbbmq.wjxbx.service;
 
-import com.jdsbbmq.wjxbx.bean.collect.Collect;
+import com.jdsbbmq.wjxbx.bean.file.Attribution;
 import java.util.List;
 public interface CollectService {
     /*
@@ -8,5 +8,5 @@ public interface CollectService {
      */
 
     //查询id下方的收藏信息
-    public List<Collect> selectAllCollect(String id);
+    public List<Attribution> selectAllCollect(String id);
 }

@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.controller;
 
 import com.jdsbbmq.wjxbx.bean.project.Project;
+import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -51,6 +52,17 @@ public class ProjectController {
         return projectList;
     }
 
+    //分页寻找项目
+    @Operation(summary = "分页寻找项目", description = "能为用户分页寻找他的项目")
+    @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.POST)
+    public List<Project> selectProjectByPage(@RequestBody QueryRequest queryRequest) {
+        List<ProjectEntity> projectEntityList = projectService.selectProjectByPage(queryRequest);
+        List<Project> projectList = new ArrayList<>();
+        for (ProjectEntity projectEntity : projectEntityList) {
+            projectList.add(new Project(projectEntity));
+        }
+        return projectList;
+    }
 
     /*
         增删改
@@ -72,6 +84,21 @@ public class ProjectController {
         ProjectEntity projectEntity = new ProjectEntity(project);
         return projectService.updateProject(projectEntity);
     }
+
+    //更新项目的星标状态
+    @Operation(summary = "将项目变为收藏项目", description = "往星标项目表中加入项目")
+    @RequestMapping(value = "/starOnProject", method = RequestMethod.POST)
+    public int starOnProject(@RequestBody String id) {
+        return projectService.updateStarOnProject(id);
+    }
+
+    //更新项目的星标状态
+    @Operation(summary = "将项目取消收藏项目", description = "往项目从星标项目中移除")
+    @RequestMapping(value = "/starOffProject", method = RequestMethod.POST)
+    public int starOffProject(@RequestBody String id){
+        return projectService.updateStarOffProject(id);
+    }
+
 
     // 删除项目
     @Operation(summary = "删除项目", description = "从数据库中删除该项目")
