@@ -28,13 +28,17 @@
     <!--根据分页搜寻项目-->
     <select id="selectProjectByPage" parameterType="QueryEntity" resultType="ProjectEntity">
         SELECT *,
-               (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
+        (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
         FROM project
-        WHERE ${type} = 1
-          and column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
+        <if test="type == null">
+            WHERE type = 'delete' AND ${type} = 0
+        </if>
+        <if test="type != null">
+            WHERE ${type} = 1
+        </if>
+        AND column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
         ORDER BY ${sortType} ${sort}
-                LIMIT #{pageSize}
-        OFFSET #{offset}
+        LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
 
@@ -45,16 +49,15 @@
     <insert id="insertProject" parameterType="projectEntity">
         insert into project
         (id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date,
-         questionnaire_count)
+         questionnaire_count, star, delete)
         values (#{id}, #{userId}, #{projectName}, #{projectContent}, #{createdBy}, #{creationDate}, #{lastUpdatedBy},
-                #{lastUpdateDate}, #{questionnaireCount})
+                #{lastUpdateDate}, #{questionnaireCount}, #{star}, #{delete})
     </insert>
 
     <!--更新项目-->
     <update id="updateProject" parameterType="projectEntity">
         update project
-        set id               = #{id},
-            project_name     = #{projectName},
+        set project_name     = #{projectName},
             project_content  = #{projectContent},
             last_updated_by  = #{lastUpdatedBy},
             last_update_date = #{lastUpdateDate},
