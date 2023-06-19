@@ -1,6 +1,5 @@
 package com.jdsbbmq.wjxbx.controller;
 
-import com.jdsbbmq.wjxbx.bean.file.Attribution;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;

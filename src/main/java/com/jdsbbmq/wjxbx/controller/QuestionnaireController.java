@@ -18,6 +18,9 @@ public class QuestionnaireController {
     @Resource
     private QuestionnaireService questionnaireService;
 
+    /*
+        查询
+     */
     //查找一个项目下的所有问卷
     @Operation(summary = "一个项目下的所有问卷", description = "查找一个项目下的所有问卷")
     @RequestMapping(value = "/selectAllQuestionnaire" ,method = RequestMethod.POST)

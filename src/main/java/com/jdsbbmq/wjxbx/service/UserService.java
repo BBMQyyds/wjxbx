@@ -1,7 +1,6 @@
 package com.jdsbbmq.wjxbx.service;
 
 
-import com.jdsbbmq.wjxbx.bean.file.Attribution;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.springframework.stereotype.Service;

@@ -92,7 +92,7 @@ public class ProjectControllerTest {
     @Test
     @Transactional
     public void insertProjectTest() throws Exception {
-        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date());
+        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date(),0,0);
         String jsonProject = new ObjectMapper().writeValueAsString(project);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/insertProject")
@@ -113,7 +113,7 @@ public class ProjectControllerTest {
     @Transactional
     // 更新项目
     public void updateProjectTest() throws Exception {
-        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date());
+        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date(),0,0);
         String jsonProject = new ObjectMapper().writeValueAsString(project);
         mockMvc.perform(MockMvcRequestBuilders.post("/updateProject")
                         .contentType(MediaType.APPLICATION_JSON)

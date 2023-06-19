@@ -20,6 +20,9 @@ public class ProjectController {
     @Resource
     private ProjectService projectService;
 
+    /*
+        查询
+     */
     //查询所有项目
     @Operation(summary = "用户所有项目接口", description = "能为用户列出他的所有项目")
     @RequestMapping(value = "/selectAllProject", method = RequestMethod.POST)
@@ -54,7 +57,7 @@ public class ProjectController {
 
     //分页寻找项目
     @Operation(summary = "分页寻找项目", description = "能为用户分页寻找他的项目")
-    @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.POST)
+    @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.GET)
     public List<Project> selectProjectByPage(@RequestBody QueryRequest queryRequest) {
         List<ProjectEntity> projectEntityList = projectService.selectProjectByPage(queryRequest);
         List<Project> projectList = new ArrayList<>();

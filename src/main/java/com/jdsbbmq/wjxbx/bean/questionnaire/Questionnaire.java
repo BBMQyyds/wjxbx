@@ -38,8 +38,12 @@ public class Questionnaire {
     private Date endTime;
     @Schema(description = "问卷状态")
     private String status;
-    @Schema(description = "问卷答卷数量")
-    private int Count;
+    @Schema(description = "问卷问题数量")
+    private int questionCount;
+    @Schema(description = "问卷回答数量")
+    private int answerCount;
+    @Schema(description = "问卷是否收藏")
+    private int star;
     public Questionnaire(QuestionnaireEntity questionnaireEntity){
         if(questionnaireEntity==null){
             return;
@@ -52,7 +56,9 @@ public class Questionnaire {
             this.startTime = questionnaireEntity.getStartTime();
             this.endTime = questionnaireEntity.getEndTime();
             this.status = questionnaireEntity.getStatus();
-            this.Count = questionnaireEntity.getCount();
+            this.questionCount = questionnaireEntity.getQuestionCount();
+            this.answerCount = questionnaireEntity.getAnswerCount();
+            this.star = questionnaireEntity.getStar();
         }
     }
 }

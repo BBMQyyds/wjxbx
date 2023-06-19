@@ -26,7 +26,9 @@ public class QuestionnaireEntity {
     private Date startTime;
     private Date endTime;
     private String status;
-    private int Count;
+    private int questionCount;
+    private int answerCount;
+    private int star;
 
     //复制
     public QuestionnaireEntity(Questionnaire questionnaire){
@@ -42,7 +44,9 @@ public class QuestionnaireEntity {
             this.startTime = questionnaire.getStartTime();
             this.endTime = questionnaire.getEndTime();
             this.status = questionnaire.getStatus();
-            this.Count = questionnaire.getCount();
+            this.questionCount = questionnaire.getQuestionCount();
+            this.answerCount = questionnaire.getAnswerCount();
+            this.star = questionnaire.getStar();
         }
     }
 }
