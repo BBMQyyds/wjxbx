@@ -19,32 +19,11 @@
         from project
         where id = #{id}
     </select>
-    <!--根据ID查询用户下方所有收藏项目-->
     <select id="selectProjectByName" resultType="com.jdsbbmq.wjxbx.dao.entity.ProjectEntity">
         select *
         from project
         where project_name = #{projectName}
     </select>
-    <!--根据分页搜寻项目-->
-    <select id="selectProjectByPage" parameterType="QueryEntity" resultType="ProjectEntity">
-        <choose>
-            <when test="flag == 1">
-                SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
-                FROM project
-                WHERE star = 1
-                ORDER BY ${sortType} ${sort == '0' ? 'DESC' : 'ASC'}
-                LIMIT #{pageSize} OFFSET #{offset}
-            </when>
-            <otherwise>
-                SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
-                FROM project
-                ORDER BY ${sortType} ${sort == '0' ? 'DESC' : 'ASC'}
-                LIMIT #{pageSize} OFFSET #{offset}
-            </otherwise>
-        </choose>
-    </select>
-
-
 
     <!--增删改-->
 
@@ -72,21 +51,6 @@
         where id = #{id}
     </update>
 
-    <!--更新项目为收藏项目-->
-    <update id="updateStarOnProject">
-        update project
-        set star = 1
-        where id = #{id}
-    </update>
-
-    <!--更新项目为非收藏项目-->
-    <update id="updateStarOffProject">
-        update project
-        set star = 0
-        where id = #{id}
-    </update>
-
-    <!--删除项目-->
     <delete id="deleteProjectById">
         delete
         from project

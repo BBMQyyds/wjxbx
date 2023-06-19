@@ -130,9 +130,9 @@ export default {
               sessionStorage.setItem("password", this.user.password);
 
               router.push({
-                path: '/home',
+                path: '/project',
                 query: {
-                  username: this.user.username
+                  id: res.data.id
                 }
               })
             } else {

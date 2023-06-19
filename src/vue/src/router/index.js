@@ -21,9 +21,21 @@ const routes = [
         meta: {keepAlive: false}
     },
     {
-        name: 'home',
-        path: '/home',
-        component: () => import('@/views/home'),
+        name: 'project',
+        path: '/project',
+        component: () => import('@/views/home/project'),
+        meta: {keepAlive: false}
+    },
+    {
+        name: 'questionnaire',
+        path: '/questionnaire',
+        component: () => import('@/views/home/questionnaire'),
+        meta: {keepAlive: false}
+    },
+    {
+        name: 'question',
+        path: '/question',
+        component: () => import('@/views/home/question'),
         meta: {keepAlive: false}
     },
     {

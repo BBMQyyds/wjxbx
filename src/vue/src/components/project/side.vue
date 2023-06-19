@@ -1,6 +1,6 @@
 <template>
   <el-menu :default-active="activeMenu" class="menu" @select="handleMenuSelect">
-    <el-button class="buildButton" @click="buildQuestionnaire">
+    <el-button class="buildButton" @click="buildProject">
       <span id="plus">+</span>
       创建项目
     </el-button>
@@ -12,11 +12,7 @@
       <i class="el-icon-star-off"></i>
       <span>星标项目</span>
     </el-menu-item>
-    <el-menu-item :class="{'active-item': activeMenu === 'files'}" index="files">
-      <i class="el-icon-files"></i>
-      <span>文件夹</span>
-    </el-menu-item>
-    <el-menu-item :class="{'active-item': activeMenu === 'delete-solid'}" index="delete-solid">
+    <el-menu-item :class="{'active-item': activeMenu === 'delete-solid'}" index="delete">
       <i class="el-icon-delete"></i>
       <span>回收站</span>
     </el-menu-item>
@@ -26,6 +22,7 @@
 <script>
 export default {
   name: 'side',
+  emits: ['select'], // 声明事件
   data() {
     return {
       activeMenu: 'home', // 默认选中的菜单项
@@ -35,10 +32,12 @@ export default {
     handleMenuSelect(index) {
       // 处理菜单项选择事件
       this.activeMenu = index; // 更新选中的菜单项
+      this.$emit('select', index); // 通过事件向父组件传递选中的菜单项
     },
-    buildQuestionnaire() {
-      // 创建问卷
-      console.log('创建问卷');
+    buildProject() {
+      // 创建项目
+      console.log('build project');
+
     },
   },
 };
@@ -78,7 +77,7 @@ export default {
 .el-menu-item {
   width: 260px;
   font-size: 16px;
-  height: 40px;
+  height: 50px;
   border-bottom: #dddddd 1px solid;
 }
 
