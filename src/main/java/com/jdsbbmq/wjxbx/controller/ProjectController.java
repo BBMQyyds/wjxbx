@@ -57,8 +57,9 @@ public class ProjectController {
 
     //分页寻找项目
     @Operation(summary = "分页寻找项目", description = "能为用户分页寻找他的项目")
-    @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.POST)
     public List<Project> selectProjectByPage(@RequestBody QueryRequest queryRequest) {
+        queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<ProjectEntity> projectEntityList = projectService.selectProjectByPage(queryRequest);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
@@ -98,7 +99,7 @@ public class ProjectController {
     //更新项目的星标状态
     @Operation(summary = "将项目取消收藏项目", description = "往项目从星标项目中移除")
     @RequestMapping(value = "/starOffProject", method = RequestMethod.POST)
-    public int starOffProject(@RequestBody String id){
+    public int starOffProject(@RequestBody String id) {
         return projectService.updateStarOffProject(id);
     }
 

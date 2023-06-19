@@ -13,5 +13,6 @@ public class QueryEntity {
     private String sort;
     private int offset;
     private int pageSize;
+    private int currentPage;
     private int flag;
 }

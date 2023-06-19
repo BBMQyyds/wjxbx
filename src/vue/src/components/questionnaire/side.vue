@@ -1,6 +1,6 @@
 <template>
   <el-menu :default-active="activeMenu" class="menu" @select="handleMenuSelect">
-    <el-button class="buildButton" @click="buildQuestionnaire">
+    <el-button class="createButton" @click="createQuestionnaire">
       <span id="plus">+</span>
       创建问卷
     </el-button>
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'side',
-  emits: ['select'], // 声明事件
+  emits: ['select','create'], // 声明事件
   data() {
     return {
       activeMenu: 'home', // 默认选中的菜单项
@@ -34,10 +34,10 @@ export default {
       this.activeMenu = index; // 更新选中的菜单项
       this.$emit('select', index); // 通过事件向父组件传递选中的菜单项
     },
-    buildQuestionnaire() {
+    createQuestionnaire() {
       // 创建问卷
-      console.log('build questionnaire');
-
+      console.log('create questionnaire');
+      this.$emit('create', 'questionnaire'); // 通过事件向父组件传递创建问卷的事件
     },
   },
 };
@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 
-.buildButton {
+.createButton {
   text-align: center;
   width: 260px;
   height: 56px;
@@ -58,7 +58,7 @@ export default {
   border-radius: 2px;
 }
 
-.buildButton:hover {
+.createButton:hover {
   background-color: #3a8ee6;
 }
 

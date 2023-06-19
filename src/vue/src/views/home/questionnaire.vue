@@ -2,7 +2,7 @@
   <div id="main">
     <nav-bar id="nav"></nav-bar>
     <div id="con" v-infinite-scroll="load">
-      <side-bar id="side" @select="flush"></side-bar>
+      <side-bar id="side" @select="flush" @create="create"></side-bar>
       <div id="content">
         <div id="top" :style="{ height: '200px' }">
           <span id="title">问卷列表</span>
@@ -33,7 +33,7 @@
             <el-col :span="15" v-for="questionnaire in questionnaireList" :key="questionnaire">
               <el-card class="questionnaire-card">
                 <div id="first">
-                  <div class="questionnaire-name">{{ questionnaire.questionnaireName }}</div>
+                  <div class="questionnaire-name" @click="toQuestion">{{ questionnaire.questionnaireName }}</div>
                   <div id="star">
                     <div class="questionnaire-qnc">答卷数：{{ questionnaire.questionnaireCount }}</div>
                     <el-icon id="on" class="el-icon-star-on" v-if="questionnaire.star===1"
@@ -69,9 +69,6 @@
         </div>
       </div>
     </div>
-    <el-dialog>
-
-    </el-dialog>
   </div>
 </template>
 
@@ -105,7 +102,7 @@ export default {
           lastUpdateDate: "2023-06-02 12:24:01",
           star: 1
         },
-      ]
+      ],
     };
   },
   methods: {
@@ -199,6 +196,10 @@ export default {
     changeSortType(type) {
       this.sortType = type;
       this.search();
+    },
+    create(){
+      console.log("create");
+      this.dialogVisible = true;
     },
     starOn(questionnaire) {
       console.log("starOn:" + questionnaire.id);

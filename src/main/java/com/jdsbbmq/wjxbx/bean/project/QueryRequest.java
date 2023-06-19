@@ -15,6 +15,7 @@ public class QueryRequest {
     private String sort;
     private int offset;
     private int pageSize;
+    private int currentPage;
     private int star;
     public QueryEntity ToQueryEntity(){
         QueryEntity queryEntity = new QueryEntity();
@@ -22,6 +23,7 @@ public class QueryRequest {
         queryEntity.setSortType(this.sortType);
         queryEntity.setSort(this.sort);
         queryEntity.setOffset(this.offset);
+        queryEntity.setCurrentPage(this.currentPage);
         queryEntity.setPageSize(this.pageSize);
         queryEntity.setFlag(this.star);
         return queryEntity;

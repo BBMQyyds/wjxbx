@@ -60,11 +60,6 @@ export default {
   name: "login",
   inject: ['reload'],
   created() {
-    request.post("/selectUserById", "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f").then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    });
     if (localStorage.getItem("username") !== null && localStorage.getItem("password") !== null) {
       this.user.username = localStorage.getItem("username");
       this.user.password = localStorage.getItem("password");

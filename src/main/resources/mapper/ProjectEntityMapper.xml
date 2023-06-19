@@ -32,13 +32,13 @@
                 SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
                 FROM project
                 WHERE star = 1
-                ORDER BY ${sortType} ${sort == '0' ? 'DESC' : 'ASC'}
+                ORDER BY ${sortType} ${sort}
                 LIMIT #{pageSize} OFFSET #{offset}
             </when>
             <otherwise>
                 SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
                 FROM project
-                ORDER BY ${sortType} ${sort == '0' ? 'DESC' : 'ASC'}
+                ORDER BY ${sortType} ${sort}
                 LIMIT #{pageSize} OFFSET #{offset}
             </otherwise>
         </choose>

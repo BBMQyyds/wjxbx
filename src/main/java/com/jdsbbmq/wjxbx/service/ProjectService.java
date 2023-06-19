@@ -2,10 +2,10 @@ package com.jdsbbmq.wjxbx.service;
 
 import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
-import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public interface ProjectService {
      /*

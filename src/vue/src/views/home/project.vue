@@ -2,7 +2,7 @@
   <div id="main">
     <nav-bar id="nav"></nav-bar>
     <div id="con" v-infinite-scroll="load">
-      <side-bar id="side" @select="flush"></side-bar>
+      <side-bar id="side" @select="flush" @create="insertProject"></side-bar>
       <div id="content">
         <div id="top" :style="{ height: '200px' }">
           <span id="title">项目列表</span>
@@ -33,13 +33,13 @@
             <el-col :span="15" v-for="project in projectList" :key="project">
               <el-card class="project-card">
                 <div id="first">
-                  <div class="project-name">{{ project.projectName }}</div>
+                  <div class="project-name" @click="toQuestionnaire(project.id)">{{ project.projectName }}</div>
                   <div id="star">
                     <div class="project-qnc">问卷数：{{ project.questionnaireCount }}</div>
                     <el-icon id="on" class="el-icon-star-on" v-if="project.star===1"
-                             @click="starOn(project)"></el-icon>
-                    <el-icon id="off" class="el-icon-star-on" v-if="project.star===0"
                              @click="starOff(project)"></el-icon>
+                    <el-icon id="off" class="el-icon-star-on" v-if="project.star===0"
+                             @click="starOn(project)"></el-icon>
                   </div>
                 </div>
                 <hr class="hr-solid">
@@ -49,7 +49,7 @@
                     <div class="project-update">更新时间：{{ project.lastUpdateDate }}</div>
                   </div>
                   <div class="project-button">
-                    <el-button type="primary" @click="toQuestionnaire(project.id)">
+                    <el-button type="primary" @click="updateProject(project.id)">
                       <el-icon class="el-icon-edit"></el-icon>
                       编辑
                     </el-button>
@@ -75,7 +75,7 @@
 <script>
 import navBar from "../../components/nav";
 import sideBar from "../../components/project/side";
-import request from "@/api";
+import request, {plainRequest} from "@/api";
 import router from "@/router";
 
 export default {
@@ -85,6 +85,9 @@ export default {
     navBar,
     sideBar
   },
+  created() {
+    this.search();
+  },
   data() {
     return {
       searchKeyword: "",
@@ -92,31 +95,21 @@ export default {
       sort: "desc",
       currentPage: 1,
       pageSize: 5,
-      projectList: [
-        {
-          id: 1,
-          projectName: "项目1",
-          projectContent: "项目1描述1111111111111111111111",
-          questionnaireCount: 10,
-          creationDate: "2023-06-02 12:24:01",
-          lastUpdateDate: "2023-06-02 12:24:01",
-          star: 1
-        },
-      ]
+      projectList: [],
     };
   },
   methods: {
-    send(data) {
-      request.post("/queryProject", JSON.stringify(data)).then(res => {
+    send(data, callback) {
+      request.post("/selectProjectByPage", JSON.stringify(data)).then(res => {
         if (res.data !== null && res.data.length > 0) {
           this.currentPage++;
-          return res.data;
+          callback(res.data);
         } else {
           this.$message({
             message: '没有更多了',
             type: 'warning'
           });
-          return [];
+          callback([]);
         }
       }).catch(err => {
         console.log(err);
@@ -124,9 +117,9 @@ export default {
           message: '查询失败，请稍后重试',
           type: 'error'
         });
-        return [];
+        callback([]);
       });
-      return [];
+      callback([]);
     },
     search() {
       console.log("search");
@@ -138,7 +131,9 @@ export default {
         currentPage: this.currentPage,//当前页
         pageSize: this.pageSize//每页显示多少条
       };
-      this.projectList = this.send(data);
+      this.send(data, (res) => {
+        this.projectList = res;
+      });
     },
     load() {
       const el = document.getElementById('con'); // 替换为你的容器元素的ID或引用
@@ -156,7 +151,9 @@ export default {
         currentPage: this.currentPage,//当前页
         pageSize: this.pageSize//每页显示多少条
       };
-      this.projectList.push(...this.send(data));
+      this.send(data, (res) => {
+        this.projectList.push(...res);
+      });
     },
     flush(val) {
       console.log(val);
@@ -174,7 +171,9 @@ export default {
           pageSize: this.pageSize,//每页显示多少条
           type: 'star'
         };
-        this.projectList = this.send(data);
+        this.send(data, (res) => {
+          this.projectList = res;
+        });
       } else if (val === 'delete') {
         console.log("delete");
         this.currentPage = 1;
@@ -186,7 +185,9 @@ export default {
           pageSize: this.pageSize,//每页显示多少条
           type: 'delete'
         };
-        this.projectList = this.send(data);
+        this.send(data, (res) => {
+          this.projectList = res;
+        });
       } else if (val === 'files') {
         console.log("files");
       } else {
@@ -199,7 +200,7 @@ export default {
     },
     starOn(project) {
       console.log("starOn:" + project.id);
-      request.post("/starProject", project.id).then(res => {
+      plainRequest.post("/starOnProject", project.id).then(res => {
         if (res.data === 1) {
           this.$message({
             message: '星标成功',
@@ -222,7 +223,7 @@ export default {
     },
     starOff(project) {
       console.log("starOff:" + project.id);
-      request.post("/unstarProject", project.id).then(res => {
+      plainRequest.post("/starOffProject", project.id).then(res => {
         if (res.data === 1) {
           this.$message({
             message: '取消星标成功',
@@ -253,9 +254,84 @@ export default {
         }
       });
     },
+    insertProject() {
+      console.log("insertProject");
+      this.$prompt('请输入项目名称', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        inputPattern: /\S/,
+        inputErrorMessage: '项目名称不能为空'
+      }).then(({
+        value
+      }) => {
+        request.post("/insertProject", JSON.stringify({
+          name: value
+        })).then(res => {
+          if (res.data === 1) {
+            this.$message({
+              message: '添加成功',
+              type: 'success'
+            });
+            this.reload();
+          } else {
+            this.$message({
+              message: '添加失败，请稍后重试',
+              type: 'error'
+            });
+          }
+        }).catch(err => {
+          console.log(err);
+          this.$message({
+            message: '添加失败，请稍后重试',
+            type: 'error'
+          });
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '取消输入'
+        });
+      });
+    },
+    updateProject(id) {
+      console.log("updateProject:" + id);
+      this.$confirm('此操作将更新该项目, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        request.post("/updateProject", JSON.stringify({
+          id: id
+        })).then(res => {
+          if (res.data === 1) {
+            this.$message({
+              message: '更新成功',
+              type: 'success'
+            });
+            this.reload();
+          } else {
+            this.$message({
+              message: '更新失败，请稍后重试',
+              type: 'error'
+            });
+          }
+        }).catch(err => {
+          console.log(err);
+          this.$message({
+            message: '更新失败，请稍后重试',
+            type: 'error'
+          });
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消更新'
+        });
+      });
+    },
     copyProject(id) {
       console.log("copyProject:" + id);
-      request.post("/copyProject", id).then(res => {
+      plainRequest.post("/copyProject", id).then(res => {
         if (res.data === 1) {
           this.$message({
             message: '复制成功',
@@ -278,24 +354,36 @@ export default {
     },
     deleteProject(id) {
       console.log("deleteProject:" + id);
-      request.post("/deleteProject", id).then(res => {
-        if (res.data === 1) {
-          this.$message({
-            message: '删除成功',
-            type: 'success'
-          });
-          this.reload();
-        } else {
+      //弹出确认框
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        plainRequest.post("/deleteProject", id).then(res => {
+          if (res.data === 1) {
+            this.$message({
+              message: '删除成功',
+              type: 'success'
+            });
+            this.reload();
+          } else {
+            this.$message({
+              message: '删除失败，请稍后重试',
+              type: 'error'
+            });
+          }
+        }).catch(err => {
+          console.log(err);
           this.$message({
             message: '删除失败，请稍后重试',
             type: 'error'
           });
-        }
-      }).catch(err => {
-        console.log(err);
+        });
+      }).catch(() => {
         this.$message({
-          message: '删除失败，请稍后重试',
-          type: 'error'
+          type: 'info',
+          message: '已取消删除'
         });
       });
     },
@@ -406,6 +494,11 @@ export default {
   font-size: 24px;
   font-weight: bold;
   margin-left: 20px;
+}
+
+.project-name:hover{
+  cursor: pointer;
+  color: #207EFF;
 }
 
 .hr-solid {
