@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jdsbbmq.wjxbx.dao.AttributionEntityMapper">
+    <!--查询-->
+
+
+
+    <!--增删改-->
+    <insert id="insertAttribution" parameterType="AttributionEntity">
+        INSERT INTO attribution (parent_id, child_id, child_type, content)
+        VALUES (#{parentId}, #{childId}, #{childType}, #{content})
+    </insert>
 
 </mapper>

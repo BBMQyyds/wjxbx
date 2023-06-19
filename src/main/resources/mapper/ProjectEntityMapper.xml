@@ -31,13 +31,14 @@
             <when test="flag == 1">
                 SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
                 FROM project
-                WHERE star = 1
+                WHERE star = 1 and column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
                 ORDER BY ${sortType} ${sort}
                 LIMIT #{pageSize} OFFSET #{offset}
             </when>
             <otherwise>
                 SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
                 FROM project
+                WHERE column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
                 ORDER BY ${sortType} ${sort}
                 LIMIT #{pageSize} OFFSET #{offset}
             </otherwise>

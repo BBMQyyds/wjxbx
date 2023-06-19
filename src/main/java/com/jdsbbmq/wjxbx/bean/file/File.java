@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.bean.file;
 
+import com.jdsbbmq.wjxbx.dao.entity.FileEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.PostConstruct;
 import lombok.*;
@@ -42,5 +43,14 @@ public class File {
         this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
         this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
         this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
+    }
+
+    public File(FileEntity fileEntity) {
+        this.id = fileEntity.getId();
+        this.fileName = fileEntity.getFileName();
+        this.creationDate = fileEntity.getCreationDate();
+        this.createdBy = fileEntity.getCreatedBy();
+        this.lastUpdateDate = fileEntity.getLastUpdateDate();
+        this.parentId = fileEntity.getParentId();
     }
 }

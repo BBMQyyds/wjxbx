@@ -26,7 +26,6 @@ public class FileController {
     @Operation(summary = "插入一个文件夹", description = "插入一个文件夹")
     @RequestMapping(value = "/insertFile" ,method = RequestMethod.POST)
     public int insertFile(@RequestBody File file) {
-
-        return 0;
+        return fileService.insertFile(file);
     }
 }

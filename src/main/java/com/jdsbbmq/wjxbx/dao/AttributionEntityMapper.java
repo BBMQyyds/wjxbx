@@ -19,5 +19,5 @@ public interface AttributionEntityMapper {
         /*
            增删改
         */
-    public int insertAttributionEntity(AttributionEntity attributionEntity);
+    public int insertAttribution(AttributionEntity attributionEntity);
 }
