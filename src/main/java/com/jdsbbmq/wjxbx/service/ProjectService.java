@@ -4,6 +4,7 @@ import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Service
@@ -31,7 +32,7 @@ public interface ProjectService {
     public int insertProject(ProjectEntity projectEntity);
 
     //更新项目
-    public int updateProject(ProjectEntity projectEntity);
+    public int updateProject(ProjectEntity projectEntity) throws ParseException;
 
     //将项目的收藏更新为已收藏
     public int updateStarOnProject(String id);

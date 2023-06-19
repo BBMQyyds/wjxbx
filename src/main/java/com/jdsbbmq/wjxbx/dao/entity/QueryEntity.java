@@ -14,5 +14,5 @@ public class QueryEntity {
     private int offset;
     private int pageSize;
     private int currentPage;
-    private int flag;
+    private String type;
 }

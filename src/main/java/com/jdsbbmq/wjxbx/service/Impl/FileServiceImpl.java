@@ -27,15 +27,20 @@ public class FileServiceImpl implements FileService {
      */
     @Transactional(rollbackFor = RuntimeException.class)
     public int insertFile(File file) {
-        Gson gson = new Gson();
-        FileEntity fileEntity = new FileEntity(file);
-        AttributionEntity attributionEntity = new AttributionEntity(file.getParentId(), file.getId(), "file", gson.toJson(file));
-        int a = fileEntityMapper.insertFile(fileEntity);
-        int b = attributionEntityMapper.insertAttribution(attributionEntity);
-        if (a == 0 || b == 0) {
-            throw new RuntimeException("Failed to insert file"); // 触发回滚
+        try {
+            Gson gson = new Gson();
+            FileEntity fileEntity = new FileEntity(file);
+            AttributionEntity attributionEntity = new AttributionEntity(file.getParentId(), file.getId(), "file", gson.toJson(file));
+            int a = fileEntityMapper.insertFile(fileEntity);
+            int b = attributionEntityMapper.insertAttribution(attributionEntity);
+            if (a == 0 || b == 0) {
+                throw new RuntimeException("Failed to insert file"); // 触发回滚
+            }
+            return 1; // 插入成功
+        } catch (Exception e) {
+            // 处理异常
+            throw new RuntimeException("Failed to insert file", e); // 触发回滚
         }
-        return 1; // 插入成功
     }
 
 

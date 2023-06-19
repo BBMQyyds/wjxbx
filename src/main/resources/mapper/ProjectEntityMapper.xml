@@ -27,22 +27,14 @@
     </select>
     <!--根据分页搜寻项目-->
     <select id="selectProjectByPage" parameterType="QueryEntity" resultType="ProjectEntity">
-        <choose>
-            <when test="flag == 1">
-                SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
-                FROM project
-                WHERE star = 1 and column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
-                ORDER BY ${sortType} ${sort}
-                LIMIT #{pageSize} OFFSET #{offset}
-            </when>
-            <otherwise>
-                SELECT *, (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
-                FROM project
-                WHERE column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
-                ORDER BY ${sortType} ${sort}
-                LIMIT #{pageSize} OFFSET #{offset}
-            </otherwise>
-        </choose>
+        SELECT *,
+               (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
+        FROM project
+        WHERE ${type} = 1
+          and column_name LIKE CONCAT('%', #{searchKeyWord}, '%')
+        ORDER BY ${sortType} ${sort}
+                LIMIT #{pageSize}
+        OFFSET #{offset}
     </select>
 
 
@@ -62,14 +54,10 @@
     <update id="updateProject" parameterType="projectEntity">
         update project
         set id               = #{id},
-            user_id          = #{userId},
             project_name     = #{projectName},
             project_content  = #{projectContent},
-            created_by       = #{createdBy},
-            creation_date    = #{creationDate},
             last_updated_by  = #{lastUpdatedBy},
             last_update_date = #{lastUpdateDate},
-            questionnaire_count = #{questionnaireCount}
         where id = #{id}
     </update>
 

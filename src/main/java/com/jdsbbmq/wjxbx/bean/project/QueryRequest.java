@@ -16,7 +16,7 @@ public class QueryRequest {
     private int offset;
     private int pageSize;
     private int currentPage;
-    private int star;
+    private String type;
     public QueryEntity ToQueryEntity(){
         QueryEntity queryEntity = new QueryEntity();
         queryEntity.setSearchKeyWord(this.searchKeyWord);
@@ -25,7 +25,7 @@ public class QueryRequest {
         queryEntity.setOffset(this.offset);
         queryEntity.setCurrentPage(this.currentPage);
         queryEntity.setPageSize(this.pageSize);
-        queryEntity.setFlag(this.star);
+        queryEntity.setType(type);
         return queryEntity;
     }
 }

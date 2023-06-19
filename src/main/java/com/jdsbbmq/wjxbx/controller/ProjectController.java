@@ -84,7 +84,7 @@ public class ProjectController {
     // 更新项目
     @Operation(summary = "更新项目", description = "向数据库中更新该项目")
     @RequestMapping(value = "/updateProject", method = RequestMethod.POST)
-    public int updateProject(@RequestBody Project project) {
+    public int updateProject(@RequestBody Project project) throws ParseException {
         ProjectEntity projectEntity = new ProjectEntity(project);
         return projectService.updateProject(projectEntity);
     }
