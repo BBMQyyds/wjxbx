@@ -34,8 +34,13 @@ public interface ProjectEntityMapper {
         增删改
      */
 
+
+    //增加
+
     // 插入项目
     int insertProject(ProjectEntity projectEntity);
+
+    //更新
 
     // 更新项目
     int updateProject(ProjectEntity projectEntity);
@@ -45,6 +50,13 @@ public interface ProjectEntityMapper {
 
     // 将项目的收藏更新为未收藏
     int updateStarOffProject(String id);
+
+    // 将项目的删除更新为已删除
+    int updateDeleteOnProject(String id);
+
+    // 将项目的删除更新为未删除
+    int updateDeleteOffProject(String id);
+    //删除
 
     // 根据id删除项目
     int deleteProjectById(String id);

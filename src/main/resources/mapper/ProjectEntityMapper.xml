@@ -77,6 +77,18 @@
         set star = 0
         where id = #{id}
     </update>
+    <!--更新项目为删除项目-->
+    <update id="updateDeleteOnProject">
+        update project
+        set deleted = 1
+        where id = #{id}
+    </update>
+    <!--更新项目为非删除项目-->
+    <update id="updateDeleteOffProject">
+        update project
+        set deleted = 0
+        where id = #{id}
+    </update>
 
     <!--删除项目-->
     <delete id="deleteProjectById">

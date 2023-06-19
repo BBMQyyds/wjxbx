@@ -91,18 +91,31 @@ public class ProjectController {
 
     //更新项目的星标状态
     @Operation(summary = "将项目变为收藏项目", description = "往星标项目表中加入项目")
-    @RequestMapping(value = "/starOnProject", method = RequestMethod.POST)
-    public int starOnProject(@RequestBody String id) {
+    @RequestMapping(value = "/updateStarOnProject", method = RequestMethod.POST)
+    public int updateStarOnProject(@RequestBody String id) {
         return projectService.updateStarOnProject(id);
     }
 
     //更新项目的星标状态
     @Operation(summary = "将项目取消收藏项目", description = "往项目从星标项目中移除")
-    @RequestMapping(value = "/starOffProject", method = RequestMethod.POST)
-    public int starOffProject(@RequestBody String id) {
+    @RequestMapping(value = "/updateStarOffProject", method = RequestMethod.POST)
+    public int updateStarOffProject(@RequestBody String id) {
         return projectService.updateStarOffProject(id);
     }
 
+    //更新项目的删除状态
+    @Operation(summary = "将项目变为删除项目", description = "往删除项目表中加入项目")
+    @RequestMapping(value = "/updateDeleteOnProject", method = RequestMethod.POST)
+    public int updateDeleteOnProject(@RequestBody String id) {
+        return projectService.updateDeleteOnProject(id);
+    }
+
+    //更新项目的删除状态
+    @Operation(summary = "将项目取消删除项目", description = "往项目从删除项目中移除")
+    @RequestMapping(value = "/updateDeleteOffProject", method = RequestMethod.POST)
+    public int updateDeleteOffProject(@RequestBody String id) {
+        return projectService.updateDeleteOffProject(id);
+    }
 
     // 删除项目
     @Operation(summary = "删除项目", description = "从数据库中删除该项目")

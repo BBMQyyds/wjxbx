@@ -40,6 +40,12 @@ public interface ProjectService {
     //将项目的收藏更新为未收藏
     public int updateStarOffProject(String id);
 
+    //将项目的删除更新为已删除
+    public int updateDeleteOnProject(String id);
+
+    //将项目的删除更新为未删除
+    public int updateDeleteOffProject(String id);
+
     // 删除项目
     public int deleteProjectById(String id);
 }

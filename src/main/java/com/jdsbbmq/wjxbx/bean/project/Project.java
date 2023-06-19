@@ -74,6 +74,7 @@ public class Project {
         this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
         this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
         this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
+        this.lastUpdatedBy=this.createdBy; // 设置默认的最后更新人
         this.questionnaireCount = 0;
         this.star = 0;
         this.deleted = 0;
