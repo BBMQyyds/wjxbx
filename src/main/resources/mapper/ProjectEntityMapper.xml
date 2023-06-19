@@ -31,7 +31,7 @@
         (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
         FROM project
         <if test="type == null">
-            WHERE type = 'delete' AND ${type} = 0
+            WHERE deleted = 0
         </if>
         <if test="type != null">
             WHERE ${type} = 1

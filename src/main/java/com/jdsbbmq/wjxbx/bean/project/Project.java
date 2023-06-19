@@ -47,7 +47,7 @@ public class Project {
     @Schema(description = "项目是否收藏",defaultValue = "0")
     private int star;
     @Schema(description = "项目是否删除",defaultValue = "0")
-    private int delete;
+    private int deleted;
     @Schema(description = "项目的问卷数")
     private int questionnaireCount;
     public Project(ProjectEntity projectEntity){
@@ -63,7 +63,7 @@ public class Project {
             this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
             this.lastUpdateDate = projectEntity.getLastUpdateDate();
             this.star = projectEntity.getStar();
-            this.delete = projectEntity.getDelete();
+            this.deleted = projectEntity.getDeleted();
             this.questionnaireCount = projectEntity.getQuestionnaireCount();
         }
     }
@@ -76,6 +76,6 @@ public class Project {
         this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
         this.questionnaireCount = 0;
         this.star = 0;
-        this.delete = 0;
+        this.deleted = 0;
     }
 }
