@@ -102,7 +102,7 @@ export default {
             this.reload();
             return;
           }
-          request.post('/register', JSON.stringify({
+          request.post('/insertUser', JSON.stringify({
             username: this.user.username,
             password: CryptoJS.MD5(this.user.password).toString(),
             createdBy: this.user.username,

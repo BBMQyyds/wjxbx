@@ -103,7 +103,7 @@ export default {
             username: this.user.username,
             password: CryptoJS.MD5(this.user.password).toString(),
           })).then(res => {
-            if (res.data !== null && res.data !== "") {
+            if (res.data !== null && 'username' in res.data && res.data.username !== null) {
               this.$message({
                 message: '登录成功！',
                 type: 'success',
@@ -159,9 +159,9 @@ export default {
       })
     },
     toUpdate() {
-      console.log("update");
+      console.log("updatePwd");
       router.push({
-        path: '/update',
+        path: '/updatePwd',
       })
     },
     toIndex() {

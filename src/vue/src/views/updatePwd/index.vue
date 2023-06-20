@@ -61,7 +61,7 @@ import router from "@/router";
 import CryptoJS from 'crypto-js'
 
 export default {
-  name: "update",
+  name: "updatePwd",
   inject: ['reload'],
   data() {
     return {
@@ -102,7 +102,7 @@ export default {
             this.reload();
             return;
           }
-          request.post('/updatePwd', JSON.stringify({
+          request.post('/updatePassword', JSON.stringify({
             username: this.user.username,
             originPassword: CryptoJS.MD5(this.user.originPassword).toString(),
             newPassword: CryptoJS.MD5(this.user.newPassword).toString(),

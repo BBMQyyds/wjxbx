@@ -210,7 +210,7 @@ public class UserEntityMapperTests {
         //创建UserMapper对象，mybatis自动生成mapper代理对象
         UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
         //调用userMapper的方法
-        int i = userEntityMapper.updatePassword("风筝追风","123456");
+        int i = userEntityMapper.updatePassword("风筝追风","e10adc3949ba59abbe56e057f20f883e");
         if(i!=0){
             System.out.println("修改成功");
             // 记录info级别的信息
