@@ -854,11 +854,11 @@ el-dialog .el-dialog__body {
 }
 
 .dialog-input .el-input__inner {
-  width: 300px !important;
+  width: 100% !important;
 }
 
 .dialog-textarea .el-textarea__inner {
-  width: 325px !important;
+  width: 85% !important;
 }
 
 </style>

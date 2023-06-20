@@ -21,7 +21,8 @@
             <el-radio label="desc">降序</el-radio>
             <el-radio label="asc">升序</el-radio>
           </el-radio-group>
-          <el-button type="danger" id="clearQuestionnaires" v-if="menuItem==='deleted'" @click="clearQuestionnaires">清空回收站
+          <el-button type="danger" id="clearQuestionnaires" v-if="menuItem==='deleted'" @click="clearQuestionnaires">
+            清空回收站
           </el-button>
           <el-input id="search" v-model="searchKeyWord" size="default"
                     placeholder="请输入问卷名进行搜索..." @keyup.enter.native="search">
@@ -41,7 +42,10 @@
                   </div>
                   <div id="star">
                     <div class="questionnaire-info">
-                      <div class="questionnaire-id" :title="questionnaire.id">ID：{{ questionnaire.id.substr(0, 8) }}...</div>
+                      <div class="questionnaire-id" :title="questionnaire.id">ID：{{
+                          questionnaire.id.substr(0, 8)
+                        }}...
+                      </div>
                       <div class="questionnaire-qnc">答卷数：{{ questionnaire.answerCount }}</div>
                     </div>
                     <el-icon id="on" class="el-icon-star-on" v-if="questionnaire.star===1&&menuItem!=='deleted'"
@@ -54,26 +58,46 @@
                 <div id="last">
                   <div id="time">
                     <div class="questionnaire-create">创建时间：{{ questionnaire.creationDate }}</div>
-                    <div class="questionnaire-update">发布时间：{{ questionnaire.startTime }}</div>
+                    <div class="questionnaire-update">
+                      {{
+                        questionnaire.startTime === null && questionnaire.endTime === null ? '该问卷尚未发布' :
+                            (questionnaire.startTime !== null ? '发布时间：' + questionnaire.startTime :
+                                '截止时间：' + questionnaire.endTime)
+                      }}
+                    </div>
                   </div>
                   <div class="questionnaire-button">
+                    <el-button type="success" @click="updateReleaseQuestionnaire(questionnaire.id)"
+                               v-if="questionnaire.startTime===null&&this.menuItem!=='deleted'">
+                      <el-icon class="el-icon-video-play"></el-icon>
+                      发布
+                    </el-button>
+                    <el-button type="success" @click="updateReclaimQuestionnaire(questionnaire.id)"
+                               v-if="questionnaire.startTime!==null&&this.menuItem!=='deleted'">
+                      <el-icon class="el-icon-video-pause"></el-icon>
+                      回收
+                    </el-button>
                     <el-button type="primary" @click="updateQuestionnaire(questionnaire)">
                       <el-icon class="el-icon-edit"></el-icon>
                       编辑
                     </el-button>
-                    <el-button type="warning" @click="copyQuestionnaire(questionnaire.id)" v-if="menuItem!=='deleted'">
+                    <el-button type="warning" @click="copyQuestionnaire(questionnaire.id)"
+                               v-if="menuItem!=='deleted'">
                       <el-icon class="el-icon-document-copy"></el-icon>
                       复制
                     </el-button>
-                    <el-button type="success" @click="updateDeletedOffQuestionnaire(questionnaire.id)" v-if="menuItem==='deleted'">
+                    <el-button type="success" @click="updateDeletedOffQuestionnaire(questionnaire.id)"
+                               v-if="menuItem==='deleted'">
                       <el-icon class="el-icon-refresh-left"></el-icon>
                       还原
                     </el-button>
-                    <el-button type="danger" @click="updateDeletedOnQuestionnaire(questionnaire.id)" v-if="menuItem!=='deleted'">
+                    <el-button type="danger" @click="updateDeletedOnQuestionnaire(questionnaire.id)"
+                               v-if="menuItem!=='deleted'">
                       <el-icon class="el-icon-delete"></el-icon>
                       删除
                     </el-button>
-                    <el-button type="danger" @click="deleteQuestionnaire(questionnaire.id)" v-if="menuItem==='deleted'">
+                    <el-button type="danger" @click="deleteQuestionnaire(questionnaire.id)"
+                               v-if="menuItem==='deleted'">
                       <el-icon class="el-icon-close"></el-icon>
                       删除
                     </el-button>
@@ -339,6 +363,78 @@ export default {
       this.updateFormData.questionnaireName = questionnaire.questionnaireName;
       this.updateFormData.questionnaireDescription = questionnaire.questionnaireDescription;
       this.updateShowDialog(questionnaire);
+    },
+    updateReleaseQuestionnaire(id) {
+      console.log("updateReleaseQuestionnaire:" + id);
+      //弹出确认框
+      this.$confirm('此操作将发布该问卷, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        customClass: 'message-box'
+      }).then(() => {
+        plainRequest.post("/updateReleaseQuestionnaire", id).then(res => {
+          if (res.data === 1) {
+            this.$message({
+              message: '发布成功',
+              type: 'success'
+            });
+            this.flush(this.menuItem);
+          } else {
+            this.$message({
+              message: '发布失败，请稍后重试',
+              type: 'error'
+            });
+          }
+        }).catch(err => {
+          console.log(err);
+          this.$message({
+            message: '发布失败，请稍后重试',
+            type: 'error'
+          });
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消发布'
+        });
+      });
+    },
+    updateReclaimQuestionnaire(id) {
+      console.log("updateReclaimQuestionnaire:" + id);
+      //弹出确认框
+      this.$confirm('此操作将回收该问卷, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        customClass: 'message-box'
+      }).then(() => {
+        plainRequest.post("/updateReclaimQuestionnaire", id).then(res => {
+          if (res.data === 1) {
+            this.$message({
+              message: '回收成功',
+              type: 'success'
+            });
+            this.flush(this.menuItem);
+          } else {
+            this.$message({
+              message: '回收失败，请稍后重试',
+              type: 'error'
+            });
+          }
+        }).catch(err => {
+          console.log(err);
+          this.$message({
+            message: '回收失败，请稍后重试',
+            type: 'error'
+          });
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消回收'
+        });
+      });
     },
     copyQuestionnaire(id) {
       console.log("copyQuestionnaire:" + id);
@@ -852,11 +948,11 @@ el-dialog .el-dialog__body {
 }
 
 .dialog-input .el-input__inner {
-  width: 300px !important;
+  width: 100% !important;
 }
 
 .dialog-textarea .el-textarea__inner {
-  width: 325px !important;
+  width: 85% !important;
 }
 
 </style>

@@ -88,14 +88,14 @@
     <!--更新问卷的发布状态-->
     <update id="updateReleaseQuestionnaire">
         update questionnaire
-        set start_time=NOW()
+        set start_time=NOW(),
             end_time=null
         where id = #{id}
     </update>
     <!--更新问卷的回收状态-->
     <update id="updateReclaimQuestionnaire">
         update questionnaire
-        set start_time=null
+        set start_time=null,
             end_time=NOW()
         where id = #{id}
     </update>
