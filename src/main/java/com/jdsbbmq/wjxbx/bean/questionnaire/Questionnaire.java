@@ -36,8 +36,6 @@ public class Questionnaire {
     @Schema(description = "问卷结束时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endTime;
-    @Schema(description = "问卷状态")
-    private String status;
     @Schema(description = "问卷问题数量")
     private int questionCount;
     @Schema(description = "问卷回答数量")
@@ -50,18 +48,21 @@ public class Questionnaire {
         if(questionnaireEntity==null){
             return;
         }else{
-            this.id = questionnaireEntity.getId();
-            this.projectId = questionnaireEntity.getProjectId();
-            this.questionnaireName = questionnaireEntity.getQuestionnaireName();
-            this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
-            this.creationDate = questionnaireEntity.getCreationDate();
-            this.startTime = questionnaireEntity.getStartTime();
-            this.endTime = questionnaireEntity.getEndTime();
-            this.status = questionnaireEntity.getStatus();
-            this.questionCount = questionnaireEntity.getQuestionCount();
-            this.answerCount = questionnaireEntity.getAnswerCount();
-            this.star = questionnaireEntity.getStar();
-            this.deleted = questionnaireEntity.getDeleted();
+            try {
+                this.id = questionnaireEntity.getId();
+                this.projectId = questionnaireEntity.getProjectId();
+                this.questionnaireName = questionnaireEntity.getQuestionnaireName();
+                this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
+                this.creationDate = questionnaireEntity.getCreationDate();
+                this.startTime = questionnaireEntity.getStartTime();
+                this.endTime = questionnaireEntity.getEndTime();
+                this.questionCount = questionnaireEntity.getQuestionCount();
+                this.answerCount = questionnaireEntity.getAnswerCount();
+                this.star = questionnaireEntity.getStar();
+                this.deleted = questionnaireEntity.getDeleted();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 }

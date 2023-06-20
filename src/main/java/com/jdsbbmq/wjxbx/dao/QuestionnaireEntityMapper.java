@@ -33,6 +33,18 @@ public interface QuestionnaireEntityMapper {
     //更新问卷
     int updateQuestionnaire(QuestionnaireEntity questionnaireEntity);
 
+    //更新问卷的收藏状态
+    int updateStarOnQuestionnaire(String id);
+
+    //更新取消问卷的收藏状态
+    int updateStarOffQuestionnaire(String id);
+
+    //更新问卷的删除状态
+    int updateDeletedOnQuestionnaire(String id);
+
+    //更新取消问卷的删除状态
+    int updateDeletedOffQuestionnaire(String id);
+
     // 删除问卷
     int deleteQuestionnaireById(String id);
 

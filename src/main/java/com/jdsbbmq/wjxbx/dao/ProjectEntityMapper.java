@@ -65,4 +65,10 @@ public interface ProjectEntityMapper {
     /*
         辅助功能
      */
+
+    //增加项目的问卷数量
+    int addProjectQuestionnaireCount(String id);
+
+    //减少项目的问卷数量
+    int reduceProjectQuestionnaireCount(String id);
 }

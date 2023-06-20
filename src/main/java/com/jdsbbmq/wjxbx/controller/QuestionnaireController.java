@@ -71,6 +71,12 @@ public class QuestionnaireController {
         return questionnaireService.updateQuestionnaire(questionnaireEntity);
     }
 
+    @Operation(summary = "更新一个问卷收藏状态", description = "更新一个问卷的收藏状态")
+    @RequestMapping(value = "/updateStarOnQuestionnaire" ,method = RequestMethod.POST)
+    public int updateStarOnQuestionnaire(@RequestBody String questionnaireId) {
+        return questionnaireService.updateStarOnQuestionnaire(questionnaireId);
+    }
+
     //删除一个问卷
     @Operation(summary = "删除一个问卷", description = "删除一个问卷")
     @RequestMapping(value = "/deleteQuestionnaire" ,method = RequestMethod.POST)

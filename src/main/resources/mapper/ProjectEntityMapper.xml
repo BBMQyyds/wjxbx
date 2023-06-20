@@ -26,6 +26,7 @@
         where project_name = #{projectName}
     </select>
 
+
     <!--根据分页搜寻项目-->
     <select id="selectProjectByPage" parameterType="QueryEntity" resultType="ProjectEntity">
         SELECT *
@@ -104,6 +105,22 @@
         from project
         where deleted = 1 and user_id = #{userId}
     </delete>
+
+    <!--
+       辅助功能
+   -->
+    <update id="addProjectQuestionnaireCount">
+        update project
+        set questionnaire_count = questionnaire_count + 1
+        where id = #{id}
+    </update>
+
+    <update id="reduceProjectQuestionnaireCount">
+        update project
+        set questionnaire_count = questionnaire_count - 1
+        where id = #{id}
+    </update>
+
 
     <!--
        resultMap

@@ -25,7 +25,6 @@ public class QuestionnaireEntity {
     private Date creationDate;
     private Date startTime;
     private Date endTime;
-    private String status;
     private int questionCount;
     private int answerCount;
     private int star;
@@ -43,7 +42,6 @@ public class QuestionnaireEntity {
             this.creationDate = questionnaire.getCreationDate();
             this.startTime = questionnaire.getStartTime();
             this.endTime = questionnaire.getEndTime();
-            this.status = questionnaire.getStatus();
             this.questionCount = questionnaire.getQuestionCount();
             this.answerCount = questionnaire.getAnswerCount();
             this.star = questionnaire.getStar();
