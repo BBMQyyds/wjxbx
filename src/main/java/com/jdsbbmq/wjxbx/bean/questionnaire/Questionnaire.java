@@ -52,11 +52,12 @@ public class Questionnaire {
             return;
         } else {
             try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 this.id = questionnaireEntity.getId();
                 this.projectId = questionnaireEntity.getProjectId();
                 this.questionnaireName = questionnaireEntity.getQuestionnaireName();
                 this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
-                this.creationDate = questionnaireEntity.getCreationDate();
+                this.creationDate = dateFormat.parse(dateFormat.format(questionnaireEntity.getCreationDate()));
                 this.startTime = questionnaireEntity.getStartTime();
                 this.endTime = questionnaireEntity.getEndTime();
                 this.questionCount = questionnaireEntity.getQuestionCount();

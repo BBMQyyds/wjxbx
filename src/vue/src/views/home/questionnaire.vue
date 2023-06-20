@@ -152,7 +152,7 @@ import router from "@/router";
 
 export default {
   name: "questionnaire",
-  inject: ['reload'],
+  inject: ['reload', 'dateFormat'],
   components: {
     navBar,
     sideBar

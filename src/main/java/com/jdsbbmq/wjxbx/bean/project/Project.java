@@ -1,6 +1,5 @@
 package com.jdsbbmq.wjxbx.bean.project;
 
-import com.jdsbbmq.wjxbx.common.utils.DateUtil;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.PostConstruct;
@@ -53,14 +52,15 @@ public class Project {
             return;
         } else {
             try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 this.id = projectEntity.getId();
                 this.userId = projectEntity.getUserId();
                 this.projectName = projectEntity.getProjectName();
                 this.projectContent = projectEntity.getProjectContent();
                 this.createdBy = projectEntity.getCreatedBy();
-                this.creationDate = DateUtil.Parse(projectEntity.getCreationDate());
+                this.creationDate = dateFormat.parse(dateFormat.format(projectEntity.getCreationDate()));
                 this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
-                this.lastUpdateDate = DateUtil.Parse(projectEntity.getLastUpdateDate());
+                this.lastUpdateDate = dateFormat.parse(dateFormat.format(projectEntity.getLastUpdateDate()));
                 this.star = projectEntity.getStar();
                 this.deleted = projectEntity.getDeleted();
                 this.questionnaireCount = projectEntity.getQuestionnaireCount();
