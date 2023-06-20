@@ -36,6 +36,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //分页查找问卷
     @Override
     public List<Questionnaire> selectQuestionnaireByPage(QueryRequest queryRequest) {
+        queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<QuestionnaireEntity> listQuestionnaireEntity=questionnaireEntityMapper.selectQuestionnaireByPage(queryRequest.ToQueryEntity());
         List<Questionnaire> listQuestionnaire=new ArrayList<>();
         for (QuestionnaireEntity questionnaireEntity:listQuestionnaireEntity){
@@ -101,8 +102,9 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     public int deleteQuestionnaireById(String questionnaireId) {
         try {
             int a=questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
-            int b=projectEntityMapper.reduceProjectQuestionnaireCount(questionnaireId);
-            if(a==0||b==0){
+            QuestionnaireEntity questionnaireEntity=questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
+            int b=projectEntityMapper.reduceProjectQuestionnaireCount(questionnaireEntity.getProjectId());
+            if(a==0||b==0||questionnaireEntity.getId()==null){
                 throw new RuntimeException("删除问卷失败");
             }
             return 1;
