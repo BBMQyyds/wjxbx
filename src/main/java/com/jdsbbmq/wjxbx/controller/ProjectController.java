@@ -123,4 +123,11 @@ public class ProjectController {
     public int deleteProject(@RequestBody String id) {
         return projectService.deleteProjectById(id);
     }
+
+    //清空回收站
+    @Operation(summary = "清空回收站", description = "从数据库中删除该用户的所有删除项目")
+    @RequestMapping(value = "/deleteAllProjectRecycled", method = RequestMethod.POST)
+    public int deleteAllProjectRecycled(@RequestBody String userId) {
+        return projectService.deleteAllProjectRecycled(userId);
+    }
 }

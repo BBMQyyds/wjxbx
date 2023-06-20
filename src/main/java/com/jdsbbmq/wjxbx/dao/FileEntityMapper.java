@@ -18,5 +18,10 @@ public interface FileEntityMapper {
         /*
            增删改
         */
+
+    //增加
     public int insertFile(FileEntity fileEntity);
+
+    //删除
+    public int deleteFile(String id);
 }

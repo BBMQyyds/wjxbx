@@ -48,4 +48,7 @@ public interface ProjectService {
 
     // 删除项目
     public int deleteProjectById(String id);
+
+    //清空回收站
+    public int deleteAllProjectRecycled(String userId);
 }

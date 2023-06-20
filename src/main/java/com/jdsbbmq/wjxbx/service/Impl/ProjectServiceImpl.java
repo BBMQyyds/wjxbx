@@ -93,4 +93,10 @@ public class ProjectServiceImpl implements ProjectService {
     public int deleteProjectById(String id) {
         return projectEntityMapper.deleteProjectById(id);
     }
+
+    //清空回收站
+    @Override
+    public int deleteAllProjectRecycled(String userId) {
+        return projectEntityMapper.deleteAllProjectRecycled(userId);
+    }
 }
