@@ -1,4 +1,4 @@
-package com.jdsbbmq.wjxbx.bean.project;
+package com.jdsbbmq.wjxbx.bean;
 
 
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QueryRequest {
+    private String id;
     private String searchKeyWord;
     private String sortType;
     private String sort;
@@ -19,6 +20,7 @@ public class QueryRequest {
     private String type;
     public QueryEntity ToQueryEntity(){
         QueryEntity queryEntity = new QueryEntity();
+        queryEntity.setId(this.id);
         queryEntity.setSearchKeyWord(this.searchKeyWord);
         queryEntity.setSortType(this.sortType);
         queryEntity.setSort(this.sort);

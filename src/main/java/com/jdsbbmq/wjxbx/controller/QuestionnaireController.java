@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.QuestionnaireService;
@@ -41,6 +42,13 @@ public class QuestionnaireController {
         QuestionnaireEntity questionnaireEntity=questionnaireService.selectQuestionnaireById(questionnaireId);
         return new Questionnaire(questionnaireEntity);
 
+    }
+
+    //分页寻找问卷
+    @Operation(summary = "分页寻找问卷", description = "能为用户分页寻找他的问卷")
+    @RequestMapping(value = "/selectQuestionnaireByPage", method = RequestMethod.POST)
+    public List<Questionnaire> selectQuestionnaireByPage(@RequestBody QueryRequest queryRequest) {
+       return questionnaireService.selectQuestionnaireByPage(queryRequest);
     }
 
      /*

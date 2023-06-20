@@ -19,6 +19,8 @@
         from questionnaire
         where id = #{id}
     </select>
+    <select id="selectQuestionnaireByPage" resultType="com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity">
+    </select>
 
 
     <!--增删改-->
@@ -67,7 +69,10 @@
         <result property="creationDate" column="creation_date"/>
         <result property="startTime" column="start_time"/>
         <result property="endTime" column="end_time"/>
-        <result property="status" column="status"/>
-        <result property="count" column="count"/>
+        <result property="questionCount" column="question_count"/>
+        <result property="answerCount" column="answer_count"/>
+        <result property="star" column="star"/>
+        <result property="deleted" column="deleted"/>
+
     </resultMap>
 </mapper>

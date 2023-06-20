@@ -26,4 +26,9 @@ public interface FileService {
 
     //修改一个文件夹的名字
     public int updateFile(File file);
+
+    //删除
+
+    //删除一个文件夹
+    public int deleteFile(String fileId);
 }

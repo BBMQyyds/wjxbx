@@ -60,7 +60,12 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public int updateFile(File file) {
-        return 0;
+        return fileEntityMapper.updateFile(new FileEntity(file));
+    }
+
+    @Override
+    public int deleteFile(String fileId) {
+        return fileEntityMapper.deleteFile(fileId);
     }
 
 

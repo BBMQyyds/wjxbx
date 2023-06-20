@@ -22,6 +22,9 @@ public interface FileEntityMapper {
     //增加
     public int insertFile(FileEntity fileEntity);
 
+    //更新
+    public int updateFile(FileEntity fileEntity);
+
     //删除
     public int deleteFile(String id);
 }

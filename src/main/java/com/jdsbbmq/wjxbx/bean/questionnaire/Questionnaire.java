@@ -44,6 +44,8 @@ public class Questionnaire {
     private int answerCount;
     @Schema(description = "问卷是否收藏")
     private int star;
+    @Schema(description = "问卷是否删除")
+    private int deleted;
     public Questionnaire(QuestionnaireEntity questionnaireEntity){
         if(questionnaireEntity==null){
             return;
@@ -59,6 +61,7 @@ public class Questionnaire {
             this.questionCount = questionnaireEntity.getQuestionCount();
             this.answerCount = questionnaireEntity.getAnswerCount();
             this.star = questionnaireEntity.getStar();
+            this.deleted = questionnaireEntity.getDeleted();
         }
     }
 }

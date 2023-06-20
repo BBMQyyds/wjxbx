@@ -29,7 +29,7 @@ public class QuestionnaireEntity {
     private int questionCount;
     private int answerCount;
     private int star;
-
+    private int deleted;
     //复制
     public QuestionnaireEntity(Questionnaire questionnaire){
         if(questionnaire == null){
@@ -47,6 +47,7 @@ public class QuestionnaireEntity {
             this.questionCount = questionnaire.getQuestionCount();
             this.answerCount = questionnaire.getAnswerCount();
             this.star = questionnaire.getStar();
+            this.deleted = questionnaire.getDeleted();
         }
     }
 }

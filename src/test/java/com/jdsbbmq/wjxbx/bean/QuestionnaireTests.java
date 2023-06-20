@@ -20,7 +20,7 @@ public class QuestionnaireTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        Questionnaire questionnaire = new Questionnaire("1", "2", "3", "4", new Date(), new Date(), new Date(), "5", 0,0,0);
+        Questionnaire questionnaire = new Questionnaire("1", "2", "3", "4", new Date(), new Date(), new Date(), "5",0, 0,0,0);
         if (questionnaire == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息
@@ -50,7 +50,7 @@ public class QuestionnaireTests {
     @Test
     //   测试复制时QuestionnaireEntity不为null时的构造方法
     public void copyConstructorTest2() {
-        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("1", "2", "3", "4", new Date(), new Date(), new Date(), "5", 0,0,0);
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("1", "2", "3", "4", new Date(), new Date(), new Date(), "5", 0,0,0,0);
         Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
         if (questionnaire == null) {
             System.out.println("复制时QuestionnaireEntity不为null时的构造方法失败");

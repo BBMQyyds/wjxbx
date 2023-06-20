@@ -1,7 +1,7 @@
 package com.jdsbbmq.wjxbx.controller;
 
 import com.jdsbbmq.wjxbx.bean.project.Project;
-import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import io.swagger.v3.oas.annotations.Operation;

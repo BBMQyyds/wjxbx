@@ -5,6 +5,12 @@
         INSERT INTO file (id, file_name, creation_date, created_by, last_update_date, parent_id)
         VALUES (#{id}, #{fileName}, #{creationDate}, #{createdBy}, #{lastUpdateDate}, #{parentId})
     </insert>
+    <update id="updateFile">
+        UPDATE file
+        SET file_name        = #{fileName},
+            last_update_date = NOW(),
+        WHERE id = #{id}
+    </update>
     <delete id="deleteFile">
         DELETE FROM file
         WHERE id = #{id}

@@ -41,9 +41,20 @@ public class FileController {
     }
 
     //修改（更新）
+
+    //修改文件夹名字
     @Operation(summary = "修改一个文件夹的名字", description = "修改一个文件夹的名字")
     @RequestMapping(value = "/updateFile" ,method = RequestMethod.POST)
     public int updateFile(@RequestBody File file) {
         return fileService.updateFile(file);
+    }
+
+    //删除
+
+    //删除一个文件夹
+    @Operation(summary = "删除一个文件夹", description = "删除一个文件夹")
+    @RequestMapping(value = "/deleteFile" ,method = RequestMethod.POST)
+    public int deleteFile(@RequestBody String fileId) {
+        return fileService.deleteFile(fileId);
     }
 }

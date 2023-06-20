@@ -19,7 +19,7 @@ public class QuestionnaireEntityTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("1", "2", "3", "4", new Date(), new Date(), new Date(), "5", 0,0,0);
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("1", "2", "3", "4", new Date(), new Date(), new Date(), "5", 0,0,0,0);
         if (questionnaireEntity == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息

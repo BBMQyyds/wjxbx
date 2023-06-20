@@ -1,6 +1,6 @@
 package com.jdsbbmq.wjxbx.service;
 
-import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import org.springframework.stereotype.Service;
 

@@ -25,10 +25,10 @@
         from project
         where project_name = #{projectName}
     </select>
+
     <!--根据分页搜寻项目-->
     <select id="selectProjectByPage" parameterType="QueryEntity" resultType="ProjectEntity">
-        SELECT *,
-        (SELECT COUNT(*) FROM questionnaire WHERE project.id = questionnaire.project_id) AS questionnaire_count
+        SELECT *
         FROM project
         <if test="type == null">
             WHERE deleted = 0
@@ -47,7 +47,7 @@
     <insert id="insertProject" parameterType="projectEntity">
         insert into project
         (id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date,
-         questionnaire_count, star, deleted)
+         questionnaire_count, star, delete)
         values (#{id}, #{userId}, #{projectName}, #{projectContent}, #{createdBy}, #{creationDate}, #{lastUpdatedBy},
                 #{lastUpdateDate}, #{questionnaireCount}, #{star}, #{deleted})
     </insert>
@@ -58,7 +58,7 @@
         set project_name     = #{projectName},
             project_content  = #{projectContent},
             last_updated_by  = #{lastUpdatedBy},
-            last_update_date = #{lastUpdateDate}
+            last_update_date = #{lastUpdateDate},
         where id = #{id}
     </update>
 

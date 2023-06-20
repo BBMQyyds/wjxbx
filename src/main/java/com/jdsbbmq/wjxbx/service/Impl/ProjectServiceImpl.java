@@ -1,6 +1,6 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
-import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;

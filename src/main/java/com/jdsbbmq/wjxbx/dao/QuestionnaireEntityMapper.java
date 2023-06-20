@@ -1,5 +1,7 @@
 package com.jdsbbmq.wjxbx.dao;
 import java.util.List;
+
+import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,9 @@ public interface QuestionnaireEntityMapper {
 
     // 根据id查询问卷
     QuestionnaireEntity selectQuestionnaireById(String id);
+
+    // 分页查询问卷
+    List<QuestionnaireEntity> selectQuestionnaireByPage(QueryEntity queryEntity);
 
 
     //增删改

@@ -1,6 +1,5 @@
 package com.jdsbbmq.wjxbx.dao;
 
-import com.jdsbbmq.wjxbx.bean.project.QueryRequest;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import org.apache.ibatis.annotations.Mapper;
