@@ -47,7 +47,7 @@
     <insert id="insertProject" parameterType="projectEntity">
         insert into project
         (id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date,
-         questionnaire_count, star, delete)
+         questionnaire_count, star, deleted)
         values (#{id}, #{userId}, #{projectName}, #{projectContent}, #{createdBy}, #{creationDate}, #{lastUpdatedBy},
                 #{lastUpdateDate}, #{questionnaireCount}, #{star}, #{deleted})
     </insert>
@@ -58,7 +58,7 @@
         set project_name     = #{projectName},
             project_content  = #{projectContent},
             last_updated_by  = #{lastUpdatedBy},
-            last_update_date = #{lastUpdateDate},
+            last_update_date = #{lastUpdateDate}
         where id = #{id}
     </update>
 

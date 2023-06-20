@@ -85,13 +85,15 @@
         </div>
       </div>
     </div>
-    <el-dialog title="创建项目" v-model="insertDialogVisible" @close="insertHandleClose">
-      <el-form ref="form" :model="insertFormData" label-width="80px">
-        <el-form-item label="项目名称">
+    <el-dialog title="创建项目" v-model="insertDialogVisible"
+               @close="insertHandleClose" destroy-on-close>
+      <el-form ref="insertFormData" :model="insertFormData" :rules="rules" label-width="80px">
+        <el-form-item label="项目名称" prop="projectName">
           <el-input class="dialog-input" v-model="insertFormData.projectName"></el-input>
         </el-form-item>
-        <el-form-item label="项目描述">
-          <el-input class="dialog-input" v-model="insertFormData.projectContent"></el-input>
+        <el-form-item label="项目描述" prop="projectContent">
+          <el-input class="dialog-textarea" v-model="insertFormData.projectContent"
+                    type="textarea" :rows="3" :resize="'none'"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -99,13 +101,15 @@
         <el-button type="primary" @click="insertHandleConfirm">确认</el-button>
       </div>
     </el-dialog>
-    <el-dialog title="编辑项目" v-model="updateDialogVisible" @close="updateHandleClose">
-      <el-form ref="form" :model="updateFormData" label-width="80px">
-        <el-form-item label="项目名称" label-position="top">
+    <el-dialog title="编辑项目" v-model="updateDialogVisible"
+               @close="updateHandleClose" destroy-on-close>
+      <el-form ref="updateFormData" :model="updateFormData" :rules="rules" label-width="80px">
+        <el-form-item label="项目名称" prop="projectName">
           <el-input class="dialog-input" v-model="updateFormData.projectName"></el-input>
         </el-form-item>
-        <el-form-item label="项目描述">
-          <el-input class="dialog-input" v-model="updateFormData.projectContent"></el-input>
+        <el-form-item label="项目描述" prop="projectContent">
+          <el-input class="dialog-textarea" v-model="updateFormData.projectContent"
+                    type="textarea" :rows="3" :resize="'none'"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -145,6 +149,16 @@ export default {
       insertFormData: {},
       updateFormData: {},
       menuItem: "home",
+      rules: {
+        projectName: [
+          {required: true, message: '请输入项目名称', trigger: 'blur'},
+          {min: 2, max: 16, message: '长度在 2 到 16 个字符', trigger: 'blur'}
+        ],
+        projectContent: [
+          {required: true, message: '请输入项目描述', trigger: 'blur'},
+          {min: 5, max: 50, message: '长度在 5 到 50 个字符', trigger: 'blur'}
+        ]
+      }
     };
   },
   methods: {
@@ -174,6 +188,7 @@ export default {
       console.log("search");
       this.currentPage = 1;
       let data = {
+        id: this.$route.query.id,//用户id
         searchKeyWord: this.searchKeyWord,//搜索关键字
         sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
         sort: this.sort,//升序还是降序（asc,desc）
@@ -197,6 +212,7 @@ export default {
       }
       console.log("load");
       let data = {
+        id: this.$route.query.id,//用户id
         searchKeyWord: this.searchKeyWord,//搜索关键字
         sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
         sort: this.sort,//升序还是降序（asc,desc）
@@ -220,6 +236,7 @@ export default {
         console.log("star");
         this.currentPage = 1;
         let data = {
+          id: this.$route.query.id,//用户id
           searchKeyWord: this.searchKeyWord,//搜索关键字
           sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
           sort: this.sort,//升序还是降序（asc,desc）
@@ -234,6 +251,7 @@ export default {
         console.log("deleted");
         this.currentPage = 1;
         let data = {
+          id: this.$route.query.id,//用户id
           searchKeyWord: this.searchKeyWord,//搜索关键字
           sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
           sort: this.sort,//升序还是降序（asc,desc）
@@ -515,30 +533,39 @@ export default {
     insertHandleConfirm() {
       // 处理确认按钮逻辑
       console.log('确认按钮点击');
-      request.post("/insertProject", JSON.stringify({
-        projectName: this.insertFormData.projectName,
-        projectContent: this.insertFormData.projectContent,
-        userId: this.$route.query.id,
-        createdBy: this.$route.query.id
-      })).then(res => {
-        if (res.data === 1) {
-          this.$message({
-            message: '添加成功',
-            type: 'success'
+      this.$refs.insertFormData.validate((valid) => {
+        if (valid) {
+          request.post("/insertProject", JSON.stringify({
+            projectName: this.insertFormData.projectName,
+            projectContent: this.insertFormData.projectContent,
+            userId: this.$route.query.id,
+            createdBy: this.$route.query.id
+          })).then(res => {
+            if (res.data === 1) {
+              this.$message({
+                message: '添加成功',
+                type: 'success'
+              });
+              this.flush(this.menuItem);
+            } else {
+              this.$message({
+                message: '添加失败，请稍后重试',
+                type: 'error'
+              });
+            }
+          }).catch(err => {
+            console.log(err);
+            this.$message({
+              message: '添加失败，请稍后重试',
+              type: 'error'
+            });
           });
-          this.flush(this.menuItem);
         } else {
           this.$message({
-            message: '添加失败，请稍后重试',
+            message: '输入格式不正确',
             type: 'error'
           });
         }
-      }).catch(err => {
-        console.log(err);
-        this.$message({
-          message: '添加失败，请稍后重试',
-          type: 'error'
-        });
       });
       // 关闭对话框
       this.insertDialogVisible = false;
@@ -565,30 +592,39 @@ export default {
     updateHandleConfirm() {
       // 处理确认按钮逻辑
       console.log('确认按钮点击');
-      request.post("/updateProject", JSON.stringify({
-        id: this.updateFormData.id,
-        projectName: this.updateFormData.projectName,
-        projectContent: this.updateFormData.projectContent,
-        lastUpdatedBy: this.$route.query.id
-      })).then(res => {
-        if (res.data === 1) {
-          this.$message({
-            message: '修改成功',
-            type: 'success'
+      this.$refs.updateFormData.validate((valid) => {
+        if (valid) {
+          request.post("/updateProject", JSON.stringify({
+            id: this.updateFormData.id,
+            projectName: this.updateFormData.projectName,
+            projectContent: this.updateFormData.projectContent,
+            lastUpdatedBy: this.$route.query.id
+          })).then(res => {
+            if (res.data === 1) {
+              this.$message({
+                message: '修改成功',
+                type: 'success'
+              });
+              this.flush(this.menuItem);
+            } else {
+              this.$message({
+                message: '修改失败，请稍后重试',
+                type: 'error'
+              });
+            }
+          }).catch(err => {
+            console.log(err);
+            this.$message({
+              message: '修改失败，请稍后重试',
+              type: 'error'
+            });
           });
-          this.flush(this.menuItem);
         } else {
           this.$message({
-            message: '修改失败，请稍后重试',
+            message: '输入格式不正确',
             type: 'error'
           });
         }
-      }).catch(err => {
-        console.log(err);
-        this.$message({
-          message: '修改失败，请稍后重试',
-          type: 'error'
-        });
       });
       // 关闭对话框
       this.updateDialogVisible = false;
@@ -800,13 +836,8 @@ el-dialog .el-dialog__body {
   align-items: center;
 }
 
-.dialog-input {
+.el-form-item {
   margin-left: 40px;
-  width: 100%;
-}
-
-.el-form-item__label {
-  width: 500px;
 }
 
 .dialog-footer {
@@ -821,5 +852,14 @@ el-dialog .el-dialog__body {
     padding-top: 8px;
   }
 }
+
+.dialog-input .el-input__inner {
+  width: 300px !important;
+}
+
+.dialog-textarea .el-textarea__inner {
+  width: 325px !important;
+}
+
 </style>
 
