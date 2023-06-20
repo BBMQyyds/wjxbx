@@ -6,6 +6,7 @@ import VueCookies from 'vue-cookies';
 import 'element-plus/dist/index.css';
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/style/common.css';
+import VueWechatTitle from 'vue-wechat-title'
 
 
 let app = createApp(App);
@@ -29,4 +30,4 @@ window.ResizeObserver = class ResizeObserver extends _ResizeObserver {
         super(callback);
     }
 };
-app.use(router).use(ElementPlus).use(VueCookies).mount('#app');
+app.use(router).use(ElementPlus).use(VueCookies).use(VueWechatTitle).mount('#app');

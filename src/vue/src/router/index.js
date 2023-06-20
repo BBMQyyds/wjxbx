@@ -6,49 +6,73 @@ const routes = [
         path: '/',
         redirect: '/login',
         component: () => import('@/views/login'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-登录'
+        }
     },
     {
         name: 'index',
         path: '/index',
         component: () => import('@/views/index'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-首页'
+        }
     },
     {
         name: 'login',
         path: '/login',
         component: () => import('@/views/login'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-登录'
+        }
     },
     {
         name: 'project',
         path: '/project',
         component: () => import('@/views/home/project'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-项目管理'
+        }
     },
     {
         name: 'questionnaire',
         path: '/questionnaire',
         component: () => import('@/views/home/questionnaire'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-问卷管理'
+        }
     },
     {
         name: 'question',
         path: '/question',
         component: () => import('@/views/home/question'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-题目管理'
+        }
     },
     {
         name: 'register',
         path: '/register',
         component: () => import('@/views/register'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-注册'
+        }
     },
     {
         name: 'update',
         path: '/update',
         component: () => import('@/views/update'),
-        meta: {keepAlive: false}
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-修改密码'
+        }
     }
 ]
 

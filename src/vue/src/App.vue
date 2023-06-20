@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <router-view v-if="isRouterAlive"/>
+    <router-view v-if="isRouterAlive"  v-wechat-title="$route.meta.title"/>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'App',
+
   provide() {
     return {
       reload: this.reload
