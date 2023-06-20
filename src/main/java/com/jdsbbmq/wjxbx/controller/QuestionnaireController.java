@@ -59,8 +59,7 @@ public class QuestionnaireController {
     @Operation(summary = "插入一个问卷", description = "插入一个问卷")
     @RequestMapping(value = "/insertQuestionnaire" ,method = RequestMethod.POST)
     public int insertQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity(questionnaire);
-        return questionnaireService.insertQuestionnaire(questionnaireEntity);
+        return questionnaireService.insertQuestionnaire(questionnaire);
     }
 
     //更新一个问卷

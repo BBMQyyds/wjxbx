@@ -52,7 +52,9 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //插入一个问卷
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public int insertQuestionnaire(QuestionnaireEntity questionnaireEntity) {
+    public int insertQuestionnaire(Questionnaire questionnaire) {
+        questionnaire.init();
+        QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity(questionnaire);
         try{
             int a=questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
             int b=projectEntityMapper.addProjectQuestionnaireCount(questionnaireEntity.getProjectId());

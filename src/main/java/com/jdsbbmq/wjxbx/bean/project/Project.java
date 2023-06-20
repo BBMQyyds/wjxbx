@@ -4,15 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.jdsbbmq.wjxbx.common.utils.DateUtils;
+import com.jdsbbmq.wjxbx.common.utils.DateUtil;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.PostConstruct;
 import lombok.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Size;
 
@@ -62,9 +59,9 @@ public class Project {
                 this.projectName = projectEntity.getProjectName();
                 this.projectContent = projectEntity.getProjectContent();
                 this.createdBy = projectEntity.getCreatedBy();
-                this.creationDate = DateUtils.Parse(projectEntity.getCreationDate());
+                this.creationDate = DateUtil.Parse(projectEntity.getCreationDate());
                 this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
-                this.lastUpdateDate = DateUtils.Parse(projectEntity.getLastUpdateDate());
+                this.lastUpdateDate = DateUtil.Parse(projectEntity.getLastUpdateDate());
                 this.star = projectEntity.getStar();
                 this.deleted = projectEntity.getDeleted();
                 this.questionnaireCount = projectEntity.getQuestionnaireCount();

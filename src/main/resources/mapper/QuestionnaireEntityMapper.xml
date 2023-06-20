@@ -10,7 +10,7 @@
     <select id="selectAllQuestionnaire" resultType="QuestionnaireEntity">
         select *
         from questionnaire
-        where project_id = #{userId}
+        where project_id = #{id}
     </select>
 
     <!--根据ID查询问卷-->
@@ -31,7 +31,7 @@
             WHERE ${type} = 1
         </if>
         AND questionnaire_name LIKE CONCAT('%', #{searchKeyWord}, '%')
-        AND project_id = #{projectId}
+        AND project_id = #{Id}
         ORDER BY ${sortType} ${sort}
         LIMIT #{pageSize} OFFSET #{offset}
     </select>

@@ -28,7 +28,7 @@ public interface QuestionnaireService {
     //增加
 
     //插入一个问卷
-    public int insertQuestionnaire(QuestionnaireEntity questionnaireEntity);
+    public int insertQuestionnaire(Questionnaire questionnaire);
 
     //修改更新
 

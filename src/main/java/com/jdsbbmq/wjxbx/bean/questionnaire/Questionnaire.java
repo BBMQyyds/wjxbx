@@ -1,8 +1,11 @@
 package com.jdsbbmq.wjxbx.bean.questionnaire;
 
+import com.jdsbbmq.wjxbx.common.utils.DateUtil;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.PostConstruct;
 import lombok.*;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
@@ -63,6 +66,20 @@ public class Questionnaire {
             }catch (Exception e){
                 e.printStackTrace();
             }
+        }
+    }
+
+    @PostConstruct
+    public void init(){
+        try {
+            this.id=java.util.UUID.randomUUID().toString(); // 设置默认的id
+            this.creationDate= DateUtil.Parse(new Date()); // 设置默认的创建时间
+            this.questionCount=0; // 设置默认的问题数量
+            this.answerCount=0; // 设置默认的回答数量
+            this.star=0; // 设置默认的收藏
+            this.deleted=0; // 设置默认的删除
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
