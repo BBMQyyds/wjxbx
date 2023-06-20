@@ -120,7 +120,7 @@ export default {
               })
             } else {
               this.$message({
-                message: '创建失败，请重新注册',
+                message: '该用户名已存在，请重新输入',
                 type: 'error'
               });
               this.reload();

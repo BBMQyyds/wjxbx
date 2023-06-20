@@ -12,7 +12,7 @@
       <i class="el-icon-star-off"></i>
       <span>星标问卷</span>
     </el-menu-item>
-    <el-menu-item :class="{'active-item': activeMenu === 'delete-solid'}" index="delete">
+    <el-menu-item :class="{'active-item': activeMenu === 'delete-solid'}" index="deleted">
       <i class="el-icon-delete"></i>
       <span>回收站</span>
     </el-menu-item>

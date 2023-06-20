@@ -602,20 +602,20 @@ export default {
           })).then(res => {
             if (res.data === 1) {
               this.$message({
-                message: '修改成功',
+                message: '编辑成功',
                 type: 'success'
               });
               this.flush(this.menuItem);
             } else {
               this.$message({
-                message: '修改失败，请稍后重试',
+                message: '编辑失败，请稍后重试',
                 type: 'error'
               });
             }
           }).catch(err => {
             console.log(err);
             this.$message({
-              message: '修改失败，请稍后重试',
+              message: '编辑失败，请稍后重试',
               type: 'error'
             });
           });
