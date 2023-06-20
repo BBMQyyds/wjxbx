@@ -80,14 +80,14 @@
         where id = #{id}
     </update>
     <!--更新项目为删除项目-->
-    <update id="updateDeleteOnProject">
+    <update id="updateDeletedOnProject">
         update project
         set deleted = 1,
             last_update_date = NOW()
         where id = #{id}
     </update>
     <!--更新项目为非删除项目-->
-    <update id="updateDeleteOffProject">
+    <update id="updateDeletedOffProject">
         update project
         set deleted = 0,
             last_update_date = NOW()

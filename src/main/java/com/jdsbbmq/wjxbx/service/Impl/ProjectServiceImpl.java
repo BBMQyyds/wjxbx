@@ -79,13 +79,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public int updateDeleteOnProject(String id) {
-        return projectEntityMapper.updateDeleteOnProject(id);
+    public int updateDeletedOnProject(String id) {
+        return projectEntityMapper.updateDeletedOnProject(id);
     }
 
     @Override
-    public int updateDeleteOffProject(String id) {
-        return projectEntityMapper.updateDeleteOffProject(id);
+    public int updateDeletedOffProject(String id) {
+        return projectEntityMapper.updateDeletedOffProject(id);
     }
 
     //删除项目

@@ -105,16 +105,16 @@ public class ProjectController {
 
     //更新项目的删除状态
     @Operation(summary = "将项目变为删除项目", description = "往删除项目表中加入项目")
-    @RequestMapping(value = "/updateDeleteOnProject", method = RequestMethod.POST)
-    public int updateDeleteOnProject(@RequestBody String id) {
-        return projectService.updateDeleteOnProject(id);
+    @RequestMapping(value = "/updateDeletedOnProject", method = RequestMethod.POST)
+    public int updateDeletedOnProject(@RequestBody String id) {
+        return projectService.updateDeletedOnProject(id);
     }
 
     //更新项目的删除状态
     @Operation(summary = "将项目取消删除项目", description = "往项目从删除项目中移除")
-    @RequestMapping(value = "/updateDeleteOffProject", method = RequestMethod.POST)
-    public int updateDeleteOffProject(@RequestBody String id) {
-        return projectService.updateDeleteOffProject(id);
+    @RequestMapping(value = "/updateDeletedOffProject", method = RequestMethod.POST)
+    public int updateDeletedOffProject(@RequestBody String id) {
+        return projectService.updateDeletedOffProject(id);
     }
 
     // 删除项目

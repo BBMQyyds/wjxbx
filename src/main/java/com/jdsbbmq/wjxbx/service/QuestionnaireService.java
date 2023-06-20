@@ -33,7 +33,7 @@ public interface QuestionnaireService {
     //修改更新
 
     //更新一个问卷
-    public int updateQuestionnaire(QuestionnaireEntity questionnaireEntity);
+    public int updateQuestionnaire(Questionnaire questionnaire);
 
     //更新问卷的收藏状态
     public int updateStarOnQuestionnaire(String questionnaireId);

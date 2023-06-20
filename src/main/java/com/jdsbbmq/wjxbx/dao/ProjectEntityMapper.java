@@ -51,10 +51,10 @@ public interface ProjectEntityMapper {
     int updateStarOffProject(String id);
 
     // 将项目的删除更新为已删除
-    int updateDeleteOnProject(String id);
+    int updateDeletedOnProject(String id);
 
     // 将项目的删除更新为未删除
-    int updateDeleteOffProject(String id);
+    int updateDeletedOffProject(String id);
     //删除
 
     // 根据id删除项目

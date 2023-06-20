@@ -66,8 +66,7 @@ public class QuestionnaireController {
     @Operation(summary = "更新一个问卷", description = "更新一个问卷")
     @RequestMapping(value = "/updateQuestionnaire" ,method = RequestMethod.POST)
     public int updateQuestionnaire(@RequestBody Questionnaire questionnaire) {
-        QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity(questionnaire);
-        return questionnaireService.updateQuestionnaire(questionnaireEntity);
+        return questionnaireService.updateQuestionnaire(questionnaire);
     }
 
     @Operation(summary = "更新一个问卷收藏状态", description = "更新一个问卷的收藏状态")

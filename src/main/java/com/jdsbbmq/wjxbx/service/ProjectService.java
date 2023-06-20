@@ -41,10 +41,10 @@ public interface ProjectService {
     public int updateStarOffProject(String id);
 
     //将项目的删除更新为已删除
-    public int updateDeleteOnProject(String id);
+    public int updateDeletedOnProject(String id);
 
     //将项目的删除更新为未删除
-    public int updateDeleteOffProject(String id);
+    public int updateDeletedOffProject(String id);
 
     // 删除项目
     public int deleteProjectById(String id);

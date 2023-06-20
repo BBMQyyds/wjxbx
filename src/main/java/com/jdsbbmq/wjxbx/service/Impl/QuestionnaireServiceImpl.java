@@ -72,7 +72,8 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     //更新一个问卷
     @Override
-    public int updateQuestionnaire(QuestionnaireEntity questionnaireEntity) {
+    public int updateQuestionnaire(Questionnaire questionnaire) {
+        QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity(questionnaire);
         return questionnaireEntityMapper.updateQuestionnaire(questionnaireEntity);
     }
 
@@ -101,8 +102,8 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Transactional(rollbackFor = RuntimeException.class)
     public int deleteQuestionnaireById(String questionnaireId) {
         try {
-            int a=questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
             QuestionnaireEntity questionnaireEntity=questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
+            int a=questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
             int b=projectEntityMapper.reduceProjectQuestionnaireCount(questionnaireEntity.getProjectId());
             if(a==0||b==0||questionnaireEntity.getId()==null){
                 throw new RuntimeException("删除问卷失败");

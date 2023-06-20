@@ -40,7 +40,12 @@ public class UserServiceImpl implements UserService {
 
     // 插入用户（注册）
     public int insertUser(UserEntity userEntity) {
-        return userEntityMapper.insertUser(userEntity);
+        try {
+            userEntityMapper.insertUser(userEntity);
+            return 1;
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     // 更新用户

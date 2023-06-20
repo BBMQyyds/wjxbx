@@ -52,15 +52,8 @@
     <update id="updateQuestionnaire">
         update questionnaire
         <set>
-            <if test="projectId != null">project_id = #{projectId},</if>
             <if test="questionnaireName != null">questionnaire_name = #{questionnaireName},</if>
-            <if test="questionnaireDescription != null">questionnaire_description = #{questionnaireDescription},</if>
-            <if test="creationDate != null">creation_date = #{creationDate},</if>
-            <if test="startTime != null">start_time = #{startTime},</if>
-            <if test="endTime != null">end_time = #{endTime},</if>
-            <if test="status != null">status = #{status},</if>
-            <if test="questionCount != null">question_count = #{questionCount},</if>
-            <if test="answerCount != null">answer_count = #{answerCount},</if>
+            <if test="questionnaireDescription != null">questionnaire_description = #{questionnaireDescription}</if>
         </set>
         where id = #{id}
     </update>
