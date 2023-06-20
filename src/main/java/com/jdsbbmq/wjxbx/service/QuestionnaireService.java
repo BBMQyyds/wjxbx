@@ -38,6 +38,15 @@ public interface QuestionnaireService {
     //更新问卷的收藏状态
     public int updateStarOnQuestionnaire(String questionnaireId);
 
+    //更新取消问卷的收藏状态
+    public int updateStarOffQuestionnaire(String questionnaireId);
+
+    //更新问卷的删除状态
+    public int updateDeletedOnQuestionnaire(String questionnaireId);
+
+    //更新取消问卷的删除状态
+    public int updateDeletedOffQuestionnaire(String questionnaireId);
+
     //删除一个问卷
     public int deleteQuestionnaireById(String questionnaireId);
 }

@@ -38,6 +38,7 @@
             WHERE ${type} = 1
         </if>
         AND project_name LIKE CONCAT('%', #{searchKeyWord}, '%')
+        AND user_id = #{userId}
         ORDER BY ${sortType} ${sort}
         LIMIT #{pageSize} OFFSET #{offset}
     </select>

@@ -2,12 +2,14 @@ package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
+import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
 import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.QuestionnaireService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,9 @@ import java.util.List;
 public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Resource
     private QuestionnaireEntityMapper questionnaireEntityMapper;
+
+    @Resource
+    private ProjectEntityMapper projectEntityMapper;
 
     //查找一个项目下的所有问卷
     @Override
@@ -46,8 +51,18 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     //插入一个问卷
     @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public int insertQuestionnaire(QuestionnaireEntity questionnaireEntity) {
-        return questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
+        try{
+            int a=questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
+            int b=projectEntityMapper.addProjectQuestionnaireCount(questionnaireEntity.getProjectId());
+            if(a==0||b==0){
+                throw new RuntimeException("插入问卷失败");
+            }
+            return 1;
+        }catch (Exception e){
+            throw new RuntimeException("插入问卷失败");
+        }
     }
 
     //修改更新
@@ -61,11 +76,36 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //更新问卷的收藏状态
     @Override
     public int updateStarOnQuestionnaire(String questionnaireId) {
-        return 0;
+        return questionnaireEntityMapper.updateStarOnQuestionnaire(questionnaireId);
     }
 
     @Override
+    public int updateStarOffQuestionnaire(String questionnaireId) {
+        return questionnaireEntityMapper.updateStarOffQuestionnaire(questionnaireId);
+    }
+
+    @Override
+    public int updateDeletedOnQuestionnaire(String questionnaireId) {
+        return questionnaireEntityMapper.updateDeletedOnQuestionnaire(questionnaireId);
+    }
+
+    @Override
+    public int updateDeletedOffQuestionnaire(String questionnaireId) {
+        return questionnaireEntityMapper.updateDeletedOffQuestionnaire(questionnaireId);
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
     public int deleteQuestionnaireById(String questionnaireId) {
-        return questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
+        try {
+            int a=questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
+            int b=projectEntityMapper.reduceProjectQuestionnaireCount(questionnaireId);
+            if(a==0||b==0){
+                throw new RuntimeException("删除问卷失败");
+            }
+            return 1;
+        }catch (Exception e){
+            throw new RuntimeException("删除问卷失败");
+        }
     }
 }

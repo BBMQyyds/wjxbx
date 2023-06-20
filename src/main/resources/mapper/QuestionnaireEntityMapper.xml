@@ -31,6 +31,7 @@
             WHERE ${type} = 1
         </if>
         AND questionnaire_name LIKE CONCAT('%', #{searchKeyWord}, '%')
+        AND project_id = #{projectId}
         ORDER BY ${sortType} ${sort}
         LIMIT #{pageSize} OFFSET #{offset}
     </select>

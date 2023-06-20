@@ -76,7 +76,6 @@ public class QuestionnaireTests {
         questionnaire.setQuestionCount(0);
         questionnaire.setAnswerCount(0);
         questionnaire.setStar(0);
-        questionnaire.setStatus("5");
         questionnaire.setStartTime(new Date());
         if (questionnaire == null) {
             System.out.println("复制时Questionnaire的Set方法失败");
