@@ -9,6 +9,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
@@ -72,8 +73,9 @@ public class Questionnaire {
     @PostConstruct
     public void init(){
         try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             this.id=java.util.UUID.randomUUID().toString(); // 设置默认的id
-            this.creationDate= DateUtil.Parse(new Date()); // 设置默认的创建时间
+            this.creationDate= dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
             this.questionCount=0; // 设置默认的问题数量
             this.answerCount=0; // 设置默认的回答数量
             this.star=0; // 设置默认的收藏

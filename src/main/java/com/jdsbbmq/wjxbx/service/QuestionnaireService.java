@@ -47,6 +47,17 @@ public interface QuestionnaireService {
     //更新取消问卷的删除状态
     public int updateDeletedOffQuestionnaire(String questionnaireId);
 
+    //发布问卷
+    public int updateReleaseQuestionnaire(String questionnaireId);
+
+    //收回问卷
+    public int updateReclaimQuestionnaire(String questionnaireId);
+
+    //删除
+
     //删除一个问卷
     public int deleteQuestionnaireById(String questionnaireId);
+
+    //清空回收站
+    public int deleteAllQuestionnaireRecycled(String projectId);
 }

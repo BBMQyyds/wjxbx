@@ -99,6 +99,17 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     }
 
     @Override
+    public int updateReleaseQuestionnaire(String questionnaireId) {
+        return questionnaireEntityMapper.updateReleaseQuestionnaire(questionnaireId);
+    }
+
+    @Override
+    public int updateReclaimQuestionnaire(String questionnaireId) {
+        return questionnaireEntityMapper.updateReclaimQuestionnaire(questionnaireId);
+    }
+
+    //删除项目
+    @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public int deleteQuestionnaireById(String questionnaireId) {
         try {
@@ -111,6 +122,22 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
             return 1;
         }catch (Exception e){
             throw new RuntimeException("删除问卷失败");
+        }
+    }
+
+    //清空回收站
+    @Transactional(rollbackFor = RuntimeException.class)
+    @Override
+    public int deleteAllQuestionnaireRecycled(String projectId) {
+        try{
+            int a=projectEntityMapper.reduceProjectQuestionnaireCount(projectId);
+            int b=questionnaireEntityMapper.deleteAllQuestionnaireRecycled(projectId);
+            if(a==0||b==0){
+                throw new RuntimeException("清空回收站失败");
+            }
+            return 1;
+        }catch (Exception e){
+            throw new RuntimeException("清空回收站失败");
         }
     }
 }

@@ -85,12 +85,31 @@
         set deleted = 0
         where id = #{id}
     </update>
+    <!--更新问卷的发布状态-->
+    <update id="updateReleaseQuestionnaire">
+        update questionnaire
+        set start_time=NOW()
+            end_time=null
+        where id = #{id}
+    </update>
+    <!--更新问卷的回收状态-->
+    <update id="updateReclaimQuestionnaire">
+        update questionnaire
+        set start_time=null
+            end_time=NOW()
+        where id = #{id}
+    </update>
 
     <!--删除问卷-->
     <delete id="deleteQuestionnaireById">
         delete
         from questionnaire
         where id = #{id}
+    </delete>
+    <delete id="deleteAllQuestionnaireRecycled">
+        delete
+        from questionnaire
+        where deleted = 1 AND project_id = #{id}
     </delete>
 
     <!--

@@ -71,4 +71,7 @@ public interface ProjectEntityMapper {
 
     //减少项目的问卷数量
     int reduceProjectQuestionnaireCount(String id);
+
+    //清空回收站时减少项目的问卷数量
+    int reduceProjectQuestionnaireCountRecycled(String projectId);
 }

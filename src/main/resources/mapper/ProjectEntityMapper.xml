@@ -124,7 +124,15 @@
         set questionnaire_count = questionnaire_count - 1
         where id = #{id}
     </update>
-
+    <update id="reduceProjectQuestionnaireCountRecycled" parameterType="String">
+        UPDATE project
+        SET questionnaire_count = questionnaire_count - (
+            SELECT COUNT(*)
+            FROM questionnaire
+            WHERE project_id = #{projectId} AND deleted = 1
+        )
+        WHERE id = #{projectId}
+    </update>
 
     <!--
        resultMap

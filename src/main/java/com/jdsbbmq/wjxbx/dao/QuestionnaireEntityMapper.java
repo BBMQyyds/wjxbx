@@ -45,8 +45,17 @@ public interface QuestionnaireEntityMapper {
     //更新取消问卷的删除状态
     int updateDeletedOffQuestionnaire(String id);
 
+    //发布问卷
+    int updateReleaseQuestionnaire(String id);
+
+    //收回文具
+    int updateReclaimQuestionnaire(String id);
+
+    //删除
+
     // 删除问卷
     int deleteQuestionnaireById(String id);
 
-
+    //清空回收站
+    int deleteAllQuestionnaireRecycled(String id);
 }
