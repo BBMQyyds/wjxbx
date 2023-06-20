@@ -2,8 +2,6 @@ package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.google.gson.Gson;
 import com.jdsbbmq.wjxbx.bean.file.File;
-import com.jdsbbmq.wjxbx.common.exceptions.AtomicityException;
-import com.jdsbbmq.wjxbx.common.exceptions.handler.AtomicityTransactionHandler;
 import com.jdsbbmq.wjxbx.dao.AttributionEntityMapper;
 import com.jdsbbmq.wjxbx.dao.FileEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.AttributionEntity;
@@ -28,9 +26,8 @@ public class FileServiceImpl implements FileService {
     @Transactional(rollbackFor = RuntimeException.class)
     public int insertFile(File file) {
         try {
-            Gson gson = new Gson();
             FileEntity fileEntity = new FileEntity(file);
-            AttributionEntity attributionEntity = new AttributionEntity(file.getParentId(), file.getId(), "file", gson.toJson(file));
+            AttributionEntity attributionEntity = new AttributionEntity(file.getParentId(), file.getId(), "file", new Gson().toJson(file));
             int a = fileEntityMapper.insertFile(fileEntity);
             int b = attributionEntityMapper.insertAttribution(attributionEntity);
             if (a == 0 || b == 0) {
@@ -41,6 +38,29 @@ public class FileServiceImpl implements FileService {
             // 处理异常
             throw new RuntimeException("Failed to insert file", e); // 触发回滚
         }
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public int insertCopyFile(File file) {
+        try {
+            FileEntity fileEntity = new FileEntity(file);
+            AttributionEntity attributionEntity = new AttributionEntity(file.getParentId(), file.getId(), "file", new Gson().toJson(file));
+            int a = fileEntityMapper.insertFile(fileEntity);
+            int b = attributionEntityMapper.insertCopyAttribution(attributionEntity);
+            if (a == 0 || b == 0) {
+                throw new RuntimeException("Failed to copy file"); // 触发回滚
+            }
+            return 1; // 插入成功
+        } catch (Exception e) {
+            // 处理异常
+            throw new RuntimeException("Failed to copy file", e); // 触发回滚
+        }
+    }
+
+    @Override
+    public int updateFile(File file) {
+        return 0;
     }
 
 

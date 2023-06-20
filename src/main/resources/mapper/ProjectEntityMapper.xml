@@ -41,8 +41,6 @@
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
-
-
     <!--增删改-->
 
     <!--插入项目-->
@@ -51,7 +49,7 @@
         (id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date,
          questionnaire_count, star, delete)
         values (#{id}, #{userId}, #{projectName}, #{projectContent}, #{createdBy}, #{creationDate}, #{lastUpdatedBy},
-                #{lastUpdateDate}, #{questionnaireCount}, #{star}, #{delete})
+                #{lastUpdateDate}, #{questionnaireCount}, #{star}, #{deleted})
     </insert>
 
     <!--更新项目-->
@@ -67,26 +65,30 @@
     <!--更新项目为收藏项目-->
     <update id="updateStarOnProject">
         update project
-        set star = 1
+        set star = 1,
+            last_update_date = NOW()
         where id = #{id}
     </update>
 
     <!--更新项目为非收藏项目-->
     <update id="updateStarOffProject">
         update project
-        set star = 0
+        set star = 0,
+            last_update_date = NOW()
         where id = #{id}
     </update>
     <!--更新项目为删除项目-->
     <update id="updateDeleteOnProject">
         update project
-        set deleted = 1
+        set deleted = 1,
+            last_update_date = NOW()
         where id = #{id}
     </update>
     <!--更新项目为非删除项目-->
     <update id="updateDeleteOffProject">
         update project
-        set deleted = 0
+        set deleted = 0,
+            last_update_date = NOW()
         where id = #{id}
     </update>
 
@@ -95,6 +97,12 @@
         delete
         from project
         where id = #{id}
+    </delete>
+    <!--清空回收站-->
+    <delete id="deleteAllProjectRecycled">
+        delete
+        from project
+        where deleted = 1 and user_id = #{userId}
     </delete>
 
     <!--
@@ -112,5 +120,6 @@
         <result property="lastUpdateDate" column="last_update_date"/>
         <result property="questionnaireCount" column="questionnaire_count"/>
         <result property="star" column="star"/>
+        <result property="deleted" column="deleted"/>
     </resultMap>
 </mapper>

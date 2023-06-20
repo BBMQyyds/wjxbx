@@ -61,6 +61,7 @@ public interface ProjectEntityMapper {
     // 根据id删除项目
     int deleteProjectById(String id);
 
+    int deleteAllProjectRecycled(String userId);
 
     /*
         辅助功能

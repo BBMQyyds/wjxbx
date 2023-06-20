@@ -6,9 +6,31 @@
 
 
     <!--增删改-->
+
+    <!--插入属性-->
     <insert id="insertAttribution" parameterType="AttributionEntity">
         INSERT INTO attribution (parent_id, child_id, child_type, content)
         VALUES (#{parentId}, #{childId}, #{childType}, #{content})
     </insert>
+
+    <!--复制某父结点下的所有子结点到新的父结点下-->
+    <insert id="insertCopyAttribution" parameterType="AttributionEntity">
+        INSERT INTO attribution (parentId, childId, childType, content)
+        SELECT #{childId}, childId, childType, content
+        FROM attribution
+        WHERE parent_id = #{parentId}
+    </insert>
+
+    <!-- 更新将原先父节点的子节点放到新的父节点上 -->
+    <update id="updateAttributionOnParent" parameterType="AttributionEntity">
+        UPDATE attribution
+        SET parent_id = #{parentId}
+        WHERE child_id = #{childId}
+    </update>
+    <delete id="deleteAttributionOnParent" parameterType="attributionEntity">
+        DELETE FROM attribution
+        WHERE parent_id = #{parentId}
+    </delete>
+
 
 </mapper>

@@ -23,9 +23,27 @@ public class FileController {
     /*
         增删改
      */
+
+    //增加（插入）
+
+    //插入一个文件夹
     @Operation(summary = "插入一个文件夹", description = "插入一个文件夹")
     @RequestMapping(value = "/insertFile" ,method = RequestMethod.POST)
     public int insertFile(@RequestBody File file) {
         return fileService.insertFile(file);
+    }
+
+    //复制一个文件夹
+    @Operation(summary = "复制一个文件夹", description = "复制一个文件夹")
+    @RequestMapping(value = "/insertCopyFile" ,method = RequestMethod.POST)
+    public int insertCopyFile(@RequestBody File file) {
+        return fileService.insertCopyFile(file);
+    }
+
+    //修改（更新）
+    @Operation(summary = "修改一个文件夹的名字", description = "修改一个文件夹的名字")
+    @RequestMapping(value = "/updateFile" ,method = RequestMethod.POST)
+    public int updateFile(@RequestBody File file) {
+        return fileService.updateFile(file);
     }
 }

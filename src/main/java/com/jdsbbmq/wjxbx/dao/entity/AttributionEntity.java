@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
+import com.jdsbbmq.wjxbx.bean.file.File;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -16,4 +17,15 @@ public class AttributionEntity {
     //Type有project,file,questionnaire(待定）
     private String childType;
     private String content;
+
+    public AttributionEntity(File file){
+        if(file == null){
+            return;
+        }else{
+            this.parentId = file.getParentId();
+            this.childId = file.getId();
+            this.childType = "file";
+            this.content = file.getFileName();
+        }
+    }
 }

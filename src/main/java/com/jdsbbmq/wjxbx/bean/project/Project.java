@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.jdsbbmq.wjxbx.common.utils.DateUtils;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.PostConstruct;
@@ -39,32 +40,37 @@ public class Project {
     @Schema(description = "项目创建时间",defaultValue = "2021-07-01 00:00:00")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date creationDate;
-    @Schema(description = "项目最后更新人",defaultValue = "4" )
+    @Schema(description = "项目最后更新人", defaultValue = "4")
     private String lastUpdatedBy;
-    @Schema(description = "项目最后更新时间",defaultValue = "2021-07-01 00:00:00")
+    @Schema(description = "项目最后更新时间", defaultValue = "2021-07-01 00:00:00")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdateDate;
-    @Schema(description = "项目是否收藏",defaultValue = "0")
+    @Schema(description = "项目是否收藏", defaultValue = "0")
     private int star;
-    @Schema(description = "项目是否删除",defaultValue = "0")
+    @Schema(description = "项目是否删除", defaultValue = "0")
     private int deleted;
     @Schema(description = "项目的问卷数")
     private int questionnaireCount;
-    public Project(ProjectEntity projectEntity){
-        if(projectEntity==null){
+
+    public Project(ProjectEntity projectEntity) {
+        if (projectEntity == null) {
             return;
-        }else{
-            this.id = projectEntity.getId();
-            this.userId = projectEntity.getUserId();
-            this.projectName = projectEntity.getProjectName();
-            this.projectContent = projectEntity.getProjectContent();
-            this.createdBy = projectEntity.getCreatedBy();
-            this.creationDate = projectEntity.getCreationDate();
-            this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
-            this.lastUpdateDate = projectEntity.getLastUpdateDate();
-            this.star = projectEntity.getStar();
-            this.deleted = projectEntity.getDeleted();
-            this.questionnaireCount = projectEntity.getQuestionnaireCount();
+        } else {
+            try {
+                this.id = projectEntity.getId();
+                this.userId = projectEntity.getUserId();
+                this.projectName = projectEntity.getProjectName();
+                this.projectContent = projectEntity.getProjectContent();
+                this.createdBy = projectEntity.getCreatedBy();
+                this.creationDate = DateUtils.Parse(projectEntity.getCreationDate());
+                this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
+                this.lastUpdateDate = DateUtils.Parse(projectEntity.getLastUpdateDate());
+                this.star = projectEntity.getStar();
+                this.deleted = projectEntity.getDeleted();
+                this.questionnaireCount = projectEntity.getQuestionnaireCount();
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
