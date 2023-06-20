@@ -42,7 +42,6 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         for (QuestionnaireEntity questionnaireEntity : listQuestionnaireEntity) {
             Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
             listQuestionnaire.add(questionnaire);
-            System.out.println(questionnaire.getCreationDate());
         }
         return listQuestionnaire;
     }

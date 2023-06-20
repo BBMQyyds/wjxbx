@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -53,8 +53,8 @@
                 <hr class="hr-solid">
                 <div id="last">
                   <div id="time">
-                    <div class="project-create">创建时间：{{ project.creationDate }}</div>
-                    <div class="project-update">更新时间：{{ project.lastUpdateDate }}</div>
+                    <div class="project-create">创建时间：{{ convertToGMT0(project.creationDate) }}</div>
+                    <div class="project-update">更新时间：{{ convertToGMT0(project.lastUpdateDate) }}</div>
                   </div>
                   <div class="project-button">
                     <el-button type="primary" @click="updateProject(project)">
@@ -635,6 +635,23 @@ export default {
       // 关闭对话框
       this.updateDialogVisible = false;
     },
+    convertToGMT0(dateTimeString) {
+      const date = new Date(dateTimeString);
+      const utcOffset = 0;
+
+      // 转换为目标时区的时间
+      const targetDate = new Date(date.getTime() + utcOffset * 60 * 60 * 1000);
+
+      // 获取年、月、日、小时、分钟和秒
+      const year = targetDate.getFullYear();
+      const month = (targetDate.getMonth() + 1).toString().padStart(2, '0');
+      const day = targetDate.getDate().toString().padStart(2, '0');
+      const hours = targetDate.getHours().toString().padStart(2, '0');
+      const minutes = targetDate.getMinutes().toString().padStart(2, '0');
+      const seconds = targetDate.getSeconds().toString().padStart(2, '0');
+      // 拼接日期时间字符串
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
   },
 }
 </script>
