@@ -66,9 +66,9 @@ const routes = [
         }
     },
     {
-        name: 'update',
-        path: '/update',
-        component: () => import('@/views/update'),
+        name: 'updatePwd',
+        path: '/updatePwd',
+        component: () => import('@/views/updatePwd'),
         meta: {
             keepAlive: false,
             title: '问卷星不星-修改密码'

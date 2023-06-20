@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.UUID;
 
 @AutoConfigureMockMvc
@@ -22,6 +23,7 @@ public class UserControllerTests {
     Logger log = Logger.getLogger(UserControllerTests.class);
     @Autowired
     private MockMvc mockMvc;
+
     @Test
     void contextLoads() {
 
@@ -71,7 +73,7 @@ public class UserControllerTests {
     @Test
     // 根据id查询用户
     public void selectUserByIdTest() throws Exception {
-        String id="53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        String id = "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
         //调用userMapper的方法
         mockMvc.perform(MockMvcRequestBuilders.post("/selectUserById")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -147,7 +149,8 @@ public class UserControllerTests {
     @Transactional
     //更新密码
     public void updatePasswordTest() throws Exception {
-        ChangeRequest changeRequest = new ChangeRequest("风筝追风","123456","123","风筝追风");
+        ChangeRequest changeRequest = new ChangeRequest("风筝追风", "e10adc3949ba59abbe56e057f20f883e",
+                "e10adc3949ba59abbe56e057f20f883e", "风筝追风");
         //调用userMapper的方法
         String jsonProject = new ObjectMapper().writeValueAsString(changeRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/updatePassword")
@@ -170,7 +173,7 @@ public class UserControllerTests {
     @Transactional
     // 根据id删除用户
     public void deleteUserByIdTest() throws Exception {
-        String id="4f48ba43-e933-4cef-ac7d-094e1e70c555";
+        String id = "4f48ba43-e933-4cef-ac7d-094e1e70c555";
         mockMvc.perform(MockMvcRequestBuilders.post("/deleteUserById")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(id))
