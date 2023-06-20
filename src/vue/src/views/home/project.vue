@@ -65,11 +65,11 @@
                       <el-icon class="el-icon-document-copy"></el-icon>
                       复制
                     </el-button>
-                    <el-button type="success" @click="updateDeleteOffProject(project.id)" v-if="menuItem==='deleted'">
+                    <el-button type="success" @click="updateDeletedOffProject(project.id)" v-if="menuItem==='deleted'">
                       <el-icon class="el-icon-refresh-left"></el-icon>
                       还原
                     </el-button>
-                    <el-button type="danger" @click="updateDeleteOnProject(project.id)" v-if="menuItem!=='deleted'">
+                    <el-button type="danger" @click="updateDeletedOnProject(project.id)" v-if="menuItem!=='deleted'">
                       <el-icon class="el-icon-delete"></el-icon>
                       删除
                     </el-button>
@@ -376,8 +376,8 @@ export default {
         });
       });
     },
-    updateDeleteOnProject(id) {
-      console.log("updateDeleteOnProject:" + id);
+    updateDeletedOnProject(id) {
+      console.log("updateDeletedOnProject:" + id);
       //弹出确认框
       this.$confirm('此操作将删除该项目, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -385,7 +385,7 @@ export default {
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/updateDeleteOnProject", id).then(res => {
+        plainRequest.post("/updateDeletedOnProject", id).then(res => {
           if (res.data === 1) {
             this.$message({
               message: '删除成功',
@@ -412,8 +412,8 @@ export default {
         });
       });
     },
-    updateDeleteOffProject(id) {
-      console.log("updateDeleteOffProject:" + id);
+    updateDeletedOffProject(id) {
+      console.log("updateDeletedOffProject:" + id);
       //弹出确认框
       this.$confirm('此操作将恢复该项目, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -421,7 +421,7 @@ export default {
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/updateDeleteOffProject", id).then(res => {
+        plainRequest.post("/updateDeletedOffProject", id).then(res => {
           if (res.data === 1) {
             this.$message({
               message: '恢复成功',
