@@ -12,12 +12,12 @@ public class ChangeRequestTests {
 
     @Test
     //测试ToString()
-    public void ToStringTest(){
+    public void ToStringTest() {
         ChangeRequest changeRequest = new ChangeRequest();
-        if(changeRequest.toString() == null) {
+        if (changeRequest.toString() == null) {
             //日志输入
             log.info("ChangeRequest: >>ChangeRequestToString测试失败");
-        }else{
+        } else {
             log.info("ChangeRequest: >>ChangeRequestToString测试成功");
         }
     }

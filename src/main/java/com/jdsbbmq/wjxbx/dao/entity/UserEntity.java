@@ -1,7 +1,10 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.user.User;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Date;

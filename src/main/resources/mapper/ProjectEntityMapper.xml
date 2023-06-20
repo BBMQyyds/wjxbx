@@ -70,7 +70,7 @@
     <!--更新项目为收藏项目-->
     <update id="updateStarOnProject">
         update project
-        set star = 1,
+        set star             = 1,
             last_update_date = NOW()
         where id = #{id}
     </update>
@@ -78,21 +78,21 @@
     <!--更新项目为非收藏项目-->
     <update id="updateStarOffProject">
         update project
-        set star = 0,
+        set star             = 0,
             last_update_date = NOW()
         where id = #{id}
     </update>
     <!--更新项目为删除项目-->
     <update id="updateDeletedOnProject">
         update project
-        set deleted = 1,
+        set deleted          = 1,
             last_update_date = NOW()
         where id = #{id}
     </update>
     <!--更新项目为非删除项目-->
     <update id="updateDeletedOffProject">
         update project
-        set deleted = 0,
+        set deleted          = 0,
             last_update_date = NOW()
         where id = #{id}
     </update>
@@ -107,7 +107,8 @@
     <delete id="deleteAllProjectRecycled">
         delete
         from project
-        where deleted = 1 and user_id = #{userId}
+        where deleted = 1
+          and user_id = #{userId}
     </delete>
 
     <!--
@@ -126,11 +127,10 @@
     </update>
     <update id="reduceProjectQuestionnaireCountRecycled" parameterType="String">
         UPDATE project
-        SET questionnaire_count = questionnaire_count - (
-            SELECT COUNT(*)
-            FROM questionnaire
-            WHERE project_id = #{projectId} AND deleted = 1
-        )
+        SET questionnaire_count = questionnaire_count - (SELECT COUNT(*)
+                                                         FROM questionnaire
+                                                         WHERE project_id = #{projectId}
+                                                           AND deleted = 1)
         WHERE id = #{projectId}
     </update>
 

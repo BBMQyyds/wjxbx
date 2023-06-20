@@ -1,7 +1,5 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
-import com.jdsbbmq.wjxbx.bean.ProjectTests;
-import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.controller.TestControllerTests;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -20,8 +18,8 @@ public class ProjectEntityTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        ProjectEntity projectEntity = new ProjectEntity("1", "2", "3", "4", "5", new Date(), "6", new Date(),0,0);
-        if (projectEntity  == null) {
+        ProjectEntity projectEntity = new ProjectEntity("1", "2", "3", "4", "5", new Date(), "6", new Date(), 0, 0);
+        if (projectEntity == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息
             log.error("Project: >>allArgsConstructor全参构造测试失败");
@@ -36,7 +34,7 @@ public class ProjectEntityTests {
     //测试复制时Project为null时的构造方法
     public void copyConstructorTest1() {
         ProjectEntity projectEntity = new ProjectEntity(null);
-        if (projectEntity  == null) {
+        if (projectEntity == null) {
             System.out.println("复制时Project为null时的构造方法失败");
             // 记录error级别的信息
             log.error("Project: >>copyConstructor复制时Project为null时的构造方法测试失败");

@@ -188,11 +188,11 @@ public class UserEntityMapperTests {
         UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
         //调用userMapper的方法
         String password = userEntityMapper.selectPasswordByUsername("风筝追风");
-        if(password!=null){
+        if (password != null) {
             System.out.println("查询成功");
             // 记录info级别的信息
             log.info("UserEntityMapper: >>selectPasswordByUsername用户密码查询测试成功");
-        }else{
+        } else {
             System.out.println("查询失败");
             // 记录error级别的信息
             log.error("UserEntityMapper: >>selectPasswordByUsername用户密码查询测试失败");
@@ -210,12 +210,12 @@ public class UserEntityMapperTests {
         //创建UserMapper对象，mybatis自动生成mapper代理对象
         UserEntityMapper userEntityMapper = sqlSession.getMapper(UserEntityMapper.class);
         //调用userMapper的方法
-        int i = userEntityMapper.updatePassword("风筝追风","e10adc3949ba59abbe56e057f20f883e");
-        if(i!=0){
+        int i = userEntityMapper.updatePassword("风筝追风", "e10adc3949ba59abbe56e057f20f883e");
+        if (i != 0) {
             System.out.println("修改成功");
             // 记录info级别的信息
             log.info("UserEntityMapper: >>updatePasswordByUsername用户密码修改测试成功");
-        }else{
+        } else {
             System.out.println("修改失败");
             // 记录error级别的信息
             log.error("UserEntityMapper: >>updatePasswordByUsername用户密码修改测试失败");

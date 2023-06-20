@@ -4,7 +4,6 @@ import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
 import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
-import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.QuestionnaireService;
 import jakarta.annotation.Resource;
@@ -13,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Resource
@@ -37,10 +37,10 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Override
     public List<Questionnaire> selectQuestionnaireByPage(QueryRequest queryRequest) {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
-        List<QuestionnaireEntity> listQuestionnaireEntity=questionnaireEntityMapper.selectQuestionnaireByPage(queryRequest.ToQueryEntity());
-        List<Questionnaire> listQuestionnaire=new ArrayList<>();
-        for (QuestionnaireEntity questionnaireEntity:listQuestionnaireEntity){
-            Questionnaire questionnaire=new Questionnaire(questionnaireEntity);
+        List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireEntityMapper.selectQuestionnaireByPage(queryRequest.ToQueryEntity());
+        List<Questionnaire> listQuestionnaire = new ArrayList<>();
+        for (QuestionnaireEntity questionnaireEntity : listQuestionnaireEntity) {
+            Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
             listQuestionnaire.add(questionnaire);
         }
         return listQuestionnaire;
@@ -55,15 +55,15 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Transactional(rollbackFor = RuntimeException.class)
     public int insertQuestionnaire(Questionnaire questionnaire) {
         questionnaire.init();
-        QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity(questionnaire);
-        try{
-            int a=questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
-            int b=projectEntityMapper.addProjectQuestionnaireCount(questionnaireEntity.getProjectId());
-            if(a==0||b==0){
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity(questionnaire);
+        try {
+            int a = questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
+            int b = projectEntityMapper.addProjectQuestionnaireCount(questionnaireEntity.getProjectId());
+            if (a == 0 || b == 0) {
                 throw new RuntimeException("插入问卷失败");
             }
             return 1;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("插入问卷失败");
         }
     }
@@ -73,7 +73,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //更新一个问卷
     @Override
     public int updateQuestionnaire(Questionnaire questionnaire) {
-        QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity(questionnaire);
+        QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity(questionnaire);
         return questionnaireEntityMapper.updateQuestionnaire(questionnaireEntity);
     }
 
@@ -113,14 +113,14 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Transactional(rollbackFor = RuntimeException.class)
     public int deleteQuestionnaireById(String questionnaireId) {
         try {
-            QuestionnaireEntity questionnaireEntity=questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
-            int a=questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
-            int b=projectEntityMapper.reduceProjectQuestionnaireCount(questionnaireEntity.getProjectId());
-            if(a==0||b==0||questionnaireEntity.getId()==null){
+            QuestionnaireEntity questionnaireEntity = questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
+            int a = questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
+            int b = projectEntityMapper.reduceProjectQuestionnaireCount(questionnaireEntity.getProjectId());
+            if (a == 0 || b == 0 || questionnaireEntity.getId() == null) {
                 throw new RuntimeException("删除问卷失败");
             }
             return 1;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("删除问卷失败");
         }
     }
@@ -129,14 +129,14 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Transactional(rollbackFor = RuntimeException.class)
     @Override
     public int deleteAllQuestionnaireRecycled(String projectId) {
-        try{
-            int a=projectEntityMapper.reduceProjectQuestionnaireCount(projectId);
-            int b=questionnaireEntityMapper.deleteAllQuestionnaireRecycled(projectId);
-            if(a==0||b==0){
+        try {
+            int a = projectEntityMapper.reduceProjectQuestionnaireCountRecycled(projectId);
+            int b = questionnaireEntityMapper.deleteAllQuestionnaireRecycled(projectId);
+            if (a == 0 || b == 0) {
                 throw new RuntimeException("清空回收站失败");
             }
             return 1;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("清空回收站失败");
         }
     }

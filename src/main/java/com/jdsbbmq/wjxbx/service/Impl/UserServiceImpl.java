@@ -60,10 +60,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int changePassword(ChangeRequest changeRequest) {
-        if(changeRequest.getOriginPassword().equals(userEntityMapper.selectPasswordByUsername(changeRequest.getUsername()))){
-            userEntityMapper.updatePassword(changeRequest.getUsername(),changeRequest.getNewPassword());
+        if (changeRequest.getOriginPassword().equals(userEntityMapper.selectPasswordByUsername(changeRequest.getUsername()))) {
+            userEntityMapper.updatePassword(changeRequest.getUsername(), changeRequest.getNewPassword());
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

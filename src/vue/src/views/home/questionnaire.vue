@@ -2,30 +2,30 @@
   <div id="main">
     <nav-bar id="nav"></nav-bar>
     <div id="con" v-infinite-scroll="load">
-      <side-bar id="side" @select="flush" @create="insertQuestionnaire"></side-bar>
+      <side-bar id="side" @create="insertQuestionnaire" @select="flush"></side-bar>
       <div id="content">
         <div id="top" :style="{ height: '200px' }">
           <span id="title">问卷列表</span>
-          <el-button-group id="sort" v-if="menuItem!=='deleted'">
-            <el-button type="primary" :disabled="sortType === 'answer_count'"
+          <el-button-group v-if="menuItem!=='deleted'" id="sort">
+            <el-button :disabled="sortType === 'answer_count'" type="primary"
                        @click="changeSortType('answer_count')">答卷数量
             </el-button>
-            <el-button type="primary" :disabled="sortType === 'creation_date'"
+            <el-button :disabled="sortType === 'creation_date'" type="primary"
                        @click="changeSortType('creation_date')">创建时间
             </el-button>
-            <el-button type="primary" :disabled="sortType === 'start_time'"
+            <el-button :disabled="sortType === 'start_time'" type="primary"
                        @click="changeSortType('start_time')">发布时间
             </el-button>
           </el-button-group>
-          <el-radio-group v-model="sort" id="radio" @change="search" v-if="menuItem!=='deleted'">
+          <el-radio-group v-if="menuItem!=='deleted'" id="radio" v-model="sort" @change="search">
             <el-radio label="desc">降序</el-radio>
             <el-radio label="asc">升序</el-radio>
           </el-radio-group>
-          <el-button type="danger" id="clearQuestionnaires" v-if="menuItem==='deleted'" @click="clearQuestionnaires">
+          <el-button v-if="menuItem==='deleted'" id="clearQuestionnaires" type="danger" @click="clearQuestionnaires">
             清空回收站
           </el-button>
-          <el-input id="search" v-model="searchKeyWord" size="default"
-                    placeholder="请输入问卷名进行搜索..." @keyup.enter.native="search">
+          <el-input id="search" v-model="searchKeyWord" placeholder="请输入问卷名进行搜索..."
+                    size="default" @keyup.enter.native="search">
             <template v-slot:prefix>
               <i class="el-input__icon el-icon-search" @click="search"></i>
             </template>
@@ -33,24 +33,24 @@
         </div>
         <div class="questionnaire-list">
           <el-row>
-            <el-col :span="15" v-for="questionnaire in questionnaireList" :key="questionnaire">
+            <el-col v-for="questionnaire in questionnaireList" :key="questionnaire" :span="15">
               <el-card class="questionnaire-card">
                 <div id="first">
-                  <div class="questionnaire-name" @click="toQuestionnaire(questionnaire.id)"
-                       :title="'问卷描述：\n' + questionnaire.questionnaireDescription">
+                  <div :title="'问卷描述：\n' + questionnaire.questionnaireDescription" class="questionnaire-name"
+                       @click="toQuestionnaire(questionnaire.id)">
                     {{ questionnaire.questionnaireName }}
                   </div>
                   <div id="star">
                     <div class="questionnaire-info">
-                      <div class="questionnaire-id" :title="questionnaire.id">ID：{{
+                      <div :title="questionnaire.id" class="questionnaire-id">ID：{{
                           questionnaire.id.substr(0, 8)
                         }}...
                       </div>
                       <div class="questionnaire-qnc">答卷数：{{ questionnaire.answerCount }}</div>
                     </div>
-                    <el-icon id="on" class="el-icon-star-on" v-if="questionnaire.star===1&&menuItem!=='deleted'"
+                    <el-icon v-if="questionnaire.star===1&&menuItem!=='deleted'" id="on" class="el-icon-star-on"
                              @click="starOff(questionnaire)"></el-icon>
-                    <el-icon id="off" class="el-icon-star-on" v-if="questionnaire.star===0&&menuItem!=='deleted'"
+                    <el-icon v-if="questionnaire.star===0&&menuItem!=='deleted'" id="off" class="el-icon-star-on"
                              @click="starOn(questionnaire)"></el-icon>
                   </div>
                 </div>
@@ -67,13 +67,13 @@
                     </div>
                   </div>
                   <div class="questionnaire-button">
-                    <el-button type="success" @click="updateReleaseQuestionnaire(questionnaire.id)"
-                               v-if="questionnaire.startTime===null&&this.menuItem!=='deleted'">
+                    <el-button v-if="questionnaire.startTime===null&&this.menuItem!=='deleted'" type="success"
+                               @click="updateReleaseQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-video-play"></el-icon>
                       发布
                     </el-button>
-                    <el-button type="success" @click="updateReclaimQuestionnaire(questionnaire.id)"
-                               v-if="questionnaire.startTime!==null&&this.menuItem!=='deleted'">
+                    <el-button v-if="questionnaire.startTime!==null&&this.menuItem!=='deleted'" type="success"
+                               @click="updateReclaimQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-video-pause"></el-icon>
                       回收
                     </el-button>
@@ -81,23 +81,23 @@
                       <el-icon class="el-icon-edit"></el-icon>
                       编辑
                     </el-button>
-                    <el-button type="warning" @click="copyQuestionnaire(questionnaire.id)"
-                               v-if="menuItem!=='deleted'">
+                    <el-button v-if="menuItem!=='deleted'" type="warning"
+                               @click="copyQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-document-copy"></el-icon>
                       复制
                     </el-button>
-                    <el-button type="success" @click="updateDeletedOffQuestionnaire(questionnaire.id)"
-                               v-if="menuItem==='deleted'">
+                    <el-button v-if="menuItem==='deleted'" type="success"
+                               @click="updateDeletedOffQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-refresh-left"></el-icon>
                       还原
                     </el-button>
-                    <el-button type="danger" @click="updateDeletedOnQuestionnaire(questionnaire.id)"
-                               v-if="menuItem!=='deleted'">
+                    <el-button v-if="menuItem!=='deleted'" type="danger"
+                               @click="updateDeletedOnQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-delete"></el-icon>
                       删除
                     </el-button>
-                    <el-button type="danger" @click="deleteQuestionnaire(questionnaire.id)"
-                               v-if="menuItem==='deleted'">
+                    <el-button v-if="menuItem==='deleted'" type="danger"
+                               @click="deleteQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-close"></el-icon>
                       删除
                     </el-button>
@@ -109,15 +109,15 @@
         </div>
       </div>
     </div>
-    <el-dialog title="创建问卷" v-model="insertDialogVisible"
-               @close="insertHandleClose" destroy-on-close>
+    <el-dialog v-model="insertDialogVisible" destroy-on-close
+               title="创建问卷" @close="insertHandleClose">
       <el-form ref="insertFormData" :model="insertFormData" :rules="rules" label-width="80px">
         <el-form-item label="问卷名称" prop="questionnaireName">
-          <el-input class="dialog-input" v-model="insertFormData.questionnaireName"></el-input>
+          <el-input v-model="insertFormData.questionnaireName" class="dialog-input"></el-input>
         </el-form-item>
         <el-form-item label="问卷描述" prop="questionnaireDescription">
-          <el-input class="dialog-textarea" v-model="insertFormData.questionnaireDescription"
-                    type="textarea" :rows="3" :resize="'none'"></el-input>
+          <el-input v-model="insertFormData.questionnaireDescription" :resize="'none'"
+                    :rows="3" class="dialog-textarea" type="textarea"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -125,15 +125,15 @@
         <el-button type="primary" @click="insertHandleConfirm">确认</el-button>
       </div>
     </el-dialog>
-    <el-dialog title="编辑问卷" v-model="updateDialogVisible"
-               @close="updateHandleClose" destroy-on-close>
+    <el-dialog v-model="updateDialogVisible" destroy-on-close
+               title="编辑问卷" @close="updateHandleClose">
       <el-form ref="updateFormData" :model="updateFormData" :rules="rules" label-width="80px">
         <el-form-item label="问卷名称" prop="questionnaireName">
-          <el-input class="dialog-input" v-model="updateFormData.questionnaireName"></el-input>
+          <el-input v-model="updateFormData.questionnaireName" class="dialog-input"></el-input>
         </el-form-item>
         <el-form-item label="问卷描述" prop="questionnaireDescription">
-          <el-input class="dialog-textarea" v-model="updateFormData.questionnaireDescription"
-                    type="textarea" :rows="3" :resize="'none'"></el-input>
+          <el-input v-model="updateFormData.questionnaireDescription" :resize="'none'"
+                    :rows="3" class="dialog-textarea" type="textarea"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

@@ -6,6 +6,7 @@ import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public interface QuestionnaireService {
     /*

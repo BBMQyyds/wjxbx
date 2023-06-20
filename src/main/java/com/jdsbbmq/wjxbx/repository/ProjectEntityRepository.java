@@ -1,6 +1,5 @@
 package com.jdsbbmq.wjxbx.repository;
 
-import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;

@@ -6,7 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+
 import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -27,10 +29,11 @@ public class ProjectEntity {
     private int star;
     private int deleted;
     private int questionnaireCount;
-    public ProjectEntity(Project project){
-        if(project==null){
+
+    public ProjectEntity(Project project) {
+        if (project == null) {
             return;
-        }else{
+        } else {
             this.id = project.getId();
             this.userId = project.getUserId();
             this.projectName = project.getProjectName();

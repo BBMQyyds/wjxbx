@@ -1,7 +1,6 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
-import com.jdsbbmq.wjxbx.service.QuestionnaireService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +8,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -29,12 +29,13 @@ public class QuestionnaireEntity {
     private int answerCount;
     private int star;
     private int deleted;
+
     //复制
-    public QuestionnaireEntity(Questionnaire questionnaire){
-        if(questionnaire == null){
-                //无参构造
-            return ;
-        }else{
+    public QuestionnaireEntity(Questionnaire questionnaire) {
+        if (questionnaire == null) {
+            //无参构造
+            return;
+        } else {
             this.id = questionnaire.getId();
             this.projectId = questionnaire.getProjectId();
             this.questionnaireName = questionnaire.getQuestionnaireName();

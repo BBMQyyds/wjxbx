@@ -18,10 +18,10 @@ public class AttributionEntity {
     private String childType;
     private String content;
 
-    public AttributionEntity(File file){
-        if(file == null){
+    public AttributionEntity(File file) {
+        if (file == null) {
             return;
-        }else{
+        } else {
             this.parentId = file.getParentId();
             this.childId = file.getId();
             this.childType = "file";

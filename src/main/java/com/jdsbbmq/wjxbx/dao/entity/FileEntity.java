@@ -1,10 +1,10 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
 import com.jdsbbmq.wjxbx.bean.file.File;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
 import lombok.*;
+
 import java.util.Date;
+
 @Getter
 @Setter
 @ToString

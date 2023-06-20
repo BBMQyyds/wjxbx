@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'side',
-  emits: ['select','create'], // 声明事件
+  emits: ['select', 'create'], // 声明事件
   data() {
     return {
       activeMenu: 'home', // 默认选中的菜单项

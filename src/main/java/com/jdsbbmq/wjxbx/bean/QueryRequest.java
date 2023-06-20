@@ -18,7 +18,8 @@ public class QueryRequest {
     private int pageSize;
     private int currentPage;
     private String type;
-    public QueryEntity ToQueryEntity(){
+
+    public QueryEntity ToQueryEntity() {
         QueryEntity queryEntity = new QueryEntity();
         queryEntity.setId(this.id);
         queryEntity.setSearchKeyWord(this.searchKeyWord);

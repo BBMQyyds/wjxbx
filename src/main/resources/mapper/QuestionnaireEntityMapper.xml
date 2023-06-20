@@ -109,7 +109,8 @@
     <delete id="deleteAllQuestionnaireRecycled">
         delete
         from questionnaire
-        where deleted = 1 AND project_id = #{id}
+        where deleted = 1
+          AND project_id = #{id}
     </delete>
 
     <!--

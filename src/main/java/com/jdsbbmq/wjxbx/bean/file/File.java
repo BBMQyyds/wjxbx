@@ -37,14 +37,6 @@ public class File {
     @Size(min = 36, max = 36)
     private String parentId;
 
-    @PostConstruct
-    public void init() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
-        this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
-        this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
-    }
-
     public File(FileEntity fileEntity) {
         this.id = fileEntity.getId();
         this.fileName = fileEntity.getFileName();
@@ -52,5 +44,13 @@ public class File {
         this.createdBy = fileEntity.getCreatedBy();
         this.lastUpdateDate = fileEntity.getLastUpdateDate();
         this.parentId = fileEntity.getParentId();
+    }
+
+    @PostConstruct
+    public void init() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
+        this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
+        this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
     }
 }

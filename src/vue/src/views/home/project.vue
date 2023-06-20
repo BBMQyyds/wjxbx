@@ -2,29 +2,29 @@
   <div id="main">
     <nav-bar id="nav"></nav-bar>
     <div id="con" v-infinite-scroll="load">
-      <side-bar id="side" @select="flush" @create="insertProject"></side-bar>
+      <side-bar id="side" @create="insertProject" @select="flush"></side-bar>
       <div id="content">
         <div id="top" :style="{ height: '200px' }">
           <span id="title">项目列表</span>
-          <el-button-group id="sort" v-if="menuItem!=='deleted'">
-            <el-button type="primary" :disabled="sortType === 'questionnaire_count'"
+          <el-button-group v-if="menuItem!=='deleted'" id="sort">
+            <el-button :disabled="sortType === 'questionnaire_count'" type="primary"
                        @click="changeSortType('questionnaire_count')">问卷数量
             </el-button>
-            <el-button type="primary" :disabled="sortType === 'creation_date'"
+            <el-button :disabled="sortType === 'creation_date'" type="primary"
                        @click="changeSortType('creation_date')">创建时间
             </el-button>
-            <el-button type="primary" :disabled="sortType === 'last_update_date'"
+            <el-button :disabled="sortType === 'last_update_date'" type="primary"
                        @click="changeSortType('last_update_date')">更新时间
             </el-button>
           </el-button-group>
-          <el-radio-group v-model="sort" id="radio" @change="search" v-if="menuItem!=='deleted'">
+          <el-radio-group v-if="menuItem!=='deleted'" id="radio" v-model="sort" @change="search">
             <el-radio label="desc">降序</el-radio>
             <el-radio label="asc">升序</el-radio>
           </el-radio-group>
-          <el-button type="danger" id="clearProjects" v-if="menuItem==='deleted'" @click="clearProjects">清空回收站
+          <el-button v-if="menuItem==='deleted'" id="clearProjects" type="danger" @click="clearProjects">清空回收站
           </el-button>
-          <el-input id="search" v-model="searchKeyWord" size="default"
-                    placeholder="请输入项目名进行搜索..." @keyup.enter.native="search">
+          <el-input id="search" v-model="searchKeyWord" placeholder="请输入项目名进行搜索..."
+                    size="default" @keyup.enter.native="search">
             <template v-slot:prefix>
               <i class="el-input__icon el-icon-search" @click="search"></i>
             </template>
@@ -32,21 +32,21 @@
         </div>
         <div class="project-list">
           <el-row>
-            <el-col :span="15" v-for="project in projectList" :key="project">
+            <el-col v-for="project in projectList" :key="project" :span="15">
               <el-card class="project-card">
                 <div id="first">
-                  <div class="project-name" @click="toQuestionnaire(project.id)"
-                       :title="'项目描述：\n' + project.projectContent">
+                  <div :title="'项目描述：\n' + project.projectContent" class="project-name"
+                       @click="toQuestionnaire(project.id)">
                     {{ project.projectName }}
                   </div>
                   <div id="star">
                     <div class="project-info">
-                      <div class="project-id" :title="project.id">ID：{{ project.id.substr(0, 8) }}...</div>
+                      <div :title="project.id" class="project-id">ID：{{ project.id.substr(0, 8) }}...</div>
                       <div class="project-qnc">问卷数：{{ project.questionnaireCount }}</div>
                     </div>
-                    <el-icon id="on" class="el-icon-star-on" v-if="project.star===1&&menuItem!=='deleted'"
+                    <el-icon v-if="project.star===1&&menuItem!=='deleted'" id="on" class="el-icon-star-on"
                              @click="starOff(project)"></el-icon>
-                    <el-icon id="off" class="el-icon-star-on" v-if="project.star===0&&menuItem!=='deleted'"
+                    <el-icon v-if="project.star===0&&menuItem!=='deleted'" id="off" class="el-icon-star-on"
                              @click="starOn(project)"></el-icon>
                   </div>
                 </div>
@@ -61,19 +61,19 @@
                       <el-icon class="el-icon-edit"></el-icon>
                       编辑
                     </el-button>
-                    <el-button type="warning" @click="copyProject(project.id)" v-if="menuItem!=='deleted'">
+                    <el-button v-if="menuItem!=='deleted'" type="warning" @click="copyProject(project.id)">
                       <el-icon class="el-icon-document-copy"></el-icon>
                       复制
                     </el-button>
-                    <el-button type="success" @click="updateDeletedOffProject(project.id)" v-if="menuItem==='deleted'">
+                    <el-button v-if="menuItem==='deleted'" type="success" @click="updateDeletedOffProject(project.id)">
                       <el-icon class="el-icon-refresh-left"></el-icon>
                       还原
                     </el-button>
-                    <el-button type="danger" @click="updateDeletedOnProject(project.id)" v-if="menuItem!=='deleted'">
+                    <el-button v-if="menuItem!=='deleted'" type="danger" @click="updateDeletedOnProject(project.id)">
                       <el-icon class="el-icon-delete"></el-icon>
                       删除
                     </el-button>
-                    <el-button type="danger" @click="deleteProject(project.id)" v-if="menuItem==='deleted'">
+                    <el-button v-if="menuItem==='deleted'" type="danger" @click="deleteProject(project.id)">
                       <el-icon class="el-icon-close"></el-icon>
                       删除
                     </el-button>
@@ -85,15 +85,15 @@
         </div>
       </div>
     </div>
-    <el-dialog title="创建项目" v-model="insertDialogVisible"
-               @close="insertHandleClose" destroy-on-close>
+    <el-dialog v-model="insertDialogVisible" destroy-on-close
+               title="创建项目" @close="insertHandleClose">
       <el-form ref="insertFormData" :model="insertFormData" :rules="rules" label-width="80px">
         <el-form-item label="项目名称" prop="projectName">
-          <el-input class="dialog-input" v-model="insertFormData.projectName"></el-input>
+          <el-input v-model="insertFormData.projectName" class="dialog-input"></el-input>
         </el-form-item>
         <el-form-item label="项目描述" prop="projectContent">
-          <el-input class="dialog-textarea" v-model="insertFormData.projectContent"
-                    type="textarea" :rows="3" :resize="'none'"></el-input>
+          <el-input v-model="insertFormData.projectContent" :resize="'none'"
+                    :rows="3" class="dialog-textarea" type="textarea"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -101,15 +101,15 @@
         <el-button type="primary" @click="insertHandleConfirm">确认</el-button>
       </div>
     </el-dialog>
-    <el-dialog title="编辑项目" v-model="updateDialogVisible"
-               @close="updateHandleClose" destroy-on-close>
+    <el-dialog v-model="updateDialogVisible" destroy-on-close
+               title="编辑项目" @close="updateHandleClose">
       <el-form ref="updateFormData" :model="updateFormData" :rules="rules" label-width="80px">
         <el-form-item label="项目名称" prop="projectName">
-          <el-input class="dialog-input" v-model="updateFormData.projectName"></el-input>
+          <el-input v-model="updateFormData.projectName" class="dialog-input"></el-input>
         </el-form-item>
         <el-form-item label="项目描述" prop="projectContent">
-          <el-input class="dialog-textarea" v-model="updateFormData.projectContent"
-                    type="textarea" :rows="3" :resize="'none'"></el-input>
+          <el-input v-model="updateFormData.projectContent" :resize="'none'"
+                    :rows="3" class="dialog-textarea" type="textarea"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

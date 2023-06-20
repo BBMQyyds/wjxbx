@@ -43,7 +43,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectEntity> selectProjectByPage(QueryRequest queryRequest) {
-        QueryEntity queryEntity=queryRequest.ToQueryEntity();
+        QueryEntity queryEntity = queryRequest.ToQueryEntity();
         return projectEntityMapper.selectProjectByPage(queryEntity);
     }
 

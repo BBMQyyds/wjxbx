@@ -3,14 +3,14 @@
     <div class="header">
       <div class="box">
         <h1 @click="logout">
-          <img src="../assets/img/icon/icon高清.png" alt="logo">
+          <img alt="logo" src="../assets/img/icon/icon高清.png">
           <span>问卷星不星</span>
         </h1>
       </div>
       <nav>
-        <img class="png icon-png" src="../assets/img/png/关于.png" alt="关于">
-        <img class="png icon-png" src="../assets/img/png/文件夹.png" alt="文件夹">
-        <img class="png icon-png" src="../assets/img/png/消息.png" alt="消息">
+        <img alt="关于" class="png icon-png" src="../assets/img/png/关于.png">
+        <img alt="文件夹" class="png icon-png" src="../assets/img/png/文件夹.png">
+        <img alt="消息" class="png icon-png" src="../assets/img/png/消息.png">
         <Avatar></Avatar>
       </nav>
     </div>

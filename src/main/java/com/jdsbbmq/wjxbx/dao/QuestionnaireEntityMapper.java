@@ -1,10 +1,11 @@
 package com.jdsbbmq.wjxbx.dao;
-import java.util.List;
 
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Mapper
 @Repository
@@ -16,7 +17,7 @@ public interface QuestionnaireEntityMapper {
     //查询
 
     // 查询所有问卷
-     List<QuestionnaireEntity> selectAllQuestionnaire(String projectId);
+    List<QuestionnaireEntity> selectAllQuestionnaire(String projectId);
 
     // 根据id查询问卷
     QuestionnaireEntity selectQuestionnaireById(String id);

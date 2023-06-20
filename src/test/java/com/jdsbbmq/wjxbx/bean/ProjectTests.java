@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.text.ParseException;
 import java.util.Date;
 
 @SpringBootTest
@@ -20,7 +19,7 @@ public class ProjectTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date(),0,0,0);
+        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date(), 0, 0, 0);
         if (project == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息

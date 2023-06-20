@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
-import java.io.InputStream;
 
 @SpringBootTest
 public class ProjectEntityMapperTests {
@@ -74,7 +74,7 @@ public class ProjectEntityMapperTests {
 
     @Test
     //根据名称查询项目
-    public void selectProjectByNameTest() throws Exception{
+    public void selectProjectByNameTest() throws Exception {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -106,7 +106,7 @@ public class ProjectEntityMapperTests {
         //创建ProjectMapper对象，mybatis自动生成mapper代理对象
         ProjectEntityMapper projectEntityMapper = sqlSession.getMapper(ProjectEntityMapper.class);
         //调用projectMapper的方法
-        Project project=new Project("1","2","3","4","5",new Date(),"6",new Date(),0,0,0);
+        Project project = new Project("1", "2", "3", "4", "5", new Date(), "6", new Date(), 0, 0, 0);
         ProjectEntity projectEntity = new ProjectEntity(project);
         int result = projectEntityMapper.insertProject(projectEntity);
         if (result == 0) {
@@ -156,8 +156,8 @@ public class ProjectEntityMapperTests {
         //创建ProjectMapper对象，mybatis自动生成mapper代理对象
         ProjectEntityMapper projectEntityMapper = sqlSession.getMapper(ProjectEntityMapper.class);
         //调用projectMapper的方法
-        Project project=new Project("0f796ce7-28f5-405e-b7f5-682e6cbca8e2","2","3","4","5",new Date(),"6",new Date(),0,0,0);
-        ProjectEntity projectEntity=new ProjectEntity(project);
+        Project project = new Project("0f796ce7-28f5-405e-b7f5-682e6cbca8e2", "2", "3", "4", "5", new Date(), "6", new Date(), 0, 0, 0);
+        ProjectEntity projectEntity = new ProjectEntity(project);
         int result = projectEntityMapper.updateProject(projectEntity);
         if (result == 0) {
             System.out.println("修改失败");

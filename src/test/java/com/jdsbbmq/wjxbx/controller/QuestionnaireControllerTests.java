@@ -21,14 +21,16 @@ public class QuestionnaireControllerTests {
     Logger log = Logger.getLogger(UserControllerTests.class);
     @Autowired
     private MockMvc mockMvc;
+
     @Test
     void contextLoads() {
 
     }
+
     @Test
     // 查询所有问卷
     public void selectAllQuestionnaireTest() throws Exception {
-        String projectId="1779cd18-cc34-47b2-a453-419fcff8df3b";
+        String projectId = "1779cd18-cc34-47b2-a453-419fcff8df3b";
         mockMvc.perform(MockMvcRequestBuilders.post("/selectAllQuestionnaire")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(projectId))
@@ -48,7 +50,7 @@ public class QuestionnaireControllerTests {
     @Test
     // 根据id查询问卷
     public void selectQuestionnaireByIdTest() throws Exception {
-        String id="1";
+        String id = "1";
         mockMvc.perform(MockMvcRequestBuilders.post("/selectQuestionnaireById")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(id))
@@ -69,7 +71,7 @@ public class QuestionnaireControllerTests {
     @Transactional
     // 新增问卷
     public void insertQuestionnaireTest() throws Exception {
-        Questionnaire questionnaire = new Questionnaire("2", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(),new Date(),new Date(),"5",0,0,0);
+        Questionnaire questionnaire = new Questionnaire("2", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(), new Date(), new Date(), "5", 0, 0, 0);
         String jsonProject = new ObjectMapper().writeValueAsString(questionnaire);
         mockMvc.perform(MockMvcRequestBuilders.post("/insertQuestionnaire")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -91,7 +93,7 @@ public class QuestionnaireControllerTests {
     @Transactional
     // 更新问卷
     public void updateQuestionnaireTest() throws Exception {
-        Questionnaire questionnaire = new Questionnaire("1", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(),new Date(),new Date(),"5",0,0,0);
+        Questionnaire questionnaire = new Questionnaire("1", "1779cd18-cc34-47b2-a453-419fcff8df3b", "3", "4", new Date(), new Date(), new Date(), "5", 0, 0, 0);
         String jsonProject = new ObjectMapper().writeValueAsString(questionnaire);
         mockMvc.perform(MockMvcRequestBuilders.post("/updateQuestionnaire")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -113,7 +115,7 @@ public class QuestionnaireControllerTests {
     @Transactional
     // 删除问卷
     public void deleteQuestionnaireTest() throws Exception {
-        String id="4173bc9e-1a42-4747-97e2-775f3ac88714";
+        String id = "4173bc9e-1a42-4747-97e2-775f3ac88714";
         mockMvc.perform(MockMvcRequestBuilders.post("/deleteQuestionnaire")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(id))

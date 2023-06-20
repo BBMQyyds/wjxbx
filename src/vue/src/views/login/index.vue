@@ -5,7 +5,7 @@
     <el-main>
       <!--<img id="logo" alt="logo" src="../../assets/img/logo高清.png" @click="toIndex">-->
       <img id="logo" alt="logo" src="../../assets/img/logo/logo高清.png">
-      <el-button id="index_btn" type="primary" @click="toIndex" disabled>返回首页</el-button>
+      <el-button id="index_btn" disabled type="primary" @click="toIndex">返回首页</el-button>
       <el-button id="register_btn" type="primary" @click="toRegister">注册</el-button>
 
       <el-card class="box-card login-card">

@@ -4,7 +4,6 @@
     <!--查询-->
 
 
-
     <!--增删改-->
 
     <!--插入属性-->
@@ -28,7 +27,8 @@
         WHERE child_id = #{childId}
     </update>
     <delete id="deleteAttributionOnParent" parameterType="attributionEntity">
-        DELETE FROM attribution
+        DELETE
+        FROM attribution
         WHERE parent_id = #{parentId}
     </delete>
 

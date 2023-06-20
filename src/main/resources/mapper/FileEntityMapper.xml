@@ -9,10 +9,11 @@
         UPDATE file
         SET file_name        = #{fileName},
             last_update_date = NOW(),
-        WHERE id = #{id}
+            WHERE id = #{id}
     </update>
     <delete id="deleteFile">
-        DELETE FROM file
+        DELETE
+        FROM file
         WHERE id = #{id}
     </delete>
 </mapper>

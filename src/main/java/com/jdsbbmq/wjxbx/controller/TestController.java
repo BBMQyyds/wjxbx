@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
-//    写一个RequestMapping,方法为post
-    @Operation(summary = "测试接口",description = "一个随便的测试")
+    //    写一个RequestMapping,方法为post
+    @Operation(summary = "测试接口", description = "一个随便的测试")
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     public String test() {
         return "test";

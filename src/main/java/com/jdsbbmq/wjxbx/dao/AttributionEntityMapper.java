@@ -1,7 +1,6 @@
 package com.jdsbbmq.wjxbx.dao;
 
 import com.jdsbbmq.wjxbx.dao.entity.AttributionEntity;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

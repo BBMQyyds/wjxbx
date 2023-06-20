@@ -74,9 +74,9 @@ public class User {
     public void init() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
-        this.startTime= dateFormat.parse(dateFormat.format(new Date())); // 设置默认的开始时间
+        this.startTime = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的开始时间
         this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
         this.lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
-        this.status=1; // 设置默认的状态
+        this.status = 1; // 设置默认的状态
     }
 }

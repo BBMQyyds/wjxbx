@@ -1,10 +1,7 @@
 package com.jdsbbmq.wjxbx.dao;
 
-import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -48,5 +45,5 @@ public interface UserEntityMapper {
     String selectPasswordByUsername(String username);
 
     //修改登录密码
-    int updatePassword(String username,String password);
+    int updatePassword(String username, String password);
 }

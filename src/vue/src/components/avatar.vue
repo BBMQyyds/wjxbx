@@ -22,37 +22,39 @@
   </el-row>
 </template>
 <script>
-  export default {
-    created() {
-      // 获取登录数据
+export default {
+  created() {
+    // 获取登录数据
+  },
+  data() {
+    return {
+      circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+      squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
+      sizeList: ["large"],
+    };
+  },
+  methods: {
+    handle_Logout() {
     },
-    data() {
-      return {
-        circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-        squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
-        sizeList: ["large"],
-      };
-    },
-    methods: {
-      handle_Logout() {
-      },
-      look_message() {
-      }
-    },
-  };
+    look_message() {
+    }
+  },
+};
 </script>
 <style scoped>
-  .el-dropdown-link {
-    cursor: pointer;
-    color: #409eff;
-  }
-  .el-icon-arrow-down {
-    font-size: 12px;
-  }
-  .demonstration {
-    display: block;
-    color: #8492a6;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409eff;
+}
+
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+
+.demonstration {
+  display: block;
+  color: #8492a6;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
 </style>

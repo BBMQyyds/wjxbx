@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view v-if="isRouterAlive"  v-wechat-title="$route.meta.title"/>
+    <router-view v-if="isRouterAlive" v-wechat-title="$route.meta.title"/>
   </div>
 </template>
 
