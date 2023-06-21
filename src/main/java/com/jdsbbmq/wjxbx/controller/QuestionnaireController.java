@@ -26,22 +26,14 @@ public class QuestionnaireController {
     @Operation(summary = "一个项目下的所有问卷", description = "查找一个项目下的所有问卷")
     @RequestMapping(value = "/selectAllQuestionnaire", method = RequestMethod.POST)
     public List<Questionnaire> selectAllQuestionnaire(@RequestBody String projectId) {
-        List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireService.selectAllQuestionnaire(projectId);
-        List<Questionnaire> listQuestionnaire = new ArrayList<>();
-        for (QuestionnaireEntity questionnaireEntity : listQuestionnaireEntity) {
-            Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
-            listQuestionnaire.add(questionnaire);
-        }
-        return listQuestionnaire;
+        return questionnaireService.selectAllQuestionnaire(projectId);
     }
 
     //查找一个问卷
     @Operation(summary = "查找一个问卷", description = "根据id号查找一个问卷")
     @RequestMapping(value = "/selectQuestionnaireById", method = RequestMethod.POST)
     public Questionnaire selectQuestionnaireById(@RequestBody String questionnaireId) {
-        QuestionnaireEntity questionnaireEntity = questionnaireService.selectQuestionnaireById(questionnaireId);
-        return new Questionnaire(questionnaireEntity);
-
+        return questionnaireService.selectQuestionnaireById(questionnaireId);
     }
 
     //分页寻找问卷

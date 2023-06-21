@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.service;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,25 +15,25 @@ public interface ProjectService {
      */
 
     //查询用户下方所有项目
-    public List<ProjectEntity> selectAllProject(String userId);
+    public List<Project> selectAllProject(String userId);
 
     //根据id查询项目
-    public ProjectEntity selectProjectById(String id);
+    public Project selectProjectById(String id);
 
     //根据projectName查询项目
-    public List<ProjectEntity> selectProjectByName(String projectName);
+    public List<Project> selectProjectByName(String projectName);
 
     //分页寻找项目
-    public List<ProjectEntity> selectProjectByPage(QueryRequest queryRequest);
+    public List<Project> selectProjectByPage(QueryRequest queryRequest);
     /*
         增删改
      */
 
     // 插入项目
-    public int insertProject(ProjectEntity projectEntity);
+    public int insertProject(Project project);
 
     //更新项目
-    public int updateProject(ProjectEntity projectEntity) throws ParseException;
+    public int updateProject(Project project) throws ParseException;
 
     //将项目的收藏更新为已收藏
     public int updateStarOnProject(String id);

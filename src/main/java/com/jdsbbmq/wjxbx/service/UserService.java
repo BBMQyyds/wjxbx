@@ -2,6 +2,7 @@ package com.jdsbbmq.wjxbx.service;
 
 
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
+import com.jdsbbmq.wjxbx.bean.user.User;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,13 @@ public interface UserService {
      */
 
     // 登录
-    UserEntity login(String username, String password);
+    User login(String username, String password);
 
     // 根据id查询用户
-    UserEntity selectUserById(String id);
+    User selectUserById(String id);
 
     // 查询所有用户
-    List<UserEntity> selectAll();
+    List<User> selectAll();
 
     /*
         增删改
@@ -30,12 +31,12 @@ public interface UserService {
     //增加
 
     // 插入用户（注册）
-    int insertUser(UserEntity userEntity);
+    int insertUser(User user);
 
 
     //更新（修改）
     // 更新用户
-    int updateUser(UserEntity userEntity);
+    int updateUser(User user);
 
     //修改登录密码
     int changePassword(ChangeRequest changeRequest);

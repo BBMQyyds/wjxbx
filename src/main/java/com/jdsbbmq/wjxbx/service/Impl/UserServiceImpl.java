@@ -1,12 +1,14 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
+import com.jdsbbmq.wjxbx.bean.user.User;
 import com.jdsbbmq.wjxbx.dao.UserEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import com.jdsbbmq.wjxbx.service.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,18 +22,23 @@ public class UserServiceImpl implements UserService {
      */
 
     // 登录
-    public UserEntity login(String username, String password) {
-        return userEntityMapper.login(username, password);
+    public User login(String username, String password) {
+        return new User(userEntityMapper.login(username, password));
     }
 
     // 根据id查询用户
-    public UserEntity selectUserById(String id) {
-        return userEntityMapper.selectUserById(id);
+    public User selectUserById(String id) {
+        return new User(userEntityMapper.selectUserById(id));
     }
 
     // 查询所有用户
-    public List<UserEntity> selectAll() {
-        return userEntityMapper.selectAll();
+    public List<User> selectAll() {
+        List<UserEntity> userEntityList = userEntityMapper.selectAll();
+        List<User> userList = new ArrayList<>();
+        for (UserEntity userEntity : userEntityList) {
+            userList.add(new User(userEntity));
+        }
+        return userList;
     }
 
     /*
@@ -39,9 +46,10 @@ public class UserServiceImpl implements UserService {
      */
 
     // 插入用户（注册）
-    public int insertUser(UserEntity userEntity) {
+    public int insertUser(User user) {
         try {
-            userEntityMapper.insertUser(userEntity);
+            user.init();
+            userEntityMapper.insertUser(new UserEntity(user));
             return 1;
         } catch (Exception e) {
             return 0;
@@ -49,8 +57,8 @@ public class UserServiceImpl implements UserService {
     }
 
     // 更新用户
-    public int updateUser(UserEntity userEntity) {
-        return userEntityMapper.updateUser(userEntity);
+    public int updateUser(User user) {
+        return userEntityMapper.updateUser(new UserEntity(user));
     }
 
     // 根据id删除用户

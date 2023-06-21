@@ -115,7 +115,7 @@ public class QuestionnaireControllerTests {
     @Transactional
     // 删除问卷
     public void deleteQuestionnaireTest() throws Exception {
-        String id = "de41a46b-e5e7-4baa-8257-39c2bdd71314";
+        String id = "4173bc9e-1a42-4747-97e2-775f3ac88714";
         mockMvc.perform(MockMvcRequestBuilders.post("/deleteQuestionnaire")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(id))

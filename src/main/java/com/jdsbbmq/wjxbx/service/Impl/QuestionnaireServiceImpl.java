@@ -23,14 +23,20 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     //查找一个项目下的所有问卷
     @Override
-    public List<QuestionnaireEntity> selectAllQuestionnaire(String projectId) {
-        return questionnaireEntityMapper.selectAllQuestionnaire(projectId);
+    public List<Questionnaire> selectAllQuestionnaire(String projectId) {
+        List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireEntityMapper.selectAllQuestionnaire(projectId);
+        List<Questionnaire> listQuestionnaire = new ArrayList<>();
+        for (QuestionnaireEntity questionnaireEntity : listQuestionnaireEntity) {
+            Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
+            listQuestionnaire.add(questionnaire);
+        }
+        return listQuestionnaire;
     }
 
     //查找一个问卷
     @Override
-    public QuestionnaireEntity selectQuestionnaireById(String questionnaireId) {
-        return questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
+    public Questionnaire selectQuestionnaireById(String questionnaireId) {
+        return new Questionnaire(questionnaireEntityMapper.selectQuestionnaireById(questionnaireId));
     }
 
     //分页查找问卷

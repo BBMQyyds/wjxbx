@@ -33,8 +33,7 @@ public class UserController {
     @Operation(summary = "登录接口", description = "输入username与password进行登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody LoginRequest loginRequest) {
-        UserEntity userEntity = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
-        return new User(userEntity);
+        return userService.login(loginRequest.getUsername(), loginRequest.getPassword());
     }
 
 
@@ -46,20 +45,14 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "未找到对应的用户信息")
     })
     public User selectUserById(@RequestBody String id) {
-        UserEntity userEntity = userService.selectUserById(id);
-        return new User(userEntity);
+       return userService.selectUserById(id);
     }
 
     // 查询所有用户
     @Operation(summary = "查询所有用户", description = "查询所有的用户信息")
     @RequestMapping(value = "/selectAll", method = RequestMethod.POST)
     public List<User> selectAll() {
-        List<UserEntity> userEntityList = userService.selectAll();
-        List<User> userList = new ArrayList<>();
-        for (UserEntity userEntity : userEntityList) {
-            userList.add(new User(userEntity));
-        }
-        return userList;
+        return userService.selectAll();
     }
 
     /*
@@ -72,8 +65,7 @@ public class UserController {
     @Operation(summary = "插入用户(注册)", description = "在获取账户的基础上，增加了注册时间、更新时间、状态等字段")
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
     public int insertUser(@RequestBody @Valid User user) throws ParseException {
-        user.init();
-        return userService.insertUser(new UserEntity(user));
+        return userService.insertUser(user);
     }
 
     //更新(修改）
@@ -82,7 +74,7 @@ public class UserController {
     @Operation(summary = "更新用户", description = "更新某些用户的数据")
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     public int updateUser(@RequestBody @Valid User user) {
-        return userService.updateUser(new UserEntity(user));
+        return userService.updateUser(user);
     }
 
     //更新密码

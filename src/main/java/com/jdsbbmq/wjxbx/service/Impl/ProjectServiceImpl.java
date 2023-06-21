@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,26 +27,41 @@ public class ProjectServiceImpl implements ProjectService {
 
     //查询该用户下的所有项目
     @Override
-    public List<ProjectEntity> selectAllProject(String userId) {
-        return projectEntityMapper.selectAllProject(userId);
+    public List<Project> selectAllProject(String userId) {
+        List<ProjectEntity> projectEntityList = projectEntityMapper.selectAllProject(userId);
+        List<Project> projectList = new ArrayList<>();
+        for (ProjectEntity projectEntity : projectEntityList) {
+            projectList.add(new Project(projectEntity));
+        }
+        return projectList;
     }
 
     //根据id查询项目
     @Override
-    public ProjectEntity selectProjectById(String id) {
-        return projectEntityMapper.selectProjectById(id);
+    public Project selectProjectById(String id) {
+        return new Project(projectEntityMapper.selectProjectById(id));
     }
 
     //根据projectName查询项目
     @Override
-    public List<ProjectEntity> selectProjectByName(String projectName) {
-        return projectEntityMapper.selectProjectByName(projectName);
+    public List<Project> selectProjectByName(String projectName) {
+        List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByName(projectName);
+        List<Project> projectList = new ArrayList<>();
+        for (ProjectEntity projectEntity : projectEntityList) {
+            projectList.add(new Project(projectEntity));
+        }
+        return projectList;
     }
 
     @Override
-    public List<ProjectEntity> selectProjectByPage(QueryRequest queryRequest) {
-        QueryEntity queryEntity = queryRequest.ToQueryEntity();
-        return projectEntityMapper.selectProjectByPage(queryEntity);
+    public List<Project> selectProjectByPage(QueryRequest queryRequest) {
+        queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
+        List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByPage(queryRequest.ToQueryEntity());
+        List<Project> projectList = new ArrayList<>();
+        for (ProjectEntity projectEntity : projectEntityList) {
+            projectList.add(new Project(projectEntity));
+        }
+        return projectList;
     }
 
 
@@ -54,15 +71,22 @@ public class ProjectServiceImpl implements ProjectService {
 
     // 插入项目
     @Override
-    public int insertProject(ProjectEntity projectEntity) {
+    public int insertProject(Project project) {
+        try {
+            project.init();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        ProjectEntity projectEntity = new ProjectEntity(project);
         return projectEntityMapper.insertProject(projectEntity);
     }
 
     //更新项目
     @Override
-    public int updateProject(ProjectEntity projectEntity) throws ParseException {
+    public int updateProject(Project project) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
+        ProjectEntity projectEntity = new ProjectEntity(project);
         projectEntity.setLastUpdateDate(lastUpdateDate);
         return projectEntityMapper.updateProject(projectEntity);
     }

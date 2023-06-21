@@ -27,45 +27,29 @@ public class ProjectController {
     @Operation(summary = "用户所有项目接口", description = "能为用户列出他的所有项目")
     @RequestMapping(value = "/selectAllProject", method = RequestMethod.POST)
     public List<Project> selectAllProject(@RequestBody String userId) {
-        List<ProjectEntity> projectEntityList = projectService.selectAllProject(userId);
-        List<Project> projectList = new ArrayList<>();
-        for (ProjectEntity projectEntity : projectEntityList) {
-            projectList.add(new Project(projectEntity));
-        }
-        return projectList;
+        return projectService.selectAllProject(userId);
     }
 
     // 根据id查询项目
     @Operation(summary = "根据id查询项目", description = "能为用户查询他的某个项目")
     @RequestMapping(value = "/selectProjectById", method = RequestMethod.POST)
     public Project selectProjectById(@RequestBody String id) {
-        ProjectEntity projectEntity = projectService.selectProjectById(id);
-        return new Project(projectEntity);
+        return projectService.selectProjectById(id);
     }
 
     //根据projectName查询项目
     @Operation(summary = "根据名称查询项目", description = "能为用户查询他的项目")
     @RequestMapping(value = "/selectProjectByName", method = RequestMethod.POST)
     public List<Project> selectProjectByName(@RequestBody String projectName) {
-        List<ProjectEntity> projectEntityList = projectService.selectProjectByName(projectName);
-        List<Project> projectList = new ArrayList<>();
-        for (ProjectEntity projectEntity : projectEntityList) {
-            projectList.add(new Project(projectEntity));
-        }
-        return projectList;
+
+        return projectService.selectProjectByName(projectName);
     }
 
     //分页寻找项目
     @Operation(summary = "分页寻找项目", description = "能为用户分页寻找他的项目")
     @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.POST)
     public List<Project> selectProjectByPage(@RequestBody QueryRequest queryRequest) {
-        queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
-        List<ProjectEntity> projectEntityList = projectService.selectProjectByPage(queryRequest);
-        List<Project> projectList = new ArrayList<>();
-        for (ProjectEntity projectEntity : projectEntityList) {
-            projectList.add(new Project(projectEntity));
-        }
-        return projectList;
+        return projectService.selectProjectByPage(queryRequest);
     }
 
     /*
@@ -76,17 +60,14 @@ public class ProjectController {
     @Operation(summary = "插入项目", description = "向数据库中插入该项目")
     @RequestMapping(value = "/insertProject", method = RequestMethod.POST)
     public int insertProject(@RequestBody Project project) throws ParseException {
-        project.init();
-        ProjectEntity projectEntity = new ProjectEntity(project);
-        return projectService.insertProject(projectEntity);
+        return projectService.insertProject(project);
     }
 
     // 更新项目
     @Operation(summary = "更新项目", description = "向数据库中更新该项目")
     @RequestMapping(value = "/updateProject", method = RequestMethod.POST)
     public int updateProject(@RequestBody Project project) throws ParseException {
-        ProjectEntity projectEntity = new ProjectEntity(project);
-        return projectService.updateProject(projectEntity);
+        return projectService.updateProject(project);
     }
 
     //更新项目的星标状态

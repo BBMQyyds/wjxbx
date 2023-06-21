@@ -14,10 +14,10 @@ public interface QuestionnaireService {
      */
 
     //查找一个项目下的所有问卷
-    public List<QuestionnaireEntity> selectAllQuestionnaire(String projectId);
+    public List<Questionnaire> selectAllQuestionnaire(String projectId);
 
     //查找一个问卷
-    public QuestionnaireEntity selectQuestionnaireById(String questionnaireId);
+    public Questionnaire selectQuestionnaireById(String questionnaireId);
 
     //分页查找问卷
     public List<Questionnaire> selectQuestionnaireByPage(QueryRequest queryRequest);
