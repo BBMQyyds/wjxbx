@@ -37,7 +37,7 @@
               <el-card class="questionnaire-card">
                 <div id="first">
                   <div :title="'问卷描述：\n' + questionnaire.questionnaireDescription" class="questionnaire-name"
-                       @click="toQuestionnaire(questionnaire.id)">
+                       @click="toQuestion(questionnaire)">
                     {{ questionnaire.questionnaireName }}
                   </div>
                   <div id="star">
@@ -342,14 +342,16 @@ export default {
         });
       });
     },
-    toQuestionnaire(id) {
-      console.log("toQuestion:" + id);
+    toQuestion(questionnaire) {
+      console.log("toQuestion:" + questionnaire.id);
       router.push({
         path: '/question',
         query: {
           id: this.$route.query.project_id,
-          questionnaire_id: id
-        }
+          questionnaire_id: questionnaire.id,
+          name: questionnaire.questionnaireName,
+          description: questionnaire.questionnaireDescription
+        },
       });
     },
     insertQuestionnaire() {
