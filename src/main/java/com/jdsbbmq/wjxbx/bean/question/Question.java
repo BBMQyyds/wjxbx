@@ -13,6 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @Schema(description = "web问题类")
 public class Question {
+    @Schema(description = "问题id")
+    @Size(min = 36, max = 36)
+    private String questionId;
     @Schema(description = "问题类别")
     private String type;
     @Schema(description = "问题题干")
@@ -24,4 +27,6 @@ public class Question {
     private String format;
     @Schema(description = "与样式相关内容")
     private String related;
+    @Schema(description = "是否被收藏")
+    private int star;
 }

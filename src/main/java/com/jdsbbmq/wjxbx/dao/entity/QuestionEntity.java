@@ -12,7 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuestionEntity {
-    private String questionnaireId;
+    private String id;
+    private String questionId;
     private int sequence;
+    private int star;
     private String questionContent;
 }

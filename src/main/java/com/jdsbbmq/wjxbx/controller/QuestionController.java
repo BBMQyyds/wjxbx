@@ -2,6 +2,7 @@ package com.jdsbbmq.wjxbx.controller;
 
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
+import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
 import com.jdsbbmq.wjxbx.service.QuestionService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
@@ -25,6 +26,14 @@ public class QuestionController {
         return questionService.selectQuestionById(id);
     }
 
+    //查询个人题库中的所有问题
+    @Operation(summary = "查询个人题库中的所有问题接口", description = "查询个人题库中的所有问题")
+    @RequestMapping(value = "/selectPrivateQuestion", method = RequestMethod.POST)
+    public List<Question> selectPrivateQuestion(@RequestBody String userId) {
+        return questionService.selectPrivateQuestion(userId);
+    }
+
+
     /*
         增删改
      */
@@ -38,6 +47,19 @@ public class QuestionController {
         return questionService.insertDesignQuestion(designRequest);
     }
 
+    //将问卷问题放入个人题库
+    @Operation(summary = "将问卷问题放入个人题库接口", description = "将问卷问题放入个人题库")
+    @RequestMapping(value = "/insertPrivateQuestion", method = RequestMethod.POST)
+    public int insertPrivateQuestion(@RequestBody UpdateQuestionStarRequest updateQuestionStarRequest) {
+        return questionService.insertPrivateQuestion(updateQuestionStarRequest);
+    }
+
 
     //删除
+    //将问卷问题拿出个人题库
+    @Operation(summary = "将问卷问题拿出个人题库接口", description = "将问卷问题拿出个人题库")
+    @RequestMapping(value = "/deletePrivateQuestionById", method = RequestMethod.POST)
+    public int deletePrivateQuestionById(@RequestBody String questionId) {
+        return questionService.deletePrivateQuestionById(questionId);
+    }
 }

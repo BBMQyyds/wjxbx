@@ -1,28 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jdsbbmq.wjxbx.dao.QuestionEntityMapper">
+    <!--查询-->
 
-    <!--增删改-->
-    <!--设计问卷中的问题-->
-    <insert id="insertDesignQuestion" parameterType="java.util.List">
-        INSERT INTO questionnaire_question (questionnaire_id, sequence, question_content)
-        VALUES
-        <foreach item="item" collection="questionEntityList" separator=",">
-            (#{item.questionnaireId}, #{item.sequence}, #{item.questionContent})
-        </foreach>
-    </insert>
-    <!--根据所给的问卷Id删除问卷中的问题-->
-    <delete id="deleteQuestionById">
-        DELETE FROM questionnaire_question WHERE questionnaire_id = #{questionnaireId}
-    </delete>
+    <!--根据所给的问题Id删除问题-->
     <select id="selectQuestionById" resultType="QuestionEntity">
-        SELECT * FROM questionnaire_question WHERE questionnaire_id = #{questionnaireId}
+        SELECT * FROM questionnaire_question WHERE questionnaire_id = #{id}
+    </select>
+
+    <!--查询私人题库中的问题-->
+    <select id="selectPrivateQuestion" resultType="QuestionEntity">
+        SELECT * FROM question WHERE user_id = #{userId}
     </select>
 
 
+
+    <!--增删改-->
+
+    <!--设计问卷中的问题-->
+    <insert id="insertDesignQuestion" parameterType="java.util.List">
+        INSERT INTO questionnaire_question (questionnaire_id, sequence, star,question_content)
+        VALUES
+        <foreach item="item" collection="questionEntityList" separator=",">
+            (#{item.id}, #{item.sequence},#{item.star}, #{item.questionContent})
+        </foreach>
+    </insert>
+    <!--将问题加入私人题库-->
+    <insert id="insertPrivateQuestion">
+        INSERT INTO question (user_id, question_id, question_content)
+        VALUES
+            (#{id}, #{questionId}, #{questionContent})
+    </insert>
+
+
+    <!--根据所给的问卷Id删除问卷中的问题-->
+    <delete id="deleteQuestionById">
+        DELETE FROM questionnaire_question WHERE questionnaire_id = #{id}
+    </delete>
+    <delete id="deletePrivateQuestionById">
+        DELETE FROM question WHERE question_id = #{questionId}
+    </delete>
+
+    <!--辅助功能-->
+
+    <!--根据所给的问题Id找到问题内容-->
+    <select id="selectQuestionContentById" resultType="java.lang.String">
+        SELECT question_content FROM questionnaire_question WHERE question_id = #{questionId}
+    </select>
+
+    <update id="updateStarOnQuestion">
+        UPDATE questionnaire_question SET star = 1 WHERE  AND question_id = #{questionId}
+    </update>
+    <update id="updateStarOffQuestion">
+        UPDATE questionnaire_question SET star = 0 WHERE  AND question_id = #{questionId}
+    </update>
+
+
     <resultMap id="QuestionEntityMap" type="questionEntity">
-       <id property="questionnaireId" column="questionnaire_id"/>
+        <id property="questionId" column="question_id"/>
+        <result property="id" column="questionnaire_id"/>
         <result property="sequence" column="sequence"/>
+        <result property="star" column="star"/>
         <result property="questionContent" column="question_content"/>
     </resultMap>
 </mapper>
