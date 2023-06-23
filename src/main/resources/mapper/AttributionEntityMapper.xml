@@ -32,5 +32,12 @@
         WHERE parent_id = #{parentId}
     </delete>
 
+    <resultMap id="AttributionEntityMap" type="attributionEntity">
+        <id property="parentId" column="parent_id"/>
+        <id property="childId" column="child_id"/>
+        <result property="childType" column="child_type"/>
+        <result property="content" column="content"/>
+    </resultMap>
+
 
 </mapper>

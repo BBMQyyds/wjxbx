@@ -1,6 +1,5 @@
 package com.jdsbbmq.wjxbx.bean.question;
 
-import com.jdsbbmq.wjxbx.bean.choice.Choice;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
@@ -16,11 +15,13 @@ import java.util.List;
 public class Question {
     @Schema(description = "问题类别")
     private String type;
-    @Schema(description = "问题内容")
+    @Schema(description = "问题题干")
     @Size(min = 0, max = 200)
-    private String title;
-    @Schema(description = "问题序号")
-    private int Sequence;
+    private String stem;
     @Schema(description = "问题选项列表")
-    private List<Choice> choices;
+    private List<String> choices;
+    @Schema(description = "问题样式")
+    private String format;
+    @Schema(description = "与样式相关内容")
+    private String related;
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jdsbbmq.wjxbx.dao.QuestionEntityMapper">
+
+    <!--增删改-->
+    <!--设计问卷中的问题-->
+    <insert id="insertDesignQuestion" parameterType="java.util.List">
+        INSERT INTO questionnaire_question (questionnaire_id, sequence, question_content)
+        VALUES
+        <foreach item="item" collection="questionEntityList" separator=",">
+            (#{item.questionnaireId}, #{item.sequence}, #{item.questionContent})
+        </foreach>
+    </insert>
+
+
+
+    <resultMap id="QuestionEntityMap" type="questionEntity">
+       <id property="questionnaireId" column="questionnaire_id"/>
+        <result property="sequence" column="sequence"/>
+        <result property="questionContent" column="question_content"/>
+    </resultMap>
+</mapper>

@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jdsbbmq.wjxbx.dao.FileEntityMapper">
+
+    <!--增删改-->
+
+    <!--插入文件夹-->
     <insert id="insertFile" parameterType="FileEntity">
         INSERT INTO file (id, file_name, creation_date, created_by, last_update_date, parent_id)
         VALUES (#{id}, #{fileName}, #{creationDate}, #{createdBy}, #{lastUpdateDate}, #{parentId})
     </insert>
+    <!--更新文件夹-->
     <update id="updateFile">
         UPDATE file
         SET file_name        = #{fileName},
             last_update_date = NOW(),
             WHERE id = #{id}
     </update>
+    <!--删除文件夹-->
     <delete id="deleteFile">
         DELETE
         FROM file
         WHERE id = #{id}
     </delete>
+
+
+    <resultMap id="FileEntityMap" type="fileEntity">
+        <id property="id" column="id"/>
+        <result property="fileName" column="file_name"/>
+        <result property="creationDate" column="creation_date"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="lastUpdateDate" column="last_update_date"/>
+        <result property="parentId" column="parent_id"/>
+    </resultMap>
 </mapper>
