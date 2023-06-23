@@ -2,8 +2,8 @@
   <div id="all">
     <div class="header">
       <div class="box">
-        <h1 @click="logout">
-          <img alt="logo" src="../assets/img/icon/icon高清.png">
+        <h1 @click="back">
+          <img alt="logo" src="../assets/img/icon/icon高清.png" :title="'点击返回上一界面'">
           <span>问卷星不星</span>
         </h1>
       </div>
@@ -28,13 +28,14 @@ export default {
     Avatar
   },
   methods: {
-    logout() {
-      if (localStorage.getItem("auto") != null) {
-        localStorage.removeItem("auto");
-      }
-      sessionStorage.removeItem("username");
-      sessionStorage.removeItem("password");
-      router.push({path: '/login'});
+    back() {
+      // if (localStorage.getItem("auto") != null) {
+      //   localStorage.removeItem("auto");
+      // }
+      // sessionStorage.removeItem("username");
+      // sessionStorage.removeItem("password");
+      // router.push({path: '/login'});
+      router.back();
     }
   }
 }

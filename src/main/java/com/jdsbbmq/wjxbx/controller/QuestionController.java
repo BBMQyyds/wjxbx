@@ -21,7 +21,7 @@ public class QuestionController {
     //根据所给的问卷Id，查找其设计的问题
     @Operation(summary = "根据所给的问卷Id，查找其设计的问题接口", description = "根据所给的问卷Id，查找其设计的问题")
     @RequestMapping(value = "/selectQuestionById", method = RequestMethod.POST)
-    public List<Question> selectQuestionById(String id) {
+    public List<Question> selectQuestionById(@RequestBody String id) {
         return questionService.selectQuestionById(id);
     }
 

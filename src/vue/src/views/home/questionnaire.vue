@@ -973,6 +973,5 @@ el-dialog .el-dialog__body {
 .dialog-textarea .el-textarea__inner {
   width: 85% !important;
 }
-
 </style>
 

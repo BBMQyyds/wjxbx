@@ -18,9 +18,9 @@ public class QuestionServiceImpl implements QuestionService {
     @Resource
     private QuestionEntityMapper questionEntityMapper;
 
-        /*
-            查询
-         */
+    /*
+        查询
+     */
     //根据所给的问卷Id，查找其设计的问题
     @Override
     public List<Question> selectQuestionById(String id) {
@@ -50,11 +50,14 @@ public class QuestionServiceImpl implements QuestionService {
             List<QuestionEntity> questionEntityList = new ArrayList<>();
             int a = questionEntityMapper.deleteQuestionById(designRequest.getId());
             for (int i = 0; i < designRequest.getQuestions().size(); i++) {
-                QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(), i+1, gson.toJson(designRequest.getQuestions().get(i)));
+                QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(), i + 1, gson.toJson(designRequest.getQuestions().get(i)));
                 questionEntityList.add(questionEntity);
             }
+            if (questionEntityList.size() == 0) {
+                return 1;
+            }
             int b = questionEntityMapper.insertDesignQuestion(questionEntityList);
-            if (a + b - 1 != questionEntityList.size()) {
+            if (b != questionEntityList.size()) {
                 throw new RuntimeException("插入设计问卷的问题失败");
             }
             return 1;

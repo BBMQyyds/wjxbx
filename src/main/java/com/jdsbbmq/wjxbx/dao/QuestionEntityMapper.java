@@ -12,7 +12,7 @@ public interface QuestionEntityMapper {
            查询
         */
     //根据所给的问卷Id，查找其设计的问题
-    public List<QuestionEntity> selectQuestionById(String questionnaire_id);
+    public List<QuestionEntity> selectQuestionById(String questionnaireId);
 
         /*
            增删改
