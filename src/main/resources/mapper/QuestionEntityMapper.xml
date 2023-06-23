@@ -11,7 +11,13 @@
             (#{item.questionnaireId}, #{item.sequence}, #{item.questionContent})
         </foreach>
     </insert>
-
+    <!--根据所给的问卷Id删除问卷中的问题-->
+    <delete id="deleteQuestionById">
+        DELETE FROM questionnaire_question WHERE questionnaire_id = #{questionnaireId}
+    </delete>
+    <select id="selectQuestionById" resultType="QuestionEntity">
+        SELECT * FROM questionnaire_question WHERE questionnaire_id = #{questionnaireId}
+    </select>
 
 
     <resultMap id="QuestionEntityMap" type="questionEntity">
