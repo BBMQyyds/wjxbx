@@ -19,7 +19,7 @@ public class Question {
     @Size(min = 0, max = 200)
     private String stem;
     @Schema(description = "问题选项列表")
-    private List<String> choices;
+    private List<String> options;
     @Schema(description = "问题样式")
     private String format;
     @Schema(description = "与样式相关内容")
