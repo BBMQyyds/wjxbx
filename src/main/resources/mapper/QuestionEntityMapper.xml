@@ -5,54 +5,72 @@
 
     <!--根据所给的问题Id删除问题-->
     <select id="selectQuestionById" resultType="QuestionEntity">
-        SELECT * FROM questionnaire_question WHERE questionnaire_id = #{id}
+        SELECT *
+        FROM questionnaire_question
+        WHERE questionnaire_id = #{id}
     </select>
 
     <!--查询私人题库中的问题-->
     <select id="selectPrivateQuestion" resultType="QuestionEntity">
-        SELECT * FROM question WHERE user_id = #{userId}
+        SELECT *
+        FROM question
+        WHERE user_id = #{userId}
     </select>
-
 
 
     <!--增删改-->
 
     <!--设计问卷中的问题-->
     <insert id="insertDesignQuestion" parameterType="java.util.List">
-        INSERT INTO questionnaire_question (questionnaire_id, sequence, star,question_content)
+        INSERT INTO questionnaire_question (questionnaire_id, sequence, star, question_content, question_id)
         VALUES
         <foreach item="item" collection="questionEntityList" separator=",">
-            (#{item.id}, #{item.sequence},#{item.star}, #{item.questionContent})
+            (#{item.id}, #{item.sequence}, #{item.star}, #{item.questionContent}, #{item.questionId})
         </foreach>
+        ON DUPLICATE KEY UPDATE
+        questionnaire_id = VALUES(questionnaire_id),
+        sequence = VALUES(sequence),
+        star = VALUES(star),
+        question_content = VALUES(question_content)
     </insert>
+
     <!--将问题加入私人题库-->
     <insert id="insertPrivateQuestion">
         INSERT INTO question (user_id, question_id, question_content)
-        VALUES
-            (#{id}, #{questionId}, #{questionContent})
+        VALUES (#{id}, #{questionId}, #{questionContent})
     </insert>
 
 
     <!--根据所给的问卷Id删除问卷中的问题-->
     <delete id="deleteQuestionById">
-        DELETE FROM questionnaire_question WHERE questionnaire_id = #{id}
+        DELETE
+        FROM questionnaire_question
+        WHERE questionnaire_id = #{id}
     </delete>
     <delete id="deletePrivateQuestionById">
-        DELETE FROM question WHERE question_id = #{questionId}
+        DELETE
+        FROM question
+        WHERE question_id = #{questionId}
     </delete>
 
     <!--辅助功能-->
 
     <!--根据所给的问题Id找到问题内容-->
     <select id="selectQuestionContentById" resultType="java.lang.String">
-        SELECT question_content FROM questionnaire_question WHERE question_id = #{questionId}
+        SELECT question_content
+        FROM questionnaire_question
+        WHERE question_id = #{questionId}
     </select>
 
     <update id="updateStarOnQuestion">
-        UPDATE questionnaire_question SET star = 1 WHERE  AND question_id = #{questionId}
+        UPDATE questionnaire_question
+        SET star = 1
+        WHERE question_id = #{questionId}
     </update>
     <update id="updateStarOffQuestion">
-        UPDATE questionnaire_question SET star = 0 WHERE  AND question_id = #{questionId}
+        UPDATE questionnaire_question
+        SET star = 0
+        WHERE question_id = #{questionId}
     </update>
 
 

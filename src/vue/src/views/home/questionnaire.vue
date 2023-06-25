@@ -348,6 +348,7 @@ export default {
         path: '/question',
         query: {
           id: this.$route.query.project_id,
+          user_id: this.$route.query.id,
           questionnaire_id: questionnaire.id,
           name: questionnaire.questionnaireName,
           description: questionnaire.questionnaireDescription

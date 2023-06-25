@@ -2,8 +2,8 @@
   <div id="all">
     <div class="header">
       <div class="box">
-        <h1 @click="back">
-          <img alt="logo" src="../assets/img/icon/icon高清.png" :title="'点击返回上一界面'">
+        <h1 @click="back" :title="'点击返回上一界面'">
+          <img alt="logo" src="../assets/img/icon/icon高清.png">
           <span>问卷星不星</span>
         </h1>
       </div>

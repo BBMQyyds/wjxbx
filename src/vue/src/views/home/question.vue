@@ -120,19 +120,68 @@
             </div>
           </div>
         </el-container>
+        <el-container id="question-type" v-if="itemType === 'bank'">
+          <hr>
+          <div id="bank-private" style="text-align: center;">
+            <span style="font-size: 20px;font-weight: bold;margin-bottom: 10px;">个人题库</span>
+            <!--下面列出privateBank中的问题类型和问题题干，点击即可添加至问卷-->
+            <div style="text-align: left">
+              <el-row v-for="(question,index) in this.privateBank" :key="index"
+                      style="margin-top: 10px;margin-bottom: 10px">
+                <el-col :span="3"></el-col>
+                <el-col :span="16">
+                  <el-button type="text" @click="addToQuestionnaire(this.privateBank,index)"
+                             :title="question.stem">
+                    {{ question.type }}&ensp;
+                    {{ question.stem.length > 15 ? question.stem.substring(0, 15) + '...' : question.stem }}
+                  </el-button>
+                </el-col>
+                <el-col :span="3">
+                  <el-button type="text" @click="deleteFromPrivateBank(index)">
+                    <i class="el-icon-delete"></i>
+                  </el-button>
+                </el-col>
+                <el-col :span="2"></el-col>
+              </el-row>
+            </div>
+          </div>
+          <hr>
+          <div id="bank-public" style="text-align: center;">
+            <span style="font-size: 20px;font-weight: bold;margin-bottom: 10px;">公共题库</span>
+            <!--下面列出publicBank中的问题类型和问题题干，点击即可添加至问卷-->
+            <div style="text-align: left">
+              <el-row v-for="(question,index) in this.publicBank" :key="index"
+                      style="margin-top: 10px;margin-bottom: 10px">
+                <el-col :span="3"></el-col>
+                <el-col :span="16">
+                  <el-button type="text" @click="addToQuestionnaire(this.publicBank,index)"
+                             :title="question.stem">
+                    {{ question.type }}&ensp;
+                    {{ question.stem.length > 20 ? question.stem.substring(0, 20) + '...' : question.stem }}
+                  </el-button>
+                </el-col>
+                <el-col :span="5"></el-col>
+              </el-row>
+            </div>
+          </div>
+        </el-container>
       </el-container>
       <el-container id="content">
         <div class="questionnaire-name">
           <span class="name">{{ this.questionnaire.name }}</span>
         </div>
         <div class="questionnaire-description">
-          <span>问卷说明：{{ this.questionnaire.description }}</span>
+          <span>问卷描述：{{ this.questionnaire.description }}</span>
         </div>
         <hr>
         <div v-for="(question,index) in this.questionnaire.questions" :key="index">
           <el-form :model="question" :rules="rules">
-            <div class="ques-type">
-              <span>{{ index + 1 }}.&emsp;{{ question.type }}</span>
+            <div class="ques-type" style="align-items: center;">
+              <span style="margin-right: 10px">{{ index + 1 }}.&emsp;{{ question.type }}</span>
+              <el-icon v-if="question.star!==0" class="el-icon-star-on"
+                       @click="starOff(question)" style=" color: #207EFF;"></el-icon>
+              <el-icon v-if="question.star===0" class="el-icon-star-on"
+                       @click="starOn(question)" style="color: #C0C0C0;"></el-icon>
             </div>
             <!--根据type生成不同的题型，并生成真实的题目格式-->
             <!--可编辑题干、选项等内容-->
@@ -145,14 +194,16 @@
                 </el-form-item>
               </div>
               <div class="ques-option">
-                <div v-for="(option, index) in question.options" :key="index"
-                     class="option-input">
-                  <!--序号abcd形式，序号前有单选框-->
-                  <div class="option-row">
-                    <el-checkbox disabled>{{ String.fromCharCode(index + 65) }}.</el-checkbox>
-                    <el-input v-model="question.options[index]" placeholder="请输入选项"></el-input>
+                <el-radio-group>
+                  <div v-for="(option, index) in question.options" :key="index"
+                       class="option-input">
+                    <!--序号abcd形式，序号前有单选框-->
+                    <div class="option-row">
+                      <el-radio :label="index" disabled>{{ String.fromCharCode(index + 65) }}.</el-radio>
+                      <el-input v-model="question.options[index]" placeholder="请输入选项"></el-input>
+                    </div>
                   </div>
-                </div>
+                </el-radio-group>
                 <div class="ques-addition">
                   <el-button class="small_btns" :disabled="question.options.length === radioMax"
                              type="success" size="small" @click="plus(question.options,radioMax)">加
@@ -262,7 +313,7 @@
             <!--填空（有多个空）-->
             <div v-if="question.type === '填空题'">
               <div class="ques-stem">
-                <el-form-item prop="blankStem">
+                <el-form-item prop="stem">
                   <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;"
                             v-model="question.stem" placeholder="请输入题干" autosize></el-input>
                 </el-form-item>
@@ -393,6 +444,8 @@
 import navBar from "../../components/nav";
 import router from "@/router";
 import request, {plainRequest} from "@/api";
+import {v4 as uuidv4} from 'uuid';
+
 
 export default {
   name: "question",
@@ -424,13 +477,103 @@ export default {
       sortMin: 2,
       sortMax: 6,
       fileSize: '2',//文件上传大小限制(MB)
+
+      //题目结构
+      //type: 题型
+      //stem: 题干
+      //options: 选项(单选题、多选题、判断题、排序题)
+      //format: 格式(判断题、评分题)
+      //related: 相关(判断题、填空题、简答题、评分题、文件上传)
+
       // 题库信息（即一个特殊的问卷）
-      bank: {
-        id: this.$route.query.bank_id,
-        name: '',
-        description: '',
-        questions: [],
-      },
+      //个人题库
+      privateBank: [
+        {
+          type: '单选题',
+          stem: '单选题题干',
+          options: ['选项1', '选项2', '选项3', '选项4'],
+        },
+        {
+          type: '多选题',
+          stem: '多选题题干',
+          options: ['选项1', '选项2', '选项3', '选项4'],
+        },
+        {
+          type: '判断题',
+          stem: '判断题题干',
+          format: '是/否',
+        },
+        {
+          type: '填空题',
+          stem: '填空题题干',
+          related: '4',
+        },
+        {
+          type: '简答题',
+          stem: '简答题题干',
+          related: '100',
+        },
+        {
+          type: '评分题',
+          stem: '评分题题干',
+          format: '百分制',
+          related: '60',
+        },
+        {
+          type: '排序题',
+          stem: '排序题题干',
+          options: ['选项1', '选项2', '选项3', '选项4'],
+        },
+        {
+          type: '文件上传',
+          stem: '文件上传题干',
+          related: '2',
+        },
+      ],
+      //公共题库
+      publicBank: [
+        {
+          type: '单选题',
+          stem: '单选题题干',
+          options: ['选项1', '选项2', '选项3', '选项4'],
+        },
+        {
+          type: '多选题',
+          stem: '多选题题干',
+          options: ['选项1', '选项2', '选项3', '选项4'],
+        },
+        {
+          type: '判断题',
+          stem: '判断题题干',
+          format: '是/否',
+        },
+        {
+          type: '填空题',
+          stem: '填空题题干',
+          related: '4',
+        },
+        {
+          type: '简答题',
+          stem: '简答题题干',
+          related: '100',
+        },
+        {
+          type: '评分题',
+          stem: '评分题题干',
+          format: '百分制',
+          related: '60',
+        },
+        {
+          type: '排序题',
+          stem: '排序题题干',
+          options: ['选项1', '选项2', '选项3', '选项4'],
+        },
+        {
+          type: '文件上传',
+          stem: '文件上传题干',
+          related: '2',
+        },
+      ],
       // 问卷信息
       questionnaire: {
         id: this.$route.query.questionnaire_id,
@@ -447,16 +590,7 @@ export default {
           {required: true, message: '请输入题干', trigger: 'blur'},
           {min: 2, max: 100, message: '长度在 2 到 100 个字符', trigger: 'blur'},
         ],
-        blankStem: [
-          {required: true, message: '请输入题干', trigger: 'blur'},
-          {min: 2, max: 100, message: '长度在 2 到 100 个字符', trigger: 'blur'},
-          {validator: this.customRule, trigger: 'blur'}
-        ],
-        options: [
-          {required: true, message: '请输入选项', trigger: 'blur'},
-          {min: 2, max: 100, message: '长度在 2 到 50 个字符', trigger: 'blur'},
-        ],
-      }
+      },
     };
   },
   methods: {
@@ -467,7 +601,81 @@ export default {
         this.questionnaire.questions = res.data;
       }).catch(err => {
         console.log(err);
-      })
+      });
+      plainRequest.post('/selectPrivateQuestion', this.$route.query.user_id).then(res => {
+        console.log(res);
+        this.privateBank = res.data;
+      }).catch(err => {
+        console.log(err);
+      });
+      plainRequest.post('/selectPublicBank').then(res => {
+        console.log(res);
+        this.publicBank = res.data;
+      }).catch(err => {
+        console.log(err);
+      });
+    },
+    addToQuestionnaire(questions, index) {
+      this.questionnaire.questions.push(questions[index]);
+    },
+    deleteFromPrivateBank(index) {
+      plainRequest.post('/deletePrivateQuestionById', this.privateBank[index].questionId).then(res => {
+        if (res.data === 1) {
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
+          this.privateBank.splice(index, 1);
+        } else {
+          this.$message({
+            message: '删除失败',
+            type: 'error'
+          });
+        }
+      }).catch(err => {
+        console.log(err);
+      });
+    },
+    starOn(question) {
+      request.post('/insertPrivateQuestion', JSON.stringify({
+        userId: this.$route.query.user_id,
+        questionId: question.questionId,
+      })).then(res => {
+        if (res.data === 1) {
+          question.star = 1;
+          this.privateBank.push(question);
+          this.$message({
+            message: '收藏成功',
+            type: 'success'
+          });
+        } else {
+          this.$message({
+            message: '收藏失败',
+            type: 'error'
+          });
+        }
+      }).catch(err => {
+        console.log(err);
+      });
+    },
+    starOff(question) {
+      plainRequest.post('/deletePrivateQuestionById', question.questionId).then(res => {
+        if (res.data === 1) {
+          this.$message({
+            message: '取消收藏成功',
+            type: 'success'
+          });
+          question.star = 0;
+          this.privateBank.splice(this.privateBank.indexOf(question), 1);
+        } else {
+          this.$message({
+            message: '取消收藏失败',
+            type: 'error'
+          });
+        }
+      }).catch(err => {
+        console.log(err);
+      });
     },
     changeSortType(type) {
       this.itemType = type;
@@ -480,20 +688,14 @@ export default {
       question.stem += ' &______& ';
       question.related = count + 1;
     },
-    customRule(rule, value, callback) {
-      const count = value.split(' &______& ').length - 1;
-      if (count < 1 || count > 4) {
-        callback(new Error('填空题空格数在1-4之间'));
-      } else {
-        callback();
-      }
-    },
     // index为题目在数组中的下标
     // type为上面插入或下面插入（up,down）
     addSimple(index, type) {
       let question = {
         type: '单选题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         options: [],
       };
       for (let i = 0; i < this.radioOptionCount; i++) {
@@ -509,6 +711,8 @@ export default {
       let question = {
         type: '多选题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         options: [],
       };
       for (let i = 0; i < this.choiceOptionCount; i++) {
@@ -524,6 +728,8 @@ export default {
       let question = {
         type: '判断题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         format: this.judgeFormat,
         related: this.judgeFormat.split('/')[0],
       };
@@ -537,6 +743,8 @@ export default {
       let question = {
         type: '评分题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         format: this.gradeFormat,
         related: this.gradeFormat === '百分制' ? '60' : (this.gradeFormat === '十分制' ? '6' : '3'),
       };
@@ -550,6 +758,8 @@ export default {
       let question = {
         type: '简答题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         related: this.answerSize,
       };
       if (type === 'up') {
@@ -562,6 +772,8 @@ export default {
       let question = {
         type: '文件上传',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         related: this.fileSize,
       };
       if (type === 'up') {
@@ -574,10 +786,12 @@ export default {
       let question = {
         type: '排序题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         options: [],
       };
       for (let i = 0; i < this.sortCount; i++) {
-        question.options.push('选项' + (i + 1));
+        question.options.push('语句' + (i + 1));
       }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
@@ -589,6 +803,8 @@ export default {
       let question = {
         type: '填空题',
         stem: '这是题干',
+        star: 0,
+        questionId: uuidv4(),
         related: this.blankCount,
       };
       for (let i = 0; i < this.blankCount; i++) {
@@ -696,18 +912,31 @@ export default {
         });
       });
     },
-    save() {
-      this.$confirm('确认保存问卷吗？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        customClass: 'message-box',
-        type: 'warning',
-      }).then(() => {
-        let data = {
-          id: this.questionnaire.id,
-          questions: this.questionnaire.questions,
-        };
-        request.post('/insertDesignQuestion', JSON.stringify(data)).then(res => {
+    async save() {
+      let validate = true;
+      for (let i = 0; i < this.questionnaire.questions.length; i++) {
+        validate = await new Promise((resolve) => {
+          this.validateQuestion(this.questionnaire.questions[i], i, (result) => {
+            resolve(result);
+          });
+        });
+        if (!validate) {
+          break;
+        }
+      }
+      if (validate) {
+        try {
+          await this.$confirm('确认保存问卷吗？', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            customClass: 'message-box',
+            type: 'warning',
+          });
+          let data = {
+            id: this.questionnaire.id,
+            questions: this.questionnaire.questions,
+          };
+          const res = await request.post('/insertDesignQuestion', JSON.stringify(data));
           if (res.data === 1) {
             this.$message({
               message: '保存成功',
@@ -720,14 +949,55 @@ export default {
               type: 'error',
             });
           }
-        });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消保存',
-        });
-      });
-    }
+        } catch (error) {
+          this.$message({
+            type: 'info',
+            message: '已取消保存',
+          });
+        }
+      }
+    },
+    // 验证题目是否合法
+    validateQuestion(question, index, callback) {
+      if (question.stem === '') {
+        this.$message.error('第' + (index + 1) + '题题干不能为空');
+        callback(false);
+        return;
+      }
+      if (question.stem.length < 2 || question.stem.length > 100) {
+        this.$message.error('第' + (index + 1) + '题题干长度应在2-100之间');
+        callback(false);
+        return;
+      }
+      if (question.type === '单选题' || question.type === '多选题' || question.type === '排序题') {
+        if (question.options.length < 2 || question.options.length > 6) {
+          this.$message.error('第' + (index + 1) + '题选项数应在2-6之间');
+          callback(false);
+          return;
+        }
+        for (let i = 0; i < question.options.length; i++) {
+          if (question.options[i] === '') {
+            this.$message.error('第' + (index + 1) + '题选项不能为空');
+            callback(false);
+            return;
+          }
+          if (question.options[i].length < 2 || question.options[i].length > 50) {
+            this.$message.error('第' + (index + 1) + '题选项长度应在2-50之间');
+            callback(false);
+            return;
+          }
+        }
+      }
+      if (question.type === '填空题') {
+        question.related = question.stem.split('&______&').length - 1;
+        if (question.related < 1 || question.related > 4) {
+          this.$message.error('第' + (index + 1) + '题填空数应在1-4之间');
+          callback(false);
+          return;
+        }
+      }
+      callback(true);
+    },
   }
 }
 </script>
@@ -928,6 +1198,10 @@ el-dialog .el-dialog__body {
   transform: translate(-50%, -50%);
   width: 40%;
 }
+
+</style>
+
+<style scoped>
 
 </style>
 

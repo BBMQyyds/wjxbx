@@ -68,7 +68,6 @@ public class QuestionServiceImpl implements QuestionService {
         try {
             Gson gson = new Gson();
             List<QuestionEntity> questionEntityList = new ArrayList<>();
-            questionEntityMapper.deleteQuestionById(designRequest.getId());
             for (int i = 0; i < designRequest.getQuestions().size(); i++) {
                 QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(),designRequest.getQuestions().get(i).getQuestionId(), i + 1,designRequest.getQuestions().get(i).getStar(), gson.toJson(designRequest.getQuestions().get(i)));
                 questionEntityList.add(questionEntity);
@@ -77,9 +76,6 @@ public class QuestionServiceImpl implements QuestionService {
                 return 1;
             }
             int b = questionEntityMapper.insertDesignQuestion(questionEntityList);
-            if (b != questionEntityList.size()) {
-                throw new RuntimeException("插入设计问卷的问题失败");
-            }
             return 1;
         } catch (Exception e) {
             throw new RuntimeException("插入设计问卷的问题失败");
