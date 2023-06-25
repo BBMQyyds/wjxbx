@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -63,7 +62,7 @@ public class UserController {
     // 插入用户(注册）
     @Operation(summary = "插入用户(注册)", description = "在获取账户的基础上，增加了注册时间、更新时间、状态等字段")
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
-    public int insertUser(@RequestBody @Valid User user) throws ParseException {
+    public int insertUser(@RequestBody @Valid User user) {
         return userService.insertUser(user);
     }
 

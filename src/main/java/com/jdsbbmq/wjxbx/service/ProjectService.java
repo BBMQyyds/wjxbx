@@ -2,11 +2,11 @@ package com.jdsbbmq.wjxbx.service;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.project.Project;
-import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public interface ProjectService {
@@ -15,41 +15,41 @@ public interface ProjectService {
      */
 
     //查询用户下方所有项目
-    public List<Project> selectAllProject(String userId);
+    public CompletableFuture<List<Project>> selectAllProject(String userId);
 
     //根据id查询项目
-    public Project selectProjectById(String id);
+    public CompletableFuture<Project> selectProjectById(String id);
 
     //根据projectName查询项目
-    public List<Project> selectProjectByName(String projectName);
+    public CompletableFuture<List<Project>> selectProjectByName(String projectName);
 
     //分页寻找项目
-    public List<Project> selectProjectByPage(QueryRequest queryRequest);
+    public CompletableFuture<List<Project>> selectProjectByPage(QueryRequest queryRequest);
     /*
         增删改
      */
 
     // 插入项目
-    public int insertProject(Project project);
+    public CompletableFuture<Integer> insertProject(Project project);
 
     //更新项目
-    public int updateProject(Project project) throws ParseException;
+    public CompletableFuture<Integer> updateProject(Project project) throws ParseException;
 
     //将项目的收藏更新为已收藏
-    public int updateStarOnProject(String id);
+    public CompletableFuture<Integer> updateStarOnProject(String id);
 
     //将项目的收藏更新为未收藏
-    public int updateStarOffProject(String id);
+    public CompletableFuture<Integer> updateStarOffProject(String id);
 
     //将项目的删除更新为已删除
-    public int updateDeletedOnProject(String id);
+    public CompletableFuture<Integer> updateDeletedOnProject(String id);
 
     //将项目的删除更新为未删除
-    public int updateDeletedOffProject(String id);
+    public CompletableFuture<Integer> updateDeletedOffProject(String id);
 
     // 删除项目
-    public int deleteProjectById(String id);
+    public CompletableFuture<Integer> deleteProjectById(String id);
 
     //清空回收站
-    public int deleteAllProjectRecycled(String userId);
+    public CompletableFuture<Integer> deleteAllProjectRecycled(String userId);
 }

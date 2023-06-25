@@ -2,10 +2,10 @@ package com.jdsbbmq.wjxbx.service;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
-import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public interface QuestionnaireService {
@@ -14,13 +14,13 @@ public interface QuestionnaireService {
      */
 
     //查找一个项目下的所有问卷
-    public List<Questionnaire> selectAllQuestionnaire(String projectId);
+    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(String projectId);
 
     //查找一个问卷
-    public Questionnaire selectQuestionnaireById(String questionnaireId);
+    public CompletableFuture<Questionnaire> selectQuestionnaireById(String questionnaireId);
 
     //分页查找问卷
-    public List<Questionnaire> selectQuestionnaireByPage(QueryRequest queryRequest);
+    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(QueryRequest queryRequest);
 
      /*
         增删改
@@ -29,36 +29,36 @@ public interface QuestionnaireService {
     //增加
 
     //插入一个问卷
-    public int insertQuestionnaire(Questionnaire questionnaire);
+    public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire);
 
     //修改更新
 
     //更新一个问卷
-    public int updateQuestionnaire(Questionnaire questionnaire);
+    public CompletableFuture<Integer> updateQuestionnaire(Questionnaire questionnaire);
 
     //更新问卷的收藏状态
-    public int updateStarOnQuestionnaire(String questionnaireId);
+    public CompletableFuture<Integer> updateStarOnQuestionnaire(String questionnaireId);
 
     //更新取消问卷的收藏状态
-    public int updateStarOffQuestionnaire(String questionnaireId);
+    public CompletableFuture<Integer> updateStarOffQuestionnaire(String questionnaireId);
 
     //更新问卷的删除状态
-    public int updateDeletedOnQuestionnaire(String questionnaireId);
+    public CompletableFuture<Integer> updateDeletedOnQuestionnaire(String questionnaireId);
 
     //更新取消问卷的删除状态
-    public int updateDeletedOffQuestionnaire(String questionnaireId);
+    public CompletableFuture<Integer> updateDeletedOffQuestionnaire(String questionnaireId);
 
     //发布问卷
-    public int updateReleaseQuestionnaire(String questionnaireId);
+    public CompletableFuture<Integer> updateReleaseQuestionnaire(String questionnaireId);
 
     //收回问卷
-    public int updateReclaimQuestionnaire(String questionnaireId);
+    public CompletableFuture<Integer> updateReclaimQuestionnaire(String questionnaireId);
 
     //删除
 
     //删除一个问卷
-    public int deleteQuestionnaireById(String questionnaireId);
+    public CompletableFuture<Integer> deleteQuestionnaireById(String questionnaireId);
 
     //清空回收站
-    public int deleteAllQuestionnaireRecycled(String projectId);
+    public CompletableFuture<Integer> deleteAllQuestionnaireRecycled(String projectId);
 }

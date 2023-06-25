@@ -5,6 +5,8 @@ import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 @Service
 public interface QuestionService {
     /*
@@ -14,7 +16,7 @@ public interface QuestionService {
     public List<Question> selectQuestionById(String id);
 
     //查询个人题库中的所有问题
-    public List<Question> selectPrivateQuestion(String userId);
+    public CompletableFuture<List<Question>> selectPrivateQuestion(String userId);
 
 
     /*
@@ -24,12 +26,12 @@ public interface QuestionService {
     //增加
 
     //设计问卷问题
-    public int insertDesignQuestion(DesignRequest designRequest);
+    public CompletableFuture<Integer> insertDesignQuestion(DesignRequest designRequest);
 
     //将问卷问题放入个人题库
-    public int insertPrivateQuestion(UpdateQuestionStarRequest updateQuestionStarRequest);
+    public CompletableFuture<Integer> insertPrivateQuestion(UpdateQuestionStarRequest updateQuestionStarRequest);
 
     //删除
     //将问卷问题从个人题库中拿出
-    public int deletePrivateQuestionById(String questionId);
+    public CompletableFuture<Integer> deletePrivateQuestionById(String questionId);
 }

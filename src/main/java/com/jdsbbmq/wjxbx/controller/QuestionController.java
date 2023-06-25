@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 public class QuestionController {
@@ -31,7 +31,7 @@ public class QuestionController {
     //查询个人题库中的所有问题
     @Operation(summary = "查询个人题库中的所有问题接口", description = "查询个人题库中的所有问题")
     @RequestMapping(value = "/selectPrivateQuestion", method = RequestMethod.POST)
-    public List<Question> selectPrivateQuestion(@RequestBody String userId) {
+    public CompletableFuture<List<Question>> selectPrivateQuestion(@RequestBody String userId) {
         return questionService.selectPrivateQuestion(userId);
     }
 
@@ -45,14 +45,14 @@ public class QuestionController {
     //设计问卷问题
     @Operation(summary = "设计问卷问题接口", description = "用户可以设计问卷问题")
     @RequestMapping(value = "/insertDesignQuestion", method = RequestMethod.POST)
-    public int insertDesignQuestion(@RequestBody DesignRequest designRequest) {
+    public CompletableFuture<Integer> insertDesignQuestion(@RequestBody DesignRequest designRequest) {
         return questionService.insertDesignQuestion(designRequest);
     }
 
     //将问卷问题放入个人题库
     @Operation(summary = "将问卷问题放入个人题库接口", description = "将问卷问题放入个人题库")
     @RequestMapping(value = "/insertPrivateQuestion", method = RequestMethod.POST)
-    public int insertPrivateQuestion(@RequestBody UpdateQuestionStarRequest updateQuestionStarRequest) {
+    public CompletableFuture<Integer> insertPrivateQuestion(@RequestBody UpdateQuestionStarRequest updateQuestionStarRequest) {
         return questionService.insertPrivateQuestion(updateQuestionStarRequest);
     }
 
@@ -61,7 +61,7 @@ public class QuestionController {
     //将问卷问题拿出个人题库
     @Operation(summary = "将问卷问题拿出个人题库接口", description = "将问卷问题拿出个人题库")
     @RequestMapping(value = "/deletePrivateQuestionById", method = RequestMethod.POST)
-    public int deletePrivateQuestionById(@RequestBody String questionId) {
+    public CompletableFuture<Integer> deletePrivateQuestionById(@RequestBody String questionId) {
         return questionService.deletePrivateQuestionById(questionId);
     }
 }

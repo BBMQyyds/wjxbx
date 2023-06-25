@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class QuestionnaireServiceImpl implements QuestionnaireService {
@@ -25,27 +26,27 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //查找一个项目下的所有问卷
     @Override
     @Async("asyncServiceExecutor")
-    public List<Questionnaire> selectAllQuestionnaire(String projectId) {
+    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(String projectId) {
         List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireEntityMapper.selectAllQuestionnaire(projectId);
         List<Questionnaire> listQuestionnaire = new ArrayList<>();
         for (QuestionnaireEntity questionnaireEntity : listQuestionnaireEntity) {
             Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
             listQuestionnaire.add(questionnaire);
         }
-        return listQuestionnaire;
+        return CompletableFuture.completedFuture(listQuestionnaire);
     }
 
     //查找一个问卷
     @Override
     @Async("asyncServiceExecutor")
-    public Questionnaire selectQuestionnaireById(String questionnaireId) {
-        return new Questionnaire(questionnaireEntityMapper.selectQuestionnaireById(questionnaireId));
+    public CompletableFuture<Questionnaire> selectQuestionnaireById(String questionnaireId) {
+        return CompletableFuture.completedFuture(new Questionnaire(questionnaireEntityMapper.selectQuestionnaireById(questionnaireId)));
     }
 
     //分页查找问卷
     @Override
     @Async("asyncServiceExecutor")
-    public List<Questionnaire> selectQuestionnaireByPage(QueryRequest queryRequest) {
+    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(QueryRequest queryRequest) {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireEntityMapper.selectQuestionnaireByPage(queryRequest.ToQueryEntity());
         List<Questionnaire> listQuestionnaire = new ArrayList<>();
@@ -53,7 +54,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
             Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
             listQuestionnaire.add(questionnaire);
         }
-        return listQuestionnaire;
+        return CompletableFuture.completedFuture(listQuestionnaire);
     }
 
     //增删改
@@ -64,7 +65,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Override
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
-    public int insertQuestionnaire(Questionnaire questionnaire) {
+    public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire) {
         questionnaire.init();
         QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity(questionnaire);
         try {
@@ -73,7 +74,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
             if (a == 0 || b == 0) {
                 throw new RuntimeException("插入问卷失败");
             }
-            return 1;
+            return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("插入问卷失败");
         }
@@ -84,53 +85,53 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //更新一个问卷
     @Override
     @Async("asyncServiceExecutor")
-    public int updateQuestionnaire(Questionnaire questionnaire) {
+    public CompletableFuture<Integer> updateQuestionnaire(Questionnaire questionnaire) {
         QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity(questionnaire);
-        return questionnaireEntityMapper.updateQuestionnaire(questionnaireEntity);
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateQuestionnaire(questionnaireEntity));
     }
 
     //更新问卷的收藏状态
     @Override
     @Async("asyncServiceExecutor")
-    public int updateStarOnQuestionnaire(String questionnaireId) {
-        return questionnaireEntityMapper.updateStarOnQuestionnaire(questionnaireId);
+    public CompletableFuture<Integer> updateStarOnQuestionnaire(String questionnaireId) {
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateStarOnQuestionnaire(questionnaireId));
     }
 
     @Override
     @Async("asyncServiceExecutor")
-    public int updateStarOffQuestionnaire(String questionnaireId) {
-        return questionnaireEntityMapper.updateStarOffQuestionnaire(questionnaireId);
+    public CompletableFuture<Integer> updateStarOffQuestionnaire(String questionnaireId) {
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateStarOffQuestionnaire(questionnaireId));
     }
 
     @Override
     @Async("asyncServiceExecutor")
-    public int updateDeletedOnQuestionnaire(String questionnaireId) {
-        return questionnaireEntityMapper.updateDeletedOnQuestionnaire(questionnaireId);
+    public CompletableFuture<Integer> updateDeletedOnQuestionnaire(String questionnaireId) {
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateDeletedOnQuestionnaire(questionnaireId));
     }
 
     @Override
     @Async("asyncServiceExecutor")
-    public int updateDeletedOffQuestionnaire(String questionnaireId) {
-        return questionnaireEntityMapper.updateDeletedOffQuestionnaire(questionnaireId);
+    public CompletableFuture<Integer> updateDeletedOffQuestionnaire(String questionnaireId) {
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateDeletedOffQuestionnaire(questionnaireId));
     }
 
     @Override
     @Async("asyncServiceExecutor")
-    public int updateReleaseQuestionnaire(String questionnaireId) {
-        return questionnaireEntityMapper.updateReleaseQuestionnaire(questionnaireId);
+    public CompletableFuture<Integer> updateReleaseQuestionnaire(String questionnaireId) {
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateReleaseQuestionnaire(questionnaireId));
     }
 
     @Override
     @Async("asyncServiceExecutor")
-    public int updateReclaimQuestionnaire(String questionnaireId) {
-        return questionnaireEntityMapper.updateReclaimQuestionnaire(questionnaireId);
+    public CompletableFuture<Integer> updateReclaimQuestionnaire(String questionnaireId) {
+        return CompletableFuture.completedFuture(questionnaireEntityMapper.updateReclaimQuestionnaire(questionnaireId));
     }
 
     //删除项目
     @Override
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
-    public int deleteQuestionnaireById(String questionnaireId) {
+    public CompletableFuture<Integer> deleteQuestionnaireById(String questionnaireId) {
         try {
             QuestionnaireEntity questionnaireEntity = questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
             int a = questionnaireEntityMapper.deleteQuestionnaireById(questionnaireId);
@@ -138,7 +139,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
             if (a == 0 || b == 0 || questionnaireEntity.getId() == null) {
                 throw new RuntimeException("删除问卷失败");
             }
-            return 1;
+            return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("删除问卷失败");
         }
@@ -148,14 +149,14 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Transactional(rollbackFor = RuntimeException.class)
     @Override
     @Async("asyncServiceExecutor")
-    public int deleteAllQuestionnaireRecycled(String projectId) {
+    public CompletableFuture<Integer> deleteAllQuestionnaireRecycled(String projectId) {
         try {
             int a = projectEntityMapper.reduceProjectQuestionnaireCountRecycled(projectId);
             int b = questionnaireEntityMapper.deleteAllQuestionnaireRecycled(projectId);
             if (a == 0 || b == 0) {
                 throw new RuntimeException("清空回收站失败");
             }
-            return 1;
+            return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("清空回收站失败");
         }

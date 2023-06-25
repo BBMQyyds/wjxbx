@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
@@ -41,7 +42,7 @@ public class QuestionServiceImpl implements QuestionService {
     //查询个人题库中的所有问题
     @Override
     @Async("asyncServiceExecutor")
-    public List<Question> selectPrivateQuestion(String userId) {
+    public CompletableFuture<List<Question>> selectPrivateQuestion(String userId) {
         Gson gson = new Gson();
         List<Question> questionList = new ArrayList<>();
         List<QuestionEntity> questionEntityList= questionEntityMapper.selectPrivateQuestion(userId);
@@ -50,7 +51,7 @@ public class QuestionServiceImpl implements QuestionService {
             question.setStar(1);
             questionList.add(question);
         }
-        return questionList;
+        return CompletableFuture.completedFuture(questionList);
     }
 
 
@@ -64,7 +65,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
-    public int insertDesignQuestion(DesignRequest designRequest) {
+    public CompletableFuture<Integer> insertDesignQuestion(DesignRequest designRequest) {
         try {
             Gson gson = new Gson();
             List<QuestionEntity> questionEntityList = new ArrayList<>();
@@ -73,10 +74,10 @@ public class QuestionServiceImpl implements QuestionService {
                 questionEntityList.add(questionEntity);
             }
             if (questionEntityList.size() == 0) {
-                return 1;
+                return CompletableFuture.completedFuture(1);
             }
             int b = questionEntityMapper.insertDesignQuestion(questionEntityList);
-            return 1;
+            return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("插入设计问卷的问题失败");
         }
@@ -86,7 +87,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
-    public int insertPrivateQuestion(UpdateQuestionStarRequest updateQuestionStarRequest) {
+    public CompletableFuture<Integer> insertPrivateQuestion(UpdateQuestionStarRequest updateQuestionStarRequest) {
         try {
             String questionContent=questionEntityMapper.selectQuestionContentById(updateQuestionStarRequest.getQuestionId());
             QuestionEntity questionEntity=new QuestionEntity();
@@ -98,7 +99,7 @@ public class QuestionServiceImpl implements QuestionService {
             if(a!=1||questionContent==null||b!=1){
                 throw new RuntimeException("插入个人题库失败");
             }
-            return 1;
+            return CompletableFuture.completedFuture(1);
         }catch (Exception e){
             throw new RuntimeException("插入个人题库失败");
         }
@@ -110,14 +111,14 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
-    public int deletePrivateQuestionById(String questionId) {
+    public CompletableFuture<Integer> deletePrivateQuestionById(String questionId) {
         try{
             int a=questionEntityMapper.deletePrivateQuestionById(questionId);
             int b=questionEntityMapper.updateStarOffQuestion(questionId);
             if(a!=1||b!=1){
                 throw new RuntimeException("删除个人题库失败");
             }
-            return 1;
+            return CompletableFuture.completedFuture(1);
         }catch (Exception e){
             throw new RuntimeException("删除个人题库失败");
         }
