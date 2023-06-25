@@ -27,7 +27,7 @@ public class QuestionServiceImpl implements QuestionService {
     //根据所给的问卷Id，查找其设计的问题
     @Override
     @Async("asyncServiceExecutor")
-    public List<Question> selectQuestionById(String id) {
+    public CompletableFuture<List<Question>> selectQuestionById(String id) {
         Gson gson = new Gson();
         List<QuestionEntity> questionEntityList = questionEntityMapper.selectQuestionById(id);
         List<Question> questionList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class QuestionServiceImpl implements QuestionService {
             question.setStar(questionEntity.getStar());
             questionList.add(question);
         }
-        return questionList;
+        return CompletableFuture.completedFuture(questionList);
     }
 
     //查询个人题库中的所有问题

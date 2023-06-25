@@ -13,7 +13,7 @@ public interface QuestionService {
         查询
      */
     //根据所给的问卷Id，查找其设计的问题
-    public List<Question> selectQuestionById(String id);
+    public CompletableFuture<List<Question>> selectQuestionById(String id);
 
     //查询个人题库中的所有问题
     public CompletableFuture<List<Question>> selectPrivateQuestion(String userId);
