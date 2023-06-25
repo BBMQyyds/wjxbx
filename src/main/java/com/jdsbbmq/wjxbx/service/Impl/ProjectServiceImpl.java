@@ -7,6 +7,7 @@ import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import jakarta.annotation.Resource;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -27,6 +28,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     //查询该用户下的所有项目
     @Override
+    @Async("asyncServiceExecutor")
     public List<Project> selectAllProject(String userId) {
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectAllProject(userId);
         List<Project> projectList = new ArrayList<>();
@@ -38,12 +40,14 @@ public class ProjectServiceImpl implements ProjectService {
 
     //根据id查询项目
     @Override
+    @Async("asyncServiceExecutor")
     public Project selectProjectById(String id) {
         return new Project(projectEntityMapper.selectProjectById(id));
     }
 
     //根据projectName查询项目
     @Override
+    @Async("asyncServiceExecutor")
     public List<Project> selectProjectByName(String projectName) {
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByName(projectName);
         List<Project> projectList = new ArrayList<>();
@@ -54,6 +58,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Async("asyncServiceExecutor")
     public List<Project> selectProjectByPage(QueryRequest queryRequest) {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByPage(queryRequest.ToQueryEntity());
@@ -71,6 +76,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     // 插入项目
     @Override
+    @Async("asyncServiceExecutor")
     public int insertProject(Project project) {
         try {
             project.init();
@@ -83,6 +89,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     //更新项目
     @Override
+    @Async("asyncServiceExecutor")
     public int updateProject(Project project) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
@@ -93,33 +100,39 @@ public class ProjectServiceImpl implements ProjectService {
 
     //将项目的收藏更新为已收藏
     @Override
+    @Async("asyncServiceExecutor")
     public int updateStarOnProject(String id) {
         return projectEntityMapper.updateStarOnProject(id);
     }
 
     @Override
+    @Async("asyncServiceExecutor")
     public int updateStarOffProject(String id) {
         return projectEntityMapper.updateStarOffProject(id);
     }
 
     @Override
+    @Async("asyncServiceExecutor")
     public int updateDeletedOnProject(String id) {
         return projectEntityMapper.updateDeletedOnProject(id);
     }
 
     @Override
+    @Async("asyncServiceExecutor")
     public int updateDeletedOffProject(String id) {
         return projectEntityMapper.updateDeletedOffProject(id);
     }
 
     //删除项目
     @Override
+    @Async("asyncServiceExecutor")
     public int deleteProjectById(String id) {
         return projectEntityMapper.deleteProjectById(id);
     }
 
     //清空回收站
     @Override
+    @Async("asyncServiceExecutor")
     public int deleteAllProjectRecycled(String userId) {
         return projectEntityMapper.deleteAllProjectRecycled(userId);
     }

@@ -3,10 +3,10 @@ package com.jdsbbmq.wjxbx.service;
 
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
-import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public interface UserService {
@@ -16,7 +16,7 @@ public interface UserService {
      */
 
     // 登录
-    User login(String username, String password);
+    CompletableFuture<User> login(String username, String password);
 
     // 根据id查询用户
     User selectUserById(String id);

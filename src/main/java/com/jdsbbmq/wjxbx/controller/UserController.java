@@ -3,7 +3,6 @@ package com.jdsbbmq.wjxbx.controller;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
-import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import com.jdsbbmq.wjxbx.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -16,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 public class UserController {
@@ -32,7 +31,7 @@ public class UserController {
     // 登录
     @Operation(summary = "登录接口", description = "输入username与password进行登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User login(@RequestBody LoginRequest loginRequest) {
+    public CompletableFuture<User> login(@RequestBody LoginRequest loginRequest) {
         return userService.login(loginRequest.getUsername(), loginRequest.getPassword());
     }
 

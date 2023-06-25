@@ -8,6 +8,7 @@ import com.jdsbbmq.wjxbx.dao.entity.AttributionEntity;
 import com.jdsbbmq.wjxbx.dao.entity.FileEntity;
 import com.jdsbbmq.wjxbx.service.FileService;
 import jakarta.annotation.Resource;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +24,9 @@ public class FileServiceImpl implements FileService {
     /*
         增删改
      */
+    @Override
     @Transactional(rollbackFor = RuntimeException.class)
+    @Async("asyncServiceExecutor")
     public int insertFile(File file) {
         try {
             FileEntity fileEntity = new FileEntity(file);
@@ -42,6 +45,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
+    @Async("asyncServiceExecutor")
     public int insertCopyFile(File file) {
         try {
             FileEntity fileEntity = new FileEntity(file);
@@ -59,11 +63,13 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    @Async("asyncServiceExecutor")
     public int updateFile(File file) {
         return fileEntityMapper.updateFile(new FileEntity(file));
     }
 
     @Override
+    @Async("asyncServiceExecutor")
     public int deleteFile(String fileId) {
         return fileEntityMapper.deleteFile(fileId);
     }

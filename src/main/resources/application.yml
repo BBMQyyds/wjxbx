@@ -56,6 +56,15 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+# 线程池配置
+async:
+  executor:
+    thread:
+      core_pool_size: 10
+      max_pool_size: 20
+      queue_capacity: 100
+      name_prefix: async-service-
+
 
 #management
 management:

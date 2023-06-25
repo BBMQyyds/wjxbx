@@ -8,6 +8,7 @@ import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
 import com.jdsbbmq.wjxbx.service.QuestionService;
 import jakarta.annotation.Resource;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ public class QuestionServiceImpl implements QuestionService {
      */
     //根据所给的问卷Id，查找其设计的问题
     @Override
+    @Async("asyncServiceExecutor")
     public List<Question> selectQuestionById(String id) {
         Gson gson = new Gson();
         List<QuestionEntity> questionEntityList = questionEntityMapper.selectQuestionById(id);
@@ -38,6 +40,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     //查询个人题库中的所有问题
     @Override
+    @Async("asyncServiceExecutor")
     public List<Question> selectPrivateQuestion(String userId) {
         Gson gson = new Gson();
         List<Question> questionList = new ArrayList<>();
@@ -59,6 +62,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     //设计问卷问题
     @Override
+    @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
     public int insertDesignQuestion(DesignRequest designRequest) {
         try {
@@ -84,6 +88,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     //将问卷问题放入个人题库
     @Override
+    @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
     public int insertPrivateQuestion(UpdateQuestionStarRequest updateQuestionStarRequest) {
         try {
@@ -107,6 +112,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     //将问卷问题从个人题库中拿出
     @Override
+    @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
     public int deletePrivateQuestionById(String questionId) {
         try{
