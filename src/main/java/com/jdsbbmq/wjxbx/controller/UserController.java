@@ -42,14 +42,14 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "成功获取用户信息"),
             @ApiResponse(responseCode = "404", description = "未找到对应的用户信息")
     })
-    public User selectUserById(@RequestBody String id) {
+    public CompletableFuture<User> selectUserById(@RequestBody String id) {
        return userService.selectUserById(id);
     }
 
     // 查询所有用户
     @Operation(summary = "查询所有用户", description = "查询所有的用户信息")
     @RequestMapping(value = "/selectAll", method = RequestMethod.POST)
-    public List<User> selectAll() {
+    public CompletableFuture<List<User>> selectAll() {
         return userService.selectAll();
     }
 
@@ -62,7 +62,7 @@ public class UserController {
     // 插入用户(注册）
     @Operation(summary = "插入用户(注册)", description = "在获取账户的基础上，增加了注册时间、更新时间、状态等字段")
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
-    public int insertUser(@RequestBody @Valid User user) {
+    public CompletableFuture<Integer> insertUser(@RequestBody @Valid User user) {
         return userService.insertUser(user);
     }
 
@@ -71,14 +71,14 @@ public class UserController {
     // 更新用户
     @Operation(summary = "更新用户", description = "更新某些用户的数据")
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
-    public int updateUser(@RequestBody @Valid User user) {
+    public CompletableFuture<Integer> updateUser(@RequestBody @Valid User user) {
         return userService.updateUser(user);
     }
 
     //更新密码
     @Operation(summary = "更改密码", description = "已经有的用户进行更改密码")
     @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
-    public int updatePassword(@RequestBody ChangeRequest changeRequest) {
+    public CompletableFuture<Integer> updatePassword(@RequestBody ChangeRequest changeRequest) {
         return userService.changePassword(changeRequest);
     }
 
@@ -87,7 +87,7 @@ public class UserController {
     // 根据id删除用户
     @Operation(summary = "根据id删除用户", description = "根据id删除用户")
     @RequestMapping(value = "/deleteUserById", method = RequestMethod.POST)
-    public int deleteUserById(@RequestBody String id) {
+    public CompletableFuture<Integer> deleteUserById(@RequestBody String id) {
         return userService.deleteUserById(id);
     }
 

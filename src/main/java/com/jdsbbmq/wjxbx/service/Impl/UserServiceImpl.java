@@ -33,20 +33,20 @@ public class UserServiceImpl implements UserService {
     // 根据id查询用户
     @Override
     @Async("asyncServiceExecutor")
-    public User selectUserById(String id) {
-        return new User(userEntityMapper.selectUserById(id));
+    public CompletableFuture<User> selectUserById(String id) {
+        return CompletableFuture.completedFuture(new User(userEntityMapper.selectUserById(id)));
     }
 
     // 查询所有用户
     @Override
     @Async("asyncServiceExecutor")
-    public List<User> selectAll() {
+    public CompletableFuture<List<User>> selectAll() {
         List<UserEntity> userEntityList = userEntityMapper.selectAll();
         List<User> userList = new ArrayList<>();
         for (UserEntity userEntity : userEntityList) {
             userList.add(new User(userEntity));
         }
-        return userList;
+        return CompletableFuture.completedFuture(userList);
     }
 
     /*
@@ -56,38 +56,38 @@ public class UserServiceImpl implements UserService {
     // 插入用户（注册）
     @Override
     @Async("asyncServiceExecutor")
-    public int insertUser(User user) {
+    public CompletableFuture<Integer> insertUser(User user) {
         try {
             user.init();
             userEntityMapper.insertUser(new UserEntity(user));
-            return 1;
+            return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
-            return 0;
+            return CompletableFuture.completedFuture(0);
         }
     }
 
     // 更新用户
     @Override
     @Async("asyncServiceExecutor")
-    public int updateUser(User user) {
-        return userEntityMapper.updateUser(new UserEntity(user));
+    public CompletableFuture<Integer> updateUser(User user) {
+        return CompletableFuture.completedFuture(userEntityMapper.updateUser(new UserEntity(user)));
     }
 
     // 根据id删除用户
     @Override
     @Async("asyncServiceExecutor")
-    public int deleteUserById(String id) {
-        return userEntityMapper.deleteUserById(id);
+    public CompletableFuture<Integer> deleteUserById(String id) {
+        return CompletableFuture.completedFuture(userEntityMapper.deleteUserById(id));
     }
 
     @Override
     @Async("asyncServiceExecutor")
-    public int changePassword(ChangeRequest changeRequest) {
+    public CompletableFuture<Integer> changePassword(ChangeRequest changeRequest) {
         if (changeRequest.getOriginPassword().equals(userEntityMapper.selectPasswordByUsername(changeRequest.getUsername()))) {
             userEntityMapper.updatePassword(changeRequest.getUsername(), changeRequest.getNewPassword());
-            return 1;
+            return CompletableFuture.completedFuture(1);
         } else {
-            return 0;
+            return CompletableFuture.completedFuture(0);
         }
     }
 }

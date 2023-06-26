@@ -19,10 +19,10 @@ public interface UserService {
     CompletableFuture<User> login(String username, String password);
 
     // 根据id查询用户
-    User selectUserById(String id);
+    CompletableFuture<User> selectUserById(String id);
 
     // 查询所有用户
-    List<User> selectAll();
+    CompletableFuture<List<User>> selectAll();
 
     /*
         增删改
@@ -31,20 +31,20 @@ public interface UserService {
     //增加
 
     // 插入用户（注册）
-    int insertUser(User user);
+    CompletableFuture<Integer> insertUser(User user);
 
 
     //更新（修改）
     // 更新用户
-    int updateUser(User user);
+    CompletableFuture<Integer> updateUser(User user);
 
     //修改登录密码
-    int changePassword(ChangeRequest changeRequest);
+    CompletableFuture<Integer> changePassword(ChangeRequest changeRequest);
 
     //删除
 
     // 根据id删除用户
-    int deleteUserById(String id);
+    CompletableFuture<Integer> deleteUserById(String id);
 
 
 }

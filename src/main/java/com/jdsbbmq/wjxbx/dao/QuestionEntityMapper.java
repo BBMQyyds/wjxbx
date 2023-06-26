@@ -51,5 +51,10 @@ public interface QuestionEntityMapper {
     //取消问题的收藏状态
     public int updateStarOffQuestion(String questionId);
 
+    //删除列表中没出现的问题ID
+    public int deleteQuestionNotInList(List<QuestionEntity> questionEntityList);
+
+    public int updateQuestionnaireQuestions(List<QuestionEntity> questionEntityList);
+
 
 }

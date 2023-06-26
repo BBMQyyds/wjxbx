@@ -76,6 +76,7 @@ public class QuestionServiceImpl implements QuestionService {
             if (questionEntityList.size() == 0) {
                 return CompletableFuture.completedFuture(1);
             }
+            questionEntityMapper.deleteQuestionNotInList(questionEntityList);
             int b = questionEntityMapper.insertDesignQuestion(questionEntityList);
             return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
