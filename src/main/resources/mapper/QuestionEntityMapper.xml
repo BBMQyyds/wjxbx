@@ -44,7 +44,8 @@
             #{item.questionId} AS question_id
         </foreach>
         ) i ON q.questionnaire_id = i.questionnaire_id AND q.question_id = i.question_id
-        WHERE q.questionnaire_id = #{questionEntityList[0].id} -- Assuming the first item in the list contains the questionnaire ID
+        WHERE q.questionnaire_id = #{questionEntityList[0].id} -- Assuming the first item in the list contains the
+        questionnaire ID
         AND i.questionnaire_id IS NULL;
 
         INSERT INTO questionnaire_question (questionnaire_id, sequence, star, question_content, question_id)
@@ -84,11 +85,15 @@
     <!--删除列表中没出现的问题ID-->
     <delete id="deleteQuestionNotInList" parameterType="java.util.List">
         DELETE FROM questionnaire_question
-        WHERE questionnaire_id = #{list[0].id} -- Assuming the first item in the list contains the questionnaire ID
-        AND question_id NOT IN
-        <foreach item="item" collection="list" separator="," open="(" close=")">
-            #{item.questionId}
-        </foreach>
+        <where>
+            <if test="list != null and list.size() > 0">
+                questionnaire_id = #{list[0].id} -- Assuming the first item in the list contains the questionnaire ID
+                AND question_id NOT IN
+                <foreach item="item" collection="list" separator="," open="(" close=")">
+                    #{item.questionId}
+                </foreach>
+            </if>
+        </where>
     </delete>
 
 
