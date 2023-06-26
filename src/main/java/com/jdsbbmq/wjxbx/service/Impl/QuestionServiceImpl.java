@@ -4,8 +4,11 @@ import com.google.gson.Gson;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
+import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
+import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.QuestionService;
 import jakarta.annotation.Resource;
 import org.springframework.scheduling.annotation.Async;
@@ -21,6 +24,8 @@ public class QuestionServiceImpl implements QuestionService {
     @Resource
     private QuestionEntityMapper questionEntityMapper;
 
+    @Resource
+    private QuestionnaireEntityMapper questionnaireEntityMapper;
     /*
         查询
      */
@@ -34,6 +39,18 @@ public class QuestionServiceImpl implements QuestionService {
         for (QuestionEntity questionEntity : questionEntityList) {
             Question question = gson.fromJson(questionEntity.getQuestionContent(), Question.class);
             question.setStar(questionEntity.getStar());
+            questionList.add(question);
+        }
+        return CompletableFuture.completedFuture(questionList);
+    }
+
+    @Override
+    public CompletableFuture<List<Question>> selectQuestionByIdForAnswer(String id) {
+        Gson gson = new Gson();
+        List<QuestionEntity> questionEntityList = questionEntityMapper.selectQuestionById(id);
+        List<Question> questionList = new ArrayList<>();
+        for (QuestionEntity questionEntity : questionEntityList) {
+            Question question = gson.fromJson(questionEntity.getQuestionContent(), Question.class);
             questionList.add(question);
         }
         return CompletableFuture.completedFuture(questionList);
@@ -76,8 +93,13 @@ public class QuestionServiceImpl implements QuestionService {
             if (questionEntityList.size() == 0) {
                 return CompletableFuture.completedFuture(1);
             }
+            QuestionnaireEntity questionnaireEntity=new QuestionnaireEntity();
+            questionnaireEntity.setId(designRequest.getId());
+            questionnaireEntity.setQuestionCount(questionEntityList.size());
+            questionnaireEntityMapper.updateQuestionCount(questionnaireEntity);
+            questionEntityMapper.updatePrivateQuestions(questionEntityList);
             questionEntityMapper.deleteQuestionNotInList(questionEntityList);
-            int b = questionEntityMapper.insertDesignQuestion(questionEntityList);
+            questionEntityMapper.insertDesignQuestion(questionEntityList);
             return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("插入设计问卷的问题失败");
