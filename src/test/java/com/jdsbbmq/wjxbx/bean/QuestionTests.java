@@ -55,6 +55,8 @@ public class QuestionTests {
         question.setStar(0);
         question.setFormat("2");
         question.setQuestionId("3");
+        question.setStem("4");
+        question.setRelated("5");
         question.setOptions(new ArrayList<String>());
         if (question == null) {
             System.out.println("set方法测试失败");

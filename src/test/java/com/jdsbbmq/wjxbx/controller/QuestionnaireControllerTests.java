@@ -1,6 +1,8 @@
 package com.jdsbbmq.wjxbx.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -68,6 +70,27 @@ public class QuestionnaireControllerTests {
     }
 
     @Test
+    // 分页查询问卷
+    public void selectQuestionnaireByPageTest() throws Exception {
+        QueryRequest queryRequest = new QueryRequest("04a0dba4-06fe-49dc-8200-3a2c92021803","1","2","3",1,2,3,"4");
+        String jsonProject = new ObjectMapper().writeValueAsString(queryRequest);
+        mockMvc.perform(MockMvcRequestBuilders.post("/selectQuestionnaireByPage")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonProject))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>selectQuestionnaireByPage分页查询问卷测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>selectQuestionnaireByPage分页查询问卷测试失败");
+                    }
+                });
+    }
+
+    @Test
     @Transactional
     // 新增问卷
     public void insertQuestionnaireTest() throws Exception {
@@ -107,6 +130,132 @@ public class QuestionnaireControllerTests {
                     } else {
                         // 记录error级别的信息
                         log.error("QuestionnaireController: >>updateQuestionnaire更新问卷测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    // 更新问卷收藏状态
+    public void updateStarOnQuestionnaireTest() throws Exception {
+        String id = "04a0dba4-06fe-49dc-8200-3a2c92021803";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateStarOnQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>updateStarOnQuestionnaire更新问卷收藏状态测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>updateStarOnQuestionnaire更新问卷收藏状态测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    // 更新取消问卷状态
+    public void updateStarOffQuestionnaireTest() throws Exception {
+        String id = "04a0dba4-06fe-49dc-8200-3a2c92021803";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateStarOffQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>updateCancelOnQuestionnaire更新取消问卷状态测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>updateCancelOnQuestionnaire更新取消问卷状态测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //更新问卷取消状态
+    public void updateDeletedOffQuestionnaireTest() throws Exception {
+        String id = "04a0dba4-06fe-49dc-8200-3a2c92021803";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateDeletedOffQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>updateDeletedOffQuestionnaire更新问卷取消状态测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>updateDeletedOffQuestionnaire更新问卷取消状态测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //更新问卷删除状态
+    public void updateDeletedOnQuestionnaireTest() throws Exception {
+        String id = "04a0dba4-06fe-49dc-8200-3a2c92021803";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateDeletedOnQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>updateDeletedOnQuestionnaire更新问卷删除状态测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>updateDeletedOnQuestionnaire更新问卷删除状态测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //更新一个问卷的发布状态
+    public void updateReleaseQuestionnaireTest() throws Exception {
+        String id = "04a0dba4-06fe-49dc-8200-3a2c92021803";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateReleaseQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>updateReleaseQuestionnaire更新一个问卷的发布状态测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>updateReleaseQuestionnaire更新一个问卷的发布状态测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //更新一个问卷的取消发布状态
+    public void updateReclaimQuestionnaireTest() throws Exception {
+        String id = "04a0dba4-06fe-49dc-8200-3a2c92021803";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateReclaimQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>updateReclaimQuestionnaire更新一个问卷的取消发布状态测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>updateReclaimQuestionnaire更新一个问卷的取消发布状态测试失败");
                     }
                 });
     }

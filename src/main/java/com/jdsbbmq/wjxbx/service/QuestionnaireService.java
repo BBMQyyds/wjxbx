@@ -4,6 +4,7 @@ import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -14,13 +15,13 @@ public interface QuestionnaireService {
      */
 
     //查找一个项目下的所有问卷
-    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(String projectId);
+    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(String projectId) throws ParseException;
 
     //查找一个问卷
-    public CompletableFuture<Questionnaire> selectQuestionnaireById(String questionnaireId);
+    public CompletableFuture<Questionnaire> selectQuestionnaireById(String questionnaireId) throws ParseException;
 
     //分页查找问卷
-    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(QueryRequest queryRequest);
+    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(QueryRequest queryRequest) throws ParseException;
 
      /*
         增删改
@@ -29,7 +30,7 @@ public interface QuestionnaireService {
     //增加
 
     //插入一个问卷
-    public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire);
+    public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire) throws ParseException;
 
     //修改更新
 

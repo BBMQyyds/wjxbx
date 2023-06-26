@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @SpringBootTest
@@ -34,7 +35,7 @@ public class QuestionnaireTests {
 
     @Test
     //测试复制时QuestionnaireEntity为null时的构造方法
-    public void copyConstructorTest1() {
+    public void copyConstructorTest1() throws ParseException {
         Questionnaire questionnaire = new Questionnaire(null);
         if (questionnaire == null) {
             System.out.println("复制时QuestionnaireEntity为null时的构造方法失败");
@@ -49,7 +50,7 @@ public class QuestionnaireTests {
 
     @Test
     //   测试复制时QuestionnaireEntity不为null时的构造方法
-    public void copyConstructorTest2() {
+    public void copyConstructorTest2() throws ParseException {
         QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity("1", "2", "3", "4", new Date(), new Date(), new Date(), 0, 0, 0, 0);
         Questionnaire questionnaire = new Questionnaire(questionnaireEntity);
         if (questionnaire == null) {

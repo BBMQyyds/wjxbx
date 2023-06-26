@@ -7,6 +7,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -47,11 +48,10 @@ public class Questionnaire {
     @Schema(description = "问卷是否删除")
     private int deleted;
 
-    public Questionnaire(QuestionnaireEntity questionnaireEntity) {
+    public Questionnaire(QuestionnaireEntity questionnaireEntity) throws ParseException {
         if (questionnaireEntity == null) {
             return;
         } else {
-            try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 this.id = questionnaireEntity.getId();
                 this.projectId = questionnaireEntity.getProjectId();
@@ -64,15 +64,11 @@ public class Questionnaire {
                 this.answerCount = questionnaireEntity.getAnswerCount();
                 this.star = questionnaireEntity.getStar();
                 this.deleted = questionnaireEntity.getDeleted();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
     @PostConstruct
-    public void init() {
-        try {
+    public void init() throws ParseException {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
             this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
@@ -80,8 +76,5 @@ public class Questionnaire {
             this.answerCount = 0; // 设置默认的回答数量
             this.star = 0; // 设置默认的收藏
             this.deleted = 0; // 设置默认的删除
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

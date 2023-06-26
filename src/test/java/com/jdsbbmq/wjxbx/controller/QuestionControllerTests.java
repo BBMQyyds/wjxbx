@@ -5,7 +5,6 @@ import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
 import org.apache.log4j.Logger;
-import org.hibernate.sql.Update;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -109,6 +108,48 @@ public class QuestionControllerTests {
                     } else {
                         // 记录error级别的信息
                         log.error("QuestionnaireController: >>insertPrivateQuestion将问卷问题放入个人题库接口测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //删除问卷问题接口
+    public void deleteQuestionTest() throws Exception {
+        String questionId = "1d2489bc-5da0-43ff-9a7c-7533c0a59e99";
+        mockMvc.perform(MockMvcRequestBuilders.post("/deletePrivateQuestionById")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(questionId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>deleteQuestionById删除问卷题库问题接口测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>deleteQuestionById删除问卷题库问题接口测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //清空回收站
+    public void deleteAllQuestionnaireRecycledTest() throws Exception {
+        String userId = "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        mockMvc.perform(MockMvcRequestBuilders.post("/deleteAllQuestionnaireRecycled")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(userId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>deleteAllQuestionnaireRecycled清空回收站测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>deleteAllQuestionnaireRecycled清空回收站测试失败");
                     }
                 });
     }

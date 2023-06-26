@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @SpringBootTest
@@ -33,7 +34,7 @@ public class ProjectTests {
 
     @Test
     //测试复制时ProjectEntity为null时的构造方法
-    public void copyConstructorTest1() {
+    public void copyConstructorTest1() throws ParseException {
         Project project = new Project(null);
         if (project == null) {
             System.out.println("复制时ProjectEntity为null时的构造方法失败");

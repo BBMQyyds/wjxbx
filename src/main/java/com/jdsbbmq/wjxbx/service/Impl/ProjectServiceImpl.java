@@ -29,7 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
     //查询该用户下的所有项目
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Project>> selectAllProject(String userId) {
+    public CompletableFuture<List<Project>> selectAllProject(String userId) throws ParseException {
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectAllProject(userId);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
@@ -41,14 +41,14 @@ public class ProjectServiceImpl implements ProjectService {
     //根据id查询项目
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<Project> selectProjectById(String id) {
+    public CompletableFuture<Project> selectProjectById(String id) throws ParseException {
         return CompletableFuture.completedFuture(new Project(projectEntityMapper.selectProjectById(id)));
     }
 
     //根据projectName查询项目
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Project>> selectProjectByName(String projectName) {
+    public CompletableFuture<List<Project>> selectProjectByName(String projectName) throws ParseException {
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByName(projectName);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
@@ -59,7 +59,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Project>> selectProjectByPage(QueryRequest queryRequest) {
+    public CompletableFuture<List<Project>> selectProjectByPage(QueryRequest queryRequest) throws ParseException {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByPage(queryRequest.ToQueryEntity());
         List<Project> projectList = new ArrayList<>();

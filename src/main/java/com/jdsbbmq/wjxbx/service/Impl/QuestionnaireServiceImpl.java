@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -26,7 +27,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //查找一个项目下的所有问卷
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(String projectId) {
+    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(String projectId) throws ParseException {
         List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireEntityMapper.selectAllQuestionnaire(projectId);
         List<Questionnaire> listQuestionnaire = new ArrayList<>();
         for (QuestionnaireEntity questionnaireEntity : listQuestionnaireEntity) {
@@ -39,14 +40,14 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     //查找一个问卷
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<Questionnaire> selectQuestionnaireById(String questionnaireId) {
+    public CompletableFuture<Questionnaire> selectQuestionnaireById(String questionnaireId) throws ParseException {
         return CompletableFuture.completedFuture(new Questionnaire(questionnaireEntityMapper.selectQuestionnaireById(questionnaireId)));
     }
 
     //分页查找问卷
     @Override
     @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(QueryRequest queryRequest) {
+    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(QueryRequest queryRequest) throws ParseException {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<QuestionnaireEntity> listQuestionnaireEntity = questionnaireEntityMapper.selectQuestionnaireByPage(queryRequest.ToQueryEntity());
         List<Questionnaire> listQuestionnaire = new ArrayList<>();
@@ -65,7 +66,7 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
     @Override
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
-    public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire) {
+    public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire) throws ParseException {
         questionnaire.init();
         QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity(questionnaire);
         try {

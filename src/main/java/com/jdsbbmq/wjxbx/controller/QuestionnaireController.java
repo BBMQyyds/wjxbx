@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -24,21 +25,21 @@ public class QuestionnaireController {
     //查找一个项目下的所有问卷
     @Operation(summary = "一个项目下的所有问卷", description = "查找一个项目下的所有问卷")
     @RequestMapping(value = "/selectAllQuestionnaire", method = RequestMethod.POST)
-    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(@RequestBody String projectId) {
+    public CompletableFuture<List<Questionnaire>> selectAllQuestionnaire(@RequestBody String projectId) throws ParseException {
         return questionnaireService.selectAllQuestionnaire(projectId);
     }
 
     //查找一个问卷
     @Operation(summary = "查找一个问卷", description = "根据id号查找一个问卷")
     @RequestMapping(value = "/selectQuestionnaireById", method = RequestMethod.POST)
-    public CompletableFuture<Questionnaire> selectQuestionnaireById(@RequestBody String questionnaireId) {
+    public CompletableFuture<Questionnaire> selectQuestionnaireById(@RequestBody String questionnaireId) throws ParseException {
         return questionnaireService.selectQuestionnaireById(questionnaireId);
     }
 
     //分页寻找问卷
     @Operation(summary = "分页寻找问卷", description = "能为用户分页寻找他的问卷")
     @RequestMapping(value = "/selectQuestionnaireByPage", method = RequestMethod.POST)
-    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(@RequestBody QueryRequest queryRequest) {
+    public CompletableFuture<List<Questionnaire>> selectQuestionnaireByPage(@RequestBody QueryRequest queryRequest) throws ParseException {
         return questionnaireService.selectQuestionnaireByPage(queryRequest);
     }
 
@@ -49,7 +50,7 @@ public class QuestionnaireController {
     //插入一个问卷
     @Operation(summary = "插入一个问卷", description = "插入一个问卷")
     @RequestMapping(value = "/insertQuestionnaire", method = RequestMethod.POST)
-    public CompletableFuture<Integer> insertQuestionnaire(@RequestBody Questionnaire questionnaire) {
+    public CompletableFuture<Integer> insertQuestionnaire(@RequestBody Questionnaire questionnaire) throws ParseException {
         return questionnaireService.insertQuestionnaire(questionnaire);
     }
 
@@ -108,6 +109,13 @@ public class QuestionnaireController {
     @Operation(summary = "删除一个问卷", description = "删除一个问卷")
     @RequestMapping(value = "/deleteQuestionnaire", method = RequestMethod.POST)
     public CompletableFuture<Integer> deleteQuestionnaire(@RequestBody String questionnaireId) {
+        return questionnaireService.deleteQuestionnaireById(questionnaireId);
+    }
+
+    //删除一个问卷根据ID
+    @Operation(summary = "删除一个问卷根据ID", description = "删除一个问卷根据ID")
+    @RequestMapping(value = "/deleteQuestionnaireById", method = RequestMethod.POST)
+    public CompletableFuture<Integer> deleteQuestionnaireById(@RequestBody String questionnaireId) {
         return questionnaireService.deleteQuestionnaireById(questionnaireId);
     }
 

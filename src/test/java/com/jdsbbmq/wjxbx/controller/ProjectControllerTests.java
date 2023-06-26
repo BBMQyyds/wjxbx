@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.project.Project;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -69,7 +70,6 @@ public class ProjectControllerTests {
     }
 
     @Test
-    @Transactional
     // 根据名称查询项目
     public void selectProjectByNameTest() throws Exception {
         String projectName = "风筝审批";
@@ -87,6 +87,29 @@ public class ProjectControllerTests {
                         System.out.println("查询失败");
                         // 记录error级别的信息
                         log.error("ProjectController: >>selectProjectByName根据名称查询项目测试失败");
+                    }
+                });
+    }
+
+    @Test
+    // 分页查找项目
+    public void selectProjectByPageTest() throws Exception {
+        QueryRequest queryRequest = new QueryRequest("862c186d-b73b-49d7-af4c-b3b6effe799e","1","2","3",1,2,3,"4");
+        String jsonProject = new ObjectMapper().writeValueAsString(queryRequest);
+        mockMvc.perform(MockMvcRequestBuilders.post("/selectProjectByPage")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonProject))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        System.out.println(result.getResponse().getContentAsString());
+                        // 记录info级别的信息
+                        log.info("ProjectController: >>selectProjectByPage分页查找项目测试成功");
+                    } else {
+                        System.out.println("查询失败");
+                        // 记录error级别的信息
+                        log.error("ProjectController: >>selectProjectByPage分页查找项目测试失败");
                     }
                 });
     }
@@ -133,6 +156,82 @@ public class ProjectControllerTests {
 
     @Test
     @Transactional
+    // 更新项目收藏状态
+    public void updateProjectCollectTest() throws Exception {
+        String id = "0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateStarOnProject")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        log.info("ProjectController: >>updateStarOnProject更新项目测试成功");
+                    } else {
+                        log.error("ProjectController: >>updateStarOnProject更新项目测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    // 取消项目收藏状态
+    public void updateProjectCollectCancelTest() throws Exception {
+        String id = "0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateStarOffProject")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        log.info("ProjectController: >>updateStarOffProject更新项目测试成功");
+                    } else {
+                        log.error("ProjectController: >>updateStarOffProject更新项目测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    // 更新项目删除状态
+    public void updateDeletedOnProjectTest() throws Exception {
+        String id = "0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateDeletedOnProject")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        log.info("ProjectController: >>updateDeletedOnProject更新项目测试成功");
+                    } else {
+                        log.error("ProjectController: >>updateDeletedOnProject更新项目测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    // 取消项目删除状态
+    public void updateDeletedOffProjectTest() throws Exception {
+        String id = "0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        mockMvc.perform(MockMvcRequestBuilders.post("/updateDeletedOffProject")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        log.info("ProjectController: >>updateDeletedOffProject更新项目测试成功");
+                    } else {
+                        log.error("ProjectController: >>updateDeletedOffProject更新项目测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
     // 删除项目
     public void deleteProjectTest() throws Exception {
         String id = "1";
@@ -146,6 +245,25 @@ public class ProjectControllerTests {
                         log.info("ProjectController: >>updateProject更新项目测试成功");
                     } else {
                         log.error("ProjectController: >>updateProject更新项目测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //清空回收站
+    public void deleteAllProjectRecycledTest() throws Exception {
+        String id="53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        mockMvc.perform(MockMvcRequestBuilders.post("/deleteAllProjectRecycled")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        log.info("ProjectController: >>deleteAllProject清空回收站测试成功");
+                    } else {
+                        log.error("ProjectController: >>deleteAllProject清空回收站测试失败");
                     }
                 });
     }

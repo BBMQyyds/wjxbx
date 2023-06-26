@@ -47,11 +47,10 @@ public class Project {
     @Schema(description = "项目的问卷数")
     private int questionnaireCount;
 
-    public Project(ProjectEntity projectEntity) {
+    public Project(ProjectEntity projectEntity) throws ParseException {
         if (projectEntity == null) {
             return;
         } else {
-            try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 this.id = projectEntity.getId();
                 this.userId = projectEntity.getUserId();
@@ -64,9 +63,6 @@ public class Project {
                 this.star = projectEntity.getStar();
                 this.deleted = projectEntity.getDeleted();
                 this.questionnaireCount = projectEntity.getQuestionnaireCount();
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 

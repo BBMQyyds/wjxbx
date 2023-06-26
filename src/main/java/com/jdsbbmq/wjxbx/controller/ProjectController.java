@@ -25,21 +25,21 @@ public class ProjectController {
     //查询所有项目
     @Operation(summary = "用户所有项目接口", description = "能为用户列出他的所有项目")
     @RequestMapping(value = "/selectAllProject", method = RequestMethod.POST)
-    public CompletableFuture<List<Project>> selectAllProject(@RequestBody String userId) {
+    public CompletableFuture<List<Project>> selectAllProject(@RequestBody String userId) throws ParseException {
         return projectService.selectAllProject(userId);
     }
 
     // 根据id查询项目
     @Operation(summary = "根据id查询项目", description = "能为用户查询他的某个项目")
     @RequestMapping(value = "/selectProjectById", method = RequestMethod.POST)
-    public CompletableFuture<Project> selectProjectById(@RequestBody String id) {
+    public CompletableFuture<Project> selectProjectById(@RequestBody String id) throws ParseException {
         return projectService.selectProjectById(id);
     }
 
     //根据projectName查询项目
     @Operation(summary = "根据名称查询项目", description = "能为用户查询他的项目")
     @RequestMapping(value = "/selectProjectByName", method = RequestMethod.POST)
-    public CompletableFuture<List<Project>> selectProjectByName(@RequestBody String projectName) {
+    public CompletableFuture<List<Project>> selectProjectByName(@RequestBody String projectName) throws ParseException {
 
         return projectService.selectProjectByName(projectName);
     }
@@ -47,7 +47,7 @@ public class ProjectController {
     //分页寻找项目
     @Operation(summary = "分页寻找项目", description = "能为用户分页寻找他的项目")
     @RequestMapping(value = "/selectProjectByPage", method = RequestMethod.POST)
-    public CompletableFuture<List<Project>> selectProjectByPage(@RequestBody QueryRequest queryRequest) {
+    public CompletableFuture<List<Project>> selectProjectByPage(@RequestBody QueryRequest queryRequest) throws ParseException {
         return projectService.selectProjectByPage(queryRequest);
     }
 
@@ -101,6 +101,13 @@ public class ProjectController {
     @Operation(summary = "删除项目", description = "从数据库中删除该项目")
     @RequestMapping(value = "/deleteProject", method = RequestMethod.POST)
     public CompletableFuture<Integer> deleteProject(@RequestBody String id) {
+        return projectService.deleteProjectById(id);
+    }
+
+    // 删除项目通过ID
+    @Operation(summary = "删除项目通过ID", description = "从数据库中删除该项目")
+    @RequestMapping(value = "/deleteProjectById", method = RequestMethod.POST)
+    public CompletableFuture<Integer> deleteProjectById(@RequestBody String id) {
         return projectService.deleteProjectById(id);
     }
 

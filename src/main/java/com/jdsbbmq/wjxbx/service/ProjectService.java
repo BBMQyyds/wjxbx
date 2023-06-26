@@ -15,16 +15,16 @@ public interface ProjectService {
      */
 
     //查询用户下方所有项目
-    public CompletableFuture<List<Project>> selectAllProject(String userId);
+    public CompletableFuture<List<Project>> selectAllProject(String userId) throws ParseException;
 
     //根据id查询项目
-    public CompletableFuture<Project> selectProjectById(String id);
+    public CompletableFuture<Project> selectProjectById(String id) throws ParseException;
 
     //根据projectName查询项目
-    public CompletableFuture<List<Project>> selectProjectByName(String projectName);
+    public CompletableFuture<List<Project>> selectProjectByName(String projectName) throws ParseException;
 
     //分页寻找项目
-    public CompletableFuture<List<Project>> selectProjectByPage(QueryRequest queryRequest);
+    public CompletableFuture<List<Project>> selectProjectByPage(QueryRequest queryRequest) throws ParseException;
     /*
         增删改
      */
