@@ -106,24 +106,24 @@
             </div>
           </div>
           <hr>
-<!--          <div class="types">-->
-<!--            <el-button class="type-button" type="primary" title="不少于2MB，不多于5MB"-->
-<!--                       @click="addFile(this.questionnaire.questions.length-1,'down')">文件题-->
-<!--            </el-button>-->
-<!--            <div class="type-format">-->
-<!--              <div id="top-span">-->
-<!--                <span>请输入大小限制（MB）：</span>-->
-<!--              </div>-->
-<!--              <el-input-number size="small" step-strictly-->
-<!--                               v-model="fileSize" :min="2" :max="5" :step="1" label="大小限制">-->
-<!--              </el-input-number>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="types">-->
+          <!--            <el-button class="type-button" type="primary" title="不少于2MB，不多于5MB"-->
+          <!--                       @click="addFile(this.questionnaire.questions.length-1,'down')">文件题-->
+          <!--            </el-button>-->
+          <!--            <div class="type-format">-->
+          <!--              <div id="top-span">-->
+          <!--                <span>请输入大小限制（MB）：</span>-->
+          <!--              </div>-->
+          <!--              <el-input-number size="small" step-strictly-->
+          <!--                               v-model="fileSize" :min="2" :max="5" :step="1" label="大小限制">-->
+          <!--              </el-input-number>-->
+          <!--            </div>-->
+          <!--          </div>-->
         </el-container>
         <el-container id="question-type" v-if="itemType === 'bank'">
           <hr>
           <div id="bank-private" style="text-align: center;">
-            <span style="font-size: 20px;font-weight: bold;margin-bottom: 10px;">个人题库</span>
+            <span style="font-size: 20px;font-weight: bold;margin-bottom: 20px;">个人题库</span>
             <!--下面列出privateBank中的问题类型和问题题干，点击即可添加至问卷-->
             <div style="text-align: left">
               <el-row v-for="(question,index) in this.privateBank" :key="index"
@@ -147,7 +147,7 @@
           </div>
           <hr>
           <div id="bank-public" style="text-align: center;">
-            <span style="font-size: 20px;font-weight: bold;margin-bottom: 10px;">公共题库</span>
+            <span style="font-size: 20px;font-weight: bold;margin-bottom: 20px;">公共题库</span>
             <!--下面列出publicBank中的问题类型和问题题干，点击即可添加至问卷-->
             <div style="text-align: left">
               <el-row v-for="(question,index) in this.publicBank" :key="index"
@@ -346,26 +346,26 @@
                           :rows="3" :resize="'none'"></el-input>
               </div>
             </div>
-<!--            &lt;!&ndash;文件上传&ndash;&gt;-->
-<!--            <div v-if="question.type === '文件上传'">-->
-<!--              <div class="ques-stem">-->
-<!--                <el-form-item prop="stem">-->
-<!--                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize-->
-<!--                            v-model="question.stem" placeholder="请输入题干"></el-input>-->
-<!--                </el-form-item>-->
-<!--              </div>-->
-<!--              <div class="ques-answer">-->
-<!--                <div style="margin-bottom: 10px;align-items: center;">-->
-<!--                  <span>大小限制（MB）：</span>-->
-<!--                  <el-input-number size="small" step-strictly-->
-<!--                                   v-model="question.related" :min="2" :max="5" :step="1" label="大小限制">-->
-<!--                  </el-input-number>-->
-<!--                </div>-->
-<!--                <el-upload disabled>-->
-<!--                  <el-button size="default" type="primary">点击上传</el-button>-->
-<!--                </el-upload>-->
-<!--              </div>-->
-<!--            </div>-->
+            <!--            &lt;!&ndash;文件上传&ndash;&gt;-->
+            <!--            <div v-if="question.type === '文件上传'">-->
+            <!--              <div class="ques-stem">-->
+            <!--                <el-form-item prop="stem">-->
+            <!--                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize-->
+            <!--                            v-model="question.stem" placeholder="请输入题干"></el-input>-->
+            <!--                </el-form-item>-->
+            <!--              </div>-->
+            <!--              <div class="ques-answer">-->
+            <!--                <div style="margin-bottom: 10px;align-items: center;">-->
+            <!--                  <span>大小限制（MB）：</span>-->
+            <!--                  <el-input-number size="small" step-strictly-->
+            <!--                                   v-model="question.related" :min="2" :max="5" :step="1" label="大小限制">-->
+            <!--                  </el-input-number>-->
+            <!--                </div>-->
+            <!--                <el-upload disabled>-->
+            <!--                  <el-button size="default" type="primary">点击上传</el-button>-->
+            <!--                </el-upload>-->
+            <!--              </div>-->
+            <!--            </div>-->
             <!--判断题（生成不同的评分形式，yes/no,T/F,是/否）-->
             <div v-if="question.type === '判断题'">
               <div class="ques-stem">
@@ -413,6 +413,7 @@
         <!--保存、退出按钮-->
         <div class="ques-save">
           <el-button type="primary" size="default" @click="save" style="margin-right: 40px;">保&emsp;存</el-button>
+          <el-button type="success" size="default" @click="preview" style="margin-right: 40px;">预&emsp;览</el-button>
           <el-button type="danger" size="default" @click="exit">退&emsp;出</el-button>
         </div>
       </el-container>
@@ -429,7 +430,7 @@
           <el-radio-button label="简答题">简答题</el-radio-button>
           <el-radio-button label="评分题">评分题</el-radio-button>
           <el-radio-button label="排序题">排序题</el-radio-button>
-<!--          <el-radio-button label="文件上传">文件上传</el-radio-button>-->
+          <!--          <el-radio-button label="文件上传">文件上传</el-radio-button>-->
         </el-radio-group>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -827,6 +828,9 @@ export default {
           message: '已取消退出',
         });
       });
+    },
+    preview() {
+
     },
     async save() {
       let validate = true;

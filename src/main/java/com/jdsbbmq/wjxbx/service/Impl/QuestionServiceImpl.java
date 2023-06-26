@@ -45,7 +45,7 @@ public class QuestionServiceImpl implements QuestionService {
     public CompletableFuture<List<Question>> selectPrivateQuestion(String userId) {
         Gson gson = new Gson();
         List<Question> questionList = new ArrayList<>();
-        List<QuestionEntity> questionEntityList= questionEntityMapper.selectPrivateQuestion(userId);
+        List<QuestionEntity> questionEntityList = questionEntityMapper.selectPrivateQuestion(userId);
         for (QuestionEntity questionEntity : questionEntityList) {
             Question question = gson.fromJson(questionEntity.getQuestionContent(), Question.class);
             question.setStar(1);
@@ -70,14 +70,15 @@ public class QuestionServiceImpl implements QuestionService {
             Gson gson = new Gson();
             List<QuestionEntity> questionEntityList = new ArrayList<>();
             for (int i = 0; i < designRequest.getQuestions().size(); i++) {
-                QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(),designRequest.getQuestions().get(i).getQuestionId(), i + 1,designRequest.getQuestions().get(i).getStar(), gson.toJson(designRequest.getQuestions().get(i)));
+                QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(), designRequest.getQuestions().get(i).getQuestionId(), i + 1, designRequest.getQuestions().get(i).getStar(), gson.toJson(designRequest.getQuestions().get(i)));
                 questionEntityList.add(questionEntity);
             }
             if (questionEntityList.size() == 0) {
+                questionEntityMapper.deleteQuestionNotInList(questionEntityList);
                 return CompletableFuture.completedFuture(1);
             }
             questionEntityMapper.deleteQuestionNotInList(questionEntityList);
-            int b = questionEntityMapper.insertDesignQuestion(questionEntityList);
+            questionEntityMapper.insertDesignQuestion(questionEntityList);
             return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("插入设计问卷的问题失败");
@@ -90,18 +91,18 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(rollbackFor = RuntimeException.class)
     public CompletableFuture<Integer> insertPrivateQuestion(UpdateQuestionStarRequest updateQuestionStarRequest) {
         try {
-            String questionContent=questionEntityMapper.selectQuestionContentById(updateQuestionStarRequest.getQuestionId());
-            QuestionEntity questionEntity=new QuestionEntity();
+            String questionContent = questionEntityMapper.selectQuestionContentById(updateQuestionStarRequest.getQuestionId());
+            QuestionEntity questionEntity = new QuestionEntity();
             questionEntity.setId(updateQuestionStarRequest.getUserId());
             questionEntity.setQuestionId(updateQuestionStarRequest.getQuestionId());
             questionEntity.setQuestionContent(questionContent);
-            int a=questionEntityMapper.insertPrivateQuestion(questionEntity);
-            int b=questionEntityMapper.updateStarOnQuestion(updateQuestionStarRequest.getQuestionId());
-            if(a!=1||questionContent==null||b!=1){
+            int a = questionEntityMapper.insertPrivateQuestion(questionEntity);
+            int b = questionEntityMapper.updateStarOnQuestion(updateQuestionStarRequest.getQuestionId());
+            if (a != 1 || questionContent == null || b != 1) {
                 throw new RuntimeException("插入个人题库失败");
             }
             return CompletableFuture.completedFuture(1);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("插入个人题库失败");
         }
     }
@@ -113,14 +114,14 @@ public class QuestionServiceImpl implements QuestionService {
     @Async("asyncServiceExecutor")
     @Transactional(rollbackFor = RuntimeException.class)
     public CompletableFuture<Integer> deletePrivateQuestionById(String questionId) {
-        try{
-            int a=questionEntityMapper.deletePrivateQuestionById(questionId);
-            int b=questionEntityMapper.updateStarOffQuestion(questionId);
-            if(a!=1||b!=1){
+        try {
+            int a = questionEntityMapper.deletePrivateQuestionById(questionId);
+            int b = questionEntityMapper.updateStarOffQuestion(questionId);
+            if (a != 1 || b != 1) {
                 throw new RuntimeException("删除个人题库失败");
             }
             return CompletableFuture.completedFuture(1);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("删除个人题库失败");
         }
     }
