@@ -109,7 +109,7 @@ public class UserEntityMapperTests {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(UUID.randomUUID().toString());
         userEntity.setStatus(1);
-        userEntity.setUsername("LS");
+        userEntity.setUsername("SQ");
         userEntity.setPassword("123");
         int i = userEntityMapper.insertUser(userEntity);
         if (i == 0) {

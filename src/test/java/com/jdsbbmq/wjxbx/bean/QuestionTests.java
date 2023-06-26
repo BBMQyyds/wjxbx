@@ -1,6 +1,5 @@
 package com.jdsbbmq.wjxbx.bean;
 
-import com.jdsbbmq.wjxbx.bean.choice.Choice;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.controller.TestControllerTests;
 import org.apache.log4j.Logger;
@@ -20,7 +19,7 @@ public class QuestionTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        Question question = new Question("1", "2", 3, new ArrayList<Choice>());
+        Question question = new Question("1", "2", "3", new ArrayList<String>(),"4","5",5);
         if (question == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息
@@ -53,9 +52,10 @@ public class QuestionTests {
     public void testSet() {
         Question question = new Question();
         question.setType("1");
-        question.setSequence(2);
-        question.setTitle("3");
-        question.setChoices(new ArrayList<Choice>());
+        question.setStar(0);
+        question.setFormat("2");
+        question.setQuestionId("3");
+        question.setOptions(new ArrayList<String>());
         if (question == null) {
             System.out.println("set方法测试失败");
             // 记录error级别的信息
