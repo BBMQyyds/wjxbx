@@ -37,38 +37,33 @@
           <!--多选（序号以ABCD形式展现，序号前有多选框）-->
           <div v-if="question.type === '多选题'">
             <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                          v-model="question.stem" placeholder="请输入题干"></el-input>
-              </el-form-item>
+              <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
               <!--el-checkbox和el-input在一行-->
-              <div v-for="(option, index) in question.options" :key="index"
-                   class="option-input">
-                <!--序号abcd形式，序号前有多选框，但disabled-->
-                <div class="option-row">
-                  <el-checkbox disabled>{{ String.fromCharCode(index + 65) }}.</el-checkbox>
-                  <el-input v-model="question.options[index]" placeholder="请输入选项"></el-input>
+              <el-checkbox-group v-model="question.answer">
+                <div v-for="(option, index) in question.options" :key="index"
+                     class="option-input">
+                  <!--序号abcd形式，序号前有多选框-->
+                  <div class="option-row">
+                    <el-checkbox :label="index">{{ String.fromCharCode(index + 65) }}.</el-checkbox>
+                    <span>{{ question.options[index] }}</span>
+                  </div>
                 </div>
-              </div>
+              </el-checkbox-group>
             </div>
           </div>
           <!--排序（无序号，语句后有上下移按钮）-->
           <div v-if="question.type === '排序题'">
             <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                          v-model="question.stem" placeholder="请输入题干"></el-input>
-              </el-form-item>
+              <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
               <div v-for="(option, index) in question.options" :key="index"
                    class="option-input">
                 <!--语句后有上下移按钮，但disabled-->
                 <div class="option-row">
-                  <el-input v-model="question.options[index]" placeholder="请输入选项"
-                            style="margin-right: 40px;"></el-input>
+                  <span style="margin-right: 40px;">{{ question.options[index] }}</span>
                   <el-button class="small_btns" type="primary" size="small" @click="optionUp(question.options,index)">
                     上移
                   </el-button>
@@ -84,17 +79,14 @@
           <!--评分格式：五分制(el-rate)、十分制(el-radio)、百分制(el-input-number)-->
           <div v-if="question.type === '评分题'">
             <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                          v-model="question.stem" placeholder="请输入题干"></el-input>
-              </el-form-item>
+              <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
               <div v-if="question.format === '五分制'">
-                <el-rate disabled v-model="question.related" :max="5"></el-rate>
+                <el-rate v-model="question.answer" :max="5"></el-rate>
               </div>
               <div v-if="question.format === '十分制'">
-                <el-radio-group v-model="question.related" disabled>
+                <el-radio-group v-model="question.answer">
                   <el-radio label="1"></el-radio>
                   <el-radio label="2"></el-radio>
                   <el-radio label="3"></el-radio>
@@ -108,8 +100,8 @@
                 </el-radio-group>
               </div>
               <div v-if="question.format === '百分制'">
-                <el-input-number disabled size="small" step-strictly
-                                 v-model="question.related" :min="0" :max="100" :step="1" label="分数">
+                <el-input-number size="small" step-strictly
+                                 v-model="question.answer" :min="0" :max="100" :step="1" label="分数">
                 </el-input-number>
               </div>
             </div>
@@ -117,68 +109,52 @@
           <!--填空（有多个空）-->
           <div v-if="question.type === '填空题'">
             <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;"
-                          v-model="question.stem" placeholder="请输入题干" autosize></el-input>
-              </el-form-item>
+              <span>{{ replaceBlank(question.stem) }}</span>
+            </div>
+            <div class="ques-answer">
+              <!--循环BlankCount(question.stem)次-->
+              <div v-for="(answer, index) in question.answer" :key="index"
+                   class="option-input">
+                <div class="option-row">
+                  <el-input type="textarea" placeholder="请输入答案" v-model="question.answer[index]"
+                            :rows="1" :resize="'none'"></el-input>
+                </div>
+              </div>
             </div>
           </div>
           <!--简答-->
           <div v-if="question.type === '简答题'">
             <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                          v-model="question.stem" placeholder="请输入题干"></el-input>
-              </el-form-item>
+              <span>{{ question.stem }}</span>
             </div>
             <div class="ques-answer">
               <div style="margin-bottom: 10px;align-items: center;">
-                <span>字数限制：{{ question.related }}</span>
+                <span style="font-size: 12px">字数限制：{{ question.related }}</span>
               </div>
-              <el-input disabled type="textarea" placeholder="请输入答案"
+              <el-input type="textarea" placeholder="请输入答案" v-model="question.answer"
                         :rows="3" :resize="'none'"></el-input>
-            </div>
-          </div>
-          <!--文件上传-->
-          <div v-if="question.type === '文件上传'">
-            <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                          v-model="question.stem" placeholder="请输入题干"></el-input>
-              </el-form-item>
-            </div>
-            <div class="ques-answer">
-              <div style="margin-bottom: 10px;align-items: center;">
-                <span>大小限制（MB）：{{ question.related }}</span>
-              </div>
-              <el-upload disabled>
-                <el-button size="default" type="primary">点击上传</el-button>
-              </el-upload>
             </div>
           </div>
           <!--判断题（生成不同的评分形式，yes/no,T/F,是/否）-->
           <div v-if="question.type === '判断题'">
             <div class="ques-stem">
-              <el-form-item prop="stem">
-                <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                          v-model="question.stem" placeholder="请输入题干"></el-input>
-              </el-form-item>
+              <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
               <div v-if="question.format === 'yes/no'">
-                <el-radio-group v-model="question.related" disabled>
+                <el-radio-group v-model="question.answer">
                   <el-radio label="yes"></el-radio>
                   <el-radio label="no"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="question.format === 'T/F'">
-                <el-radio-group v-model="question.related" disabled>
+                <el-radio-group v-model="question.answer">
                   <el-radio label="T"></el-radio>
                   <el-radio label="F"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="question.format === '是/否'">
-                <el-radio-group v-model="question.related" disabled>
+                <el-radio-group v-model="question.answer">
                   <el-radio label="是"></el-radio>
                   <el-radio label="否"></el-radio>
                 </el-radio-group>
@@ -198,6 +174,7 @@
 
 <script>
 import navBar from "../../components/nav";
+import {plainRequest} from "@/api";
 
 export default {
   name: "answer",
@@ -206,8 +183,19 @@ export default {
     navBar
   },
   created() {
+    plainRequest.post('selectQuestionnaireById', this.$route.query.id).then(res => {
+      this.questionnaire.name = res.data.questionnaireName;
+      this.questionnaire.description = res.data.questionnaireDescription;
+    });
+    plainRequest.post('selectQuestionById', this.$route.query.id).then(res => {
+      this.questionnaire.questions = res.data;
+      for (let i = 0; i < this.questionnaire.questions.length; i++) {
+        if (this.questionnaire.questions[i].type === '填空题') {
+          this.questionnaire.questions[i].answer = Array.from({length: this.blankCount(this.questionnaire.questions[i].stem)});
+        }
+      }
+    });
     console.log(this.questionnaire);
-    this.load();
   },
   data() {
     return {
@@ -219,60 +207,24 @@ export default {
       //related: 相关(判断题、填空题、简答题、评分题、文件上传)
       // 问卷信息
       questionnaire: {
-        id: this.$route.query.questionnaire_id,
-        name: 'this.$route.query.name',
-        description: 'this.$route.query.description',
+        id: this.$route.query.id,
+        name: '',
+        description: '',
         // 问卷中的题目，请举出具体例子
-        questions: [
-          {
-            type: '单选题',
-            stem: '单选题题干',
-            options: ['选项1', '选项2', '选项3', '选项4'],
-          },
-          {
-            type: '多选题',
-            stem: '多选题题干',
-            options: ['选项1', '选项2', '选项3', '选项4'],
-          },
-          {
-            type: '判断题',
-            stem: '判断题题干',
-            format: '是/否',
-          },
-          {
-            type: '填空题',
-            stem: '填空题题干',
-            related: '4',
-          },
-          {
-            type: '简答题',
-            stem: '简答题题干',
-            related: '100',
-          },
-          {
-            type: '评分题',
-            stem: '评分题题干',
-            format: '百分制',
-            related: '60',
-          },
-          {
-            type: '排序题',
-            stem: '排序题题干',
-            options: ['选项1', '选项2', '选项3', '选项4'],
-          },
-          {
-            type: '文件上传',
-            stem: '文件上传题干',
-            related: '2',
-          },
-        ],
+        questions: [],
+      },
+      question: {
+        id: '',
+        type: '',
+        stem: '',
+        options: [],
+        format: '',
+        related: '',
+        answer: '',
       },
     };
   },
   methods: {
-    load() {
-      console.log("load");
-    },
     optionUp(options, index) {
       if (index > 0) {
         let temp = options[index];
@@ -289,7 +241,32 @@ export default {
     },
     submit() {
       console.log("submit");
-      this.reload();
+      for (let i = 0; i < this.questionnaire.questions.length; i++) {
+        this.questionnaire.questions[i].answer = JSON.stringify(this.questionnaire.questions[i].answer);
+      }
+      console.log(this.questionnaire);
+      plainRequest.post('answerQuestionnaire', this.questionnaire).then(res => {
+        console.log(res);
+        if (res.data === 1) {
+          this.$message({
+            message: '提交成功',
+            type: 'success'
+          });
+          this.$router.push({path: '/home'});
+        } else {
+          this.$message({
+            message: '提交失败',
+            type: 'error'
+          });
+        }
+      });
+    },
+    //生成一个新字符串，将&______&替换为______
+    replaceBlank(str) {
+      return str.replace(/&______&/g, '______');
+    },
+    blankCount(str) {
+      return str.split('&______&').length - 1;
     },
   }
 }
@@ -389,12 +366,6 @@ span {
 
 .small_btns {
   padding-top: 5px;
-}
-
-.ques-operation {
-  margin-left: 80px;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .ques-save {

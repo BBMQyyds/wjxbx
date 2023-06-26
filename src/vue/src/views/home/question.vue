@@ -106,19 +106,19 @@
             </div>
           </div>
           <hr>
-          <div class="types">
-            <el-button class="type-button" type="primary" title="不少于2MB，不多于5MB"
-                       @click="addFile(this.questionnaire.questions.length-1,'down')">文件题
-            </el-button>
-            <div class="type-format">
-              <div id="top-span">
-                <span>请输入大小限制（MB）：</span>
-              </div>
-              <el-input-number size="small" step-strictly
-                               v-model="fileSize" :min="2" :max="5" :step="1" label="大小限制">
-              </el-input-number>
-            </div>
-          </div>
+<!--          <div class="types">-->
+<!--            <el-button class="type-button" type="primary" title="不少于2MB，不多于5MB"-->
+<!--                       @click="addFile(this.questionnaire.questions.length-1,'down')">文件题-->
+<!--            </el-button>-->
+<!--            <div class="type-format">-->
+<!--              <div id="top-span">-->
+<!--                <span>请输入大小限制（MB）：</span>-->
+<!--              </div>-->
+<!--              <el-input-number size="small" step-strictly-->
+<!--                               v-model="fileSize" :min="2" :max="5" :step="1" label="大小限制">-->
+<!--              </el-input-number>-->
+<!--            </div>-->
+<!--          </div>-->
         </el-container>
         <el-container id="question-type" v-if="itemType === 'bank'">
           <hr>
@@ -346,26 +346,26 @@
                           :rows="3" :resize="'none'"></el-input>
               </div>
             </div>
-            <!--文件上传-->
-            <div v-if="question.type === '文件上传'">
-              <div class="ques-stem">
-                <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
-                </el-form-item>
-              </div>
-              <div class="ques-answer">
-                <div style="margin-bottom: 10px;align-items: center;">
-                  <span>大小限制（MB）：</span>
-                  <el-input-number size="small" step-strictly
-                                   v-model="question.related" :min="2" :max="5" :step="1" label="大小限制">
-                  </el-input-number>
-                </div>
-                <el-upload disabled>
-                  <el-button size="default" type="primary">点击上传</el-button>
-                </el-upload>
-              </div>
-            </div>
+<!--            &lt;!&ndash;文件上传&ndash;&gt;-->
+<!--            <div v-if="question.type === '文件上传'">-->
+<!--              <div class="ques-stem">-->
+<!--                <el-form-item prop="stem">-->
+<!--                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize-->
+<!--                            v-model="question.stem" placeholder="请输入题干"></el-input>-->
+<!--                </el-form-item>-->
+<!--              </div>-->
+<!--              <div class="ques-answer">-->
+<!--                <div style="margin-bottom: 10px;align-items: center;">-->
+<!--                  <span>大小限制（MB）：</span>-->
+<!--                  <el-input-number size="small" step-strictly-->
+<!--                                   v-model="question.related" :min="2" :max="5" :step="1" label="大小限制">-->
+<!--                  </el-input-number>-->
+<!--                </div>-->
+<!--                <el-upload disabled>-->
+<!--                  <el-button size="default" type="primary">点击上传</el-button>-->
+<!--                </el-upload>-->
+<!--              </div>-->
+<!--            </div>-->
             <!--判断题（生成不同的评分形式，yes/no,T/F,是/否）-->
             <div v-if="question.type === '判断题'">
               <div class="ques-stem">
@@ -429,7 +429,7 @@
           <el-radio-button label="简答题">简答题</el-radio-button>
           <el-radio-button label="评分题">评分题</el-radio-button>
           <el-radio-button label="排序题">排序题</el-radio-button>
-          <el-radio-button label="文件上传">文件上传</el-radio-button>
+<!--          <el-radio-button label="文件上传">文件上传</el-radio-button>-->
         </el-radio-group>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -487,93 +487,9 @@ export default {
 
       // 题库信息（即一个特殊的问卷）
       //个人题库
-      privateBank: [
-        {
-          type: '单选题',
-          stem: '单选题题干',
-          options: ['选项1', '选项2', '选项3', '选项4'],
-        },
-        {
-          type: '多选题',
-          stem: '多选题题干',
-          options: ['选项1', '选项2', '选项3', '选项4'],
-        },
-        {
-          type: '判断题',
-          stem: '判断题题干',
-          format: '是/否',
-        },
-        {
-          type: '填空题',
-          stem: '填空题题干',
-          related: '4',
-        },
-        {
-          type: '简答题',
-          stem: '简答题题干',
-          related: '100',
-        },
-        {
-          type: '评分题',
-          stem: '评分题题干',
-          format: '百分制',
-          related: '60',
-        },
-        {
-          type: '排序题',
-          stem: '排序题题干',
-          options: ['选项1', '选项2', '选项3', '选项4'],
-        },
-        {
-          type: '文件上传',
-          stem: '文件上传题干',
-          related: '2',
-        },
-      ],
+      privateBank: [],
       //公共题库
-      publicBank: [
-        {
-          type: '单选题',
-          stem: '单选题题干',
-          options: ['选项1', '选项2', '选项3', '选项4'],
-        },
-        {
-          type: '多选题',
-          stem: '多选题题干',
-          options: ['选项1', '选项2', '选项3', '选项4'],
-        },
-        {
-          type: '判断题',
-          stem: '判断题题干',
-          format: '是/否',
-        },
-        {
-          type: '填空题',
-          stem: '填空题题干',
-          related: '4',
-        },
-        {
-          type: '简答题',
-          stem: '简答题题干',
-          related: '100',
-        },
-        {
-          type: '评分题',
-          stem: '评分题题干',
-          format: '百分制',
-          related: '60',
-        },
-        {
-          type: '排序题',
-          stem: '排序题题干',
-          options: ['选项1', '选项2', '选项3', '选项4'],
-        },
-        {
-          type: '文件上传',
-          stem: '文件上传题干',
-          related: '2',
-        },
-      ],
+      publicBank: [],
       // 问卷信息
       questionnaire: {
         id: this.$route.query.questionnaire_id,
@@ -768,20 +684,20 @@ export default {
         this.questionnaire.questions.splice(index + 1, 0, question);
       }
     },
-    addFile(index, type) {
-      let question = {
-        type: '文件上传',
-        stem: '这是题干',
-        star: 0,
-        questionId: uuidv4(),
-        related: this.fileSize,
-      };
-      if (type === 'up') {
-        this.questionnaire.questions.splice(index, 0, question);
-      } else {
-        this.questionnaire.questions.splice(index + 1, 0, question);
-      }
-    },
+    // addFile(index, type) {
+    //   let question = {
+    //     type: '文件上传',
+    //     stem: '这是题干',
+    //     star: 0,
+    //     questionId: uuidv4(),
+    //     related: this.fileSize,
+    //   };
+    //   if (type === 'up') {
+    //     this.questionnaire.questions.splice(index, 0, question);
+    //   } else {
+    //     this.questionnaire.questions.splice(index + 1, 0, question);
+    //   }
+    // },
     addSort(index, type) {
       let question = {
         type: '排序题',
