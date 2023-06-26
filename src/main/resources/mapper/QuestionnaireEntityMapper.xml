@@ -114,26 +114,6 @@
     </delete>
 
     <!--
-       辅助功能
-   -->
-    <update id="updateQuestionCount">
-        update questionnaire
-        set question_count = #{questionCount}
-        where id = #{id}
-    </update>
-    <update id="updateOnAnswerCount">
-        update questionnaire
-        set answer_count = answer_count + 1
-        where id = #{id}
-    </update>
-
-    <update id="updateOffAnswerCount">
-        update questionnaire
-        set answer_count = answer_count - 1
-        where id = #{id}
-    </update>
-
-    <!--
        resultMap
    -->
     <resultMap id="QuestionnaireEntityMap" type="QuestionnaireEntity">

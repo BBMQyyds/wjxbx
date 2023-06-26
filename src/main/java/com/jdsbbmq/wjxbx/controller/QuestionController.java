@@ -28,12 +28,6 @@ public class QuestionController {
         return questionService.selectQuestionById(id);
     }
 
-    @Operation(summary = "根据所给的问卷Id，在答卷时查找其设计的问题接口", description = "根据所给的问卷Id，在答卷时查找其设计的问题")
-    @RequestMapping(value = "/selectQuestionByIdForAnswer", method = RequestMethod.POST)
-    public CompletableFuture<List<Question>> selectQuestionByIdForAnswer(@RequestBody String id) {
-        return questionService.selectQuestionByIdForAnswer(id);
-    }
-
     //查询个人题库中的所有问题
     @Operation(summary = "查询个人题库中的所有问题接口", description = "查询个人题库中的所有问题")
     @RequestMapping(value = "/selectPrivateQuestion", method = RequestMethod.POST)

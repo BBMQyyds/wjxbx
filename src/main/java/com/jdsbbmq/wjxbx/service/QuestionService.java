@@ -15,12 +15,8 @@ public interface QuestionService {
     //根据所给的问卷Id，查找其设计的问题
     public CompletableFuture<List<Question>> selectQuestionById(String id);
 
-    //在答卷时根据Id查找问题
-    public CompletableFuture<List<Question>> selectQuestionByIdForAnswer(String id);
-
     //查询个人题库中的所有问题
     public CompletableFuture<List<Question>> selectPrivateQuestion(String userId);
-
 
 
     /*

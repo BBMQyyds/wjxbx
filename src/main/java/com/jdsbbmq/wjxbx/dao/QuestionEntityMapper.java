@@ -14,8 +14,6 @@ public interface QuestionEntityMapper {
     //根据所给的问卷Id，查找其设计的问题
     public List<QuestionEntity> selectQuestionById(String questionnaireId);
 
-    public List<QuestionEntity> selectQuestionByIdForAnswer(String questionnaireId);
-
     //查询个人题库中的所有问题
     public List<QuestionEntity> selectPrivateQuestion(String userId);
 
@@ -58,5 +56,5 @@ public interface QuestionEntityMapper {
 
     public int updateQuestionnaireQuestions(List<QuestionEntity> questionEntityList);
 
-    public int updatePrivateQuestions(List<QuestionEntity> questionEntityList) ;
+
 }

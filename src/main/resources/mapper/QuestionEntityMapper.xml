@@ -101,33 +101,15 @@
         WHERE question_id = #{questionId}
     </select>
 
-    <select id="selectQuestionByIdForAnswer" resultType="com.jdsbbmq.wjxbx.dao.entity.QuestionEntity">
-        SELECT *
-        FROM questionnaire_question
-        WHERE question_id = #{questionId}
-    </select>
-
-    <!--收藏问题-->
     <update id="updateStarOnQuestion">
         UPDATE questionnaire_question
         SET star = 1
         WHERE question_id = #{questionId}
     </update>
-
-    <!--取消收藏-->
     <update id="updateStarOffQuestion">
         UPDATE questionnaire_question
         SET star = 0
         WHERE question_id = #{questionId}
-    </update>
-
-    <!--更新私人题库中的问题-->
-    <update id="updatePrivateQuestions" parameterType="java.util.List">
-        <foreach item="item" collection="list" separator=";">
-            UPDATE question
-            SET question_content = #{item.questionContent}
-            WHERE question_id = #{item.questionId}
-        </foreach>
     </update>
 
 
