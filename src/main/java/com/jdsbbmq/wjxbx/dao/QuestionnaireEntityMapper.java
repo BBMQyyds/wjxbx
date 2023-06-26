@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.dao;
 
+import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.apache.ibatis.annotations.Mapper;
@@ -59,4 +60,17 @@ public interface QuestionnaireEntityMapper {
 
     //清空回收站
     int deleteAllQuestionnaireRecycled(String id);
+
+
+    /*
+        辅助功能
+     */
+
+    //更新问卷的问题数
+    int updateQuestionCount(QuestionnaireEntity questionnaireEntity);
+
+    int updateOnAnswerCount(QuestionnaireEntity questionnaireEntity);
+
+    int updateOffAnswerCount(QuestionnaireEntity questionnaireEntity);
+
 }
