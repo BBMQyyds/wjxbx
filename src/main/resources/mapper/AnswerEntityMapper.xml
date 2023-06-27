@@ -24,7 +24,7 @@
         where questionnaire_id in (select id from questionnaire where project_id = #{id})
     </select>
 
-    <select id="selectAnswerById" resultType="com.jdsbbmq.wjxbx.bean.answer.Answer">
+    <select id="selectAnswerById" resultType="answerEntity">
         select *
         from questionnaire_answer
         where id = #{id}
@@ -42,7 +42,7 @@
         <result property="questionnaireId" column="questionnaire_id"/>
         <result property="userId" column="user_id"/>
         <result property="questionnaireContent" column="questionnaire_content"/>
-        <result property="creationDate" column="create_date"/>
+        <result property="createDate" column="create_date"/>
         <result property="username" column="username"/>
         <result property="questionnaireName" column="questionnaire_name"/>
     </resultMap>

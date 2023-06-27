@@ -37,13 +37,6 @@ public class QuestionController {
         return questionService.selectPrivateQuestion(userId);
     }
 
-    //查询所有答卷
-    @Operation(summary = "查询所有答卷接口", description = "查询所有答卷")
-    @RequestMapping(value = "/selectAllAnswer", method = RequestMethod.POST)
-    public CompletableFuture<List<Question>> selectAllAnswer(@RequestBody String questionnaireId) {
-        return questionService.selectAllAnswer(questionnaireId);
-    }
-
     /*
         增删改
      */

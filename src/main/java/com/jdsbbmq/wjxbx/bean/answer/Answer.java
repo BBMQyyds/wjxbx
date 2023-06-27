@@ -35,7 +35,7 @@ public class Answer {
     private String questionnaireContent;
     @Schema(description = "答案创建时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date creationDate;
+    private Date createDate;
 
     public Answer(AnswerEntity answerEntity) {
         if (answerEntity == null) {
@@ -47,7 +47,7 @@ public class Answer {
             this.questionnaireId = answerEntity.getQuestionnaireId();
             this.questionnaireName = answerEntity.getQuestionnaireName();
             this.questionnaireContent = answerEntity.getQuestionnaireContent();
-            this.creationDate = answerEntity.getCreateDate();
+            this.createDate = answerEntity.getCreateDate();
         }
     }
 }
