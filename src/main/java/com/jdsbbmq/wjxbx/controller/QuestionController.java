@@ -64,7 +64,6 @@ public class QuestionController {
         return questionService.insertPrivateQuestion(updateQuestionStarRequest);
     }
 
-
     //删除
     //将问卷问题拿出个人题库
     @Operation(summary = "将问卷问题拿出个人题库接口", description = "将问卷问题拿出个人题库")
