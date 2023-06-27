@@ -20,9 +20,6 @@ public interface QuestionService {
     //查询个人题库中的所有问题
     public CompletableFuture<List<Question>> selectPrivateQuestion(String userId);
 
-    //查询所有答卷
-    public CompletableFuture<List<Question>> selectAllAnswer(String questionnaireId);
-
     /*
         增删改
      */

@@ -5,6 +5,7 @@ import com.jdsbbmq.wjxbx.bean.answer.AnswerRequest;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
+import com.jdsbbmq.wjxbx.dao.AnswerEntityMapper;
 import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
 import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.AnswerEntity;
@@ -31,6 +32,8 @@ public class QuestionServiceImpl implements QuestionService {
     @Resource
     private QuestionnaireEntityMapper questionnaireEntityMapper;
 
+    @Resource
+    private AnswerEntityMapper answerEntityMapper;
     /*
         查询
      */
@@ -59,20 +62,6 @@ public class QuestionServiceImpl implements QuestionService {
         for (QuestionEntity questionEntity : questionEntityList) {
             Question question = gson.fromJson(questionEntity.getQuestionContent(), Question.class);
             question.setStar(1);
-            questionList.add(question);
-        }
-        return CompletableFuture.completedFuture(questionList);
-    }
-
-    //查询所有答卷
-    @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Question>> selectAllAnswer(String questionnaireId) {
-        Gson gson = new Gson();
-        List<AnswerEntity> answerEntityList = questionEntityMapper.selectAllAnswer(questionnaireId);
-        List<Question> questionList = new ArrayList<>();
-        for (AnswerEntity answerEntity : answerEntityList) {
-            Question question = gson.fromJson(answerEntity.getQuestionnaireContent(), Question.class);
             questionList.add(question);
         }
         return CompletableFuture.completedFuture(questionList);
@@ -129,7 +118,7 @@ public class QuestionServiceImpl implements QuestionService {
             AnswerEntity answerEntity = new AnswerEntity(UUID.randomUUID().toString(),
                     answerRequest.getUserId(), answerRequest.getQuestionnaireId(),
                     gson.toJson(answerRequest.getQuestions()), dateFormat.parse(dateFormat.format(new Date())));
-            int a = questionEntityMapper.insertAnswer(answerEntity);
+            int a = answerEntityMapper.insertAnswer(answerEntity);
             int b = questionnaireEntityMapper.updateOnAnswerCount(answerRequest.getQuestionnaireId());
             if (a != 1 || b != 1) {
                 throw new RuntimeException("插入答卷失败");

@@ -30,12 +30,19 @@
         where id = #{id}
     </select>
 
+
+    <!--增加答卷-->
+    <insert id="insertAnswer">
+        INSERT INTO questionnaire_answer (id, user_id, questionnaire_id, questionnaire_content)
+        VALUES (#{id}, #{userId}, #{questionnaireId}, #{questionnaireContent})
+    </insert>
+
     <resultMap id="answerEntityMap" type="AnswerEntity">
         <id property="id" column="id"/>
         <result property="questionnaireId" column="questionnaire_id"/>
         <result property="userId" column="user_id"/>
         <result property="questionnaireContent" column="questionnaire_content"/>
-        <result property="createDate" column="create_date"/>
+        <result property="creationDate" column="create_date"/>
         <result property="username" column="username"/>
         <result property="questionnaireName" column="questionnaire_name"/>
     </resultMap>

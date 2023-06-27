@@ -20,8 +20,7 @@ public interface QuestionEntityMapper {
     //查询个人题库中的所有问题
     public List<QuestionEntity> selectPrivateQuestion(String userId);
 
-    //查询所有答卷
-    public List<AnswerEntity> selectAllAnswer(String questionnaireId);
+
 
         /*
            增删改
@@ -35,8 +34,7 @@ public interface QuestionEntityMapper {
     //将问卷问题放入个人题库
     public int insertPrivateQuestion(QuestionEntity questionEntity);
 
-    //增加答卷
-    public int insertAnswer(AnswerEntity answerEntity);
+
 
     //更新
 

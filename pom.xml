@@ -177,6 +177,12 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <includes>
+                                <include>com/jdsbbmq/wjxbx/controller/*</include>
+                                <include>com/jdsbbmq/wjxbx/service/*</include>
+                            </includes>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
