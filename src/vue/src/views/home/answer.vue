@@ -131,7 +131,7 @@
               <div style="margin-bottom: 10px;align-items: center;">
                 <span style="font-size: 12px">字数限制：{{ question.related }}</span>
               </div>
-              <el-input type="textarea" placeholder="请输入答案" v-model="question.answer"
+              <el-input type="textarea" placeholder="请输入答案" v-model="question.answer" :maxlength="question.related"
                         :rows="3" :resize="'none'"></el-input>
             </div>
           </div>
@@ -164,7 +164,7 @@
           <hr>
         </div>
         <!--保存、退出按钮-->
-        <div class="ques-save">
+        <div class="ques-save" v-if="this.$route.query.preview !== 'true'">
           <el-button type="primary" size="default" @click="submit">提&emsp;交</el-button>
         </div>
       </el-container>
@@ -174,7 +174,8 @@
 
 <script>
 import navBar from "../../components/nav";
-import {plainRequest} from "@/api";
+import request, {plainRequest} from "@/api";
+import router from "@/router";
 
 export default {
   name: "answer",
@@ -184,6 +185,13 @@ export default {
   },
   created() {
     plainRequest.post('selectQuestionnaireById', this.$route.query.id).then(res => {
+      if (this.$route.query.preview !== 'true' && res.data.startTime === null) {
+        this.$message({
+          message: '该问卷尚未发布或已过期',
+          type: 'warning'
+        });
+        router.push({path: '/login'});
+      }
       this.questionnaire.name = res.data.questionnaireName;
       this.questionnaire.description = res.data.questionnaireDescription;
     });
@@ -192,6 +200,13 @@ export default {
       for (let i = 0; i < this.questionnaire.questions.length; i++) {
         if (this.questionnaire.questions[i].type === '填空题') {
           this.questionnaire.questions[i].answer = Array.from({length: this.blankCount(this.questionnaire.questions[i].stem)});
+        } else if (this.questionnaire.questions[i].type === '简答题'
+            || this.questionnaire.questions[i].type === '评分题' || this.questionnaire.questions[i].type === '判断题') {
+          this.questionnaire.questions[i].answer = '';
+        } else if (this.questionnaire.questions[i].type === '单选题') {
+          this.questionnaire.questions[i].answer = -1;
+        } else if (this.questionnaire.questions[i].type === '多选题') {
+          this.questionnaire.questions[i].answer = [];
         }
       }
     });
@@ -207,7 +222,7 @@ export default {
       //related: 相关(判断题、填空题、简答题、评分题、文件上传)
       // 问卷信息
       questionnaire: {
-        id: this.$route.query.id,
+        questionnaireId: this.$route.query.id,
         name: '',
         description: '',
         // 问卷中的题目，请举出具体例子
@@ -244,15 +259,30 @@ export default {
       for (let i = 0; i < this.questionnaire.questions.length; i++) {
         this.questionnaire.questions[i].answer = JSON.stringify(this.questionnaire.questions[i].answer);
       }
+      let data = {
+        questionnaireId: this.questionnaire.questionnaireId,
+        userId: sessionStorage.getItem('token') !== null ?
+            sessionStorage.getItem('token') : '************************************',
+        questions: this.questionnaire.questions,
+      }
       console.log(this.questionnaire);
-      plainRequest.post('answerQuestionnaire', this.questionnaire).then(res => {
+      request.post('insertAnswer', data).then(res => {
         console.log(res);
         if (res.data === 1) {
           this.$message({
             message: '提交成功',
             type: 'success'
           });
-          this.$router.push({path: '/home'});
+          if (sessionStorage.getItem('token') !== null) {
+            router.push({
+              path: '/project',
+              query: {
+                id: sessionStorage.getItem('token'),
+              }
+            })
+          } else {
+            router.push({path: '/login'});
+          }
         } else {
           this.$message({
             message: '提交失败',

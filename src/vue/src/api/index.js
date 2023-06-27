@@ -45,5 +45,8 @@ plainRequest.interceptors.response.use(response => {
     return Promise.reject(error);
 });
 
+const answerLink = 'http://localhost/#/answer';
+
 export default request
 export {plainRequest}
+export {answerLink}
