@@ -26,4 +26,18 @@ public class AnswerController {
     public CompletableFuture<List<Answer>> selectQuestionnaireByPage(@RequestBody QueryRequest queryRequest) {
         return answerService.selectAnswerByPage(queryRequest);
     }
+
+    //查询答卷总数
+    @Operation(summary = "查询答卷总数", description = "能查询答卷总数")
+    @RequestMapping(value = "/selectAnswerCount", method = RequestMethod.POST)
+    public CompletableFuture<Integer> selectAnswerCount(@RequestBody String questionnaireId) {
+        return answerService.selectAnswerCount(questionnaireId);
+    }
+
+    //根据id查询答卷
+    @Operation(summary = "根据id查询答卷", description = "根据id查询答卷")
+    @RequestMapping(value = "/selectAnswerById", method = RequestMethod.POST)
+    public CompletableFuture<Answer> selectAnswerById(@RequestBody String answerId) {
+        return answerService.selectAnswerById(answerId);
+    }
 }

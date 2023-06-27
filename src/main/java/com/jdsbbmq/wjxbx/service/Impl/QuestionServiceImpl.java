@@ -16,8 +16,11 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -122,7 +125,10 @@ public class QuestionServiceImpl implements QuestionService {
     public CompletableFuture<Integer> insertAnswer(AnswerRequest answerRequest) {
         try {
             Gson gson = new Gson();
-            AnswerEntity answerEntity = new AnswerEntity(java.util.UUID.randomUUID().toString(), answerRequest.getUserId(), answerRequest.getQuestionnaireId(), gson.toJson(answerRequest.getQuestions()));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            AnswerEntity answerEntity = new AnswerEntity(UUID.randomUUID().toString(),
+                    answerRequest.getUserId(), answerRequest.getQuestionnaireId(),
+                    gson.toJson(answerRequest.getQuestions()), dateFormat.parse(dateFormat.format(new Date())));
             int a = questionEntityMapper.insertAnswer(answerEntity);
             int b = questionnaireEntityMapper.updateOnAnswerCount(answerRequest.getQuestionnaireId());
             if (a != 1 || b != 1) {

@@ -47,7 +47,7 @@ public class Answer {
             this.questionnaireId = answerEntity.getQuestionnaireId();
             this.questionnaireName = answerEntity.getQuestionnaireName();
             this.questionnaireContent = answerEntity.getQuestionnaireContent();
-            this.creationDate = answerEntity.getCreationDate();
+            this.creationDate = answerEntity.getCreateDate();
         }
     }
 }

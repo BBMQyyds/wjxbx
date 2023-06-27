@@ -30,10 +30,9 @@
             style="margin-top: 40px;width: 80%;margin-left: 10%;margin-right: 10%;"
             @sort-change="changeTableSort">
           <el-table-column label="id" prop="id" v-if="false"></el-table-column>
-          <el-table-column label="问卷id" prop="questionnaireId" v-if="false"></el-table-column>
           <el-table-column label="问卷" prop="questionnaireName"></el-table-column>
-          <el-table-column label="答卷人" prop="userName"></el-table-column>
-          <el-table-column label="答卷时间" prop="role" sortable></el-table-column>
+          <el-table-column label="答卷人" prop="username"></el-table-column>
+          <el-table-column label="答卷时间" prop="createDate" sortable></el-table-column>
           <el-table-column label="操作">
             <template v-slot="scope">
               <el-button size="default" type="warning" @click="toAnswer(scope.row)">明细</el-button>
@@ -62,7 +61,7 @@
 
 <script>
 import navBar from "../../components/nav";
-import {plainRequest} from "@/api";
+import request, {plainRequest} from "@/api";
 import router from "@/router";
 
 export default {
@@ -73,9 +72,12 @@ export default {
   },
   created() {
     plainRequest.post('/selectProjectById', this.$route.query.id).then(res => {
-      this.project.name = res.data.projectName;
-      this.project.description = res.data.projectContent;
+      if (res.data != null && res.data !== '') {
+        this.project.name = res.data.projectName;
+        this.project.description = res.data.projectContent;
+      }
     });
+    this.search(1);
   },
   data() {
     return {
@@ -102,15 +104,55 @@ export default {
     },
     search(val) {
       this.currentPage = val;
+      let data = {
+        id: this.$route.query.id,
+        searchKeyWord: this.searchKeyWord,
+        sort: this.sort ==='ascending' ? 'asc' : 'desc',
+        currentPage: this.currentPage,
+        pageSize: this.pageSize
+      };
+      request.post('/selectAnswerByPage', data).then(res => {
+        if (res.data != null && res.data !== '') {
+          this.project.answerList = res.data;
+          for (let i = 0; i < this.project.answerList.length; i++) {
+            this.project.answerList[i].createDate = this.convertToGMT0(this.project.answerList[i].createDate);
+            if(this.project.answerList[i].username==='public'){
+              this.project.answerList[i].username = '匿名用户';
+            }
+          }
+        }
+      });
+      plainRequest.post('/selectAnswerCount', this.$route.query.id).then(res => {
+        if (res.data != null && res.data !== '') {
+          this.total = res.data;
+        }
+      });
     },
     toAnswer(row) {
       router.push({
         path: '/answer',
         query: {
-          id: row.questionnaireId,
+          id: row.id,
           detail: true
         }
       });
+    },
+    convertToGMT0(dateTimeString) {
+      const date = new Date(dateTimeString);
+      const utcOffset = 0;
+
+      // 转换为目标时区的时间
+      const targetDate = new Date(date.getTime() + utcOffset * 60 * 60 * 1000);
+
+      // 获取年、月、日、小时、分钟和秒
+      const year = targetDate.getFullYear();
+      const month = (targetDate.getMonth() + 1).toString().padStart(2, '0');
+      const day = targetDate.getDate().toString().padStart(2, '0');
+      const hours = targetDate.getHours().toString().padStart(2, '0');
+      const minutes = targetDate.getMinutes().toString().padStart(2, '0');
+      const seconds = targetDate.getSeconds().toString().padStart(2, '0');
+      // 拼接日期时间字符串
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
   }
 }

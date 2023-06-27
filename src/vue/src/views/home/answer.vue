@@ -22,7 +22,7 @@
               <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
-              <el-radio-group v-model="question.answer">
+              <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
                 <div v-for="(option, index) in question.options" :key="index"
                      class="option-input">
                   <!--序号abcd形式，序号前有单选框-->
@@ -41,7 +41,7 @@
             </div>
             <div class="ques-option">
               <!--el-checkbox和el-input在一行-->
-              <el-checkbox-group v-model="question.answer">
+              <el-checkbox-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
                 <div v-for="(option, index) in question.options" :key="index"
                      class="option-input">
                   <!--序号abcd形式，序号前有多选框-->
@@ -64,11 +64,13 @@
                 <!--语句后有上下移按钮，但disabled-->
                 <div class="option-row">
                   <span style="margin-right: 40px;">{{ question.options[index] }}</span>
-                  <el-button class="small_btns" size="small" type="primary" @click="optionUp(question.options,index)">
+                  <el-button class="small_btns" size="small" type="primary" @click="optionUp(question.options,index)"
+                             :disabled="this.$route.query.detail === 'true'">
                     上移
                   </el-button>
                   <el-button class="small_btns" size="small" type="primary"
-                             @click="optionDown(question.options,index)">
+                             @click="optionDown(question.options,index)"
+                             :disabled="this.$route.query.detail === 'true'">
                     下移
                   </el-button>
                 </div>
@@ -83,10 +85,10 @@
             </div>
             <div class="ques-option">
               <div v-if="question.format === '五分制'">
-                <el-rate v-model="question.answer" :max="5"></el-rate>
+                <el-rate v-model="question.answer" :max="5" :disabled="this.$route.query.detail === 'true'"></el-rate>
               </div>
               <div v-if="question.format === '十分制'">
-                <el-radio-group v-model="question.answer">
+                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
                   <el-radio label="1"></el-radio>
                   <el-radio label="2"></el-radio>
                   <el-radio label="3"></el-radio>
@@ -101,7 +103,8 @@
               </div>
               <div v-if="question.format === '百分制'">
                 <el-input-number v-model="question.answer" :max="100"
-                                 :min="0" :step="1" label="分数" size="small" step-strictly>
+                                 :disabled="this.$route.query.detail === 'true'" :min="0" :step="1" label="分数"
+                                 size="small" step-strictly>
                 </el-input-number>
               </div>
             </div>
@@ -117,7 +120,8 @@
                    class="option-input">
                 <div class="option-row">
                   <el-input v-model="question.answer[index]" :resize="'none'" :rows="1"
-                            placeholder="请输入答案" type="textarea"></el-input>
+                            :disabled="this.$route.query.detail === 'true'" placeholder="请输入答案"
+                            type="textarea"></el-input>
                 </div>
               </div>
             </div>
@@ -132,7 +136,8 @@
                 <span style="font-size: 12px">字数限制：{{ question.related }}</span>
               </div>
               <el-input v-model="question.answer" :maxlength="question.related" :resize="'none'" :rows="3"
-                        placeholder="请输入答案" type="textarea"></el-input>
+                        :disabled="this.$route.query.detail === 'true'" placeholder="请输入答案"
+                        type="textarea"></el-input>
             </div>
           </div>
           <!--判断题（生成不同的评分形式，yes/no,T/F,是/否）-->
@@ -142,19 +147,19 @@
             </div>
             <div class="ques-option">
               <div v-if="question.format === 'yes/no'">
-                <el-radio-group v-model="question.answer">
+                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
                   <el-radio label="yes"></el-radio>
                   <el-radio label="no"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="question.format === 'T/F'">
-                <el-radio-group v-model="question.answer">
+                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
                   <el-radio label="T"></el-radio>
                   <el-radio label="F"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="question.format === '是/否'">
-                <el-radio-group v-model="question.answer">
+                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
                   <el-radio label="是"></el-radio>
                   <el-radio label="否"></el-radio>
                 </el-radio-group>
@@ -185,7 +190,7 @@ export default {
   },
   created() {
     plainRequest.post('selectQuestionnaireById', this.$route.query.id).then(res => {
-      if (this.$route.query.preview !== 'true' && res.data.startTime === null) {
+      if (this.$route.query.preview !== 'true' && this.$route.query.detail !== 'true' && res.data.startTime === null) {
         this.$message({
           message: '该问卷尚未发布或已过期',
           type: 'warning'
@@ -195,21 +200,33 @@ export default {
       this.questionnaire.name = res.data.questionnaireName;
       this.questionnaire.description = res.data.questionnaireDescription;
     });
-    plainRequest.post('selectQuestionById', this.$route.query.id).then(res => {
-      this.questionnaire.questions = res.data;
-      for (let i = 0; i < this.questionnaire.questions.length; i++) {
-        if (this.questionnaire.questions[i].type === '填空题') {
-          this.questionnaire.questions[i].answer = Array.from({length: this.blankCount(this.questionnaire.questions[i].stem)});
-        } else if (this.questionnaire.questions[i].type === '简答题'
-            || this.questionnaire.questions[i].type === '评分题' || this.questionnaire.questions[i].type === '判断题') {
-          this.questionnaire.questions[i].answer = '';
-        } else if (this.questionnaire.questions[i].type === '单选题') {
-          this.questionnaire.questions[i].answer = -1;
-        } else if (this.questionnaire.questions[i].type === '多选题') {
-          this.questionnaire.questions[i].answer = [];
+    if (this.$route.query.detail !== 'true') {
+      plainRequest.post('selectQuestionById', this.$route.query.id).then(res => {
+        this.questionnaire.questions = res.data;
+        for (let i = 0; i < this.questionnaire.questions.length; i++) {
+          if (this.questionnaire.questions[i].type === '填空题') {
+            this.questionnaire.questions[i].answer = Array.from({length: this.blankCount(this.questionnaire.questions[i].stem)});
+          } else if (this.questionnaire.questions[i].type === '简答题'
+              || this.questionnaire.questions[i].type === '评分题' || this.questionnaire.questions[i].type === '判断题') {
+            this.questionnaire.questions[i].answer = '';
+          } else if (this.questionnaire.questions[i].type === '单选题') {
+            this.questionnaire.questions[i].answer = -1;
+          } else if (this.questionnaire.questions[i].type === '多选题') {
+            this.questionnaire.questions[i].answer = [];
+          }
         }
-      }
-    });
+      });
+    } else {
+      plainRequest.post('selectAnswerById', this.$route.query.id).then(res => {
+        let data = JSON.parse(res.data.questionnaireContent);
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].answer !== null) {
+            data[i].answer = JSON.parse(data[i].answer);
+          }
+        }
+        this.questionnaire.questions = data;
+      });
+    }
     console.log(this.questionnaire);
   },
   data() {
@@ -425,6 +442,12 @@ span {
 .el-input {
   flex-grow: 1;
   width: auto;
+}
+
+.disabled-component {
+  /* Add your custom disabled styles here */
+  opacity: 0.5; /* Example: reduce opacity */
+  pointer-events: none; /* Example: disable pointer events */
 }
 
 </style>

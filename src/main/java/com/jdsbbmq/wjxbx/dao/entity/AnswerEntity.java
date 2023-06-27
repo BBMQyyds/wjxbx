@@ -16,5 +16,13 @@ public class AnswerEntity {
     private String questionnaireId;
     private String questionnaireName;
     private String questionnaireContent;
-    private Date creationDate;
+    private Date createDate;
+
+    public AnswerEntity(String id, String userId, String questionnaireId, String questionnaireContent, Date creationDate) {
+        this.id = id;
+        this.userId = userId;
+        this.questionnaireId = questionnaireId;
+        this.questionnaireContent = questionnaireContent;
+        this.createDate = creationDate;
+    }
 }

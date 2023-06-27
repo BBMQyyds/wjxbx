@@ -20,6 +20,18 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public CompletableFuture<List<Answer>> selectAnswerByPage(QueryRequest queryRequest) {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
-        return answerEntityMapper.selectAnswerByPage(queryRequest);
+        return CompletableFuture.completedFuture(answerEntityMapper.selectAnswerByPage(queryRequest));
+    }
+
+    //查询答卷总数
+    @Override
+    public CompletableFuture<Integer> selectAnswerCount(String questionnaireId) {
+        return CompletableFuture.completedFuture(answerEntityMapper.selectAnswerCount(questionnaireId));
+    }
+
+    //根据id查询答卷
+    @Override
+    public CompletableFuture<Answer> selectAnswerById(String answerId) {
+        return CompletableFuture.completedFuture(answerEntityMapper.selectAnswerById(answerId));
     }
 }

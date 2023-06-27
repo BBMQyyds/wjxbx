@@ -8,7 +8,7 @@
         SELECT *
         FROM questionnaire_question
         WHERE questionnaire_id = #{id}
-        ORDER BY sequence asc
+        ORDER BY sequence
     </select>
 
     <!--查询私人题库中的问题-->
@@ -72,8 +72,8 @@
     </insert>
     <!--增加答卷-->
     <insert id="insertAnswer">
-        INSERT INTO questionnaire_answer (id, user_id, questionnaire_id, questionnaire_content)
-        VALUES (#{id}, #{userId}, #{questionnaireId}, #{questionnaireContent})
+        INSERT INTO questionnaire_answer (id, user_id, questionnaire_id, questionnaire_content, create_date)
+        VALUES (#{id}, #{userId}, #{questionnaireId}, #{questionnaireContent}, #{createDate})
     </insert>
     <insert id="insertQuestion">
         INSERT INTO questionnaire_question(questionnaire_id, sequence, star, question_content, question_id)

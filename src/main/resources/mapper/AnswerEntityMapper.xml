@@ -18,6 +18,18 @@
         </if>
     </select>
 
+    <select id="selectAnswerCount" resultType="java.lang.Integer">
+        select count(*)
+        from questionnaire_answer qa
+        where questionnaire_id in (select id from questionnaire where project_id = #{id})
+    </select>
+
+    <select id="selectAnswerById" resultType="com.jdsbbmq.wjxbx.bean.answer.Answer">
+        select *
+        from questionnaire_answer
+        where id = #{id}
+    </select>
+
     <resultMap id="answerEntityMap" type="AnswerEntity">
         <id property="id" column="id"/>
         <result property="questionnaireId" column="questionnaire_id"/>
