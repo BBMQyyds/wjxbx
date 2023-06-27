@@ -107,7 +107,7 @@ export default {
       let data = {
         id: this.$route.query.id,
         searchKeyWord: this.searchKeyWord,
-        sort: this.sort ==='ascending' ? 'asc' : 'desc',
+        sort: this.sort === 'ascending' ? 'asc' : 'desc',
         currentPage: this.currentPage,
         pageSize: this.pageSize
       };
@@ -116,7 +116,7 @@ export default {
           this.project.answerList = res.data;
           for (let i = 0; i < this.project.answerList.length; i++) {
             this.project.answerList[i].createDate = this.convertToGMT0(this.project.answerList[i].createDate);
-            if(this.project.answerList[i].username==='public'){
+            if (this.project.answerList[i].username === 'public') {
               this.project.answerList[i].username = '匿名用户';
             }
           }
@@ -207,6 +207,10 @@ hr {
 
 span {
   font-size: 16px;
+}
+
+.el-icon-search:hover {
+  color: #207EFF;
 }
 
 .el-button {
