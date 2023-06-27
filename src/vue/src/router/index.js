@@ -62,7 +62,7 @@ const routes = [
         component: () => import('@/views/home/answer'),
         meta: {
             keepAlive: false,
-            title: '问卷星不星-填写问卷'
+            title: '问卷星不星-问卷填写'
         }
     },
     {
@@ -80,7 +80,7 @@ const routes = [
         component: () => import('@/views/home/answerList'),
         meta: {
             keepAlive: false,
-            title: '问卷星不星-答卷统计'
+            title: '问卷星不星-答卷列表'
         }
     },
     {

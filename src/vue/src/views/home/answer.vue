@@ -22,7 +22,7 @@
               <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
-              <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
+              <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
                 <div v-for="(option, index) in question.options" :key="index"
                      class="option-input">
                   <!--序号abcd形式，序号前有单选框-->
@@ -41,7 +41,7 @@
             </div>
             <div class="ques-option">
               <!--el-checkbox和el-input在一行-->
-              <el-checkbox-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
+              <el-checkbox-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
                 <div v-for="(option, index) in question.options" :key="index"
                      class="option-input">
                   <!--序号abcd形式，序号前有多选框-->
@@ -65,12 +65,12 @@
                 <div class="option-row">
                   <span style="margin-right: 40px;">{{ question.options[index] }}</span>
                   <el-button class="small_btns" size="small" type="primary" @click="optionUp(question.options,index)"
-                             :disabled="this.$route.query.detail === 'true'">
+                             :class="{ 'disabled': this.$route.query.detail === 'true' }">
                     上移
                   </el-button>
                   <el-button class="small_btns" size="small" type="primary"
                              @click="optionDown(question.options,index)"
-                             :disabled="this.$route.query.detail === 'true'">
+                             :class="{ 'disabled': this.$route.query.detail === 'true' }">
                     下移
                   </el-button>
                 </div>
@@ -85,10 +85,11 @@
             </div>
             <div class="ques-option">
               <div v-if="question.format === '五分制'">
-                <el-rate v-model="question.answer" :max="5" :disabled="this.$route.query.detail === 'true'"></el-rate>
+                <el-rate v-model="question.answer" :max="5"
+                         :class="{ 'disabled': this.$route.query.detail === 'true' }"></el-rate>
               </div>
               <div v-if="question.format === '十分制'">
-                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
+                <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
                   <el-radio label="1"></el-radio>
                   <el-radio label="2"></el-radio>
                   <el-radio label="3"></el-radio>
@@ -103,7 +104,8 @@
               </div>
               <div v-if="question.format === '百分制'">
                 <el-input-number v-model="question.answer" :max="100"
-                                 :disabled="this.$route.query.detail === 'true'" :min="0" :step="1" label="分数"
+                                 :class="{ 'disabled': this.$route.query.detail === 'true' }" :min="0" :step="1"
+                                 label="分数"
                                  size="small" step-strictly>
                 </el-input-number>
               </div>
@@ -120,7 +122,7 @@
                    class="option-input">
                 <div class="option-row">
                   <el-input v-model="question.answer[index]" :resize="'none'" :rows="1"
-                            :disabled="this.$route.query.detail === 'true'" placeholder="请输入答案"
+                            :class="{ 'disabled': this.$route.query.detail === 'true' }" placeholder="请输入答案"
                             type="textarea"></el-input>
                 </div>
               </div>
@@ -136,7 +138,7 @@
                 <span style="font-size: 12px">字数限制：{{ question.related }}</span>
               </div>
               <el-input v-model="question.answer" :maxlength="question.related" :resize="'none'" :rows="3"
-                        :disabled="this.$route.query.detail === 'true'" placeholder="请输入答案"
+                        :class="{ 'disabled': this.$route.query.detail === 'true' }" placeholder="请输入答案"
                         type="textarea"></el-input>
             </div>
           </div>
@@ -147,19 +149,19 @@
             </div>
             <div class="ques-option">
               <div v-if="question.format === 'yes/no'">
-                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
+                <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
                   <el-radio label="yes"></el-radio>
                   <el-radio label="no"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="question.format === 'T/F'">
-                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
+                <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
                   <el-radio label="T"></el-radio>
                   <el-radio label="F"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="question.format === '是/否'">
-                <el-radio-group v-model="question.answer" :disabled="this.$route.query.detail === 'true'">
+                <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
                   <el-radio label="是"></el-radio>
                   <el-radio label="否"></el-radio>
                 </el-radio-group>
@@ -169,7 +171,7 @@
           <hr>
         </div>
         <!--保存、退出按钮-->
-        <div v-if="this.$route.query.preview !== 'true'" class="ques-save">
+        <div v-if="this.$route.query.preview !== 'true' && this.$route.query.detail !== 'true'" class="ques-save">
           <el-button size="default" type="primary" @click="submit">提&emsp;交</el-button>
         </div>
       </el-container>
@@ -217,15 +219,7 @@ export default {
         }
       });
     } else {
-      plainRequest.post('selectAnswerById', this.$route.query.id).then(res => {
-        let data = JSON.parse(res.data.questionnaireContent);
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].answer !== null) {
-            data[i].answer = JSON.parse(data[i].answer);
-          }
-        }
-        this.questionnaire.questions = data;
-      });
+      this.fetchData();
     }
     console.log(this.questionnaire);
   },
@@ -239,6 +233,7 @@ export default {
       //related: 相关(判断题、填空题、简答题、评分题、文件上传)
       // 问卷信息
       questionnaire: {
+        id: '',
         questionnaireId: this.$route.query.id,
         name: '',
         description: '',
@@ -257,6 +252,26 @@ export default {
     };
   },
   methods: {
+    async fetchData() {
+      try {
+        const answerResponse = await plainRequest.post('selectAnswerById', this.$route.query.id);
+        let data = JSON.parse(answerResponse.data.questionnaireContent);
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].answer !== null) {
+            data[i].answer = JSON.parse(data[i].answer);
+          }
+        }
+        this.questionnaire.id = answerResponse.data.questionnaireId;
+        this.questionnaire.questions = data;
+
+        const questionnaireResponse = await plainRequest.post('selectQuestionnaireById', this.questionnaire.id);
+        this.questionnaire.name = questionnaireResponse.data.questionnaireName;
+        this.questionnaire.description = questionnaireResponse.data.questionnaireDescription;
+      } catch (error) {
+        // 错误处理
+        console.error(error);
+      }
+    },
     optionUp(options, index) {
       if (index > 0) {
         let temp = options[index];
@@ -444,11 +459,11 @@ span {
   width: auto;
 }
 
-.disabled-component {
-  /* Add your custom disabled styles here */
-  opacity: 0.5; /* Example: reduce opacity */
-  pointer-events: none; /* Example: disable pointer events */
+.disabled {
+  opacity: 0.8; /* 设置透明度为 0.5 或其他你想要的值 */
+  pointer-events: none; /* 禁用鼠标事件 */
 }
+
 
 </style>
 
