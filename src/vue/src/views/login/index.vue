@@ -121,8 +121,7 @@ export default {
                 localStorage.removeItem("password");
               }
 
-              sessionStorage.setItem("username", this.user.username);
-              sessionStorage.setItem("password", this.user.password);
+              sessionStorage.setItem("token", res.data.id);
 
               router.push({
                 path: '/project',

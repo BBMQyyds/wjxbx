@@ -68,7 +68,7 @@
                   </div>
                   <div class="questionnaire-button">
                     <el-button v-if="questionnaire.startTime===null&&this.menuItem!=='deleted'" type="success"
-                               @click="updateReleaseQuestionnaire(questionnaire.id)">
+                               @click="updateReleaseQuestionnaire(questionnaire.id,questionnaire.questionnaireName)">
                       <el-icon class="el-icon-video-play"></el-icon>
                       发布
                     </el-button>
@@ -82,9 +82,9 @@
                       编辑
                     </el-button>
                     <el-button v-if="menuItem!=='deleted'" type="warning"
-                               @click="copyQuestionnaire(questionnaire.id)">
+                               @click="inputQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-document-copy"></el-icon>
-                      复制
+                      导入
                     </el-button>
                     <el-button v-if="menuItem==='deleted'" type="success"
                                @click="updateDeletedOffQuestionnaire(questionnaire.id)">
@@ -147,7 +147,7 @@
 <script>
 import navBar from "../../components/nav";
 import sideBar from "../../components/questionnaire/side";
-import request, {plainRequest} from "@/api";
+import request, {answerLink, plainRequest} from "@/api";
 import router from "@/router";
 
 export default {
@@ -367,7 +367,7 @@ export default {
       this.updateFormData.questionnaireDescription = questionnaire.questionnaireDescription;
       this.updateShowDialog(questionnaire);
     },
-    updateReleaseQuestionnaire(id) {
+    updateReleaseQuestionnaire(id, name) {
       console.log("updateReleaseQuestionnaire:" + id);
       //弹出确认框
       this.$confirm('此操作将发布该问卷, 是否继续?', '提示', {
@@ -378,9 +378,25 @@ export default {
       }).then(() => {
         plainRequest.post("/updateReleaseQuestionnaire", id).then(res => {
           if (res.data === 1) {
-            this.$message({
-              message: '发布成功',
-              type: 'success'
+            this.$confirm(`发布成功，是否前往答卷?<br>${name}答卷链接：<a style="text-decoration: underline;color: #207EFF;"
+              href="${answerLink}?id=${id}">${answerLink}?id=${id}</a>`, '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'success',
+              customClass: 'message-box',
+              dangerouslyUseHTMLString: true // 启用 HTML 字符串解析
+            }).then(() => {
+              router.push({
+                path: '/answer',
+                query: {
+                  id: id
+                },
+              });
+            }).catch(() => {
+              this.$message({
+                type: 'info',
+                message: '已取消前往'
+              });
             });
             this.flush(this.menuItem);
           } else {
@@ -439,8 +455,8 @@ export default {
         });
       });
     },
-    copyQuestionnaire(id) {
-      console.log("copyQuestionnaire:" + id);
+    inputQuestionnaire(id) {
+      console.log("inputQuestionnaire:" + id);
       //弹出确认框
       this.$confirm('此操作将复制该问卷, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -448,7 +464,7 @@ export default {
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/copyQuestionnaire", id).then(res => {
+        plainRequest.post("/inputQuestionnaire", id).then(res => {
           if (res.data === 1) {
             this.$message({
               message: '复制成功',
@@ -957,6 +973,10 @@ el-dialog .el-dialog__body {
 .dialog-footer {
   display: flex;
   justify-content: center;
+}
+
+#link:hover {
+  cursor: pointer;
 }
 </style>
 

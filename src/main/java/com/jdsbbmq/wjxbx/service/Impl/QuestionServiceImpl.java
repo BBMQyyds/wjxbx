@@ -110,7 +110,7 @@ public class QuestionServiceImpl implements QuestionService {
             }
             return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
-            throw new RuntimeException("插入设计问卷的问题失败");
+            throw new RuntimeException("插入答卷的问题失败");
         }
     }
 

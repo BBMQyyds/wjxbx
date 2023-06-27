@@ -525,7 +525,7 @@ export default {
       }).catch(err => {
         console.log(err);
       });
-      plainRequest.post('/selectPublicBank').then(res => {
+      plainRequest.post('/selectPrivateQuestion','************************************').then(res => {
         console.log(res);
         this.publicBank = res.data;
       }).catch(err => {
@@ -542,6 +542,13 @@ export default {
             message: '删除成功',
             type: 'success'
           });
+          for (let i = 0; i < this.questionnaire.questions.length; i++) {
+            if (this.questionnaire.questions[i].questionId === this.privateBank[index].questionId) {
+              console.log(this.questionnaire.questions[i]);
+              this.questionnaire.questions[i].star = 0;
+              break;
+            }
+          }
           this.privateBank.splice(index, 1);
         } else {
           this.$message({
@@ -778,9 +785,11 @@ export default {
         this.addGrade(this.insertIndex, this.insertType);
       } else if (this.questionType === '简答题') {
         this.addSimpleAnswer(this.insertIndex, this.insertType);
-      } else if (this.questionType === '文件上传') {
-        this.addFile(this.insertIndex, this.insertType);
-      } else if (this.questionType === '排序题') {
+      }
+      // else if (this.questionType === '文件上传') {
+      //   this.addFile(this.insertIndex, this.insertType);
+      // }
+      else if (this.questionType === '排序题') {
         this.addSort(this.insertIndex, this.insertType);
       } else if (this.questionType === '填空题') {
         this.addBlank(this.insertIndex, this.insertType);
@@ -830,7 +839,13 @@ export default {
       });
     },
     preview() {
-
+      router.push({
+        path: '/answer',
+        query: {
+          id: this.questionnaire.id,
+          preview: true,
+        },
+      });
     },
     async save() {
       let validate = true;
