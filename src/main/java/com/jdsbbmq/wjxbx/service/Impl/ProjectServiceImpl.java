@@ -125,6 +125,7 @@ public class ProjectServiceImpl implements ProjectService {
             for (QuestionEntity questionEntity : listQuestion) {
                 questionEntity.setQuestionId(UUID.randomUUID().toString());
                 questionEntity.setId(questionnaireEntity.getId());
+                questionEntity.setStar(0);
                 questionEntityMapper.insertQuestion(questionEntity);
             }
         }
