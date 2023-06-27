@@ -185,6 +185,13 @@ export default {
   },
   created() {
     plainRequest.post('selectQuestionnaireById', this.$route.query.id).then(res => {
+      if (this.$route.query.preview !== 'true' && res.data.startTime === null) {
+        this.$message({
+          message: '该问卷尚未发布或已过期',
+          type: 'warning'
+        });
+        router.push({path: '/login'});
+      }
       this.questionnaire.name = res.data.questionnaireName;
       this.questionnaire.description = res.data.questionnaireDescription;
     });
