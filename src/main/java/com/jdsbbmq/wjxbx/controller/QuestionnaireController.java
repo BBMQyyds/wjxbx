@@ -54,6 +54,13 @@ public class QuestionnaireController {
         return questionnaireService.insertQuestionnaire(questionnaire);
     }
 
+    //复制一个问卷
+    @Operation(summary = "复制一个问卷", description = "复制一个问卷")
+    @RequestMapping(value = "/insertCopyQuestionnaire", method = RequestMethod.POST)
+    public CompletableFuture<Integer> insertCopyQuestionnaire(@RequestBody String questionnaireId) throws ParseException {
+        return questionnaireService.insertCopyQuestionnaire(questionnaireId);
+    }
+
     //更新一个问卷
     @Operation(summary = "更新一个问卷", description = "更新一个问卷")
     @RequestMapping(value = "/updateQuestionnaire", method = RequestMethod.POST)

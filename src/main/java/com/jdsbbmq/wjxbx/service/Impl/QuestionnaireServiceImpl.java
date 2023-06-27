@@ -1,9 +1,12 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
+import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
 import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.QuestionnaireService;
 import jakarta.annotation.Resource;
@@ -12,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -23,6 +28,9 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     @Resource
     private ProjectEntityMapper projectEntityMapper;
+
+    @Resource
+    private QuestionEntityMapper questionEntityMapper;
 
     //查找一个项目下的所有问卷
     @Override
@@ -79,6 +87,28 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         } catch (Exception e) {
             throw new RuntimeException("插入问卷失败");
         }
+    }
+
+    @Override
+    public CompletableFuture<Integer> insertCopyQuestionnaire(String questionnaireId) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        QuestionnaireEntity questionnaireEntity=questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
+        String newId=java.util.UUID.randomUUID().toString();
+        questionnaireEntity.setId(newId);
+        questionnaireEntity.setQuestionnaireName(questionnaireEntity.getQuestionnaireName()+"-副本");
+        questionnaireEntity.setStar(0);
+        questionnaireEntity.setStartTime(null);
+        questionnaireEntity.setEndTime(null);
+        questionnaireEntity.setDeleted(0);
+        questionnaireEntity.setCreationDate(dateFormat.parse(dateFormat.format(new Date())));
+        questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
+        List<QuestionEntity> listQuestion=questionEntityMapper.selectQuestionById(questionnaireId);
+        for (QuestionEntity questionEntity:listQuestion){
+            questionEntity.setQuestionId(java.util.UUID.randomUUID().toString());
+            questionEntity.setId(newId);
+            questionEntityMapper.insertQuestion(questionEntity);
+        }
+        return CompletableFuture.completedFuture(1);
     }
 
     //修改更新

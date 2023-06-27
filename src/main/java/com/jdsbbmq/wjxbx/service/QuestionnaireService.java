@@ -32,6 +32,9 @@ public interface QuestionnaireService {
     //插入一个问卷
     public CompletableFuture<Integer> insertQuestionnaire(Questionnaire questionnaire) throws ParseException;
 
+    //复制一个问卷
+    public CompletableFuture<Integer> insertCopyQuestionnaire(String questionnaireId) throws ParseException;
+
     //修改更新
 
     //更新一个问卷

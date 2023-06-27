@@ -8,6 +8,8 @@ import com.jdsbbmq.wjxbx.service.ProjectService;
 import jakarta.annotation.Resource;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.reactive.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

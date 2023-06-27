@@ -31,6 +31,7 @@ public interface QuestionnaireEntityMapper {
     // 插入问卷
     int insertQuestionnaire(QuestionnaireEntity questionnaireEntity);
 
+
     //更新问卷
     int updateQuestionnaire(QuestionnaireEntity questionnaireEntity);
 

@@ -75,6 +75,10 @@
         INSERT INTO questionnaire_answer (id, user_id,questionnaire_id,questionnaire_content)
         VALUES (#{id}, #{userId}, #{questionnaireId}, #{questionnaireContent})
     </insert>
+    <insert id="insertQuestion">
+        INSERT INTO questionnaire_question(questionnaire_id, sequence, star, question_content, question_id)
+        VALUES (#{id}, #{sequence}, #{star}, #{questionContent}, #{questionId})
+    </insert>
 
 
     <!--根据所给的问卷Id删除问卷中的问题-->
@@ -83,23 +87,26 @@
         FROM questionnaire_question
         WHERE questionnaire_id = #{id}
     </delete>
+
     <delete id="deletePrivateQuestionById">
         DELETE
         FROM question
         WHERE question_id = #{questionId}
     </delete>
+
     <!--删除列表中没出现的问题ID-->
     <delete id="deleteQuestionNotInList" parameterType="java.util.List">
+        <if test="list != null and list.size() > 0">
         DELETE FROM questionnaire_question
         <where>
-            <if test="list != null and list.size() > 0">
                 questionnaire_id = #{list[0].id} -- Assuming the first item in the list contains the questionnaire ID
                 AND question_id NOT IN
                 <foreach item="item" collection="list" separator="," open="(" close=")">
                     #{item.questionId}
                 </foreach>
-            </if>
+
         </where>
+        </if>
     </delete>
 
 
@@ -110,6 +117,17 @@
         SELECT question_content
         FROM questionnaire_question
         WHERE question_id = #{questionId}
+    </select>
+    <!--查询所有答卷-->
+    <select id="selectAllAnswer" resultType="AnswerEntity">
+        SELECT *
+        FROM questionnaire_answer
+        WHERE questionnaire_id = #{questionnaireId}
+    </select>
+    <select id="selectAllPrivateQuestion" resultType="QuestionEntity">
+        SELECT *
+        FROM questionnaire_question
+        WHERE questionnaire_id = #{id} AND star = 1
     </select>
 
     <update id="updateStarOnQuestion">
@@ -127,6 +145,12 @@
         UPDATE questionnaire
         SET question_count = #{questionCount}
         WHERE id = #{id}
+    </update>
+    <!--更新收藏问题的内容-->
+    <update id="updatePrivateQuestion">
+        UPDATE question
+        SET question_content = #{questionContent}
+        WHERE question_id = #{questionId}
     </update>
 
 

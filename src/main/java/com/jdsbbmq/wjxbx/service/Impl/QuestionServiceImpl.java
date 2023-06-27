@@ -61,6 +61,20 @@ public class QuestionServiceImpl implements QuestionService {
         return CompletableFuture.completedFuture(questionList);
     }
 
+    //查询所有答卷
+    @Override
+    @Async("asyncServiceExecutor")
+    public CompletableFuture<List<Question>> selectAllAnswer(String questionnaireId) {
+            Gson gson = new Gson();
+            List<AnswerEntity> answerEntityList = questionEntityMapper.selectAllAnswer(questionnaireId);
+            List<Question> questionList = new ArrayList<>();
+            for (AnswerEntity answerEntity : answerEntityList) {
+                Question question = gson.fromJson(answerEntity.getQuestionnaireContent(), Question.class);
+                questionList.add(question);
+            }
+            return CompletableFuture.completedFuture(questionList);
+    }
+
 
         /*
             增删改
@@ -84,12 +98,18 @@ public class QuestionServiceImpl implements QuestionService {
                 questionEntityMapper.deleteQuestionNotInList(questionEntityList);
                 return CompletableFuture.completedFuture(1);
             }
+
             QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
             questionnaireEntity.setQuestionCount(questionEntityList.size());
             questionnaireEntity.setId(designRequest.getId());
             questionEntityMapper.updateQuestionnaireQuestionCount(questionnaireEntity);
             questionEntityMapper.deleteQuestionNotInList(questionEntityList);
             questionEntityMapper.insertDesignQuestion(questionEntityList);
+
+            questionEntityList=questionEntityMapper.selectAllPrivateQuestion(designRequest.getId());
+            for (QuestionEntity questionEntity:questionEntityList){
+                questionEntityMapper.updatePrivateQuestion(questionEntity);
+            }
             return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("插入设计问卷的问题失败");
