@@ -27,6 +27,22 @@
         from user
     </select>
 
+    <!--根据分页搜寻用户-->
+    <select id="selectUserByPage" parameterType="QueryEntity" resultType="UserEntity">
+        SELECT *
+        FROM user
+        where created_by = #{id}
+        <if test="type == null">
+            AND status = 1
+        </if>
+        <if test="type == 'forbidden'">
+            AND status = 0
+        </if>
+        AND username LIKE CONCAT('%', #{searchKeyWord}, '%')
+        ORDER BY ${sortType} ${sort}
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
     <!--增删改-->
 
     <!--插入用户-->
@@ -37,16 +53,24 @@
                 #{lastUpdatedBy}, #{lastUpdateDate})
     </insert>
 
+
     <!--更新用户-->
-    <update id="updateUser">
+    <update id="updateUser" parameterType="UserEntity">
         update user
-        set username         = #{username},
-            password         = #{password},
-            start_time       = #{startTime},
-            stop_time        = #{stopTime},
-            status           = #{status},
-            last_updated_by  = #{lastUpdatedBy},
-            last_update_date = #{lastUpdateDate}
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="lastUpdatedBy != null">
+                last_updated_by = #{lastUpdatedBy},
+            </if>
+            <if test="lastUpdateDate != null">
+                last_update_date = #{lastUpdateDate}
+            </if>
+        </set>
         where id = #{id}
     </update>
 
@@ -55,6 +79,13 @@
         delete
         from user
         where id = #{id}
+    </delete>
+
+    <!--清空status为0的用户-->
+    <delete id="deleteUserByStatus">
+        delete
+        from user
+        where status = 0
     </delete>
 
 
@@ -67,11 +98,26 @@
         from user
         where username = #{username}
     </select>
+
     <!--修改用户密码-->
     <update id="updatePassword">
         update user
         set password = #{password}
         where username = #{username}
+    </update>
+
+    <!--禁用用户-->
+    <update id="disableUser">
+        update user
+        set status = 0
+        where id = #{id}
+    </update>
+
+    <!--启用用户-->
+    <update id="enableUser">
+        update user
+        set status = 1
+        where id = #{id}
     </update>
 
 

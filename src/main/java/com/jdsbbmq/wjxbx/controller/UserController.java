@@ -1,5 +1,7 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
+import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -53,12 +56,18 @@ public class UserController {
         return userService.selectAll();
     }
 
+    //分页寻找用户
+    @Operation(summary = "分页寻找用户", description = "能为用户分页寻找他的项目")
+    @RequestMapping(value = "/selectUserByPage", method = RequestMethod.POST)
+    public CompletableFuture<List<User>> selectUserByPage(@RequestBody QueryRequest queryRequest) throws ParseException {
+        return userService.selectUserByPage(queryRequest);
+    }
+
     /*
         增删改
      */
 
     //增加
-
     // 插入用户(注册）
     @Operation(summary = "插入用户(注册)", description = "在获取账户的基础上，增加了注册时间、更新时间、状态等字段")
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
@@ -82,6 +91,20 @@ public class UserController {
         return userService.changePassword(changeRequest);
     }
 
+    //禁用用户
+    @Operation(summary = "禁用用户", description = "禁用用户")
+    @RequestMapping(value = "/disableUser", method = RequestMethod.POST)
+    public CompletableFuture<Integer> disableUser(@RequestBody String id) {
+        return userService.disableUser(id);
+    }
+
+    //启用用户
+    @Operation(summary = "启用用户", description = "启用用户")
+    @RequestMapping(value = "/enableUser", method = RequestMethod.POST)
+    public CompletableFuture<Integer> enableUser(@RequestBody String id) {
+        return userService.enableUser(id);
+    }
+
     //删除
 
     // 根据id删除用户
@@ -91,5 +114,11 @@ public class UserController {
         return userService.deleteUserById(id);
     }
 
+    //清空status为0的用户
+    @Operation(summary = "清空status为0的用户", description = "清空status为0的用户")
+    @RequestMapping(value = "/deleteUserByStatus", method = RequestMethod.POST)
+    public CompletableFuture<Integer> deleteUserByStatus(@RequestBody String id) {
+        return userService.deleteUserByStatus(id);
+    }
 
 }

@@ -72,7 +72,7 @@
     </insert>
     <!--增加答卷-->
     <insert id="insertAnswer">
-        INSERT INTO questionnaire_answer (id, user_id,questionnaire_id,questionnaire_content)
+        INSERT INTO questionnaire_answer (id, user_id, questionnaire_id, questionnaire_content)
         VALUES (#{id}, #{userId}, #{questionnaireId}, #{questionnaireContent})
     </insert>
     <insert id="insertQuestion">
@@ -96,17 +96,19 @@
 
     <!--删除列表中没出现的问题ID-->
     <delete id="deleteQuestionNotInList" parameterType="java.util.List">
-        <if test="list != null and list.size() > 0">
         DELETE FROM questionnaire_question
-        <where>
-                questionnaire_id = #{list[0].id} -- Assuming the first item in the list contains the questionnaire ID
-                AND question_id NOT IN
-                <foreach item="item" collection="list" separator="," open="(" close=")">
-                    #{item.questionId}
-                </foreach>
+        where questionnaire_id = #{list[0].id} -- Assuming the first item in the list contains the questionnaire ID
+        AND question_id NOT IN
+        <foreach item="item" collection="list" separator="," open="(" close=")">
+            #{item.questionId}
+        </foreach>
+    </delete>
 
-        </where>
-        </if>
+    <!--删除问卷中的问题-->
+    <delete id="deleteQuestionByQuestionnaireId">
+        DELETE
+        FROM questionnaire_question
+        WHERE questionnaire_id = #{id}
     </delete>
 
 
@@ -127,7 +129,8 @@
     <select id="selectAllPrivateQuestion" resultType="QuestionEntity">
         SELECT *
         FROM questionnaire_question
-        WHERE questionnaire_id = #{id} AND star = 1
+        WHERE questionnaire_id = #{id}
+          AND star = 1
     </select>
 
     <update id="updateStarOnQuestion">

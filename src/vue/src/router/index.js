@@ -66,6 +66,15 @@ const routes = [
         }
     },
     {
+        name: 'user',
+        path: '/user',
+        component: () => import('@/views/home/user'),
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-用户管理'
+        }
+    },
+    {
         name: 'register',
         path: '/register',
         component: () => import('@/views/register'),

@@ -1,7 +1,6 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
-import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
 import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
@@ -19,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -89,23 +89,24 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         }
     }
 
+    // 复制问卷
     @Override
+    @Async("asyncServiceExecutor")
     public CompletableFuture<Integer> insertCopyQuestionnaire(String questionnaireId) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        QuestionnaireEntity questionnaireEntity=questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
-        String newId=java.util.UUID.randomUUID().toString();
-        questionnaireEntity.setId(newId);
-        questionnaireEntity.setQuestionnaireName(questionnaireEntity.getQuestionnaireName()+"-副本");
-        questionnaireEntity.setStar(0);
+        QuestionnaireEntity questionnaireEntity = questionnaireEntityMapper.selectQuestionnaireById(questionnaireId);
+        questionnaireEntity.setId(UUID.randomUUID().toString());
+        questionnaireEntity.setQuestionnaireName(questionnaireEntity.getQuestionnaireName() + " - 副本");
         questionnaireEntity.setStartTime(null);
         questionnaireEntity.setEndTime(null);
-        questionnaireEntity.setDeleted(0);
+        questionnaireEntity.setAnswerCount(0);
         questionnaireEntity.setCreationDate(dateFormat.parse(dateFormat.format(new Date())));
         questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
-        List<QuestionEntity> listQuestion=questionEntityMapper.selectQuestionById(questionnaireId);
-        for (QuestionEntity questionEntity:listQuestion){
-            questionEntity.setQuestionId(java.util.UUID.randomUUID().toString());
-            questionEntity.setId(newId);
+        projectEntityMapper.addProjectQuestionnaireCount(questionnaireEntity.getProjectId());
+        List<QuestionEntity> listQuestion = questionEntityMapper.selectQuestionById(questionnaireId);
+        for (QuestionEntity questionEntity : listQuestion) {
+            questionEntity.setQuestionId(UUID.randomUUID().toString());
+            questionEntity.setId(questionnaireEntity.getId());
             questionEntityMapper.insertQuestion(questionEntity);
         }
         return CompletableFuture.completedFuture(1);

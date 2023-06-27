@@ -2,14 +2,11 @@
   <div id="main">
     <nav-bar id="nav"></nav-bar>
     <div id="con" v-infinite-scroll="load">
-      <side-bar id="side" @create="insertProject" @select="flush"></side-bar>
+      <side-bar id="side" @create="insertUser" @select="flush"></side-bar>
       <div id="content">
         <div id="top" :style="{ height: '200px' }">
-          <span id="title">项目列表</span>
-          <el-button-group v-if="menuItem!=='deleted'" id="sort">
-            <el-button :disabled="sortType === 'questionnaire_count'" type="primary"
-                       @click="changeSortType('questionnaire_count')">问卷数量
-            </el-button>
+          <span id="title">用户列表</span>
+          <el-button-group v-if="menuItem!=='forbidden'" id="sort">
             <el-button :disabled="sortType === 'creation_date'" type="primary"
                        @click="changeSortType('creation_date')">创建时间
             </el-button>
@@ -17,64 +14,52 @@
                        @click="changeSortType('last_update_date')">更新时间
             </el-button>
           </el-button-group>
-          <el-radio-group v-if="menuItem!=='deleted'" id="radio" v-model="sort" @change="search">
+          <el-radio-group v-if="menuItem!=='forbidden'" id="radio" v-model="sort" @change="search">
             <el-radio label="desc">降序</el-radio>
             <el-radio label="asc">升序</el-radio>
           </el-radio-group>
-          <el-button v-if="menuItem==='deleted'" id="clearProjects" type="danger" @click="clearProjects">清空回收站
+          <el-button v-if="menuItem==='forbidden'" id="clearUsers" type="danger" @click="clearUsers">清空列表
           </el-button>
-          <el-input id="search" v-model="searchKeyWord" placeholder="请输入项目名进行搜索..."
+          <el-input id="search" v-model="searchKeyWord" placeholder="请输入用户名进行搜索..."
                     size="default" @keyup.enter.native="search">
             <template v-slot:prefix>
               <i class="el-input__icon el-icon-search" @click="search"></i>
             </template>
           </el-input>
         </div>
-        <div class="project-list">
+        <div class="user-list">
           <el-row>
-            <el-col v-for="project in projectList" :key="project" :span="15">
-              <el-card class="project-card">
+            <el-col v-for="user in userList" :key="user" :span="15">
+              <el-card class="user-card">
                 <div id="first">
-                  <div :title="'项目描述：\n' + project.projectContent" class="project-name"
-                       @click="toQuestionnaire(project.id)">
-                    {{ project.projectName }}
+                  <div :title="'密码（MD5加密）：\n' + user.password" class="user-name">
+                    {{ user.username }}
                   </div>
-                  <div id="star">
-                    <div class="project-info">
-                      <div :title="project.id" class="project-id">ID：{{ project.id.substr(0, 8) }}...</div>
-                      <div class="project-qnc">问卷数：{{ project.questionnaireCount }}</div>
-                    </div>
-                    <el-icon v-if="project.star===1&&menuItem!=='deleted'" id="on" class="el-icon-star-on"
-                             @click="starOff(project)"></el-icon>
-                    <el-icon v-if="project.star===0&&menuItem!=='deleted'" id="off" class="el-icon-star-on"
-                             @click="starOn(project)"></el-icon>
+                  <div class="user-info">
+                    <div :title="user.id" class="user-id">ID：{{ user.id.substr(0, 16) }}...</div>
                   </div>
                 </div>
                 <hr class="hr-solid">
                 <div id="last">
                   <div id="time">
-                    <div class="project-create">创建时间：{{ convertToGMT0(project.creationDate) }}</div>
-                    <div class="project-update">更新时间：{{ convertToGMT0(project.lastUpdateDate) }}</div>
+                    <div class="user-create">创建时间：{{ convertToGMT0(user.creationDate) }}</div>
+                    <div class="user-update">更新时间：{{ convertToGMT0(user.lastUpdateDate) }}</div>
                   </div>
-                  <div class="project-button">
-                    <el-button type="primary" @click="updateProject(project)">
+                  <div class="user-button">
+                    <el-button type="primary" @click="updateUser(user)">
                       <el-icon class="el-icon-edit"></el-icon>
                       编辑
                     </el-button>
-                    <el-button v-if="menuItem!=='deleted'" type="warning" @click="copyProject(project.id)">
-                      <el-icon class="el-icon-document-copy"></el-icon>
-                      复制
-                    </el-button>
-                    <el-button v-if="menuItem==='deleted'" type="success" @click="updateDeletedOffProject(project.id)">
+                    <el-button v-if="menuItem==='forbidden'" type="success" @click="enableUser(user.id)">
                       <el-icon class="el-icon-refresh-left"></el-icon>
-                      还原
+                      解禁
                     </el-button>
-                    <el-button v-if="menuItem!=='deleted'" type="danger" @click="updateDeletedOnProject(project.id)">
+                    <el-button v-if="menuItem!=='forbidden'" type="danger" @click="disableUser(user.id)">
+                      <el-icon class="el-icon-lock"></el-icon>
+                      禁用
+                    </el-button>
+                    <el-button v-if="menuItem==='forbidden'" type="danger" @click="deleteUser(user.id)">
                       <el-icon class="el-icon-delete"></el-icon>
-                      删除
-                    </el-button>
-                    <el-button v-if="menuItem==='deleted'" type="danger" @click="deleteProject(project.id)">
-                      <el-icon class="el-icon-close"></el-icon>
                       删除
                     </el-button>
                   </div>
@@ -86,14 +71,13 @@
       </div>
     </div>
     <el-dialog v-model="insertDialogVisible" destroy-on-close
-               title="创建项目" @close="insertHandleClose">
+               title="创建用户" @close="insertHandleClose">
       <el-form ref="insertFormData" :model="insertFormData" :rules="rules" label-width="80px">
-        <el-form-item label="项目名称" prop="projectName">
-          <el-input v-model="insertFormData.projectName" class="dialog-input"></el-input>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="insertFormData.username" class="dialog-input"></el-input>
         </el-form-item>
-        <el-form-item label="项目描述" prop="projectContent">
-          <el-input v-model="insertFormData.projectContent" :resize="'none'"
-                    :rows="3" class="dialog-textarea" type="textarea"></el-input>
+        <el-form-item label="登录密码" prop="password">
+          <el-input v-model="insertFormData.password" class="dialog-input"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -102,14 +86,13 @@
       </div>
     </el-dialog>
     <el-dialog v-model="updateDialogVisible" destroy-on-close
-               title="编辑项目" @close="updateHandleClose">
+               title="编辑用户" @close="updateHandleClose">
       <el-form ref="updateFormData" :model="updateFormData" :rules="rules" label-width="80px">
-        <el-form-item label="项目名称" prop="projectName">
-          <el-input v-model="updateFormData.projectName" class="dialog-input"></el-input>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="updateFormData.username" class="dialog-input"></el-input>
         </el-form-item>
-        <el-form-item label="项目描述" prop="projectContent">
-          <el-input v-model="updateFormData.projectContent" :resize="'none'"
-                    :rows="3" class="dialog-textarea" type="textarea"></el-input>
+        <el-form-item label="登录密码" prop="password">
+          <el-input v-model="updateFormData.password" class="dialog-input"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -122,12 +105,13 @@
 
 <script>
 import navBar from "../../components/nav";
-import sideBar from "../../components/project/side";
+import sideBar from "../../components/user/side";
 import request, {plainRequest} from "@/api";
+import CryptoJS from "crypto-js";
 import router from "@/router";
 
 export default {
-  name: "project",
+  name: "user",
   inject: ['reload'],
   components: {
     navBar,
@@ -139,31 +123,31 @@ export default {
   data() {
     return {
       searchKeyWord: "",
-      sortType: 'questionnaire_count',
-      sort: "desc",
+      sortType: 'creation_date',
+      sort: "asc",
       currentPage: 1,
       pageSize: 5,
-      projectList: [],
+      userList: [],
       insertDialogVisible: false,
       updateDialogVisible: false,
       insertFormData: {},
       updateFormData: {},
       menuItem: "home",
       rules: {
-        projectName: [
-          {required: true, message: '请输入项目名称', trigger: 'blur'},
+        username: [
+          {required: true, message: '请输入用户名', trigger: 'blur'},
           {min: 2, max: 16, message: '长度在 2 到 16 个字符', trigger: 'blur'}
         ],
-        projectContent: [
-          {required: true, message: '请输入项目描述', trigger: 'blur'},
-          {min: 5, max: 50, message: '长度在 5 到 50 个字符', trigger: 'blur'}
+        password: [
+          {required: true, message: '请输入登录密码', trigger: 'blur'},
+          {min: 6, max: 32, message: '长度在 6 到 32 个字符', trigger: 'blur'}
         ]
       }
     };
   },
   methods: {
     send(data, callback) {
-      request.post("/selectProjectByPage", JSON.stringify(data)).then(res => {
+      request.post("/selectUserByPage", JSON.stringify(data)).then(res => {
         if (res.data !== null && res.data.length > 0) {
           this.currentPage++;
           callback(res.data);
@@ -186,11 +170,19 @@ export default {
     },
     search() {
       console.log("search");
+      if (sessionStorage.getItem('token') === null) {
+        this.$message({
+          message: '登录已过期，请重新登录',
+          type: 'error'
+        });
+        router.push('/login');
+        return;
+      }
       this.currentPage = 1;
       let data = {
-        id: this.$route.query.id,//用户id
+        id: this.$route.query.username,//用户名
         searchKeyWord: this.searchKeyWord,//搜索关键字
-        sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
+        sortType: this.sortType,//按什么分类（project_count,creation_date,last_update_date）
         sort: this.sort,//升序还是降序（asc,desc）
         currentPage: this.currentPage,//当前页
         pageSize: this.pageSize,//每页显示多少条
@@ -199,7 +191,7 @@ export default {
         data.type = this.menuItem;
       }
       this.send(data, (res) => {
-        this.projectList = res;
+        this.userList = res;
       });
     },
     load() {
@@ -211,10 +203,18 @@ export default {
         }
       }
       console.log("load");
+      if (sessionStorage.getItem('token') === null) {
+        this.$message({
+          message: '登录已过期，请重新登录',
+          type: 'error'
+        });
+        router.push('/login');
+        return;
+      }
       let data = {
-        id: this.$route.query.id,//用户id
+        id: this.$route.query.username,//用户名
         searchKeyWord: this.searchKeyWord,//搜索关键字
-        sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
+        sortType: this.sortType,//按什么分类（project_count,creation_date,last_update_date）
         sort: this.sort,//升序还是降序（asc,desc）
         currentPage: this.currentPage,//当前页
         pageSize: this.pageSize//每页显示多少条
@@ -223,7 +223,7 @@ export default {
         data.type = this.menuItem;
       }
       this.send(data, (res) => {
-        this.projectList.push(...res);
+        this.userList.push(...res);
       });
     },
     flush(val) {
@@ -232,35 +232,20 @@ export default {
       if (val === 'home') {
         console.log("home");
         this.search();
-      } else if (val === 'star') {
-        console.log("star");
+      } else if (val === 'forbidden') {
+        console.log("forbidden");
         this.currentPage = 1;
         let data = {
           id: this.$route.query.id,//用户id
           searchKeyWord: this.searchKeyWord,//搜索关键字
-          sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
+          sortType: this.sortType,//按什么分类（project_count,creation_date,last_update_date）
           sort: this.sort,//升序还是降序（asc,desc）
           currentPage: this.currentPage,//当前页
           pageSize: this.pageSize,//每页显示多少条
-          type: 'star'
+          type: 'forbidden'
         };
         this.send(data, (res) => {
-          this.projectList = res;
-        });
-      } else if (val === 'deleted') {
-        console.log("deleted");
-        this.currentPage = 1;
-        let data = {
-          id: this.$route.query.id,//用户id
-          searchKeyWord: this.searchKeyWord,//搜索关键字
-          sortType: this.sortType,//按什么分类（questionnaire_count,creation_date,last_update_date）
-          sort: this.sort,//升序还是降序（asc,desc）
-          currentPage: this.currentPage,//当前页
-          pageSize: this.pageSize,//每页显示多少条
-          type: 'deleted'
-        };
-        this.send(data, (res) => {
-          this.projectList = res;
+          this.userList = res;
         });
       } else if (val === 'files') {
         console.log("files");
@@ -272,192 +257,103 @@ export default {
       this.sortType = type;
       this.search();
     },
-    starOn(project) {
-      console.log("starOn:" + project.id);
-      plainRequest.post("/updateStarOnProject", project.id).then(res => {
-        if (res.data === 1) {
-          this.$message({
-            message: '星标成功',
-            type: 'success'
-          });
-          project.star = 1;
-        } else {
-          this.$message({
-            message: '星标失败，请稍后重试',
-            type: 'error'
-          });
-        }
-      }).catch(err => {
-        console.log(err);
-        this.$message({
-          message: '星标失败，请稍后重试',
-          type: 'error'
-        });
-      });
-    },
-    starOff(project) {
-      console.log("starOff:" + project.id);
-      plainRequest.post("/updateStarOffProject", project.id).then(res => {
-        if (res.data === 1) {
-          this.$message({
-            message: '取消星标成功',
-            type: 'success'
-          });
-          project.star = 0;
-        } else {
-          this.$message({
-            message: '取消星标失败，请稍后重试',
-            type: 'error'
-          });
-        }
-      }).catch(err => {
-        console.log(err);
-        this.$message({
-          message: '取消星标失败，请稍后重试',
-          type: 'error'
-        });
-      });
-    },
-    toQuestionnaire(id) {
-      console.log("toQuestionnaire:" + id);
-      router.push({
-        path: '/questionnaire',
-        query: {
-          id: this.$route.query.id,
-          project_id: id
-        }
-      });
-    },
-    insertProject() {
-      console.log("insertProject");
-      this.insertFormData.projectName = "";
-      this.insertFormData.projectContent = "";
+    insertUser() {
+      console.log("insertUser");
+      this.insertFormData.username = "";
+      this.insertFormData.password = "";
       this.insertShowDialog();
     },
-    updateProject(project) {
-      console.log("updateProject:" + project.id);
-      this.updateFormData.projectName = project.projectName;
-      this.updateFormData.projectContent = project.projectContent;
-      this.updateShowDialog(project);
+    updateUser(user) {
+      console.log("updateUser:" + user.id);
+      this.updateFormData.username = user.username;
+      this.updateFormData.password = user.password;
+      this.updateShowDialog(user);
     },
-    copyProject(id) {
-      console.log("copyProject:" + id);
+
+    enableUser(id) {
+      console.log("enableUser:" + id);
       //弹出确认框
-      this.$confirm('此操作将复制该项目, 是否继续?', '提示', {
+      this.$confirm('此操作将启用该用户, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/insertCopyProject", id).then(res => {
+        plainRequest.post("/enableUser", id).then(res => {
           if (res.data === 1) {
             this.$message({
-              message: '复制成功',
+              message: '启用成功',
               type: 'success'
             });
             this.flush(this.menuItem);
           } else {
             this.$message({
-              message: '复制失败，请稍后重试',
+              message: '启用失败，请稍后重试',
               type: 'error'
             });
           }
         }).catch(err => {
           console.log(err);
           this.$message({
-            message: '复制失败，请稍后重试',
+            message: '启用失败，请稍后重试',
             type: 'error'
           });
         });
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '取消复制'
+          message: '已取消启用'
         });
       });
     },
-    updateDeletedOnProject(id) {
-      console.log("updateDeletedOnProject:" + id);
+
+    disableUser(id) {
+      console.log("disableUser:" + id);
       //弹出确认框
-      this.$confirm('此操作将删除该项目, 是否继续?', '提示', {
+      this.$confirm('此操作将禁用该用户, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/updateDeletedOnProject", id).then(res => {
+        plainRequest.post("/disableUser", id).then(res => {
           if (res.data === 1) {
             this.$message({
-              message: '删除成功',
+              message: '禁用成功',
               type: 'success'
             });
             this.flush(this.menuItem);
           } else {
             this.$message({
-              message: '删除失败，请稍后重试',
+              message: '禁用失败，请稍后重试',
               type: 'error'
             });
           }
         }).catch(err => {
           console.log(err);
           this.$message({
-            message: '删除失败，请稍后重试',
+            message: '禁用失败，请稍后重试',
             type: 'error'
           });
         });
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: '已取消禁用'
         });
       });
     },
-    updateDeletedOffProject(id) {
-      console.log("updateDeletedOffProject:" + id);
+
+    deleteUser(id) {
+      console.log("deleteUser:" + id);
       //弹出确认框
-      this.$confirm('此操作将还原该项目, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/updateDeletedOffProject", id).then(res => {
-          if (res.data === 1) {
-            this.$message({
-              message: '还原成功',
-              type: 'success'
-            });
-            this.flush(this.menuItem);
-          } else {
-            this.$message({
-              message: '还原失败，请稍后重试',
-              type: 'error'
-            });
-          }
-        }).catch(err => {
-          console.log(err);
-          this.$message({
-            message: '还原失败，请稍后重试',
-            type: 'error'
-          });
-        });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消还原'
-        });
-      });
-    },
-    deleteProject(id) {
-      console.log("deleteProject:" + id);
-      //弹出确认框
-      this.$confirm('此操作将永久删除该项目, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-        customClass: 'message-box'
-      }).then(() => {
-        plainRequest.post("/deleteProject", id).then(res => {
+        plainRequest.post("/deleteUserById", id).then(res => {
           if (res.data === 1) {
             this.$message({
               message: '删除成功',
@@ -484,16 +380,24 @@ export default {
         });
       });
     },
-    clearProjects() {
-      console.log("deleteAllProjectRecycled");
+    clearUsers() {
+      console.log("deleteUserByStatus");
       //弹出确认框
-      this.$confirm('此操作将永久删除所有项目, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除所有用户, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/deleteAllProjectRecycled", this.$route.query.id).then(res => {
+        if (sessionStorage.getItem('token') === null) {
+          this.$message({
+            message: '登录已过期，请重新登录',
+            type: 'error'
+          });
+          router.push('/login');
+          return;
+        }
+        plainRequest.post("/deleteUserByStatus", sessionStorage.getItem('token')).then(res => {
           if (res.data !== 0) {
             this.$message({
               message: '删除成功',
@@ -535,11 +439,11 @@ export default {
       console.log('确认按钮点击');
       this.$refs.insertFormData.validate((valid) => {
         if (valid) {
-          request.post("/insertProject", JSON.stringify({
-            projectName: this.insertFormData.projectName,
-            projectContent: this.insertFormData.projectContent,
-            userId: this.$route.query.id,
-            createdBy: this.$route.query.id
+          request.post("/insertUser", JSON.stringify({
+            username: this.insertFormData.username,
+            password: CryptoJS.MD5(this.insertFormData.password).toString(),
+            createdBy: this.$route.query.username,
+            lastUpdatedBy: this.$route.query.username
           })).then(res => {
             if (res.data === 1) {
               this.$message({
@@ -576,12 +480,12 @@ export default {
       // 关闭对话框
       this.insertDialogVisible = false;
     },
-    updateShowDialog(project) {
+    updateShowDialog(user) {
       // 显示对话框
       this.updateDialogVisible = true;
-      this.updateFormData.id = project.id;
-      this.updateFormData.projectName = project.projectName;
-      this.updateFormData.projectContent = project.projectContent;
+      this.updateFormData.id = user.id;
+      this.updateFormData.username = user.username;
+      this.updateFormData.password = '';
     },
     updateHandleClose() {
       // 处理关闭按钮逻辑
@@ -594,10 +498,10 @@ export default {
       console.log('确认按钮点击');
       this.$refs.updateFormData.validate((valid) => {
         if (valid) {
-          request.post("/updateProject", JSON.stringify({
+          request.post("/updateUser", JSON.stringify({
             id: this.updateFormData.id,
-            projectName: this.updateFormData.projectName,
-            projectContent: this.updateFormData.projectContent,
+            username: this.updateFormData.username,
+            password: CryptoJS.MD5(this.updateFormData.password).toString(),
             lastUpdatedBy: this.$route.query.id
           })).then(res => {
             if (res.data === 1) {
@@ -710,7 +614,7 @@ export default {
   margin-right: 300px;
 }
 
-#clearProjects {
+#clearUsers {
   margin-right: 50px;
 }
 
@@ -740,12 +644,12 @@ export default {
   color: #207EFF;
 }
 
-.project-list {
+.user-list {
   margin-left: 36%;
   margin-top: 2%;
 }
 
-.project-card {
+.user-card {
   margin-bottom: 20px;
   width: 1100px;
   height: 150px;
@@ -759,15 +663,10 @@ export default {
   justify-content: space-between;
 }
 
-.project-name {
+.user-name {
   font-size: 24px;
   font-weight: bold;
   margin-left: 20px;
-}
-
-.project-name:hover {
-  cursor: pointer;
-  color: #207EFF;
 }
 
 .hr-solid {
@@ -776,27 +675,21 @@ export default {
   border: none;
 }
 
-#star {
-  margin-right: 20px;
+.user-info {
   display: flex;
   align-items: center;
 }
 
-.project-info {
-  display: flex;
-  align-items: center;
-}
-
-.project-id {
+.user-id {
   margin-right: 20px;
   font-size: 16px;
 }
 
-.project-id:hover {
+.user-id:hover {
   cursor: pointer;
 }
 
-.project-qnc {
+.user-qnc {
   margin-right: 20px;
   font-size: 16px;
 }
@@ -812,22 +705,8 @@ export default {
   font-size: 16px;
 }
 
-.project-button {
+.user-button {
   margin-right: 20px;
-}
-
-#on {
-  color: #207EFF;
-  font-size: 36px;
-}
-
-#off {
-  color: #dddddd;
-  font-size: 36px;
-}
-
-.el-icon-star-on:hover {
-  cursor: pointer;
 }
 
 :deep(input) {
@@ -835,7 +714,7 @@ export default {
 }
 
 :deep(.el-dialog) {
-  display: flex;
+  display: block;
   flex-direction: column;
   margin: 0 !important;
   position: absolute;
@@ -848,18 +727,17 @@ export default {
 }
 
 el-dialog .el-dialog__body {
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
   align-items: center;
 }
 
 .el-form-item {
-  margin-left: 40px;
+  margin-left: 100px;
 }
 
 .dialog-footer {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 </style>
 
@@ -869,14 +747,5 @@ el-dialog .el-dialog__body {
     padding-top: 8px;
   }
 }
-
-.dialog-input .el-input__inner {
-  width: 100% !important;
-}
-
-.dialog-textarea .el-textarea__inner {
-  width: 85% !important;
-}
-
 </style>
 

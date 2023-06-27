@@ -40,9 +40,17 @@ public class UserEntity {
             this.stopTime = user.getStopTime();
             this.status = user.getStatus();
             this.createdBy = user.getCreatedBy();
-            this.creationDate = user.getCreationDate();
+            if (user.getCreationDate() != null) {
+                this.creationDate = user.getCreationDate();
+            } else {
+                this.creationDate = new Date();
+            }
             this.lastUpdatedBy = user.getLastUpdatedBy();
-            this.lastUpdateDate = user.getLastUpdateDate();
+            if (user.getLastUpdateDate() != null) {
+                this.lastUpdateDate = user.getLastUpdateDate();
+            } else {
+                this.lastUpdateDate = new Date();
+            }
         }
     }
 }

@@ -123,12 +123,21 @@ export default {
 
               sessionStorage.setItem("token", res.data.id);
 
-              router.push({
-                path: '/project',
-                query: {
-                  id: res.data.id
-                }
-              })
+              if (res.data.username !== 'admin') {
+                router.push({
+                  path: '/project',
+                  query: {
+                    id: res.data.id
+                  }
+                })
+              } else {
+                router.push({
+                  path: '/user',
+                  query: {
+                    username: res.data.username
+                  }
+                })
+              }
             } else {
               this.$message({
                 message: '用户名或密码不正确，请重新输入',

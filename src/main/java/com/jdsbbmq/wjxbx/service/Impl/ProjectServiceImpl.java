@@ -3,25 +3,35 @@ package com.jdsbbmq.wjxbx.service.Impl;
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.dao.ProjectEntityMapper;
+import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
+import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
 import com.jdsbbmq.wjxbx.dao.entity.ProjectEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.ProjectService;
 import jakarta.annotation.Resource;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.reactive.TransactionSynchronization;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
+
     @Resource
     private ProjectEntityMapper projectEntityMapper;
+
+    @Resource
+    private QuestionnaireEntityMapper questionnaireEntityMapper;
+
+    @Resource
+    private QuestionEntityMapper questionEntityMapper;
 
 
       /*
@@ -87,6 +97,38 @@ public class ProjectServiceImpl implements ProjectService {
         }
         ProjectEntity projectEntity = new ProjectEntity(project);
         return CompletableFuture.completedFuture(projectEntityMapper.insertProject(projectEntity));
+    }
+
+    // 复制项目
+    @Override
+    @Async("asyncServiceExecutor")
+    public CompletableFuture<Integer> insertCopyQuestionnaire(String id) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        ProjectEntity projectEntity = projectEntityMapper.selectProjectById(id);
+        projectEntity.setId(UUID.randomUUID().toString());
+        projectEntity.setProjectName(projectEntity.getProjectName() + " - 副本");
+        projectEntity.setCreationDate(dateFormat.parse(dateFormat.format(new Date())));
+        projectEntity.setLastUpdateDate(dateFormat.parse(dateFormat.format(new Date())));
+        projectEntityMapper.insertProject(projectEntity);
+        List<QuestionnaireEntity> listQuestionnaire = questionnaireEntityMapper.selectAllQuestionnaire(id);
+        for (QuestionnaireEntity questionnaireEntity : listQuestionnaire) {
+            String originalQuestionnaireId = questionnaireEntity.getId();
+            questionnaireEntity.setId(UUID.randomUUID().toString());
+            questionnaireEntity.setProjectId(projectEntity.getId());
+            questionnaireEntity.setQuestionnaireName(questionnaireEntity.getQuestionnaireName());
+            questionnaireEntity.setStartTime(null);
+            questionnaireEntity.setEndTime(null);
+            questionnaireEntity.setAnswerCount(0);
+            questionnaireEntity.setCreationDate(dateFormat.parse(dateFormat.format(new Date())));
+            questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
+            List<QuestionEntity> listQuestion = questionEntityMapper.selectQuestionById(originalQuestionnaireId);
+            for (QuestionEntity questionEntity : listQuestion) {
+                questionEntity.setQuestionId(UUID.randomUUID().toString());
+                questionEntity.setId(questionnaireEntity.getId());
+                questionEntityMapper.insertQuestion(questionEntity);
+            }
+        }
+        return CompletableFuture.completedFuture(1);
     }
 
     //更新项目

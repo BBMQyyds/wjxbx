@@ -95,7 +95,7 @@ public class QuestionServiceImpl implements QuestionService {
                 questionEntityList.add(questionEntity);
             }
             if (questionEntityList.size() == 0) {
-                questionEntityMapper.deleteQuestionNotInList(questionEntityList);
+                questionEntityMapper.deleteQuestionByQuestionnaireId(designRequest.getId());
                 return CompletableFuture.completedFuture(1);
             }
 

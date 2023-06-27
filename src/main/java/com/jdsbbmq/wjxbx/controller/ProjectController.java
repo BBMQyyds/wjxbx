@@ -62,6 +62,13 @@ public class ProjectController {
         return projectService.insertProject(project);
     }
 
+    // 复制项目
+    @Operation(summary = "复制项目", description = "向数据库中插入该项目")
+    @RequestMapping(value = "/insertCopyProject", method = RequestMethod.POST)
+    public CompletableFuture<Integer> insertCopyProject(@RequestBody String id) throws ParseException {
+        return projectService.insertCopyQuestionnaire(id);
+    }
+
     // 更新项目
     @Operation(summary = "更新项目", description = "向数据库中更新该项目")
     @RequestMapping(value = "/updateProject", method = RequestMethod.POST)

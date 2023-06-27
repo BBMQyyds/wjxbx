@@ -82,9 +82,9 @@
                       编辑
                     </el-button>
                     <el-button v-if="menuItem!=='deleted'" type="warning"
-                               @click="inputQuestionnaire(questionnaire.id)">
+                               @click="copyQuestionnaire(questionnaire.id)">
                       <el-icon class="el-icon-document-copy"></el-icon>
-                      导入
+                      复制
                     </el-button>
                     <el-button v-if="menuItem==='deleted'" type="success"
                                @click="updateDeletedOffQuestionnaire(questionnaire.id)">
@@ -455,39 +455,39 @@ export default {
         });
       });
     },
-    inputQuestionnaire(id) {
-      console.log("inputQuestionnaire:" + id);
+    copyQuestionnaire(id) {
+      console.log("copyQuestionnaire:" + id);
       //弹出确认框
-      this.$confirm('此操作将该问卷的所有题目导入至个人题库, 是否继续?', '提示', {
+      this.$confirm('此操作将复制该问卷, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
         customClass: 'message-box'
       }).then(() => {
-        plainRequest.post("/inputQuestionnaire", id).then(res => {
+        plainRequest.post("/insertCopyQuestionnaire", id).then(res => {
           if (res.data === 1) {
             this.$message({
-              message: '导入成功',
+              message: '复制成功',
               type: 'success'
             });
             this.flush(this.menuItem);
           } else {
             this.$message({
-              message: '导入失败，请稍后重试',
+              message: '复制失败，请稍后重试',
               type: 'error'
             });
           }
         }).catch(err => {
           console.log(err);
           this.$message({
-            message: '导入失败，请稍后重试',
+            message: '复制失败，请稍后重试',
             type: 'error'
           });
         });
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '取消导入'
+          message: '取消复制'
         });
       });
     },
@@ -530,7 +530,7 @@ export default {
     updateDeletedOffQuestionnaire(id) {
       console.log("updateDeletedOffQuestionnaire:" + id);
       //弹出确认框
-      this.$confirm('此操作将恢复该问卷, 是否继续?', '提示', {
+      this.$confirm('此操作将还原该问卷, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning',
@@ -539,27 +539,27 @@ export default {
         plainRequest.post("/updateDeletedOffQuestionnaire", id).then(res => {
           if (res.data === 1) {
             this.$message({
-              message: '恢复成功',
+              message: '还原成功',
               type: 'success'
             });
             this.flush(this.menuItem);
           } else {
             this.$message({
-              message: '恢复失败，请稍后重试',
+              message: '还原失败，请稍后重试',
               type: 'error'
             });
           }
         }).catch(err => {
           console.log(err);
           this.$message({
-            message: '恢复失败，请稍后重试',
+            message: '还原失败，请稍后重试',
             type: 'error'
           });
         });
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消恢复'
+          message: '已取消还原'
         });
       });
     },

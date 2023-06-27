@@ -52,4 +52,7 @@ public interface ProjectService {
 
     //清空回收站
     public CompletableFuture<Integer> deleteAllProjectRecycled(String userId);
+
+    //复制项目
+    CompletableFuture<Integer> insertCopyQuestionnaire(String id) throws ParseException;
 }

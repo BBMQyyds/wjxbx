@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.service;
 
 
+import com.jdsbbmq.wjxbx.bean.QueryRequest;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,15 @@ public interface UserService {
     // 根据id删除用户
     CompletableFuture<Integer> deleteUserById(String id);
 
+    //分页寻找用户
+    CompletableFuture<List<User>> selectUserByPage(QueryRequest queryRequest);
 
+    //禁用用户
+    CompletableFuture<Integer> disableUser(String id);
+
+    //启用用户
+    CompletableFuture<Integer> enableUser(String id);
+
+    //清空status为0的用户
+    CompletableFuture<Integer> deleteUserByStatus(String id);
 }

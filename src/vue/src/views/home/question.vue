@@ -533,6 +533,7 @@ export default {
       });
     },
     addToQuestionnaire(questions, index) {
+      questions[index].star = 0;
       this.questionnaire.questions.push(questions[index]);
     },
     deleteFromPrivateBank(index) {

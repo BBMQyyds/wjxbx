@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.dao;
 
+import com.jdsbbmq.wjxbx.dao.entity.QueryEntity;
 import com.jdsbbmq.wjxbx.dao.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,8 @@ public interface UserEntityMapper {
     // 查询所有用户
     List<UserEntity> selectAll();
 
+    List<UserEntity> selectUserByPage(QueryEntity toQueryEntity);
+
     //增删改
 
     // 插入用户（注册）
@@ -32,6 +35,10 @@ public interface UserEntityMapper {
 
     // 更新用户
     int updateUser(UserEntity userEntity);
+
+    int disableUser(String id);
+
+    int enableUser(String id);
 
     // 根据id删除用户
     int deleteUserById(String id);
@@ -46,4 +53,7 @@ public interface UserEntityMapper {
 
     //修改登录密码
     int updatePassword(String username, String password);
+
+    //清空status为0的用户
+    int deleteUserByStatus();
 }
