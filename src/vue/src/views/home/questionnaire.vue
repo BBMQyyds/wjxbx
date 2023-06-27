@@ -46,7 +46,9 @@
                           questionnaire.id.substr(0, 8)
                         }}...
                       </div>
-                      <div class="questionnaire-qnc">答卷数：{{ questionnaire.answerCount }}</div>
+                      <div class="questionnaire-qnc">
+                        答卷数：{{ questionnaire.answerCount }}
+                      </div>
                     </div>
                     <el-icon v-if="questionnaire.star===1&&menuItem!=='deleted'" id="on" class="el-icon-star-on"
                              @click="starOff(questionnaire)"></el-icon>
@@ -973,10 +975,6 @@ el-dialog .el-dialog__body {
 .dialog-footer {
   display: flex;
   justify-content: center;
-}
-
-#link:hover {
-  cursor: pointer;
 }
 </style>
 

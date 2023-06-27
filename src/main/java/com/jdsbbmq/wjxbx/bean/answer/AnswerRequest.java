@@ -1,8 +1,10 @@
-package com.jdsbbmq.wjxbx.bean.question;
+package com.jdsbbmq.wjxbx.bean.answer;
 
+import com.jdsbbmq.wjxbx.bean.question.Question;
 import lombok.*;
 
 import java.util.List;
+
 @Getter
 @Setter
 @ToString

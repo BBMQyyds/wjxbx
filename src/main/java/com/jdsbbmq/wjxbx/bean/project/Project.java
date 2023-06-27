@@ -51,18 +51,18 @@ public class Project {
         if (projectEntity == null) {
             return;
         } else {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                this.id = projectEntity.getId();
-                this.userId = projectEntity.getUserId();
-                this.projectName = projectEntity.getProjectName();
-                this.projectContent = projectEntity.getProjectContent();
-                this.createdBy = projectEntity.getCreatedBy();
-                this.creationDate = dateFormat.parse(dateFormat.format(projectEntity.getCreationDate()));
-                this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
-                this.lastUpdateDate = dateFormat.parse(dateFormat.format(projectEntity.getLastUpdateDate()));
-                this.star = projectEntity.getStar();
-                this.deleted = projectEntity.getDeleted();
-                this.questionnaireCount = projectEntity.getQuestionnaireCount();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.id = projectEntity.getId();
+            this.userId = projectEntity.getUserId();
+            this.projectName = projectEntity.getProjectName();
+            this.projectContent = projectEntity.getProjectContent();
+            this.createdBy = projectEntity.getCreatedBy();
+            this.creationDate = dateFormat.parse(dateFormat.format(projectEntity.getCreationDate()));
+            this.lastUpdatedBy = projectEntity.getLastUpdatedBy();
+            this.lastUpdateDate = dateFormat.parse(dateFormat.format(projectEntity.getLastUpdateDate()));
+            this.star = projectEntity.getStar();
+            this.deleted = projectEntity.getDeleted();
+            this.questionnaireCount = projectEntity.getQuestionnaireCount();
         }
     }
 

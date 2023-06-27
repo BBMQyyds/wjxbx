@@ -1,10 +1,11 @@
 package com.jdsbbmq.wjxbx.service;
 
-import com.jdsbbmq.wjxbx.bean.question.AnswerRequest;
+import com.jdsbbmq.wjxbx.bean.answer.AnswerRequest;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 

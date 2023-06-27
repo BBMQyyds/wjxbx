@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jdsbbmq.wjxbx.dao.AnswerEntityMapper">
+
+    <select id="selectAnswerByPage" resultMap="answerEntityMap">
+        SELECT qa.*, u.username, q.questionnaire_name
+        FROM questionnaire_answer qa
+        JOIN user u ON qa.user_id = u.id
+        JOIN questionnaire q ON qa.questionnaire_id = q.id
+        JOIN (SELECT id FROM questionnaire WHERE project_id = #{id}) qn ON qn.id = qa.questionnaire_id
+        WHERE (u.username LIKE CONCAT('%', #{searchKeyWord}, '%') OR q.questionnaire_name LIKE CONCAT('%',
+        #{searchKeyWord}, '%'))
+        <if test="sort != null and sort != ''">
+            ORDER BY create_date ${sort}
+        </if>
+        <if test="pageSize != 0">
+            LIMIT #{pageSize} OFFSET #{offset}
+        </if>
+    </select>
+
+    <resultMap id="answerEntityMap" type="AnswerEntity">
+        <id property="id" column="id"/>
+        <result property="questionnaireId" column="questionnaire_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="questionnaireContent" column="questionnaire_content"/>
+        <result property="createDate" column="create_date"/>
+        <result property="username" column="username"/>
+        <result property="questionnaireName" column="questionnaire_name"/>
+    </resultMap>
+</mapper>

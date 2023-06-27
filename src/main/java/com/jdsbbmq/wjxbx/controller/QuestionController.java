@@ -1,6 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
-import com.jdsbbmq.wjxbx.bean.question.AnswerRequest;
+import com.jdsbbmq.wjxbx.bean.answer.AnswerRequest;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 

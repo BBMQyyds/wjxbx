@@ -72,7 +72,7 @@ public class QuestionControllerTests {
     @Transactional
     //设计问卷问题
     public void insertDesignQuestionTest() throws Exception {
-        DesignRequest designRequest=new DesignRequest("1d2489bc-5da0-43ff-9a7c-7533c0a59e99",new ArrayList<Question>());
+        DesignRequest designRequest = new DesignRequest("1d2489bc-5da0-43ff-9a7c-7533c0a59e99", new ArrayList<Question>());
         String jsonProject = new ObjectMapper().writeValueAsString(designRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/insertDesignQuestion")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -94,7 +94,7 @@ public class QuestionControllerTests {
     @Transactional
     //将问卷问题放入个人题库接口
     public void insertPrivateQuestionTest() throws Exception {
-        UpdateQuestionStarRequest updateQuestionStarRequest=new UpdateQuestionStarRequest("53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f","1d2489bc-5da0-43ff-9a7c-7533c0a59e99");
+        UpdateQuestionStarRequest updateQuestionStarRequest = new UpdateQuestionStarRequest("53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f", "1d2489bc-5da0-43ff-9a7c-7533c0a59e99");
         String jsonProject = new ObjectMapper().writeValueAsString(updateQuestionStarRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/insertPrivateQuestion")
                         .contentType(MediaType.APPLICATION_JSON)

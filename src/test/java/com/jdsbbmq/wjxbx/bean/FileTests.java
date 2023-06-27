@@ -17,7 +17,7 @@ public class FileTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        File file = new File("1", "2",new Date(), "3", new Date(),  "4");
+        File file = new File("1", "2", new Date(), "3", new Date(), "4");
         if (file == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息

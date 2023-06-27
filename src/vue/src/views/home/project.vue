@@ -42,7 +42,9 @@
                   <div id="star">
                     <div class="project-info">
                       <div :title="project.id" class="project-id">ID：{{ project.id.substr(0, 8) }}...</div>
-                      <div class="project-qnc">问卷数：{{ project.questionnaireCount }}</div>
+                      <div class="project-qnc" @click="toAnswerList(project.id)">
+                        问卷数：{{ project.questionnaireCount }}
+                      </div>
                     </div>
                     <el-icon v-if="project.star===1&&menuItem!=='deleted'" id="on" class="el-icon-star-on"
                              @click="starOff(project)"></el-icon>
@@ -316,6 +318,14 @@ export default {
           message: '取消星标失败，请稍后重试',
           type: 'error'
         });
+      });
+    },
+    toAnswerList(id) {
+      router.push({
+        path: '/answerList',
+        query: {
+          id: id,
+        },
       });
     },
     toQuestionnaire(id) {
@@ -766,6 +776,11 @@ export default {
 }
 
 .project-name:hover {
+  cursor: pointer;
+  color: #207EFF;
+}
+
+.project-qnc:hover {
   cursor: pointer;
   color: #207EFF;
 }

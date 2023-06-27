@@ -2,7 +2,6 @@ package com.jdsbbmq.wjxbx.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
-import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.bean.questionnaire.Questionnaire;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -72,7 +71,7 @@ public class QuestionnaireControllerTests {
     @Test
     // 分页查询问卷
     public void selectQuestionnaireByPageTest() throws Exception {
-        QueryRequest queryRequest = new QueryRequest("04a0dba4-06fe-49dc-8200-3a2c92021803","1","2","3",1,2,3,"4");
+        QueryRequest queryRequest = new QueryRequest("04a0dba4-06fe-49dc-8200-3a2c92021803", "1", "2", "3", 1, 2, 3, "4");
         String jsonProject = new ObjectMapper().writeValueAsString(queryRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/selectQuestionnaireByPage")
                         .contentType(MediaType.APPLICATION_JSON)

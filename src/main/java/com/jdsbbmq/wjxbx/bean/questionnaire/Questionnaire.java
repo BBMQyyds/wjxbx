@@ -52,29 +52,29 @@ public class Questionnaire {
         if (questionnaireEntity == null) {
             return;
         } else {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                this.id = questionnaireEntity.getId();
-                this.projectId = questionnaireEntity.getProjectId();
-                this.questionnaireName = questionnaireEntity.getQuestionnaireName();
-                this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
-                this.creationDate = dateFormat.parse(dateFormat.format(questionnaireEntity.getCreationDate()));
-                this.startTime = questionnaireEntity.getStartTime();
-                this.endTime = questionnaireEntity.getEndTime();
-                this.questionCount = questionnaireEntity.getQuestionCount();
-                this.answerCount = questionnaireEntity.getAnswerCount();
-                this.star = questionnaireEntity.getStar();
-                this.deleted = questionnaireEntity.getDeleted();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            this.id = questionnaireEntity.getId();
+            this.projectId = questionnaireEntity.getProjectId();
+            this.questionnaireName = questionnaireEntity.getQuestionnaireName();
+            this.questionnaireDescription = questionnaireEntity.getQuestionnaireDescription();
+            this.creationDate = dateFormat.parse(dateFormat.format(questionnaireEntity.getCreationDate()));
+            this.startTime = questionnaireEntity.getStartTime();
+            this.endTime = questionnaireEntity.getEndTime();
+            this.questionCount = questionnaireEntity.getQuestionCount();
+            this.answerCount = questionnaireEntity.getAnswerCount();
+            this.star = questionnaireEntity.getStar();
+            this.deleted = questionnaireEntity.getDeleted();
         }
     }
 
     @PostConstruct
     public void init() throws ParseException {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
-            this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
-            this.questionCount = 0; // 设置默认的问题数量
-            this.answerCount = 0; // 设置默认的回答数量
-            this.star = 0; // 设置默认的收藏
-            this.deleted = 0; // 设置默认的删除
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.id = java.util.UUID.randomUUID().toString(); // 设置默认的id
+        this.creationDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的创建时间
+        this.questionCount = 0; // 设置默认的问题数量
+        this.answerCount = 0; // 设置默认的回答数量
+        this.star = 0; // 设置默认的收藏
+        this.deleted = 0; // 设置默认的删除
     }
 }

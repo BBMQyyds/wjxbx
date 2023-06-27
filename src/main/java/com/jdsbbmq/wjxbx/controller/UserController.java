@@ -1,7 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
 import com.jdsbbmq.wjxbx.bean.QueryRequest;
-import com.jdsbbmq.wjxbx.bean.project.Project;
 import com.jdsbbmq.wjxbx.bean.user.ChangeRequest;
 import com.jdsbbmq.wjxbx.bean.user.LoginRequest;
 import com.jdsbbmq.wjxbx.bean.user.User;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -46,7 +44,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "未找到对应的用户信息")
     })
     public CompletableFuture<User> selectUserById(@RequestBody String id) {
-       return userService.selectUserById(id);
+        return userService.selectUserById(id);
     }
 
     // 查询所有用户
@@ -59,7 +57,7 @@ public class UserController {
     //分页寻找用户
     @Operation(summary = "分页寻找用户", description = "能为用户分页寻找他的项目")
     @RequestMapping(value = "/selectUserByPage", method = RequestMethod.POST)
-    public CompletableFuture<List<User>> selectUserByPage(@RequestBody QueryRequest queryRequest) throws ParseException {
+    public CompletableFuture<List<User>> selectUserByPage(@RequestBody QueryRequest queryRequest) {
         return userService.selectUserByPage(queryRequest);
     }
 

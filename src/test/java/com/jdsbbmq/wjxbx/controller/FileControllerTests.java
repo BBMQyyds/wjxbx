@@ -30,7 +30,7 @@ public class FileControllerTests {
     @Transactional
     //插入一个文件夹
     public void insertFileTest() throws Exception {
-        File file=new File("216c6b4f-12e2-4012-a029-37b15c965599","1",new Date(),"2",new Date(),"216c6b4f-12e2-4012-a029-37b15c965547");
+        File file = new File("216c6b4f-12e2-4012-a029-37b15c965599", "1", new Date(), "2", new Date(), "216c6b4f-12e2-4012-a029-37b15c965547");
         String jsonProject = new ObjectMapper().writeValueAsString(file);
         mockMvc.perform(MockMvcRequestBuilders.post("/insertFile")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -52,7 +52,7 @@ public class FileControllerTests {
     @Transactional
     //复制一个文件夹
     public void insertCopyFileTest() throws Exception {
-        File file=new File("216c6b4f-12e2-4012-a029-37b15c965599","1",new Date(),"2",new Date(),"216c6b4f-12e2-4012-a029-37b15c965547");
+        File file = new File("216c6b4f-12e2-4012-a029-37b15c965599", "1", new Date(), "2", new Date(), "216c6b4f-12e2-4012-a029-37b15c965547");
         String jsonProject = new ObjectMapper().writeValueAsString(file);
         mockMvc.perform(MockMvcRequestBuilders.post("/insertCopyFile")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -74,7 +74,7 @@ public class FileControllerTests {
     @Transactional
     //更新一个文件夹
     public void updateFileTest() throws Exception {
-        File file=new File("216c6b4f-12e2-4012-a029-37b15c965599","1",new Date(),"2",new Date(),"216c6b4f-12e2-4012-a029-37b15c965547");
+        File file = new File("216c6b4f-12e2-4012-a029-37b15c965599", "1", new Date(), "2", new Date(), "216c6b4f-12e2-4012-a029-37b15c965547");
         String jsonProject = new ObjectMapper().writeValueAsString(file);
         mockMvc.perform(MockMvcRequestBuilders.post("/updateFile")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -96,7 +96,7 @@ public class FileControllerTests {
     @Transactional
     //删除一个文件夹
     public void deleteFileTest() throws Exception {
-        File file=new File("216c6b4f-12e2-4012-a029-37b15c965599","1",new Date(),"2",new Date(),"216c6b4f-12e2-4012-a029-37b15c965547");
+        File file = new File("216c6b4f-12e2-4012-a029-37b15c965599", "1", new Date(), "2", new Date(), "216c6b4f-12e2-4012-a029-37b15c965547");
         String jsonProject = new ObjectMapper().writeValueAsString(file);
         mockMvc.perform(MockMvcRequestBuilders.post("/deleteFile")
                         .contentType(MediaType.APPLICATION_JSON)

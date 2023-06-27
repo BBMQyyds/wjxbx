@@ -95,7 +95,7 @@ public class ProjectControllerTests {
     @Test
     // 分页查找项目
     public void selectProjectByPageTest() throws Exception {
-        QueryRequest queryRequest = new QueryRequest("862c186d-b73b-49d7-af4c-b3b6effe799e","1","2","3",1,2,3,"4");
+        QueryRequest queryRequest = new QueryRequest("862c186d-b73b-49d7-af4c-b3b6effe799e", "1", "2", "3", 1, 2, 3, "4");
         String jsonProject = new ObjectMapper().writeValueAsString(queryRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/selectProjectByPage")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -255,7 +255,7 @@ public class ProjectControllerTests {
     @Transactional
     //清空回收站
     public void deleteAllProjectRecycledTest() throws Exception {
-        String id="53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        String id = "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
         mockMvc.perform(MockMvcRequestBuilders.post("/deleteAllProjectRecycled")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(id))

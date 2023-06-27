@@ -75,6 +75,15 @@ const routes = [
         }
     },
     {
+        name: 'answerList',
+        path: '/answerList',
+        component: () => import('@/views/home/answerList'),
+        meta: {
+            keepAlive: false,
+            title: '问卷星不星-答卷统计'
+        }
+    },
+    {
         name: 'register',
         path: '/register',
         component: () => import('@/views/register'),

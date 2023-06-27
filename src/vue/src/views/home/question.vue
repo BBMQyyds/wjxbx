@@ -4,65 +4,65 @@
     <div id="con">
       <el-container id="type">
         <el-button-group id="itemType">
-          <el-button class="item-button" :disabled="itemType === 'type'" type="info"
+          <el-button :disabled="itemType === 'type'" class="item-button" type="info"
                      @click="changeSortType('type')">题型
           </el-button>
-          <el-button class="item-button" :disabled="itemType === 'bank'" type="info"
+          <el-button :disabled="itemType === 'bank'" class="item-button" type="info"
                      @click="changeSortType('bank')">题库
           </el-button>
         </el-button-group>
-        <el-container id="question-type" v-if="itemType === 'type'">
+        <el-container v-if="itemType === 'type'" id="question-type">
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="不少于2个选项，不多于6个选项"
+            <el-button class="type-button" title="不少于2个选项，不多于6个选项" type="primary"
                        @click="addSimple(this.questionnaire.questions.length-1,'down')">单选题
             </el-button>
             <div class="type-format">
               <span>请输入选项数：</span>
-              <el-input-number size="small" step-strictly
-                               v-model="radioOptionCount" :min="2" :max="6" :step="1" label="选项数">
+              <el-input-number v-model="radioOptionCount" :max="6"
+                               :min="2" :step="1" label="选项数" size="small" step-strictly>
               </el-input-number>
             </div>
           </div>
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="不少于2个选项，不多于6个选项"
+            <el-button class="type-button" title="不少于2个选项，不多于6个选项" type="primary"
                        @click="addMultiple(this.questionnaire.questions.length-1,'down')">多选题
             </el-button>
             <div class="type-format">
               <span>请输入选项数：</span>
-              <el-input-number size="small" step-strictly
-                               v-model="choiceOptionCount" :min="2" :max="6" :step="1" label="选项数">
+              <el-input-number v-model="choiceOptionCount" :max="6"
+                               :min="2" :step="1" label="选项数" size="small" step-strictly>
               </el-input-number>
             </div>
           </div>
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="不少于1个空格，不多于4个空格"
+            <el-button class="type-button" title="不少于1个空格，不多于4个空格" type="primary"
                        @click="addBlank(this.questionnaire.questions.length-1,'down')">填空题
             </el-button>
             <div class="type-format">
               <span>请输入空格数：</span>
-              <el-input-number size="small" step-strictly
-                               v-model="blankCount" :min="1" :max="4" :step="1" label="空格数">
+              <el-input-number v-model="blankCount" :max="4"
+                               :min="1" :step="1" label="空格数" size="small" step-strictly>
               </el-input-number>
             </div>
           </div>
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="不少于2个语句，不多于6个语句"
+            <el-button class="type-button" title="不少于2个语句，不多于6个语句" type="primary"
                        @click="addSort(this.questionnaire.questions.length-1,'down')">排序题
             </el-button>
             <div class="type-format">
               <span>请选择语句数：</span>
-              <el-input-number size="small" step-strictly
-                               v-model="sortCount" :min="2" :max="6" :step="1" label="语句数">
+              <el-input-number v-model="sortCount" :max="6"
+                               :min="2" :step="1" label="语句数" size="small" step-strictly>
               </el-input-number>
             </div>
           </div>
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="分为是/否,T/F,yes/no三种格式"
+            <el-button class="type-button" title="分为是/否,T/F,yes/no三种格式" type="primary"
                        @click="addJudge(this.questionnaire.questions.length-1,'down')">判断题
             </el-button>
             <!--选择格式：是/否,T/F,yes/no-->
@@ -79,7 +79,7 @@
           </div>
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="分为百分制，十分制，五分制三种格式"
+            <el-button class="type-button" title="分为百分制，十分制，五分制三种格式" type="primary"
                        @click="addGrade(this.questionnaire.questions.length-1,'down')">评分题
             </el-button>
             <div class="type-format">
@@ -95,13 +95,13 @@
           </div>
           <hr>
           <div class="types">
-            <el-button class="type-button" type="primary" title="不少于50字，不多于500字"
+            <el-button class="type-button" title="不少于50字，不多于500字" type="primary"
                        @click="addSimpleAnswer(this.questionnaire.questions.length-1,'down')">简答题
             </el-button>
             <div class="type-format">
               <span>请输入字数限制：</span>
-              <el-input-number size="small" step-strictly
-                               v-model="answerSize" :min="50" :max="500" :step="50" label="字数限制">
+              <el-input-number v-model="answerSize" :max="500"
+                               :min="50" :step="50" label="字数限制" size="small" step-strictly>
               </el-input-number>
             </div>
           </div>
@@ -120,7 +120,7 @@
           <!--            </div>-->
           <!--          </div>-->
         </el-container>
-        <el-container id="question-type" v-if="itemType === 'bank'">
+        <el-container v-if="itemType === 'bank'" id="question-type">
           <hr>
           <div id="bank-private" style="text-align: center;">
             <span style="font-size: 20px;font-weight: bold;margin-bottom: 20px;">个人题库</span>
@@ -130,8 +130,8 @@
                       style="margin-top: 10px;margin-bottom: 10px">
                 <el-col :span="3"></el-col>
                 <el-col :span="16">
-                  <el-button type="text" @click="addToQuestionnaire(this.privateBank,index)"
-                             :title="question.stem">
+                  <el-button :title="question.stem" type="text"
+                             @click="addToQuestionnaire(this.privateBank,index)">
                     {{ question.type }}&ensp;
                     {{ question.stem.length > 15 ? question.stem.substring(0, 15) + '...' : question.stem }}
                   </el-button>
@@ -154,8 +154,8 @@
                       style="margin-top: 10px;margin-bottom: 10px">
                 <el-col :span="3"></el-col>
                 <el-col :span="16">
-                  <el-button type="text" @click="addToQuestionnaire(this.publicBank,index)"
-                             :title="question.stem">
+                  <el-button :title="question.stem" type="text"
+                             @click="addToQuestionnaire(this.publicBank,index)">
                     {{ question.type }}&ensp;
                     {{ question.stem.length > 20 ? question.stem.substring(0, 20) + '...' : question.stem }}
                   </el-button>
@@ -179,9 +179,9 @@
             <div class="ques-type" style="align-items: center;">
               <span style="margin-right: 10px">{{ index + 1 }}.&emsp;{{ question.type }}</span>
               <el-icon v-if="question.star!==0" class="el-icon-star-on"
-                       @click="starOff(question)" style=" color: #207EFF;"></el-icon>
+                       style=" color: #207EFF;" @click="starOff(question)"></el-icon>
               <el-icon v-if="question.star===0" class="el-icon-star-on"
-                       @click="starOn(question)" style="color: #C0C0C0;"></el-icon>
+                       style="color: #C0C0C0;" @click="starOn(question)"></el-icon>
             </div>
             <!--根据type生成不同的题型，并生成真实的题目格式-->
             <!--可编辑题干、选项等内容-->
@@ -189,8 +189,8 @@
             <div v-if="question.type === '单选题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
+                            style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <div class="ques-option">
@@ -205,11 +205,11 @@
                   </div>
                 </el-radio-group>
                 <div class="ques-addition">
-                  <el-button class="small_btns" :disabled="question.options.length === radioMax"
-                             type="success" size="small" @click="plus(question.options,radioMax)">加
+                  <el-button :disabled="question.options.length === radioMax" class="small_btns"
+                             size="small" type="success" @click="plus(question.options,radioMax)">加
                   </el-button>
-                  <el-button class="small_btns" :disabled="question.options.length === radioMin"
-                             type="warning" size="small" @click="sub(question.options,radioMin)">减
+                  <el-button :disabled="question.options.length === radioMin" class="small_btns"
+                             size="small" type="warning" @click="sub(question.options,radioMin)">减
                   </el-button>
                 </div>
               </div>
@@ -218,8 +218,8 @@
             <div v-if="question.type === '多选题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
+                            style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <div class="ques-option">
@@ -233,11 +233,11 @@
                   </div>
                 </div>
                 <div class="ques-addition">
-                  <el-button class="small_btns" :disabled="question.options.length === choiceMax"
-                             type="success" size="small" @click="plus(question.options,choiceMax)">加
+                  <el-button :disabled="question.options.length === choiceMax" class="small_btns"
+                             size="small" type="success" @click="plus(question.options,choiceMax)">加
                   </el-button>
-                  <el-button class="small_btns" :disabled="question.options.length === choiceMin"
-                             type="warning" size="small" @click="sub(question.options,choiceMin)">减
+                  <el-button :disabled="question.options.length === choiceMin" class="small_btns"
+                             size="small" type="warning" @click="sub(question.options,choiceMin)">减
                   </el-button>
                 </div>
               </div>
@@ -246,8 +246,8 @@
             <div v-if="question.type === '排序题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
+                            style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <div class="ques-option">
@@ -257,21 +257,21 @@
                   <div class="option-row">
                     <el-input v-model="question.options[index]" placeholder="请输入选项"
                               style="margin-right: 40px;"></el-input>
-                    <el-button class="small_btns" type="primary" size="small" @click="optionUp(question.options,index)">
+                    <el-button class="small_btns" size="small" type="primary" @click="optionUp(question.options,index)">
                       上移
                     </el-button>
-                    <el-button class="small_btns" type="primary" size="small"
+                    <el-button class="small_btns" size="small" type="primary"
                                @click="optionDown(question.options,index)">
                       下移
                     </el-button>
                   </div>
                 </div>
                 <div class="ques-addition">
-                  <el-button class="small_btns" :disabled="question.options.length === sortMax"
-                             type="success" size="small" @click="plus(question.options,sortMax)">加
+                  <el-button :disabled="question.options.length === sortMax" class="small_btns"
+                             size="small" type="success" @click="plus(question.options,sortMax)">加
                   </el-button>
-                  <el-button class="small_btns" :disabled="question.options.length === sortMin"
-                             type="warning" size="small" @click="sub(question.options,sortMin)">减
+                  <el-button :disabled="question.options.length === sortMin" class="small_btns"
+                             size="small" type="warning" @click="sub(question.options,sortMin)">减
                   </el-button>
                 </div>
               </div>
@@ -281,13 +281,13 @@
             <div v-if="question.type === '评分题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
+                            style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <div class="ques-option">
                 <div v-if="question.format === '五分制'">
-                  <el-rate disabled v-model="question.related" :max="5"></el-rate>
+                  <el-rate v-model="question.related" :max="5" disabled></el-rate>
                 </div>
                 <div v-if="question.format === '十分制'">
                   <el-radio-group v-model="question.related" disabled>
@@ -304,8 +304,8 @@
                   </el-radio-group>
                 </div>
                 <div v-if="question.format === '百分制'">
-                  <el-input-number disabled size="small" step-strictly
-                                   v-model="question.related" :min="0" :max="100" :step="1" label="分数">
+                  <el-input-number v-model="question.related" :max="100" :min="0"
+                                   :step="1" disabled label="分数" size="small" step-strictly>
                   </el-input-number>
                 </div>
               </div>
@@ -314,15 +314,15 @@
             <div v-if="question.type === '填空题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;"
-                            v-model="question.stem" placeholder="请输入题干" autosize></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize
+                            placeholder="请输入题干" style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <!--添加空格按钮-->
               <div class="ques-operation">
                 <el-button :disabled="(question.stem.split(' &______& ').length - 1) >= 4"
-                           style="margin-right: 20px"
-                           class="small_btns" type="success" size="small" @click="addSpace(question)">添加空格符
+                           class="small_btns"
+                           size="small" style="margin-right: 20px" type="success" @click="addSpace(question)">添加空格符
                 </el-button>
                 <span style="color: #C0C0C0">&______&为填空符，不少于1个，不多于4个</span>
               </div>
@@ -331,19 +331,19 @@
             <div v-if="question.type === '简答题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
+                            style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <div class="ques-answer">
                 <div style="margin-bottom: 10px;align-items: center;">
                   <span>字数限制：</span>
-                  <el-input-number size="small" step-strictly
-                                   v-model="question.related" :min="50" :max="500" :step="50" label="字数">
+                  <el-input-number v-model="question.related" :max="500"
+                                   :min="50" :step="50" label="字数" size="small" step-strictly>
                   </el-input-number>
                 </div>
-                <el-input disabled type="textarea" placeholder="请输入答案"
-                          :rows="3" :resize="'none'"></el-input>
+                <el-input :resize="'none'" :rows="3" disabled
+                          placeholder="请输入答案" type="textarea"></el-input>
               </div>
             </div>
             <!--            &lt;!&ndash;文件上传&ndash;&gt;-->
@@ -370,8 +370,8 @@
             <div v-if="question.type === '判断题'">
               <div class="ques-stem">
                 <el-form-item prop="stem">
-                  <el-input type="textarea" :resize="'none'" :rows="1" style="width: 75%;" autosize
-                            v-model="question.stem" placeholder="请输入题干"></el-input>
+                  <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
+                            style="width: 75%;" type="textarea"></el-input>
                 </el-form-item>
               </div>
               <div class="ques-option">
@@ -397,30 +397,30 @@
             </div>
             <!--置顶、上移、下移、置底-->
             <div class="ques-operation">
-              <el-button class="small_btns" type="info" size="small" @click="toTop(index)">置顶</el-button>
-              <el-button class="small_btns" type="info" size="small" @click="toUp(index)">上移</el-button>
-              <el-button class="small_btns" type="info" size="small" @click="toDown(index)">下移</el-button>
-              <el-button class="small_btns" type="info" size="small" @click="toBottom(index)">置底</el-button>
+              <el-button class="small_btns" size="small" type="info" @click="toTop(index)">置顶</el-button>
+              <el-button class="small_btns" size="small" type="info" @click="toUp(index)">上移</el-button>
+              <el-button class="small_btns" size="small" type="info" @click="toDown(index)">下移</el-button>
+              <el-button class="small_btns" size="small" type="info" @click="toBottom(index)">置底</el-button>
             </div>
             <div class="ques-operation">
-              <el-button class="small_btns" type="primary" size="small" @click="insertUp(index)">上方插入</el-button>
-              <el-button class="small_btns" type="primary" size="small" @click="insertDown(index)">下方插入</el-button>
-              <el-button class="small_btns" type="danger" size="small" @click="deleteQuestion(index)">删除</el-button>
+              <el-button class="small_btns" size="small" type="primary" @click="insertUp(index)">上方插入</el-button>
+              <el-button class="small_btns" size="small" type="primary" @click="insertDown(index)">下方插入</el-button>
+              <el-button class="small_btns" size="small" type="danger" @click="deleteQuestion(index)">删除</el-button>
             </div>
             <hr>
           </el-form>
         </div>
         <!--保存、退出按钮-->
         <div class="ques-save">
-          <el-button type="primary" size="default" @click="save" style="margin-right: 40px;">保&emsp;存</el-button>
-          <el-button type="success" size="default" @click="preview" style="margin-right: 40px;">预&emsp;览</el-button>
-          <el-button type="danger" size="default" @click="exit">退&emsp;出</el-button>
+          <el-button size="default" style="margin-right: 40px;" type="primary" @click="save">保&emsp;存</el-button>
+          <el-button size="default" style="margin-right: 40px;" type="success" @click="preview">预&emsp;览</el-button>
+          <el-button size="default" type="danger" @click="exit">退&emsp;出</el-button>
         </div>
       </el-container>
     </div>
     <!--选择题型弹窗,从七种题型中选一种进行插入-->
     <!--questionTypes: ['单选题', '多选题', '判断题', '填空题', '简答题', '评分题', '排序题', '文件上传'],-->
-    <el-dialog title="选择题型" v-model="dialogVisible" :before-close="handleClose">
+    <el-dialog v-model="dialogVisible" :before-close="handleClose" title="选择题型">
       <div style="text-align: center;margin-bottom: 40px">
         <el-radio-group v-model="questionType">
           <el-radio-button label="单选题">单选题</el-radio-button>
@@ -434,7 +434,7 @@
         </el-radio-group>
       </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false" style="margin-right: 40px;">取 消</el-button>
+        <el-button style="margin-right: 40px;" @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="insert">确 定</el-button>
       </span>
     </el-dialog>
@@ -525,7 +525,7 @@ export default {
       }).catch(err => {
         console.log(err);
       });
-      plainRequest.post('/selectPrivateQuestion','************************************').then(res => {
+      plainRequest.post('/selectPrivateQuestion', '************************************').then(res => {
         console.log(res);
         this.publicBank = res.data;
       }).catch(err => {
@@ -787,8 +787,8 @@ export default {
       } else if (this.questionType === '简答题') {
         this.addSimpleAnswer(this.insertIndex, this.insertType);
       }
-      // else if (this.questionType === '文件上传') {
-      //   this.addFile(this.insertIndex, this.insertType);
+          // else if (this.questionType === '文件上传') {
+          //   this.addFile(this.insertIndex, this.insertType);
       // }
       else if (this.questionType === '排序题') {
         this.addSort(this.insertIndex, this.insertType);

@@ -5,14 +5,15 @@ import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Mapper
 @Repository
 public interface QuestionEntityMapper {
-        /*
-           查询
-        */
+    /*
+       查询
+    */
     //根据所给的问卷Id，查找其设计的问题
     public List<QuestionEntity> selectQuestionById(String questionnaireId);
 
@@ -49,14 +50,15 @@ public interface QuestionEntityMapper {
     public int deletePrivateQuestionById(String id);
 
 
-        /*
-           辅助功能
-        */
+    /*
+       辅助功能
+    */
     //根据所给的问题Id，查找其设计的问题内容
     public String selectQuestionContentById(String questionId);
 
     //更新问题的收藏状态
     public int updateStarOnQuestion(String questionId);
+
     //取消问题的收藏状态
     public int updateStarOffQuestion(String questionId);
 

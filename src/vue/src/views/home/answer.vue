@@ -64,10 +64,10 @@
                 <!--语句后有上下移按钮，但disabled-->
                 <div class="option-row">
                   <span style="margin-right: 40px;">{{ question.options[index] }}</span>
-                  <el-button class="small_btns" type="primary" size="small" @click="optionUp(question.options,index)">
+                  <el-button class="small_btns" size="small" type="primary" @click="optionUp(question.options,index)">
                     上移
                   </el-button>
-                  <el-button class="small_btns" type="primary" size="small"
+                  <el-button class="small_btns" size="small" type="primary"
                              @click="optionDown(question.options,index)">
                     下移
                   </el-button>
@@ -100,8 +100,8 @@
                 </el-radio-group>
               </div>
               <div v-if="question.format === '百分制'">
-                <el-input-number size="small" step-strictly
-                                 v-model="question.answer" :min="0" :max="100" :step="1" label="分数">
+                <el-input-number v-model="question.answer" :max="100"
+                                 :min="0" :step="1" label="分数" size="small" step-strictly>
                 </el-input-number>
               </div>
             </div>
@@ -116,8 +116,8 @@
               <div v-for="(answer, index) in question.answer" :key="index"
                    class="option-input">
                 <div class="option-row">
-                  <el-input type="textarea" placeholder="请输入答案" v-model="question.answer[index]"
-                            :rows="1" :resize="'none'"></el-input>
+                  <el-input v-model="question.answer[index]" :resize="'none'" :rows="1"
+                            placeholder="请输入答案" type="textarea"></el-input>
                 </div>
               </div>
             </div>
@@ -131,8 +131,8 @@
               <div style="margin-bottom: 10px;align-items: center;">
                 <span style="font-size: 12px">字数限制：{{ question.related }}</span>
               </div>
-              <el-input type="textarea" placeholder="请输入答案" v-model="question.answer" :maxlength="question.related"
-                        :rows="3" :resize="'none'"></el-input>
+              <el-input v-model="question.answer" :maxlength="question.related" :resize="'none'" :rows="3"
+                        placeholder="请输入答案" type="textarea"></el-input>
             </div>
           </div>
           <!--判断题（生成不同的评分形式，yes/no,T/F,是/否）-->
@@ -164,8 +164,8 @@
           <hr>
         </div>
         <!--保存、退出按钮-->
-        <div class="ques-save" v-if="this.$route.query.preview !== 'true'">
-          <el-button type="primary" size="default" @click="submit">提&emsp;交</el-button>
+        <div v-if="this.$route.query.preview !== 'true'" class="ques-save">
+          <el-button size="default" type="primary" @click="submit">提&emsp;交</el-button>
         </div>
       </el-container>
     </div>

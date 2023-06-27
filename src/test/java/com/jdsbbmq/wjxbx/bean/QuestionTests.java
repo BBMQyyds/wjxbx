@@ -19,7 +19,7 @@ public class QuestionTests {
     @Test
     //全参构造
     public void allArgsConstructorTest() {
-        Question question = new Question("1", "2", "3", new ArrayList<String>(),"4","5","6",5);
+        Question question = new Question("1", "2", "3", new ArrayList<String>(), "4", "5", "6", 5);
         if (question == null) {
             System.out.println("全参构造失败");
             // 记录error级别的信息

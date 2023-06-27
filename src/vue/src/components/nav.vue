@@ -2,7 +2,7 @@
   <div id="all">
     <div class="header">
       <div class="box">
-        <h1 @click="back" :title="'点击返回上一界面'">
+        <h1 :title="'点击返回上一界面'" @click="back">
           <img alt="logo" src="../assets/img/icon/icon高清.png">
           <span>问卷星不星</span>
         </h1>
@@ -11,7 +11,7 @@
         <img alt="关于" class="png icon-png" src="../assets/img/png/关于.png">
         <img alt="文件夹" class="png icon-png" src="../assets/img/png/文件夹.png">
         <img alt="消息" class="png icon-png" src="../assets/img/png/消息.png">
-        <Avatar></Avatar>
+        <Avatar @click="logout"></Avatar>
       </nav>
     </div>
   </div>
@@ -29,13 +29,15 @@ export default {
   },
   methods: {
     back() {
-      // if (localStorage.getItem("auto") != null) {
-      //   localStorage.removeItem("auto");
-      // }
-      // sessionStorage.removeItem("username");
-      // sessionStorage.removeItem("password");
-      // router.push({path: '/login'});
       router.back();
+    },
+    logout() {
+      if (localStorage.getItem("auto") != null) {
+        localStorage.removeItem("auto");
+      }
+      sessionStorage.removeItem("username");
+      sessionStorage.removeItem("password");
+      router.push({path: '/login'});
     }
   }
 }
