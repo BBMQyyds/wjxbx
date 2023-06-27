@@ -103,10 +103,10 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
         questionnaireEntity.setCreationDate(dateFormat.parse(dateFormat.format(new Date())));
         questionnaireEntityMapper.insertQuestionnaire(questionnaireEntity);
         projectEntityMapper.addProjectQuestionnaireCount(questionnaireEntity.getProjectId());
-        List<QuestionEntity> listQuestion = questionEntityMapper.selectQuestionById(questionnaireId);
-        for (QuestionEntity questionEntity : listQuestion) {
+        for (QuestionEntity questionEntity : questionEntityMapper.selectQuestionById(questionnaireId)) {
             questionEntity.setQuestionId(UUID.randomUUID().toString());
             questionEntity.setId(questionnaireEntity.getId());
+            questionEntity.setStar(0);
             questionEntityMapper.insertQuestion(questionEntity);
         }
         return CompletableFuture.completedFuture(1);

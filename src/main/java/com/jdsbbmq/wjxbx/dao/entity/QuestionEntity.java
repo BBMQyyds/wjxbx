@@ -1,6 +1,9 @@
 package com.jdsbbmq.wjxbx.dao.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,4 +16,7 @@ public class QuestionEntity {
     private int sequence;
     private int star;
     private String questionContent;
+    private List<String> relatedFatherList;
+    private List<String> relatedSonList;
+    private String relatedContent;
 }

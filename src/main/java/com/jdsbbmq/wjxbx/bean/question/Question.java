@@ -31,4 +31,10 @@ public class Question {
     private String answer;
     @Schema(description = "是否被收藏")
     private int star;
+    @Schema(description = "依赖父id")
+    private List<String> relatedFatherList;
+    @Schema(description = "依赖子id")
+    private List<String> relatedSonList;
+    @Schema(description = "依赖内容")
+    private String relatedContent;
 }
