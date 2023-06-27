@@ -27,6 +27,8 @@ public class Question {
     private String format;
     @Schema(description = "与样式相关内容")
     private String related;
+    @Schema(description = "问题答案")
+    private String answer;
     @Schema(description = "是否被收藏")
     private int star;
 }

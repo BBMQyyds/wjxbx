@@ -1,6 +1,8 @@
 package com.jdsbbmq.wjxbx.dao;
 
+import com.jdsbbmq.wjxbx.dao.entity.AnswerEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -27,6 +29,9 @@ public interface QuestionEntityMapper {
 
     //将问卷问题放入个人题库
     public int insertPrivateQuestion(QuestionEntity questionEntity);
+
+    //增加答卷
+    public int insertAnswer(AnswerEntity answerEntity);
 
     //更新
 
@@ -55,6 +60,9 @@ public interface QuestionEntityMapper {
     public int deleteQuestionNotInList(List<QuestionEntity> questionEntityList);
 
     public int updateQuestionnaireQuestions(List<QuestionEntity> questionEntityList);
+
+    //更新问卷的问题数量
+    public int updateQuestionnaireQuestionCount(QuestionnaireEntity questionnaireEntity);
 
 
 }

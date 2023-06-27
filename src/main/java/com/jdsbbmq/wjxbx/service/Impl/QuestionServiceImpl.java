@@ -1,11 +1,15 @@
 package com.jdsbbmq.wjxbx.service.Impl;
 
 import com.google.gson.Gson;
+import com.jdsbbmq.wjxbx.bean.question.AnswerRequest;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
 import com.jdsbbmq.wjxbx.dao.QuestionEntityMapper;
+import com.jdsbbmq.wjxbx.dao.QuestionnaireEntityMapper;
+import com.jdsbbmq.wjxbx.dao.entity.AnswerEntity;
 import com.jdsbbmq.wjxbx.dao.entity.QuestionEntity;
+import com.jdsbbmq.wjxbx.dao.entity.QuestionnaireEntity;
 import com.jdsbbmq.wjxbx.service.QuestionService;
 import jakarta.annotation.Resource;
 import org.springframework.scheduling.annotation.Async;
@@ -20,6 +24,9 @@ import java.util.concurrent.CompletableFuture;
 public class QuestionServiceImpl implements QuestionService {
     @Resource
     private QuestionEntityMapper questionEntityMapper;
+
+    @Resource
+    private QuestionnaireEntityMapper questionnaireEntityMapper;
 
     /*
         查询
@@ -77,8 +84,30 @@ public class QuestionServiceImpl implements QuestionService {
                 questionEntityMapper.deleteQuestionNotInList(questionEntityList);
                 return CompletableFuture.completedFuture(1);
             }
+            QuestionnaireEntity questionnaireEntity = new QuestionnaireEntity();
+            questionnaireEntity.setQuestionCount(questionEntityList.size());
+            questionnaireEntity.setId(designRequest.getId());
+            questionEntityMapper.updateQuestionnaireQuestionCount(questionnaireEntity);
             questionEntityMapper.deleteQuestionNotInList(questionEntityList);
             questionEntityMapper.insertDesignQuestion(questionEntityList);
+            return CompletableFuture.completedFuture(1);
+        } catch (Exception e) {
+            throw new RuntimeException("插入设计问卷的问题失败");
+        }
+    }
+
+    @Override
+    @Async("asyncServiceExecutor")
+    @Transactional(rollbackFor = RuntimeException.class)
+    public CompletableFuture<Integer> insertAnswer(AnswerRequest answerRequest) {
+        try{
+            Gson gson=new Gson();
+            AnswerEntity answerEntity= new AnswerEntity(java.util.UUID.randomUUID().toString(),answerRequest.getUserId(),answerRequest.getQuestionnaireId(),gson.toJson(answerRequest.getQuestions()));
+            int a=questionEntityMapper.insertAnswer(answerEntity);
+            int b=questionnaireEntityMapper.updateOnAnswerCount(answerRequest.getQuestionnaireId());
+            if(a!=1||b!=1){
+                throw new RuntimeException("插入答卷失败");
+            }
             return CompletableFuture.completedFuture(1);
         } catch (Exception e) {
             throw new RuntimeException("插入设计问卷的问题失败");

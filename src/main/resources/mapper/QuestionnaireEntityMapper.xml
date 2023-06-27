@@ -100,6 +100,7 @@
         where id = #{id}
     </update>
 
+
     <!--删除问卷-->
     <delete id="deleteQuestionnaireById">
         delete
@@ -112,6 +113,22 @@
         where deleted = 1
           AND project_id = #{id}
     </delete>
+
+    <!--
+       辅助功能
+    -->
+    <!--增加答卷数量-->
+    <update id="updateOnAnswerCount">
+        update questionnaire
+        set answer_count = answer_count + 1
+        where id = #{id}
+    </update>
+    <!--减少答卷数量-->
+    <update id="updateOffAnswerCount">
+        update questionnaire
+        set answer_count = answer_count - 1
+        where id = #{id}
+    </update>
 
     <!--
        resultMap

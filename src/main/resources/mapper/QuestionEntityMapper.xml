@@ -8,6 +8,7 @@
         SELECT *
         FROM questionnaire_question
         WHERE questionnaire_id = #{id}
+        ORDER BY sequence asc
     </select>
 
     <!--查询私人题库中的问题-->
@@ -69,6 +70,11 @@
         INSERT INTO question (user_id, question_id, question_content)
         VALUES (#{id}, #{questionId}, #{questionContent})
     </insert>
+    <!--增加答卷-->
+    <insert id="insertAnswer">
+        INSERT INTO questionnaire_answer (id, user_id,questionnaire_id,questionnaire_content)
+        VALUES (#{id}, #{userId}, #{questionnaireId}, #{questionnaireContent})
+    </insert>
 
 
     <!--根据所给的问卷Id删除问卷中的问题-->
@@ -115,6 +121,12 @@
         UPDATE questionnaire_question
         SET star = 0
         WHERE question_id = #{questionId}
+    </update>
+    <!--更新问题的数量-->
+    <update id="updateQuestionnaireQuestionCount" parameterType="questionnaireEntity">
+        UPDATE questionnaire
+        SET question_count = #{questionCount}
+        WHERE id = #{id}
     </update>
 
 

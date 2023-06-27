@@ -59,4 +59,15 @@ public interface QuestionnaireEntityMapper {
 
     //清空回收站
     int deleteAllQuestionnaireRecycled(String id);
+
+
+    /*
+        辅助功能
+     */
+
+    //增加答卷数量
+    int updateOnAnswerCount(String id);
+
+    //减少答卷数量
+    int updateOffAnswerCount(String id);
 }

@@ -1,5 +1,6 @@
 package com.jdsbbmq.wjxbx.controller;
 
+import com.jdsbbmq.wjxbx.bean.question.AnswerRequest;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
@@ -47,6 +48,13 @@ public class QuestionController {
     @RequestMapping(value = "/insertDesignQuestion", method = RequestMethod.POST)
     public CompletableFuture<Integer> insertDesignQuestion(@RequestBody DesignRequest designRequest) {
         return questionService.insertDesignQuestion(designRequest);
+    }
+
+    //增加答卷
+    @Operation(summary = "增加答卷", description = "增加答卷")
+    @RequestMapping(value = "/insertAnswer", method = RequestMethod.POST)
+    public CompletableFuture<Integer> insertAnswer(@RequestBody AnswerRequest answerRequest) {
+        return questionService.insertAnswer(answerRequest);
     }
 
     //将问卷问题放入个人题库
