@@ -83,7 +83,7 @@ public class QuestionServiceImpl implements QuestionService {
             Gson gson = new Gson();
             List<QuestionEntity> questionEntityList = new ArrayList<>();
             for (int i = 0; i < designRequest.getQuestions().size(); i++) {
-                QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(), designRequest.getQuestions().get(i).getQuestionId(), i + 1, designRequest.getQuestions().get(i).getStar(), gson.toJson(designRequest.getQuestions().get(i)));
+                QuestionEntity questionEntity = new QuestionEntity(designRequest.getId(), designRequest.getQuestions().get(i).getQuestionId(), i + 1, designRequest.getQuestions().get(i).getStar(), gson.toJson(designRequest.getQuestions().get(i)),designRequest.getQuestions().get(i).getRelatedFatherList(),designRequest.getQuestions().get(i).getRelatedSonList(),designRequest.getQuestions().get(i).getRelatedContent());
                 questionEntityList.add(questionEntity);
             }
             if (questionEntityList.size() == 0) {
