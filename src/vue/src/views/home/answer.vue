@@ -295,7 +295,7 @@ export default {
         questionnaireId: this.questionnaire.questionnaireId,
         userId: sessionStorage.getItem('token') !== null ?
             sessionStorage.getItem('token') : '************************************',
-        questions: this.questionnaire.questions,
+        questions: JSON.parse(JSON.stringify(this.questionnaire.questions)),
       }
       console.log(this.questionnaire);
       request.post('insertAnswer', data).then(res => {
