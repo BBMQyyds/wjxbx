@@ -35,6 +35,4 @@ public class Question {
     private List<String> relatedFatherList;
     @Schema(description = "依赖子id")
     private List<String> relatedSonList;
-    @Schema(description = "依赖内容")
-    private String relatedContent;
 }
