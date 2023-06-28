@@ -133,7 +133,8 @@ export default {
         path: '/answer',
         query: {
           id: row.id,
-          detail: true
+          detail: true,
+          username: row.username,
         }
       });
     },

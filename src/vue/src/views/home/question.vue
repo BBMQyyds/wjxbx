@@ -183,11 +183,26 @@
               <el-icon v-if="question.star===0" class="el-icon-star-on"
                        style="color: #C0C0C0;" @click="starOn(question)"></el-icon>
             </div>
+            <div class="ques-relation">
+              <div>
+                <span v-if="question.relatedFatherList!==null && question.relatedFatherList!==undefined
+               && question.relatedFatherList.length!==0">
+                父题目：{{ fatherListToString(question.relatedFatherList) }}
+              </span>
+              </div>
+              <div>
+                <span v-if="question.relatedSonList!==null && question.relatedSonList!==undefined
+                && question.relatedSonList.length!==0">
+                子题目：{{ sonListToString(question.relatedSonList) }}
+              </span>
+              </div>
+            </div>
             <!--根据type生成不同的题型，并生成真实的题目格式-->
             <!--可编辑题干、选项等内容-->
             <!--单选（序号以ABCD形式展现，序号前有单选框）-->
             <div v-if="question.type === '单选题'">
               <div class="ques-stem">
+                <el-button type="primary" style="margin-bottom: 20px" @click="insertSon(index)">添加关联</el-button>
                 <el-form-item prop="stem">
                   <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
                             style="width: 75%;" type="textarea"></el-input>
@@ -217,6 +232,7 @@
             <!--多选（序号以ABCD形式展现，序号前有多选框）-->
             <div v-if="question.type === '多选题'">
               <div class="ques-stem">
+                <el-button type="primary" style="margin-bottom: 20px" @click="insertSon(index)">添加关联</el-button>
                 <el-form-item prop="stem">
                   <el-input v-model="question.stem" :resize="'none'" :rows="1" autosize placeholder="请输入题干"
                             style="width: 75%;" type="textarea"></el-input>
@@ -396,15 +412,22 @@
               </div>
             </div>
             <!--置顶、上移、下移、置底-->
-            <div class="ques-operation">
+            <div class="ques-operation" v-if="question.relatedFatherList===null ||
+             question.relatedFatherList===undefined || question.relatedFatherList.length===0">
               <el-button class="small_btns" size="small" type="info" @click="toTop(index)">置顶</el-button>
               <el-button class="small_btns" size="small" type="info" @click="toUp(index)">上移</el-button>
               <el-button class="small_btns" size="small" type="info" @click="toDown(index)">下移</el-button>
               <el-button class="small_btns" size="small" type="info" @click="toBottom(index)">置底</el-button>
             </div>
             <div class="ques-operation">
-              <el-button class="small_btns" size="small" type="primary" @click="insertUp(index)">上方插入</el-button>
-              <el-button class="small_btns" size="small" type="primary" @click="insertDown(index)">下方插入</el-button>
+              <el-button class="small_btns" size="small" type="primary" @click="insertUp(index)"
+                         v-if="question.relatedFatherList===null ||question.relatedFatherList===undefined
+                          || question.relatedFatherList.length===0">上方插入
+              </el-button>
+              <el-button class="small_btns" size="small" type="primary" @click="insertDown(index)"
+                         v-if="question.relatedFatherList===null ||question.relatedFatherList===undefined
+                          || question.relatedFatherList.length===0">下方插入
+              </el-button>
               <el-button class="small_btns" size="small" type="danger" @click="deleteQuestion(index)">删除</el-button>
             </div>
             <hr>
@@ -421,6 +444,13 @@
     <!--选择题型弹窗,从七种题型中选一种进行插入-->
     <!--questionTypes: ['单选题', '多选题', '判断题', '填空题', '简答题', '评分题', '排序题', '文件上传'],-->
     <el-dialog v-model="dialogVisible" :before-close="handleClose" title="选择题型">
+      <div style="text-align: center;margin-bottom: 40px">
+        <el-radio-group v-model="relatedContent">
+          <el-radio-button v-for="(item,index) in this.questionnaire.questions[this.insertIndex].options" :key="index"
+                           :label="index">{{ item }}
+          </el-radio-button>
+        </el-radio-group>
+      </div>
       <div style="text-align: center;margin-bottom: 40px">
         <el-radio-group v-model="questionType">
           <el-radio-button label="单选题">单选题</el-radio-button>
@@ -486,6 +516,8 @@ export default {
       //format: 格式(判断题、评分题)
       //related: 相关(判断题、填空题、简答题、评分题、文件上传)
 
+      relatedContent: '',//相关内容
+
       // 题库信息（即一个特殊的问卷）
       //个人题库
       privateBank: [],
@@ -516,6 +548,16 @@ export default {
       plainRequest.post('/selectQuestionById', this.questionnaire.id).then(res => {
         console.log(res);
         this.questionnaire.questions = res.data;
+        for (let i = 0; i < this.questionnaire.questions.length; i++) {
+          if (this.questionnaire.questions[i].relatedSonList) {
+            let list = JSON.parse(JSON.stringify(this.questionnaire.questions[i].relatedSonList));
+            this.questionnaire.questions[i].relatedSonList = [];
+            for (let j = 0; j < list.length; j++) {
+              this.questionnaire.questions[i].relatedSonList.push(JSON.parse(list[j]));
+            }
+          }
+        }
+
       }).catch(err => {
         console.log(err);
       });
@@ -626,6 +668,19 @@ export default {
       for (let i = 0; i < this.radioOptionCount; i++) {
         question.options.push('选项' + (i + 1));
       }
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -643,6 +698,19 @@ export default {
       for (let i = 0; i < this.choiceOptionCount; i++) {
         question.options.push('选项' + (i + 1));
       }
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -658,6 +726,19 @@ export default {
         format: this.judgeFormat,
         related: this.judgeFormat.split('/')[0],
       };
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -673,6 +754,19 @@ export default {
         format: this.gradeFormat,
         related: this.gradeFormat === '百分制' ? '60' : (this.gradeFormat === '十分制' ? '6' : '3'),
       };
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -687,6 +781,19 @@ export default {
         questionId: uuidv4(),
         related: this.answerSize,
       };
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -718,6 +825,19 @@ export default {
       for (let i = 0; i < this.sortCount; i++) {
         question.options.push('语句' + (i + 1));
       }
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -735,6 +855,19 @@ export default {
       for (let i = 0; i < this.blankCount; i++) {
         question.stem = question.stem + ' &______& ' + '这是题干';
       }
+      if (type === 'son') {
+        if (question.relatedFatherList === null || question.relatedFatherList === undefined) {
+          question.relatedFatherList = [];
+        }
+        question.relatedFatherList.push(this.questionnaire.questions[index].questionId);
+        if (this.questionnaire.questions[index].relatedSonList === null || this.questionnaire.questions[index].relatedSonList === undefined) {
+          this.questionnaire.questions[index].relatedSonList = [];
+        }
+        this.questionnaire.questions[index].relatedSonList.push({
+          id: question.questionId,
+          relatedContent: this.relatedContent,
+        });
+      }
       if (type === 'up') {
         this.questionnaire.questions.splice(index, 0, question);
       } else {
@@ -742,14 +875,18 @@ export default {
       }
     },
     toTop(index) {
-      let temp = this.questionnaire.questions[index];
-      this.questionnaire.questions.splice(index, 1);
-      this.questionnaire.questions.unshift(temp);
+      if (index > 0) {
+        let temp = this.questionnaire.questions[index];
+        this.questionnaire.questions.splice(index, 1);
+        this.questionnaire.questions.unshift(temp);
+      }
     },
     toBottom(index) {
-      let temp = this.questionnaire.questions[index];
-      this.questionnaire.questions.splice(index, 1);
-      this.questionnaire.questions.push(temp);
+      if (index < this.questionnaire.questions.length - 1) {
+        let temp = this.questionnaire.questions[index];
+        this.questionnaire.questions.splice(index, 1);
+        this.questionnaire.questions.push(temp);
+      }
     },
     toUp(index) {
       if (index > 0) {
@@ -765,6 +902,104 @@ export default {
         this.questionnaire.questions.splice(index + 1, 0, temp);
       }
     },
+    // //置顶时子题目也要上移
+    // async toTop(index) {
+    //   let temp = this.questionnaire.questions[index];
+    //   if (temp && temp.relatedSonList !== null && temp.relatedSonList !== undefined) {
+    //     let promises = [];
+    //     for (let i = 0; i < temp.relatedSonList.length; i++) {
+    //       let sonIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.relatedSonList[i]);
+    //       if (sonIndex !== -1) {
+    //         promises.push(this.toTop(sonIndex));
+    //       }
+    //     }
+    //     await Promise.all(promises);
+    //   }
+    //   //自身上移
+    //   let fatherIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.questionId);
+    //   if (fatherIndex !== -1) {
+    //     let fatherTemp = this.questionnaire.questions[fatherIndex];
+    //     this.questionnaire.questions.splice(fatherIndex, 1);
+    //     this.questionnaire.questions.unshift(fatherTemp);
+    //   }
+    //   this.questionnaire.questions.splice(index, 1);
+    //   this.questionnaire.questions.unshift(temp);
+    // },
+    // //置底时子题目也要下移
+    // async toBottom(index) {
+    //   let temp = this.questionnaire.questions[index];
+    //   if (temp && temp.relatedSonList !== null && temp.relatedSonList !== undefined) {
+    //     let promises = [];
+    //     for (let i = 0; i < temp.relatedSonList.length; i++) {
+    //       let sonIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.relatedSonList[i]);
+    //       if (sonIndex !== -1) {
+    //         promises.push(this.toBottom(sonIndex));
+    //       }
+    //     }
+    //     await Promise.all(promises);
+    //   }
+    //   let fatherIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.questionId);
+    //   if (fatherIndex !== -1) {
+    //     let fatherTemp = this.questionnaire.questions[fatherIndex];
+    //     this.questionnaire.questions.splice(fatherIndex, 1);
+    //     this.questionnaire.questions.push(fatherTemp);
+    //   }
+    //   this.questionnaire.questions.splice(index, 1);
+    //   this.questionnaire.questions.push(temp);
+    // },
+    // //上移时子题目也要上移
+    // async toUp(index) {
+    //   if (index > 0) {
+    //     let temp = this.questionnaire.questions[index];
+    //     if (temp && temp.relatedSonList !== null && temp.relatedSonList !== undefined) {
+    //       let promises = [];
+    //       for (let i = 0; i < temp.relatedSonList.length; i++) {
+    //         let sonIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.relatedSonList[i]);
+    //         if (sonIndex !== -1) {
+    //           promises.push(this.toUp(sonIndex));
+    //         }
+    //       }
+    //       await Promise.all(promises);
+    //     }
+    //     let fatherIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.questionId);
+    //     if (fatherIndex !== -1) {
+    //       let fatherTemp = this.questionnaire.questions[fatherIndex];
+    //       this.questionnaire.questions.splice(fatherIndex, 1);
+    //       this.questionnaire.questions.splice(index - 1, 0, fatherTemp);
+    //     }
+    //     this.questionnaire.questions.splice(index, 1);
+    //     this.questionnaire.questions.splice(index - 1, 0, temp);
+    //   }
+    // },
+    // //下移时子题目也要下移
+    // async toDown(index) {
+    //   if (index < this.questionnaire.questions.length - 1) {
+    //     let temp = this.questionnaire.questions[index];
+    //     if (temp && temp.relatedSonList !== null && temp.relatedSonList !== undefined) {
+    //       let promises = [];
+    //       for (let i = 0; i < temp.relatedSonList.length; i++) {
+    //         let sonIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.relatedSonList[i]);
+    //         if (sonIndex !== -1) {
+    //           promises.push(this.toDown(sonIndex));
+    //         }
+    //       }
+    //       await Promise.all(promises);
+    //     }
+    //     let fatherIndex = this.questionnaire.questions.findIndex(item => item.questionId === temp.questionId);
+    //     if (fatherIndex !== -1) {
+    //       let fatherTemp = this.questionnaire.questions[fatherIndex];
+    //       this.questionnaire.questions.splice(fatherIndex, 1);
+    //       this.questionnaire.questions.splice(index + 1, 0, fatherTemp);
+    //     }
+    //     this.questionnaire.questions.splice(index, 1);
+    //     this.questionnaire.questions.splice(index + 1, 0, temp);
+    //   }
+    // },
+    insertSon(index) {
+      this.insertIndex = index;
+      this.insertType = 'son';
+      this.dialogVisible = true;
+    },
     insertUp(index) {
       this.insertIndex = index;
       this.insertType = 'up';
@@ -776,6 +1011,15 @@ export default {
       this.dialogVisible = true;
     },
     insert() {
+      if (this.insertType === 'son') {
+        if (this.relatedContent === '') {
+          this.$message({
+            message: '关联内容不能为空',
+            type: 'warning'
+          });
+          return;
+        }
+      }
       if (this.questionType === '单选题') {
         this.addSimple(this.insertIndex, this.insertType);
       } else if (this.questionType === '多选题') {
@@ -795,9 +1039,31 @@ export default {
       } else if (this.questionType === '填空题') {
         this.addBlank(this.insertIndex, this.insertType);
       }
+      this.relatedContent = '';
       this.dialogVisible = false;
     },
     deleteQuestion(index) {
+      let question = this.questionnaire.questions[index];
+      if (question.relatedFatherList !== null && question.relatedFatherList !== undefined
+          && question.relatedFatherList.length !== 0) {
+        for (let i = 0; i < question.relatedFatherList.length; i++) {
+          let father = this.questionnaire.questions.find(item => item.questionId === question.relatedFatherList[i]);
+          if (father !== null && father !== undefined) {
+            let sonIndex = father.relatedSonList.indexOf(question.questionId);
+            father.relatedSonList.splice(sonIndex, 1);
+          }
+        }
+      }
+      if (question.relatedSonList !== null && question.relatedSonList !== undefined
+          && question.relatedSonList.length !== 0) {
+        for (let i = 0; i < question.relatedSonList.length; i++) {
+          let son = this.questionnaire.questions.find(item => item.questionId === question.relatedSonList[i]);
+          if (son !== null && son !== undefined) {
+            let fatherIndex = son.relatedFatherList.indexOf(question.questionId);
+            son.relatedFatherList.splice(fatherIndex, 1);
+          }
+        }
+      }
       this.questionnaire.questions.splice(index, 1);
     },
     plus(options, max) {
@@ -845,6 +1111,7 @@ export default {
         query: {
           id: this.questionnaire.id,
           preview: true,
+          questions: JSON.stringify(this.questionnaire.questions),
         },
       });
     },
@@ -870,8 +1137,18 @@ export default {
           });
           let data = {
             id: this.questionnaire.id,
-            questions: this.questionnaire.questions,
+            questions: JSON.parse(JSON.stringify(this.questionnaire.questions)),
           };
+          console.log(data);
+          for (let i = 0; i < data.questions.length; i++) {
+            if (data.questions[i].relatedSonList) {
+              let list = JSON.parse(JSON.stringify(data.questions[i].relatedSonList));
+              data.questions[i].relatedSonList = [];
+              for (let j = 0; j < list.length; j++) {
+                data.questions[i].relatedSonList.push(JSON.stringify(list[j]));
+              }
+            }
+          }
           const res = await request.post('/insertDesignQuestion', JSON.stringify(data));
           if (res.data === 1) {
             this.$message({
@@ -934,6 +1211,39 @@ export default {
       }
       callback(true);
     },
+    // 将数组转换为字符串
+    sonListToString(array) {
+      if (array === null || array === undefined) {
+        return null;
+      }
+      let resArray = [];
+      for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < this.questionnaire.questions.length; j++) {
+          if (array[i].id === this.questionnaire.questions[j].questionId) {
+            //relatedContent为字符串形式的数字(0开始)，需要转换为ABCD
+            let option = String.fromCharCode(65 + parseInt(array[i].relatedContent)) + '->';
+            resArray.push(option + '第' + (j + 1) + '题');
+            break;
+          }
+        }
+      }
+      return resArray;
+    },
+    fatherListToString(array) {
+      if (array === null || array === undefined) {
+        return null;
+      }
+      let resArray = [];
+      for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < this.questionnaire.questions.length; j++) {
+          if (array[i] === this.questionnaire.questions[j].questionId) {
+            resArray.push('第' + (j + 1) + '题');
+            break;
+          }
+        }
+      }
+      return resArray;
+    }
   }
 }
 </script>
@@ -1056,6 +1366,13 @@ span {
   font-size: 20px;
   font-weight: bold;
   margin-left: 40px;
+  margin-bottom: 15px;
+}
+
+.ques-relation {
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 60px;
   margin-bottom: 20px;
 }
 

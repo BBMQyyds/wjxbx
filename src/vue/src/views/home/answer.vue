@@ -7,12 +7,28 @@
           <span class="name">{{ this.questionnaire.name }}</span>
         </div>
         <div class="questionnaire-description">
-          <span>问卷描述：{{ this.questionnaire.description }}</span>
+          <el-row>
+            <el-col :span="12">
+              <span>问卷描述：{{ this.questionnaire.description }}</span>
+            </el-col>
+            <el-col :span="4">
+            </el-col>
+            <el-col :span="8">
+              <span>答卷人：{{ this.username }}</span>
+            </el-col>
+          </el-row>
         </div>
         <hr>
-        <div v-for="(question,index) in this.questionnaire.questions" :key="index">
+        <div v-for="(question,index) in this.RelatedQuestionList" :key="index">
           <div class="ques-type" style="align-items: center;">
             <span style="margin-right: 10px">{{ index + 1 }}.&emsp;{{ question.type }}</span>
+          </div>
+          <div class="ques-related">
+            <span v-if="question.relatedFatherList!==null && question.relatedFatherList!==undefined
+            && question.relatedFatherList.length!==0"
+            style="color: #C0C0C0;font-size: 12px">
+              父题目：{{ fatherListToString(question.relatedFatherList) }}
+            </span>
           </div>
           <!--根据type生成不同的题型，并生成真实的题目格式-->
           <!--可编辑题干、选项等内容-->
@@ -22,7 +38,8 @@
               <span>{{ question.stem }}</span>
             </div>
             <div class="ques-option">
-              <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }">
+              <el-radio-group v-model="question.answer" :class="{ 'disabled': this.$route.query.detail === 'true' }"
+                              @change="console.log(question)">
                 <div v-for="(option, index) in question.options" :key="index"
                      class="option-input">
                   <!--序号abcd形式，序号前有单选框-->
@@ -171,8 +188,13 @@
           <hr>
         </div>
         <!--保存、退出按钮-->
-        <div v-if="this.$route.query.preview !== 'true' && this.$route.query.detail !== 'true'" class="ques-save">
-          <el-button size="default" type="primary" @click="submit">提&emsp;交</el-button>
+        <div class="ques-save">
+          <el-button v-if="this.$route.query.preview !== 'true' && this.$route.query.detail !== 'true'"
+                     size="default" type="primary" @click="submit">提&emsp;交
+          </el-button>
+          <el-button v-if="this.$route.query.preview === 'true'"
+                     size="default" type="primary" @click="save">保&emsp;存
+          </el-button>
         </div>
       </el-container>
     </div>
@@ -204,17 +226,19 @@ export default {
     });
     if (this.$route.query.detail !== 'true') {
       plainRequest.post('selectQuestionById', this.$route.query.id).then(res => {
-        this.questionnaire.questions = res.data;
-        for (let i = 0; i < this.questionnaire.questions.length; i++) {
-          if (this.questionnaire.questions[i].type === '填空题') {
-            this.questionnaire.questions[i].answer = Array.from({length: this.blankCount(this.questionnaire.questions[i].stem)});
-          } else if (this.questionnaire.questions[i].type === '简答题'
-              || this.questionnaire.questions[i].type === '评分题' || this.questionnaire.questions[i].type === '判断题') {
-            this.questionnaire.questions[i].answer = '';
-          } else if (this.questionnaire.questions[i].type === '单选题') {
-            this.questionnaire.questions[i].answer = -1;
-          } else if (this.questionnaire.questions[i].type === '多选题') {
-            this.questionnaire.questions[i].answer = [];
+        if (this.questionnaire.questions.length === 0) {
+          this.questionnaire.questions = res.data;
+          for (let i = 0; i < this.questionnaire.questions.length; i++) {
+            if (this.questionnaire.questions[i].type === '填空题') {
+              this.questionnaire.questions[i].answer = Array.from({length: this.blankCount(this.questionnaire.questions[i].stem)});
+            } else if (this.questionnaire.questions[i].type === '简答题'
+                || this.questionnaire.questions[i].type === '评分题' || this.questionnaire.questions[i].type === '判断题') {
+              this.questionnaire.questions[i].answer = '';
+            } else if (this.questionnaire.questions[i].type === '单选题') {
+              this.questionnaire.questions[i].answer = -1;
+            } else if (this.questionnaire.questions[i].type === '多选题') {
+              this.questionnaire.questions[i].answer = [];
+            }
           }
         }
       });
@@ -231,6 +255,8 @@ export default {
       //options: 选项(单选题、多选题、判断题、排序题)
       //format: 格式(判断题、评分题)
       //related: 相关(判断题、填空题、简答题、评分题、文件上传)
+      qnId: this.$route.query.id,
+      username: this.$route.query.username,
       // 问卷信息
       questionnaire: {
         id: '',
@@ -238,7 +264,7 @@ export default {
         name: '',
         description: '',
         // 问卷中的题目，请举出具体例子
-        questions: [],
+        questions: this.$route.query.questions === undefined ? [] : JSON.parse(this.$route.query.questions),
       },
       question: {
         id: '',
@@ -249,7 +275,39 @@ export default {
         related: '',
         answer: '',
       },
+      // 关联后的题目列表
     };
+  },
+  computed: {
+    RelatedQuestionList: function () {
+      let self = this; // 保存当前上下文的引用
+      return this.questionnaire.questions.filter(function (question) {
+        if (question.relatedFatherList && question.relatedFatherList.length > 0) {
+          console.log('包含relatedFatherList');
+          for (let i = 0; i < question.relatedFatherList.length; i++) {
+            let relatedFather = self.questionnaire.questions.find(function (item) {
+              return item.questionId === question.relatedFatherList[i];
+            });
+            if (relatedFather && relatedFather.relatedSonList) {
+              for (let j = 0; j < relatedFather.relatedSonList.length; j++) {
+                let relatedSon = relatedFather.relatedSonList[j];
+                if (relatedSon.id === question.questionId) {
+                  if (relatedFather.answer === relatedSon.relatedContent) {
+                    console.log('relatedFather的answer等于relatedSon的relatedContent');
+                    return true;
+                  }
+                }
+              }
+            }
+          }
+          return false;
+        } else {
+          console.log('没有relatedFatherList');
+          return true;
+        }
+      });
+    }
+
   },
   methods: {
     async fetchData() {
@@ -264,9 +322,21 @@ export default {
         this.questionnaire.id = answerResponse.data.questionnaireId;
         this.questionnaire.questions = data;
 
+        for (let i = 0; i < this.questionnaire.questions.length; i++) {
+          if (this.questionnaire.questions[i].relatedSonList) {
+            let list = JSON.parse(JSON.stringify(this.questionnaire.questions[i].relatedSonList));
+            this.questionnaire.questions[i].relatedSonList = [];
+            for (let j = 0; j < list.length; j++) {
+              this.questionnaire.questions[i].relatedSonList.push(JSON.parse(list[j]));
+            }
+          }
+        }
+
         const questionnaireResponse = await plainRequest.post('selectQuestionnaireById', this.questionnaire.id);
         this.questionnaire.name = questionnaireResponse.data.questionnaireName;
         this.questionnaire.description = questionnaireResponse.data.questionnaireDescription;
+
+        console.log(this.questionnaire);
       } catch (error) {
         // 错误处理
         console.error(error);
@@ -288,15 +358,16 @@ export default {
     },
     submit() {
       console.log("submit");
-      for (let i = 0; i < this.questionnaire.questions.length; i++) {
-        this.questionnaire.questions[i].answer = JSON.stringify(this.questionnaire.questions[i].answer);
-      }
       let data = {
         questionnaireId: this.questionnaire.questionnaireId,
         userId: sessionStorage.getItem('token') !== null ?
             sessionStorage.getItem('token') : '************************************',
         questions: JSON.parse(JSON.stringify(this.questionnaire.questions)),
       }
+      for (let i = 0; i < this.questionnaire.questions.length; i++) {
+        data.questions[i].answer = JSON.stringify(data.questions[i].answer);
+      }
+
       console.log(this.questionnaire);
       request.post('insertAnswer', data).then(res => {
         console.log(res);
@@ -330,6 +401,63 @@ export default {
     blankCount(str) {
       return str.split('&______&').length - 1;
     },
+    async save() {
+      try {
+        await this.$confirm('确认保存问卷吗？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          customClass: 'message-box',
+          type: 'warning',
+        });
+        let data = {
+          id: this.qnId,
+          questions: this.questionnaire.questions,
+        };
+        console.log(data);
+        for (let i = 0; i < data.questions.length; i++) {
+          if (data.questions[i].relatedSonList) {
+            let list = JSON.parse(JSON.stringify(data.questions[i].relatedSonList));
+            data.questions[i].relatedSonList = [];
+            for (let j = 0; j < list.length; j++) {
+              data.questions[i].relatedSonList.push(JSON.stringify(list[j]));
+            }
+          }
+        }
+        const res = await request.post('/insertDesignQuestion', JSON.stringify(data));
+        if (res.data === 1) {
+          this.$message({
+            message: '保存成功',
+            type: 'success',
+          });
+          router.back();
+        } else {
+          this.$message({
+            message: '保存失败',
+            type: 'error',
+          });
+        }
+      } catch (error) {
+        this.$message({
+          type: 'info',
+          message: '已取消保存',
+        });
+      }
+    },
+    fatherListToString(array) {
+      if (array === null || array === undefined) {
+        return null;
+      }
+      let resArray = [];
+      for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < this.questionnaire.questions.length; j++) {
+          if (array[i] === this.questionnaire.questions[j].questionId) {
+            resArray.push('第' + (j + 1) + '题');
+            break;
+          }
+        }
+      }
+      return resArray;
+    }
   }
 }
 </script>
@@ -408,6 +536,13 @@ span {
 .ques-type {
   font-size: 20px;
   font-weight: bold;
+  margin-left: 40px;
+  margin-bottom: 5px;
+}
+
+.ques-related {
+  font-size: 12px;
+  font-weight: normal;
   margin-left: 40px;
   margin-bottom: 20px;
 }
