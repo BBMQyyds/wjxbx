@@ -16,7 +16,4 @@ public class QuestionEntity {
     private int sequence;
     private int star;
     private String questionContent;
-    private List<String> relatedFatherList;
-    private List<String> relatedSonList;
-    private String relatedContent;
 }
