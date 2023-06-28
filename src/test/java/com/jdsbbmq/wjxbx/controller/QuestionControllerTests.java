@@ -1,6 +1,7 @@
 package com.jdsbbmq.wjxbx.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jdsbbmq.wjxbx.bean.answer.AnswerRequest;
 import com.jdsbbmq.wjxbx.bean.question.DesignRequest;
 import com.jdsbbmq.wjxbx.bean.question.Question;
 import com.jdsbbmq.wjxbx.bean.question.UpdateQuestionStarRequest;
@@ -92,6 +93,30 @@ public class QuestionControllerTests {
 
     @Test
     @Transactional
+    //插入答卷
+    public void insertAnswerTest() throws Exception {
+        String userId = "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        String questionId = "1d2489bc-5da0-43ff-9a7c-7533c0a59e99";
+        AnswerRequest answerRequest= new AnswerRequest(userId, questionId, null);
+        String jsonProject = new ObjectMapper().writeValueAsString(answerRequest);
+        mockMvc.perform(MockMvcRequestBuilders.post("/insertAnswer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonProject))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>insertAnswer插入答卷测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>insertAnswer插入答卷测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
     //将问卷问题放入个人题库接口
     public void insertPrivateQuestionTest() throws Exception {
         UpdateQuestionStarRequest updateQuestionStarRequest = new UpdateQuestionStarRequest("53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f", "1d2489bc-5da0-43ff-9a7c-7533c0a59e99");
@@ -108,6 +133,27 @@ public class QuestionControllerTests {
                     } else {
                         // 记录error级别的信息
                         log.error("QuestionnaireController: >>insertPrivateQuestion将问卷问题放入个人题库接口测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //复制问卷
+    public void insertCopyQuestionnaire() throws Exception {
+        String questionnaireId="1d2489bc-5da0-43ff-9a7c-7533c0a59e99";
+        mockMvc.perform(MockMvcRequestBuilders.post("/insertCopyQuestionnaire")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(questionnaireId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>insertCopyQuestionnaire复制问卷测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>insertCopyQuestionnaire复制问卷测试失败");
                     }
                 });
     }
@@ -150,6 +196,27 @@ public class QuestionControllerTests {
                     } else {
                         // 记录error级别的信息
                         log.error("QuestionnaireController: >>deleteAllQuestionnaireRecycled清空回收站测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //删除问卷根据Id
+    public void deleteQuestionnaireByIdTest() throws Exception {
+        String questionnaireId = "1d2489bc-5da0-43ff-9a7c-7533c0a59e99";
+        mockMvc.perform(MockMvcRequestBuilders.post("/deleteQuestionnaireById")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(questionnaireId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        // 记录info级别的信息
+                        log.info("QuestionnaireController: >>deleteQuestionnaireById删除问卷根据Id测试成功");
+                    } else {
+                        // 记录error级别的信息
+                        log.error("QuestionnaireController: >>deleteQuestionnaireById删除问卷根据Id测试失败");
                     }
                 });
     }

@@ -135,6 +135,24 @@ public class ProjectControllerTests {
                 });
     }
 
+    @Test
+    @Transactional
+    //复制项目
+    public void insertCopyProjectTest() throws Exception {
+        String id = "0f796ce7-28f5-405e-b7f5-682e6cbca8e2";
+        mockMvc.perform(MockMvcRequestBuilders.post("/insertCopyProject")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    if (result.getResponse().getStatus() == 200) {
+                        log.info("ProjectController: >>insertCopyProject复制项目测试成功");
+                    } else {
+                        log.error("ProjectController: >>insertCopyProject复制项目测试失败");
+                    }
+                });
+    }
+
 
     @Test
     @Transactional
@@ -266,6 +284,25 @@ public class ProjectControllerTests {
                         log.info("ProjectController: >>deleteAllProject清空回收站测试成功");
                     } else {
                         log.error("ProjectController: >>deleteAllProject清空回收站测试失败");
+                    }
+                });
+    }
+
+    @Test
+    @Transactional
+    //根据Id删除项目
+    public void deleteProjectByIdTest() throws Exception {
+        String id = "53a71d10-f7c4-4d9c-b0d8-a61cf9d3356f";
+        mockMvc.perform(MockMvcRequestBuilders.post("/deleteProjectById")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(id))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(result -> {
+                    int status = result.getResponse().getStatus();
+                    if (status == 200) {
+                        log.info("ProjectController: >>deleteProjectById根据Id删除项目测试成功");
+                    } else {
+                        log.error("ProjectController: >>deleteProjectById根据Id删除项目测试失败");
                     }
                 });
     }
