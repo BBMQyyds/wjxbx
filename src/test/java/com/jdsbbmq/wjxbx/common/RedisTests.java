@@ -2,6 +2,7 @@ package com.jdsbbmq.wjxbx.common;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
@@ -12,17 +13,18 @@ import java.util.Set;
 @SpringBootTest
 public class RedisTests {
 
-    private final Jedis jedis = new Jedis("101.43.255.130", 6379);
+    private final Jedis jedis = new Jedis("8.140.27.85", 6379);
 
     @Test
     void contextLoads() {
     }
 
     @Test
+    @Transactional
     //测试redis字符串
     public void RedisStringTest() {
         // 若没有密码注释掉下面这行
-        jedis.auth("20030321");
+        jedis.auth("asd898568967qwe");
         jedis.set("zzz", "11");
         String value = jedis.get("zzz");
         System.out.println(value);
@@ -39,10 +41,11 @@ public class RedisTests {
     }
 
     @Test
+    @Transactional
     //测试redis列表
     public void RedisListTest() {
         // 若没有密码注释掉下面这行
-        jedis.auth("20030321");
+        jedis.auth("asd898568967qwe");
         //将数据存储到list数据中的时候，先存储在list中的数据，是在最左面，删除的话，删除的是最左面的。
         jedis.lpush("list5", "1", "2", "3");
         List<String> lrange = jedis.lrange("list5", 0, -1);
@@ -59,10 +62,11 @@ public class RedisTests {
     }
 
     @Test
+    @Transactional
     //测试redis集合
     public void RedisSetTest() {
         // 若没有密码注释掉下面这行
-        jedis.auth("20030321");
+        jedis.auth("asd898568967qwe");
         jedis.sadd("set1", "e", "a", "b", "c", "d");
         Set<String> smembers = jedis.smembers("set1");
         System.out.println(smembers);
@@ -73,10 +77,11 @@ public class RedisTests {
     }
 
     @Test
+    @Transactional
     //测试redis散列
     public void RedisHashTest() {
         // 若没有密码注释掉下面这行
-        jedis.auth("20030321");
+        jedis.auth("asd898568967qwe");
         Map<String, String> map = new HashMap<>();
         map.put("k1", "v1");
         map.put("k2", "v2");
@@ -85,6 +90,6 @@ public class RedisTests {
         jedis.hmset("map1", map);
         Map<String, String> map2 = jedis.hgetAll("map1");
         System.out.println(map2.toString());
+        jedis.close();
     }
-
 }

@@ -41,6 +41,9 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public CompletableFuture<Answer> selectAnswerById(String answerId) {
         AnswerEntity answerEntity=answerEntityMapper.selectAnswerById(answerId);
+        if(answerEntity==null){
+            return CompletableFuture.completedFuture(null);
+        }
         Answer answer=new Answer(answerEntity.getId(),answerEntity.getUserId(),answerEntity.getUsername(),answerEntity.getQuestionnaireId(),answerEntity.getQuestionnaireName(),answerEntity.getQuestionnaireContent(),answerEntity.getCreateDate());
         return CompletableFuture.completedFuture(answer);
     }
