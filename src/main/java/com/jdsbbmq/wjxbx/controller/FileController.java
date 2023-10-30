@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.CompletableFuture;
-
 @RestController
 public class FileController {
     @Resource
@@ -31,14 +29,14 @@ public class FileController {
     //插入一个文件夹
     @Operation(summary = "插入一个文件夹", description = "插入一个文件夹")
     @RequestMapping(value = "/insertFile", method = RequestMethod.POST)
-    public CompletableFuture<Integer> insertFile(@RequestBody File file) {
+    public Integer insertFile(@RequestBody File file) {
         return fileService.insertFile(file);
     }
 
     //复制一个文件夹
     @Operation(summary = "复制一个文件夹", description = "复制一个文件夹")
     @RequestMapping(value = "/insertCopyFile", method = RequestMethod.POST)
-    public CompletableFuture<Integer> insertCopyFile(@RequestBody File file) {
+    public Integer insertCopyFile(@RequestBody File file) {
         return fileService.insertCopyFile(file);
     }
 
@@ -47,7 +45,7 @@ public class FileController {
     //修改文件夹名字
     @Operation(summary = "修改一个文件夹的名字", description = "修改一个文件夹的名字")
     @RequestMapping(value = "/updateFile", method = RequestMethod.POST)
-    public CompletableFuture<Integer> updateFile(@RequestBody File file) {
+    public Integer updateFile(@RequestBody File file) {
         return fileService.updateFile(file);
     }
 
@@ -56,7 +54,7 @@ public class FileController {
     //删除一个文件夹
     @Operation(summary = "删除一个文件夹", description = "删除一个文件夹")
     @RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
-    public CompletableFuture<Integer> deleteFile(@RequestBody String fileId) {
+    public Integer deleteFile(@RequestBody String fileId) {
         return fileService.deleteFile(fileId);
     }
 }

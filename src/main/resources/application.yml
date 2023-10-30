@@ -76,11 +76,10 @@ mybatis:
 async:
   executor:
     thread:
-      core_pool_size: 10
-      max_pool_size: 20
-      queue_capacity: 10000
-      name_prefix: async-service-
-
+      core_pool_size: 8
+      max_pool_size: 16
+      queue_capacity: 64
+      name_prefix: normal-pool-
 
 #management
 management:

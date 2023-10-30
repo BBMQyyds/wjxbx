@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 public class AnswerServiceImpl implements AnswerService {
@@ -20,31 +19,30 @@ public class AnswerServiceImpl implements AnswerService {
 
     //分页寻找答卷
     @Override
-    public CompletableFuture<List<Answer>> selectAnswerByPage(QueryRequest queryRequest) {
+    public List<Answer> selectAnswerByPage(QueryRequest queryRequest) {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
-        List<AnswerEntity> answerEntityList=answerEntityMapper.selectAnswerByPage(queryRequest);
-        List<Answer> answerList=new ArrayList<>();
-        for(AnswerEntity answerEntity:answerEntityList){
-            Answer answer=new Answer(answerEntity.getId(),answerEntity.getUserId(),answerEntity.getUsername(),answerEntity.getQuestionnaireId(),answerEntity.getQuestionnaireName(),answerEntity.getQuestionnaireContent(),answerEntity.getCreateDate());
+        List<AnswerEntity> answerEntityList = answerEntityMapper.selectAnswerByPage(queryRequest);
+        List<Answer> answerList = new ArrayList<>();
+        for (AnswerEntity answerEntity : answerEntityList) {
+            Answer answer = new Answer(answerEntity.getId(), answerEntity.getUserId(), answerEntity.getUsername(), answerEntity.getQuestionnaireId(), answerEntity.getQuestionnaireName(), answerEntity.getQuestionnaireContent(), answerEntity.getCreateDate());
             answerList.add(answer);
         }
-        return CompletableFuture.completedFuture(answerList);
+        return answerList;
     }
 
     //查询答卷总数
     @Override
-    public CompletableFuture<Integer> selectAnswerCount(String questionnaireId) {
-        return CompletableFuture.completedFuture(answerEntityMapper.selectAnswerCount(questionnaireId));
+    public Integer selectAnswerCount(String questionnaireId) {
+        return answerEntityMapper.selectAnswerCount(questionnaireId);
     }
 
     //根据id查询答卷
     @Override
-    public CompletableFuture<Answer> selectAnswerById(String answerId) {
-        AnswerEntity answerEntity=answerEntityMapper.selectAnswerById(answerId);
-        if(answerEntity==null){
-            return CompletableFuture.completedFuture(null);
+    public Answer selectAnswerById(String answerId) {
+        AnswerEntity answerEntity = answerEntityMapper.selectAnswerById(answerId);
+        if (answerEntity == null) {
+            return null;
         }
-        Answer answer=new Answer(answerEntity.getId(),answerEntity.getUserId(),answerEntity.getUsername(),answerEntity.getQuestionnaireId(),answerEntity.getQuestionnaireName(),answerEntity.getQuestionnaireContent(),answerEntity.getCreateDate());
-        return CompletableFuture.completedFuture(answer);
+        return new Answer(answerEntity.getId(), answerEntity.getUserId(), answerEntity.getUsername(), answerEntity.getQuestionnaireId(), answerEntity.getQuestionnaireName(), answerEntity.getQuestionnaireContent(), answerEntity.getCreateDate());
     }
 }

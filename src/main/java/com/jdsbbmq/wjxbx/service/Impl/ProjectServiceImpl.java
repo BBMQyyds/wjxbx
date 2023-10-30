@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -40,45 +39,41 @@ public class ProjectServiceImpl implements ProjectService {
 
     //查询该用户下的所有项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Project>> selectAllProject(String userId) throws ParseException {
+    public List<Project> selectAllProject(String userId) throws ParseException {
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectAllProject(userId);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
             projectList.add(new Project(projectEntity));
         }
-        return CompletableFuture.completedFuture(projectList);
+        return projectList;
     }
 
     //根据id查询项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Project> selectProjectById(String id) throws ParseException {
-        return CompletableFuture.completedFuture(new Project(projectEntityMapper.selectProjectById(id)));
+    public Project selectProjectById(String id) throws ParseException {
+        return new Project(projectEntityMapper.selectProjectById(id));
     }
 
     //根据projectName查询项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Project>> selectProjectByName(String projectName) throws ParseException {
+    public List<Project> selectProjectByName(String projectName) throws ParseException {
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByName(projectName);
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
             projectList.add(new Project(projectEntity));
         }
-        return CompletableFuture.completedFuture(projectList);
+        return projectList;
     }
 
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<List<Project>> selectProjectByPage(QueryRequest queryRequest) throws ParseException {
+    public List<Project> selectProjectByPage(QueryRequest queryRequest) throws ParseException {
         queryRequest.setOffset((queryRequest.getCurrentPage() - 1) * queryRequest.getPageSize());
         List<ProjectEntity> projectEntityList = projectEntityMapper.selectProjectByPage(queryRequest.ToQueryEntity());
         List<Project> projectList = new ArrayList<>();
         for (ProjectEntity projectEntity : projectEntityList) {
             projectList.add(new Project(projectEntity));
         }
-        return CompletableFuture.completedFuture(projectList);
+        return projectList;
     }
 
 
@@ -88,21 +83,19 @@ public class ProjectServiceImpl implements ProjectService {
 
     // 插入项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> insertProject(Project project) {
+    public Integer insertProject(Project project) {
         try {
             project.init();
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
         ProjectEntity projectEntity = new ProjectEntity(project);
-        return CompletableFuture.completedFuture(projectEntityMapper.insertProject(projectEntity));
+        return projectEntityMapper.insertProject(projectEntity);
     }
 
     // 复制项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> insertCopyQuestionnaire(String id) throws ParseException {
+    public Integer insertCopyQuestionnaire(String id) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ProjectEntity projectEntity = projectEntityMapper.selectProjectById(id);
         projectEntity.setId(UUID.randomUUID().toString());
@@ -129,56 +122,49 @@ public class ProjectServiceImpl implements ProjectService {
                 questionEntityMapper.insertQuestion(questionEntity);
             }
         }
-        return CompletableFuture.completedFuture(1);
+        return 1;
     }
 
     //更新项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> updateProject(Project project) throws ParseException {
+    public Integer updateProject(Project project) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date lastUpdateDate = dateFormat.parse(dateFormat.format(new Date())); // 设置默认的最后更新时间
         ProjectEntity projectEntity = new ProjectEntity(project);
         projectEntity.setLastUpdateDate(lastUpdateDate);
-        return CompletableFuture.completedFuture(projectEntityMapper.updateProject(projectEntity));
+        return projectEntityMapper.updateProject(projectEntity);
     }
 
     //将项目的收藏更新为已收藏
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> updateStarOnProject(String id) {
-        return CompletableFuture.completedFuture(projectEntityMapper.updateStarOnProject(id));
+    public Integer updateStarOnProject(String id) {
+        return projectEntityMapper.updateStarOnProject(id);
     }
 
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> updateStarOffProject(String id) {
-        return CompletableFuture.completedFuture(projectEntityMapper.updateStarOffProject(id));
+    public Integer updateStarOffProject(String id) {
+        return projectEntityMapper.updateStarOffProject(id);
     }
 
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> updateDeletedOnProject(String id) {
-        return CompletableFuture.completedFuture(projectEntityMapper.updateDeletedOnProject(id));
+    public Integer updateDeletedOnProject(String id) {
+        return projectEntityMapper.updateDeletedOnProject(id);
     }
 
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> updateDeletedOffProject(String id) {
-        return CompletableFuture.completedFuture(projectEntityMapper.updateDeletedOffProject(id));
+    public Integer updateDeletedOffProject(String id) {
+        return projectEntityMapper.updateDeletedOffProject(id);
     }
 
     //删除项目
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> deleteProjectById(String id) {
-        return CompletableFuture.completedFuture(projectEntityMapper.deleteProjectById(id));
+    public Integer deleteProjectById(String id) {
+        return projectEntityMapper.deleteProjectById(id);
     }
 
     //清空回收站
     @Override
-    @Async("asyncServiceExecutor")
-    public CompletableFuture<Integer> deleteAllProjectRecycled(String userId) {
-        return CompletableFuture.completedFuture(projectEntityMapper.deleteAllProjectRecycled(userId));
+    public Integer deleteAllProjectRecycled(String userId) {
+        return projectEntityMapper.deleteAllProjectRecycled(userId);
     }
 }
